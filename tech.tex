@@ -3,28 +3,19 @@
 \usepackage{url,hyperref,lineno,microtype,subcaption}
 \usepackage[onehalfspacing]{setspace}
 
-\usepackage{tabularx}
 \linenumbers
-\DeclareUnicodeCharacter{0301}{}
-\DeclareUnicodeCharacter{2212}{}
 \usepackage{wasysym} % provides \DH, \dh, \Thorn, \thorn
 % Leave a blank\usepackage{amsmath}
 %\DeclareMathOperator{\sign}{sign} line between paragraphs instead of using \\
 
-% \usepackage{csvsimple} % for csv tables
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{siunitx} %for SI units
-\usepackage{tabularx}
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Balasubramanian {et~al.}} %use et al only if is more than 1 author
-\def\Authors{Suryanarayanan Balasubramanian\,$^{1*,2}$, Martin Hoelzle\,$^{1}$, Michael Lehning\,$^{3}$, Jordi
-	Bolibar\,$^{4}$, Sonam Wangchuk\,$^{2}$, Johannes Oerlemans\,$^{4}$ and Felix Keller\,$^{5,6}$}
-\def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland\\ $^{3}$WSL Institute for Snow and Avalanche
-	Research, Davos, Switzerland\\ $^{2}$Himalayan Institute of Alternatives Ladakh, Leh, India\\ $^{4}$Institute
-	for Marine and Atmospheric Research, Utrecht University, Utrecht, The Netherlands\\ $^{5}$Academia Engiadina,
-	Samedan, Switzerland\\ $^{6}$ETH, Zürich, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
+\def\Authors{Suryanarayanan Balasubramanian\,$^{1}$, Martin Hoelzle\,$^{1}$}
+\def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland\\} \def\corrAuthor{Suryanarayanan Balasubramanian}
 
 \def\corrEmail{suryanarayanan.balasubramanian@unifr.ch}
 
@@ -33,7 +24,7 @@
 \onecolumn
 \firstpage{1}
 
-\title[Artificial Ice Reservoirs]{Influence of meteorological conditions on artificial ice reservoir (Icestupa) evolution}
+\title[Artificial Ice Reservoirs]{Optimal discharge rates for artificial ice reservoir (Icestupa) evolution}
 
 \author[\firstAuthorLast ]{\Authors}
 \address{}
@@ -41,25 +32,19 @@
 
 \extraAuth{}
 
-\maketitle
-
+% \maketitle
 \begin{abstract}
-
   Since 2014, mountain communities in Ladakh, India have been constructing dozens of Artificial Ice Reservoirs
-  (AIRs) by spraying water through fountain systems every winter. The meltwater from these structures is
-  crucial to meet irrigation water demands during spring. However, there is a large variability associated with
-  this water supply due to the local weather influences at the chosen location. This study compared the ice
-  volume evolution of an AIR built in Ladakh, India with two others built in Guttannen, Switzerland using a
-  surface energy balance model.  Model input consisted of meteorological data in conjunction with fountain
-  discharge rate (mass input of an AIR). Model calibration and validation were completed using ice volume and
-  surface area measurements taken from several drone surveys. The model was successful in estimating the
-  observed ice volume evolution with a root mean square error within $18 \%$ of the maximum ice volume for all
-  the AIRs. The location in Ladakh had a maximum ice volume four times larger compared to the Guttannen site.
-  However, the corresponding water losses for all the AIRs were more than three-quarters of the total fountain
-  discharge due to high fountain wastewater. Drier and colder locations in relatively cloud-free regions are
-  expected to produce long-lasting AIRs with higher maximum ice volumes. This is a promising result for dry
-  mountain regions, where AIR technology could provide a relatively affordable and sustainable strategy to
-  mitigate climate change induced water stress.
+  (AIRs) by spraying water through fountain systems every winter. The meltwater from these structures is crucial
+  to meet irrigation water demands during spring. However, the water use efficiency (WUE) of this technology is
+  poor due to the variability of AIR freezing rates due to the weather and fountain influences at the chosen
+  location. This study compares the WUE between an AIR constructed manually with an AIR constructed using
+  automated systems at Guttannen, Switzerland. The automation software uses a simplified equation with 6
+  coefficients that capture the influence of temperature, humidity, wind and solar radiation variations on the
+  freezing rate. Historical meteorological data in conjunction with the coordinates, altitude and time zone of
+  the site are required to calculate these 6 coefficients. The automated AIR had a WUE three times more
+  than the manual AIR. This is a promising result for dry mountain regions, where automated AIR technology could
+  scale current mitigation efforts.
 
 	\tiny
 	\keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation, geoengineering } %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
@@ -67,39 +52,25 @@
 
 \section{Introduction}
 
-
 \section{Study Sites and data}
-
 
 \subsection{Meteorological data}
 
-
-
 \subsection{Fountain observations}
-
 
 \subsection{Drone surveys}
 
-
 \section{Model setup}
-
-
-
 
 \section{Results}
 
-
 \subsection{Validation}
-
 
 \section{Discussion}
 
-
 \section{Conclusions}
 
-
 \section{Appendix}
-
 
 \section*{Conflict of Interest Statement} The authors declare that the research was conducted in the absence of
 any commercial or financial relationships that could be construed as a potential conflict of interest.
@@ -113,15 +84,12 @@ fieldwork.  SB led the writing of the paper and all co-authors contributed to it
 Excellence Scholarship (SB). The associated fieldwork in India was supported by Himalayan Institute of
 Alternatives and funded by the Swiss Polar Institute.
 
-\section*{Acknowledgments} This work would not have been possible without the untiring efforts of the Swiss and
+\section*{Acknowledgments} 
+This work would not have been possible without the untiring efforts of the Swiss and
 Indian icestupa construction teams through the winters of 2019, 2020 and 2021. We thank Mr. Adolf Kaeser and Mr.
 Flavio Catillaz from Eispalast Schwarzsee (CH19); Daniel Beurki from the Guttannen Bewegt Association (CH20 and
 CH21); Norboo Thinles, Nishant Tiku, Sourabh Maheshwari and the rest of the HIAL team (IN21).  We would also
 like to thank Hansueli Gubler for designing the Swiss AWS; Dr. Tom Matthews for designing the Indian AWS;
-Michelle Stirnimann for conducting the CH20 drone surveys and Digmesa AG for subsidising their flowmeter used in
-the experiment.  We would particularly like to thank Prof. Thomas Schuler and 4 anonymous reviewers who gave us
-important inputs to improve the paper. We also thank Prof. Christian Hauck, Prof. Nanna B. Karlsson Dr. Andrew
-Tedstone and Alizé Carrère for valuable suggestions that improved the manuscript.
 
 \section*{Data Availability Statement} Model code is freely available in GitHub
 (\url{https://github.com/Gayashiva/air_model}, last access: 17 December 2021) for non-profit purposes. The drone
