@@ -55,11 +55,45 @@
 \section{Study Sites and data}
 
 \section{Automation methodology}
+\subsection{Model assumptions}
+
+The objective of the automation system is to estimate the optimal discharge rate given weather, fountain and
+location information. In order to do so, we simplify the methodology used in our previous paper with some
+assumptions. We tend to use assumptions that overestimate the associated freezing rate to optimise more for
+maximum ice volume rather than WUE. Below we present each of our assumptions corresponding to the different
+model modules in our previous paper.
+
+\subsection{Surface area calculation} \label{sec:shape}
+
+The surface area varies significantly over the lifetime of an AIR. To approximate it, we assume the radius and
+the height of the AIR are equal or the slope of the cone is 1. Admittedly, this overestimates the surface area
+of the AIR thereby overestimating both its freezing and melting rates. 
+
+\subsection{Energy balance calculation} \label{sec:energy}
+
+\subsubsection{Net Shortwave Radiation \texorpdfstring{$q_{SW}$}{Lg}} \label{sec:SW}
+The diurnal variation of the shortwave radiation can be captured via a gaussian equation. However, the seasonal
+variations in the amplitude of the solar radiation are poorly captured by such an equation. Since, typical AIRs
+have a construction period spanning less than 3 months, we can ignore the seasonal variations of solar
+radiation. Therefore, 
 
 \begin{equation}
-	\frac{\Delta M_{F}}{\Delta t} = a \cdot temp + b \cdot RH + c \cdot wind + d
+	Radiation induced melt = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right)
+	\label{eqn:auto}
+\end{equation}
+
+\subsubsection{Net Longwave Radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
+
+\subsection{Automation equation}
+
+The automation equation is composed of two parts namely, (a) linear and (b) gaussian equation. (a)
+approximates the influence of temperature, wind speed and humidity on the expected freezing rate. (b)
+approximates the contribution of solar radiation on the expected freezing rates. 
+
+\begin{equation}
+	\frac{\Delta M_{F}}{\Delta t} = a \cdot T_a + b \cdot RH + c \cdot v_a + d
   +\frac{amp}{(\sigma \sqrt{2\pi})} \cdot exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right)
-	% \label{eqn:qs}
+	\label{eqn:auto}
 \end{equation}
 
 \section{Results}
