@@ -16,7 +16,7 @@
 \def\firstAuthorLast{Balasubramanian {et~al.}} %use et al only if is more than 1 author
 \def\Authors{Suryanarayanan Balasubramanian\,$^{1}$, Roger Waser\,$^{2}$, Martin Hoelzle\,$^{1}$}
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
-Applied Sciences and Arts, Luzern, Switzerland\\ $\\} \def\corrAuthor{Suryanarayanan Balasubramanian}
+Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
 
 \def\corrEmail{suryanarayanan.balasubramanian@unifr.ch}
 
@@ -25,7 +25,7 @@ Applied Sciences and Arts, Luzern, Switzerland\\ $\\} \def\corrAuthor{Suryanaray
 \onecolumn
 \firstpage{1}
 
-\title[Artificial Ice Reservoirs]{Discharge automation for artificial ice reservoirs (Icestupas): theory and
+\title[Artificial Ice Reservoirs]{Fountain scheduling for efficient artificial ice reservoirs (Icestupas): theory and
 practice }
 
 \author[\firstAuthorLast ]{\Authors}
@@ -34,7 +34,8 @@ practice }
 
 \extraAuth{}
 
-\maketitle
+% \maketitle
+
 \begin{abstract}
   To sustain productive artificial ice reservoirs (AIRs) with limited water resources requires a high water use
   efficiency (WUE). This can be achieved by the precise scheduling of deficit AIR construction systems taking
@@ -56,31 +57,32 @@ practice }
 \section{Introduction}
 Climate change adaptation strategies imperatively require a more efficient and sustainable exploitation of water
 resources. In arid climates, agriculture depends almost entirely on irrigation and, as glacier meltwater
-dwindles, political and economic pressures are being exerted on farmers to increase irrigation efficiency. Thus,
-a high water use efficiency (WUE) is the prerequisite for a sustainable agricultural production with limited
-water resources. 
+dwindles, political and economic pressures are being exerted on farmers to increase their water storage
+capacity. Thus, a high water use efficiency (WUE) is the prerequisite for a sustainable agricultural production
+with limited water resources. 
 
 Automated weather and fountain based scheduling methods are one option for reducing watering volumes for AIR
 construction systems and, at the same time, increase WUE.
 
-Proper scheduling requires answers to two questions: When should the water be turned on and off? How much water
-should be sprayed?
+Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
+(b) How much water should be sprayed? Question (a) can be answered accurately based on the sign of the surface
+energy balance. However, question (b) requires information on both the magnitude of the energy balance and the
+fountain spray radius over which this energy balance acts.  
 
 \section{Study Sites and data}
 
 \section{Automation software}
-\subsection{Model simplification}
-
 The objective of the automation software is to estimate the optimal discharge rate given minimal weather,
-fountain and location information. In order to do so, we simplify the methodology used in our previous paper
-with some assumptions. We tend to use assumptions that overestimate the associated freezing rate to optimise
-more for maximum ice volume rather than WUE. Below we present each of our assumptions corresponding to the
-different model modules in our previous paper.
+fountain and location information. In order to do so, we simplify the methodology used in
+\cite{Balasubramanian_2022}. Several assumptions were required to reduce the full energy balance model developed
+to a function with minimal variables. We tend to use assumptions that underestimate the associated freezing rate
+to optimise for WUE. Below we present each of our assumptions corresponding to the different model modules used
+in \cite{Balasubramanian_2022}. 
 
 \subsection{Surface area calculation} \label{sec:shape}
 
 The software approximates the area of the conical AIR to be equal to the area of its circular base. Therefore,
-the surface area used
+the surface area can be determined using
 
 \begin{equation} A_{cone} =\pi \cdot r_{cone}^2 \label{eq:Area} \end{equation}
 
@@ -93,18 +95,19 @@ We approximate the energy balance at the surface of an AIR by a one-dimensional 
 used in \cite{Balasubramanian_2022}:
 
 \begin{equation}
-	 q_{freeze} + q_{melt} = q_{SW} + q_{LW} + q_{L} + q_{S}
+	 q_{freeze} + q_{melt} + q_{T}= q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}
 	\label{eqn:EB}
 \end{equation}
 
 Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first two
 terms represent the energy change used for freezing the fountain water and melting the ice respectively. The
-third term represents the energy used for changing the surface temperature. $q_{SW}$ is the net shortwave
-radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent and sensible
-heat fluxes.  Here, we define the surface temperature $T_{ice}$ to be the modelled average temperature of the
-icestupa surface layer.
+third term $q_{T}$ represents the energy used for changing the surface temperature. Here, we define the surface
+temperature $T_{ice}$ to be the modelled average temperature of the icestupa surface layer. $q_{SW}$ is the net
+shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent and
+sensible heat fluxes. 
 
-The software ignores $q_{T}$, $q_{F}$ and $q_{G}$. All these assumptions overestimate the freezing energy flux.
+The software assumes $T_{ice} = 0 \degree C$ and therefor ignores $q_{T}$, $q_{F}$ and $q_{G}$. All these
+assumptions overestimate the freezing energy flux.
 
 \subsubsection{Net Shortwave Radiation \texorpdfstring{$q_{SW}$}{Lg}} \label{sec:SW}
 
@@ -133,9 +136,9 @@ is the modelled surface temperature given in [$\degree C$], $\sigma=5.67\cdot10^
 the Stefan-Boltzmann constant and $\epsilon_{ice}$ is the corresponding emissivity value for the Icestupa
 surface (0.97).
 
- We approximate the atmospheric emissivity $\epsilon_a$ using the
-equation suggested by \cite{Brutsaert_1975}, considering air temperature and vapor pressure (Eqn.
-\ref{eqn:atm_e}). The vapor pressure of air over water and ice was obtained using Eqn. \ref{eqn:vp}.  
+We approximate the atmospheric emissivity $\epsilon_a$ using the equation suggested by \cite{Brutsaert_1975},
+considering air temperature and vapor pressure (Eqn. \ref{eqn:atm_e}). The vapor pressure of air over water and
+ice was obtained using Eqn. \ref{eqn:vp}.  
 
 \begin{equation}
 	\epsilon_a=1.24 \cdot (\frac{p_{v,w}}{(T_a+273.15)})^{1/7} \label{eqn:atm_e}
