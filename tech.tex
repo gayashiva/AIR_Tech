@@ -72,12 +72,12 @@ fountain spray radius over which this energy balance acts.
 \section{Study Sites and data}
 
 \section{Automation software}
-The objective of the automation software is to estimate the optimal discharge rate given minimal weather,
-fountain and location information. In order to do so, we simplify the methodology used in
-\cite{Balasubramanian_2022}. Several assumptions were required to reduce the full energy balance model developed
-to a function with minimal variables. We tend to use assumptions that underestimate the associated freezing rate
-to optimise for WUE. Below we present each of our assumptions corresponding to the different model modules used
-in \cite{Balasubramanian_2022}. 
+The objective of the automation software is to estimate the freezing rate given minimal weather, fountain and
+location information. In order to do so, we simplify the methodology used in \cite{Balasubramanian_2022}.
+Several assumptions were required to reduce the full energy balance model developed to a function with minimal
+variables. We tend to use assumptions that underestimate the associated freezing rate to optimise for WUE. Below
+we present each of our assumptions corresponding to the different model modules used in
+\cite{Balasubramanian_2022}. 
 
 \subsection{Surface area calculation} \label{sec:shape}
 
@@ -87,7 +87,7 @@ the surface area can be determined using
 \begin{equation} A_{cone} =\pi \cdot r_{cone}^2 \label{eq:Area} \end{equation}
 
 Admittedly, this assumption underestimates the surface area of the AIR during the accumulation period and
-overestimates the surface area during the ablation period.  
+thereby underestimates the freezing rate.
 
 \subsection{Energy balance calculation} \label{sec:energy}
 
@@ -95,18 +95,16 @@ We approximate the energy balance at the surface of an AIR by a one-dimensional 
 used in \cite{Balasubramanian_2022}:
 
 \begin{equation}
-	 q_{freeze} + q_{melt} + q_{T}= q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}
+	 q_{total} = q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}
 	\label{eqn:EB}
 \end{equation}
 
-Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first two
-terms represent the energy change used for freezing the fountain water and melting the ice respectively. The
-third term $q_{T}$ represents the energy used for changing the surface temperature. Here, we define the surface
-temperature $T_{ice}$ to be the modelled average temperature of the icestupa surface layer. $q_{SW}$ is the net
-shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent and
-sensible heat fluxes. 
+Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first
+term represents the energy change used for freezing the fountain water and melting the ice respectively.
+$q_{SW}$ is the net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the
+turbulent latent and sensible heat fluxes. 
 
-The software assumes $T_{ice} = 0 \degree C$ and therefor ignores $q_{T}$, $q_{F}$ and $q_{G}$. All these
+The software assumes $T_{ice} = 0 \degree C$ and therefore ignores $q_{T}$, $q_{F}$ and $q_{G}$. All these
 assumptions overestimate the freezing energy flux.
 
 \subsubsection{Net Shortwave Radiation \texorpdfstring{$q_{SW}$}{Lg}} \label{sec:SW}
@@ -120,7 +118,7 @@ The global shortwave radiation used is modelled using the parametrisation propos
 
 The software ignores (a) the differential absorption of $SW_{direct}$ and $SW_{diffuse}$ due to the conical
 shape and (b) the variations in the albedo to simplify the model. Both these assumptions overestimate the solar
-radiation thereby underestimating the freezing energy flux.
+radiation thereby underestimating the freezing rate.
 
 \subsubsection{Net Longwave Radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
 
@@ -181,46 +179,66 @@ $kJ\,kg^{-1}$).  The vapor pressure of air with respect to water ($p_{v,w}$) and
 The software ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
 
 \subsection{Automation equation}
-
-Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature, relative
-humidity and wind speed.
+Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
+relative humidity and wind speed. 
 
 Similarly, the diurnal variation of the shortwave radiation can be captured via a gaussian equation. However,
 the seasonal variations in the amplitude of the solar radiation are poorly captured by such an equation. Since,
 typical AIRs have a construction period spanning less than 3 months, we can ignore the seasonal variations of
 solar radiation. Therefore, the net shortwave radiation $q_{SW}$ is computed as follows: 
 
-% The automation equation is composed of two parts namely, (a) linear and (b) gaussian equation. (a)
-% approximates the influence of temperature, wind speed and humidity on the expected freezing rate. (b)
-% approximates the contribution of solar radiation on the expected freezing rates. 
 
 \begin{subequations}
 
 	\begin{align}
-		\label{eq:T}
-    \frac{(q_{LW} + q_{S} + q_{L}) \cdot A_{cone} \cdot \Delta t}{L_F} & = a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \\
-		\label{eq:SW}
+		\label{eqn:SW}
     \frac{q_{SW} \cdot A_{cone} \cdot \Delta t}{L_F} & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
     exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) \\
-		\label{eq:auto}
-    \frac{(q_{freeze} + q_{melt}) \cdot A_{cone} \cdot \Delta t}{L_F} & = a \cdot T_a + b \cdot RH + c \cdot v_a + d
-  +\frac{amp}{(\sigma \sqrt{2\pi})} \cdot exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right)
+		\label{eqn:T}
+    \frac{(q_{LW} + q_{S} + q_{L}) \cdot A_{cone} \cdot \Delta t}{L_F} & = a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d \\
+		\label{eqn:auto}
+    \frac{q_{total} \cdot A_{cone} \cdot \Delta t}{L_F} & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+    exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) + a \cdot T_a + b \cdot RH + c \cdot v_a + d
 	\end{align}
 \end{subequations}
+
+The first term in Eqn. \ref{eqn:auto} is the expected freezing/melting rate of the AIR. Hence the automation
+equation can now be formulated as:
+
+\begin{subequations}
+	\begin{align}
+		\label{eqn:SW}
+  \frac{q_{total} \cdot A_{cone} \cdot \Delta t}{L_F} & = \left\{ \begin{array}{ll}
+		\frac{\Delta M_{water}}{\Delta t} & \textit{ if } q_{total} > 0 \\
+		\frac{-\Delta M_{ice}}{\Delta t} & \textit{ if } q_{total} \leq 0
+	\end{array} \right. \\
+  f(time;T_a;RH;v_a) & = \left\{ \begin{array}{ll}
+		\frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+    exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) + a \cdot T_a + b \cdot RH + c \cdot v_a + d
+    & \textit{ if } \frac{\Delta M_{ice}}{\Delta t} > d_{crit} \\
+		0 & \textit{ if } \frac{\Delta M_{ice}}{\Delta t} \leq d_{crit}
+	\end{array} \right.
+	\end{align}
+\end{subequations}
+
+
+, the automation equation is composed of two parts namely, (a) linear and (b) gaussian equation. (a)
+approximates the influence of temperature, wind speed and humidity on the expected freezing rate. (b)
+approximates the contribution of solar radiation on the expected freezing rates.
 
 \section{Automation hardware}
 
 \section{Results}
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/autovsmanual.jpg}
-	\end{center}
-	\caption{Icestupa in Ladakh, India on March 2017 was 24 $m$ tall and contained around 3700 $m^3$
-		of water. Picture Credits: Lobzang Dadul}
-	\label{fig:old_icestupa}
-\end{figure}
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=\linewidth]{Figures/autovsmanual.jpg}
+% 	\end{center}
+% 	\caption{Icestupa in Ladakh, India on March 2017 was 24 $m$ tall and contained around 3700 $m^3$
+% 		of water. Picture Credits: Lobzang Dadul}
+% 	\label{fig:old_icestupa}
+% \end{figure}
 
 \subsection{Validation}
 
