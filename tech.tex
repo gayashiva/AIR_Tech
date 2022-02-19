@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{siunitx} %for SI units
+\usepackage{lscape} % for landscape table
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Balasubramanian {et~al.}} %use et al only if is more than 1 author
@@ -25,7 +26,7 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \onecolumn
 \firstpage{1}
 
-\title[Artificial Ice Reservoirs]{Fountain scheduling for efficient artificial ice reservoirs (Icestupas): theory and
+\title[Scheduling AIR fountains]{Fountain scheduling for efficient artificial ice reservoirs (Icestupas): theory and
 practice }
 
 \author[\firstAuthorLast ]{\Authors}
@@ -38,15 +39,15 @@ practice }
 
 \begin{abstract}
   To construct artificial ice reservoirs (AIRs) with limited water resources requires a high water use
-  efficiency (WUE). This can be achieved by the precise scheduling of the water spray taking into account the
-  AIRs response to weather conditions. Particularly in the light of climate change with rising dependence on
-  this water storage technology, an optimal solution for this task is of paramount importance. We solve the
-  corresponding optimization problem, i.e. finding the ideal discharge rate for maximum WUE by an approach which
-  offers straightforward application facilities. The automation software uses a simplified equation with 6
-  coefficients that capture the influence of temperature, humidity, wind and solar radiation variations on the
-  freezing rate. Historical meteorological data of the site is required to calculate these 6 coefficients. The
-  automated AIR had a WUE three times more than the manual AIR. These results support the use of the model in
-  practice.
+  efficiency (WUE). This can be achieved by the precise scheduling of the fountain water spray taking into
+  account the AIRs response to weather conditions. Particularly in the light of climate change with rising
+  dependence on this water storage technology, an optimal solution for this task is of paramount importance. We
+  solve the corresponding optimization problem, i.e. finding the ideal discharge rate for maximum WUE by an
+  approach which offers straightforward application facilities. The automation software uses a simplified
+  equation with 6 coefficients that capture the influence of temperature, humidity, wind and solar radiation
+  variations on the freezing rate. Historical meteorological data of the site is required to calculate these 6
+  coefficients. The automated AIR had a WUE three times more than the manual AIR. These results support the use
+  of the model in practice.
 
 	\tiny
 	\keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation, geoengineering, nature based
@@ -56,18 +57,17 @@ practice }
 \section{Introduction}
 Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
 especially in semi-arid and arid mountain regions facing limited water availability and at the same time
-increased water needs. However, their water use efficiency (WUE) is very poor. Among the most promising current
-strategies to increase AIR WUE is the use of automated fountain scheduling systems, which facilitate water
-management due to the highly localized discharge of water, i.e. by applying the right amount of water at the
-right time over the winter season.
+increased water needs. However, their water use efficiency (WUE) is very poor. 
+
+Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
+the same time, increase WUE. The goal of fountain scheduling is to make the most efficient use of water by
+spraying the right amount of water at the right time, making sure water is available when the AIR surface can
+freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water.  
 
 However, efficient AIR construction is challenging, due to the many factors that should be considered, including
-weather, water source and fountain characteristics. Manual Labour
-
-The goal of fountain scheduling is to make the most
-efficient use of water by spraying the right amount of water at the right time, making sure water is available
-when the AIR surface can freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water. Proper
-fountain discharge management requires a sound basis for making decisions. 
+weather, water source and fountain characteristics. Moreover, due to the daily variations of the AIR freezing
+freezing rate proper fountain scheduling can only be achieved through continuous adjustments of the fountain
+discharge rate. 
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Question (a) can be answered accurately based on the sign of the surface
@@ -77,10 +77,7 @@ fountain spray radius over which this energy balance acts.
 Methods of fountain scheduling can be classified as static or dynamic. According to the static approach the
 total amount of water for AIR construction is allocated without specifying its temporal distribution along the
 accumulation period. By contrast, in the dynamic approach water is allocated at specific time steps along the
-accumulation period in order to achieve optimal freezing rates. 
-
-Automated weather and fountain based scheduling methods are one option for reducing watering volumes for AIR
-construction systems and, at the same time, increase WUE.
+accumulation period in order to achieve even higher WUE.
 
 \section{Study Sites and data}
 
@@ -92,12 +89,32 @@ variables. We tend to use assumptions that underestimate the associated freezing
 we present each of our assumptions corresponding to the different model modules used in
 \cite{Balasubramanian_2022}. 
 
+% \begin{landscape}
+% \begin{table}[]
+% \centering
+% \caption{}
+% \label{tab:my-table}
+% \begin{tabular}{@{}lllll@{}}
+% \toprule
+% \textbf{Module name} & \textbf{Symbol} & \textbf{Full eqn} & \textbf{Simplified eqn} & \textbf{Assumptions} \\ \midrule
+% \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ &  & \pi \cdot r_{F}^2 & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ &  & (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ &  & \sigma \cdot \epsilon_a \cdot {(T_a+ 273.15)}^4 -\sigma \cdot \epsilon_{ice} \cdot {273.15}^4 & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Sensible Heat}       & $q_{S}$ &  &  & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Latent Heat}         & $q_{L}$ &  &  & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \end{tabular}
+% \end{table}
+% \end{landscape}
+
 \subsection{Surface area calculation} \label{sec:shape}
 
-The software approximates the area of the conical AIR to be equal to the area of its circular base. Therefore,
-the surface area can be determined using
+The software approximates the area of the conical AIR to be equal to the area of its circular base produced
+through the fountain spray radius $r_F$. Therefore, the surface area can be determined using
 
-\begin{equation} A_{cone} =\pi \cdot r_{cone}^2 \label{eq:Area} \end{equation}
+\begin{equation} A_{cone} =\pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
 
 Admittedly, this assumption underestimates the surface area of the AIR during the accumulation period and
 thereby underestimates the freezing rate.
@@ -118,20 +135,34 @@ $q_{SW}$ is the net shortwave radiation; $q_{LW}$ is the net longwave radiation;
 turbulent latent and sensible heat fluxes. 
 
 The software assumes $T_{ice} = 0 \degree C$ and therefore ignores $q_{T}$, $q_{F}$ and $q_{G}$. All these
-assumptions overestimate the freezing energy flux.
+assumptions overestimate the freezing rate.
 
 \subsubsection{Net Shortwave Radiation \texorpdfstring{$q_{SW}$}{Lg}} \label{sec:SW}
 
 The net shortwave radiation $q_{SW}$ is computed as follows:
 
-\begin{equation} q_{SW} = (1- \alpha_{ice})\cdot SW_{global} \label{eqn:SW} \end{equation}
+\begin{equation} q_{SW} = (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) \label{eqn:SW} \end{equation}
 
-where $\alpha_{ice}$ is the bare ice albedo value (0.25) and $SW_{global}$ is the global shortwave radiation.
-The global shortwave radiation used is modelled using the parametrisation proposed by \cite{Woolf_1968}.
+where $\alpha_{ice}$ is the bare ice albedo value (0.25); $SW_{global}$ is the global shortwave radiation and
+$cld$ is a cloudiness index determined from historical weather data. The global shortwave radiation used is modelled using the parametrisation proposed by \cite{Woolf_1968}.
 
-The software ignores (a) the differential absorption of $SW_{direct}$ and $SW_{diffuse}$ due to the conical
-shape and (b) the variations in the albedo to simplify the model. Both these assumptions overestimate the solar
-radiation thereby underestimating the freezing rate.
+The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
+shape considered. Using the solar elevation angle $\theta_{sun}$, the solar beam can be considered to have a
+vertical component, impinging on the horizontal surface (semicircular base of the AIR), and a horizontal
+component impinging on the vertical cross section (a triangle). The solar elevation angle $\theta_{sun}$ used is
+modelled using the parametrisation proposed by \cite{Woolf_1968}. Here we overestimate the impact of direct
+solar radiation by assuming $h_{cone} = r_{cone} = r_{F}$. Accordingly, $f_{cone}$ is determined as
+follows:
+
+\begin{equation}
+	\begin{split}
+		f_{cone}& =\frac{ cos \theta_{sun} + \pi \cdot sin \theta_{sun} }{2\sqrt{2} \cdot \pi }\\
+	\end{split}
+	\label{ eqn:f_{cone} }
+\end{equation}
+
+The software ignores the variations in the albedo and assumes it to be equal to that of ice to simplify the
+model. This assumption overestimates the solar radiation absorption thereby underestimating the freezing rate.
 
 \subsubsection{Net Longwave Radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
 
@@ -149,11 +180,15 @@ surface (0.97).
 
 We approximate the atmospheric emissivity $\epsilon_a$ using the equation suggested by \cite{Brutsaert_1975},
 considering air temperature and vapor pressure (Eqn. \ref{eqn:atm_e}). The vapor pressure of air over water and
-ice was obtained using Eqn. \ref{eqn:vp}.  
+ice was obtained using Eqn. \ref{eqn:vp}.  The expression defined in \cite{Brutsaert_1975} for clear skies
+(first term in equation \ref{eqn:atm_e}) is extended with the correction for cloudy skies after
+\cite{Brutsaert_1982} as follows:
 
 \begin{equation}
-	\epsilon_a=1.24 \cdot (\frac{p_{v,w}}{(T_a+273.15)})^{1/7} \label{eqn:atm_e}
+	\epsilon_a=1.24 \cdot (\frac{p_{v,w}}{(T_a+273.15)})^{1/7}\cdot(1+0.22\cdot{cld}^2) \label{eqn:atm_e}
 \end{equation}
+
+with a cloudiness index $cld$, ranging from 0 for clear skies to 1 for complete overcast skies. 
 
 The software assumes $T_{ice} = 0 \degree C$ and ignores the influence of clouds in the atmospheric emissivity.
 The first assumption overestimates $q_{LW}$ wherease the seond one underestimates it.  
@@ -192,6 +227,7 @@ $kJ\,kg^{-1}$).  The vapor pressure of air with respect to water ($p_{v,w}$) and
 The software ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
 
 \subsection{Automation equation}
+
 Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
 relative humidity and wind speed. 
 
