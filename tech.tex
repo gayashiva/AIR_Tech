@@ -40,15 +40,12 @@ practice }
 \begin{abstract}
   To construct artificial ice reservoirs (AIRs) with limited water resources requires a high water use
   efficiency (WUE). This can be achieved by the precise scheduling of the fountain water spray taking into
-  account the AIRs response to weather conditions. Particularly in the light of climate change with rising
-  dependence on this water storage technology, an optimal solution for this task is of paramount importance. We
-  solve the corresponding optimization problem, i.e. finding the ideal discharge rate for maximum WUE by an
-  approach which offers straightforward application facilities. The automation software uses a simplified
-  equation with 6 coefficients that capture the influence of temperature, humidity, wind and solar radiation
-  variations on the freezing rate. Historical meteorological data of the site is required to calculate these 6
-  coefficients. The automated AIR had a WUE three times more than the manual AIR. These results support the use
-  of the model in practice.
-
+  account the AIRs response to weather conditions. We solve the corresponding optimization problem, i.e. finding
+  the ideal discharge rate for maximum WUE by two approaches which offer straightforward application facilities
+  considering operation costs. The automation software uses a simplified equation with 6 coefficients that
+  capture the influence of temperature, humidity, wind and solar radiation variations on the freezing rate.
+  Historical meteorological data of the site is required to calculate these 6 coefficients. The automated AIR
+  had a WUE three times more than the manual AIR. These results support the use of the model in practice.
 	\tiny
 	\keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation, geoengineering, nature based
   solution} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
@@ -64,20 +61,33 @@ the same time, increase WUE. The goal of fountain scheduling is to make the most
 spraying the right amount of water at the right time, making sure water is available when the AIR surface can
 freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water.  
 
-However, efficient AIR construction is challenging, due to the many factors that should be considered, including
-weather, water source and fountain characteristics. Moreover, due to the daily variations of the AIR freezing
-freezing rate proper fountain scheduling can only be achieved through continuous adjustments of the fountain
-discharge rate. 
-
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Question (a) can be answered accurately based on the sign of the surface
 energy balance. However, question (b) requires information on both the magnitude of the energy balance and the
 fountain spray radius over which this energy balance acts.  
 
-Methods of fountain scheduling can be classified as static or dynamic. According to the static approach the
-total amount of water for AIR construction is allocated without specifying its temporal distribution along the
-accumulation period. By contrast, in the dynamic approach water is allocated at specific time steps along the
-accumulation period in order to achieve even higher WUE.
+However, efficient AIR construction is challenging, due to the many factors that should be considered, including
+weather, water source, fountain characteristics and operation costs. Since this technology is currently being
+used by subsistence farmers, we propose two different methods of fountain scheduling based on operation costs
+that can be classified as static or dynamic. According to the static approach the total amount of water for AIR
+construction is allocated without specifying its temporal distribution along the accumulation period. By
+contrast, in the dynamic approach water is allocated at specific time steps along the accumulation period in
+order to achieve even higher WUE.
+
+The static approach requires only a fountain and pipeline system which are readily available to farmers. For
+fountain scheduling, one just needs to know the recommended freezing rate and measured spray radius of the
+construction location and the fountain used respectively. Given these materials and information, the fountain
+scheduling can be achieved by tuning the discharge rate according to the recommended freezing rate and switching
+on the fountain between sunset to sunrise. However, this approach is likely to yield lower WUE and ice volumes
+since it does not take advantage of the variations in the freezing rate and the freezing time windows during the
+day.
+
+Along with the materials required for the static approach, the dynamic approach requires a sophisticated
+automation system attached to the fountain pipeline. The additional energy required for the automation system
+can be obtained via solar panels. Such a system requires minimal manual intervention compared to the static
+approach. Since this system makes real-time adjustments of the fountain discharge rate it is likely to produce
+much higher WUE and ice volumes compared to the static method. However, the setup cost of such a system could be
+double that of the static method.
 
 \section{Study Sites and data}
 
@@ -280,14 +290,14 @@ approximates the contribution of solar radiation on the expected freezing rates.
 
 \section{Results}
 
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/autovsmanual.jpg}
-% 	\end{center}
-% 	\caption{Icestupa in Ladakh, India on March 2017 was 24 $m$ tall and contained around 3700 $m^3$
-% 		of water. Picture Credits: Lobzang Dadul}
-% 	\label{fig:old_icestupa}
-% \end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/autovsmanual.jpg}
+	\end{center}
+	\caption{Icestupa in Ladakh, India on March 2017 was 24 $m$ tall and contained around 3700 $m^3$
+		of water. Picture Credits: Lobzang Dadul}
+	\label{fig:old_icestupa}
+\end{figure}
 
 \subsection{Validation}
 
