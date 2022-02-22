@@ -41,15 +41,14 @@ practice }
   To construct artificial ice reservoirs (AIRs) with limited water resources requires a high water use
   efficiency (WUE). This can be achieved by the precise scheduling of the fountain water spray taking into
   account the AIRs response to weather conditions. We solve the corresponding optimization problem, i.e. finding
-  the ideal discharge rate for maximum WUE by two approaches which offer straightforward application facilities
-  considering operation costs. The automation software uses a simplified equation with 6 coefficients that
-  capture the influence of temperature, humidity, wind and solar radiation variations on the freezing rate.
-  Historical meteorological data of the site is required to calculate these 6 coefficients. The automated AIR
-  had a WUE three times more than the manual AIR. These results support the use of the model in practice.
-	\tiny
-	\keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation, geoengineering, nature based
-  solution} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
-\end{abstract}
+  the ideal discharge rate for maximum WUE by two approaches differing in operation costs which offer
+  straightforward application facilities . The automation software uses a simplified equation with 6
+  coefficients that capture the influence of temperature, humidity, wind and solar radiation variations on the
+  freezing rate. Historical meteorological data of the site is required to calculate these 6 coefficients. The
+  automated AIR had a WUE three times more than the manual AIR. These results support the use of the model in
+  practice. \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
+  geoengineering, nature based solution} %All article types: you may provide up to 8 keywords; at least 5 are
+mandatory. \end{abstract}
 
 \section{Introduction}
 Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
@@ -75,12 +74,11 @@ contrast, in the dynamic approach water is allocated at specific time steps alon
 order to achieve even higher WUE.
 
 The static approach requires only a fountain and pipeline system which are readily available to farmers. For
-fountain scheduling, one just needs to know the recommended freezing rate and measured spray radius of the
-construction location and the fountain used respectively. Given these materials and information, the fountain
-scheduling can be achieved by tuning the discharge rate according to the recommended freezing rate and switching
-on the fountain between sunset to sunrise. However, this approach is likely to yield lower WUE and ice volumes
-since it does not take advantage of the variations in the freezing rate and the freezing time windows during the
-day.
+fountain scheduling, one just needs to know the recommended freezing rate of the construction location and
+measure the spray radius of the fountain used. Given these materials and information, the fountain scheduling
+can be achieved by tuning the discharge rate according to the recommended freezing rate and switching on the
+fountain between sunset to sunrise. However, this approach is likely to yield lower WUE and ice volumes since it
+does not take advantage of the variations in the freezing rate and the freezing time windows during the day.
 
 Along with the materials required for the static approach, the dynamic approach requires a sophisticated
 automation system attached to the fountain pipeline. The additional energy required for the automation system
@@ -89,14 +87,69 @@ approach. Since this system makes real-time adjustments of the fountain discharg
 much higher WUE and ice volumes compared to the static method. However, the setup cost of such a system could be
 double that of the static method.
 
+Knowledge of surface freezing rates is important for the correct assessment and management of these water
+reservoirs. Surface freezing rates can be calculated by means of two different approaches: physical
+energy-balance models and empirical models. The former may be defined as a model in which each of the relevant
+energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of
+the necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
+scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
+the freezing rate is calculated from an empirical formula in which air temperature is the primary measured
+input variable, although additional input variables, such as relative humidity, wind speed and incoming solar
+radiation, may be incorporated through parametrizations based on time and location. Empirical models
+have been widely used for both glaciological and hydrological applications due to their parsimony in data
+requirement in comparison with the more sophisticated energy-balance models.
+
+The main aim of this study is to develop a freeze model with lower data requirement than the energy-balance
+model presented in \cite{Balasubramanian_2022} that can be used to determine the recommended discharge rate of
+any construction location. This is achieved by:
+
+\begin{itemize}
+
+  \item incorporating assumptions that reduce the input requirements of \cite{Balasubramanian_2022} model to
+    variables readily available in reanalysis products.
+  \item developing a linear equation with the temperature-dependent energy sources through linear regression and
+    the solar-dependent energy sources using the coordinates and the altitude of the construction location. 
+
+\end{itemize}
+
+
 \section{Study Sites and data}
 
 \section{Automation software}
 The objective of the automation software is to estimate the freezing rate given minimal weather, fountain and
-location information. In order to do so, we further simplify the estimation of surface area and the enrgy
-balance described in \cite{Balasubramanian_2022}.  We tend to use assumptions that underestimate the associated freezing rate to optimise for WUE.
+location information. From \cite{Balasubramanian_2022}, the freezing rate of the AIR can be represented as: 
 
-The area of the conical AIR to be equal to the area of its circular base produced through the fountain spray
+\begin{equation}
+	 \frac{\Delta M_{freeze}}{\Delta t}  = (q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}) * A_{cone}
+	\label{eqn:freeze}
+\end{equation}
+
+We simplify the above equation with several assumptions relating to each of its components. We tend to use
+assumptions that underestimate the associated freezing rate to optimise for WUE. Further description of our
+assumptions are described in the Appendix. Below, we summarise the list of assumptions used:
+
+\begin{itemize}
+  \item $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
+radius $r_F$. This assumption underestimates the surface area of the AIR during the accumulation period and
+thereby underestimates the freezing rate.
+
+  \item $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
+    altitude and time using the PVLIB module.
+
+  \item $q_{LW}$: 
+
+  \item $q_{S}$:
+
+  \item $q_{L}$:
+
+  \item $q_{F}$:
+
+  \item $q_{G}$:
+
+\end{itemize}
+
+
+The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
 radius $r_F$. Therefore, the surface area can be determined using
 
 \begin{equation} A_{cone} =\pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
@@ -107,10 +160,6 @@ thereby underestimates the freezing rate.
 We approximate the energy balance at the surface of an AIR by a one-dimensional description of energy fluxes as
 used in \cite{Balasubramanian_2022}:
 
-\begin{equation}
-	 q_{total} = q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}
-	\label{eqn:EB}
-\end{equation}
 
 Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first
 term represents the energy change used for freezing the fountain water and melting the ice respectively.
@@ -120,7 +169,7 @@ turbulent latent and sensible heat fluxes.
 The software assumes $T_{ice} = 0 \degree C$ and therefore ignores the temperature change flux $q_{T}$, fountain
 heat flux $q_{F}$ and ground heat flux $q_{G}$. All these assumptions overestimate the freezing rate.
 
-Furthermore, we distinguish the rest of the energy balance components based on their air temperature and solar
+Furthermore, we the rest of the energy balance components based on their air temperature and solar
 radiation dependence. Namely, $q_{LW}$, $q_{L}$ and $q_{S}$ contribute to temperature induced freeze rate and
 $q_{SW}$ contributes to solar radiation induced melt rate during the accumulation period.  Particularly,
 
@@ -130,7 +179,7 @@ also need to account for the day melt during the accumulation period.
 \subsubsection{Temperature induced freeze rate } \label{sec:Temp_rate}
 
 \begin{equation}
-	 f(T_a, RH, v_a; cld, alt) = q_{LW} + q_{L} + q_{S}
+	 f(T_a, RH, v_a; alt) = q_{LW} + q_{L} + q_{S}
 	\label{eqn:Temp_rate}
 \end{equation}
 
@@ -295,24 +344,25 @@ The software ignores the $\mu_{cone}$ parameter thereby underestimating the turb
 
 The net shortwave radiation $q_{SW}$ is computed as follows:
 
-\begin{equation} q_{SW} = (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) \label{eqn:SW} \end{equation}
+\begin{equation} q_{SW} = (1- \alpha_{ice}) \cdot ( SW_{direct} \cdot f_{cone} + SW_{diffuse})
+\label{eqn:SW} \end{equation}
 
 where $\alpha_{ice}$ is the bare ice albedo value (0.25); $SW_{global}$ is the global shortwave radiation and
-$cld$ is a cloudiness index determined from historical weather data. The global shortwave radiation used is modelled using the parametrisation proposed by \cite{Woolf_1968}.
+$cld$ is a cloudiness index determined from historical weather data. The global shortwave radiation used is
+modelled using the parametrisation proposed by \cite{Woolf_1968}.
 
 The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
 shape considered. Using the solar elevation angle $\theta_{sun}$, the solar beam can be considered to have a
 vertical component, impinging on the horizontal surface (semicircular base of the AIR), and a horizontal
 component impinging on the vertical cross section (a triangle). The solar elevation angle $\theta_{sun}$ used is
 modelled using the parametrisation proposed by \cite{Woolf_1968}. Here we overestimate the impact of direct
-solar radiation by assuming $h_{cone} = r_{cone} = r_{F}$. Accordingly, $f_{cone}$ is determined as
-follows:
+solar radiation by assuming $h_{cone} = r_{cone} = r_{F}$. Accordingly, $f_{cone}$ is determined as follows:
 
 \begin{equation}
 	\begin{split}
 		f_{cone}& =\frac{ cos \theta_{sun} + \pi \cdot sin \theta_{sun} }{2\sqrt{2} \cdot \pi }\\
 	\end{split}
-	\label{ eqn:f_{cone} }
+	\label{ eqn:f_{cone}}
 \end{equation}
 
 The software ignores the variations in the albedo and assumes it to be equal to that of ice to simplify the
