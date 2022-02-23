@@ -26,8 +26,8 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \onecolumn
 \firstpage{1}
 
-\title[Scheduling AIR fountains]{Fountain scheduling for efficient artificial ice reservoirs (Icestupas): theory and
-practice }
+\title[Scheduling AIR fountains]{Fountain scheduling for an artificial ice reservoir (Icestupas) construction
+  system considering water use optimization }
 
 \author[\firstAuthorLast ]{\Authors}
 \address{}
@@ -43,10 +43,12 @@ practice }
   account the AIRs response to weather conditions. We solve the corresponding optimization problem, i.e. finding
   the ideal discharge rate for maximum WUE by two approaches differing in operation costs which offer
   straightforward application facilities . The automation software uses a simplified equation with 6
-  coefficients that capture the influence of temperature, humidity, wind and solar radiation variations on the
+  coefficients that captures the influence of temperature, humidity, wind and solar radiation variations on the
   freezing rate. Historical meteorological data of the site is required to calculate these 6 coefficients. The
   automated AIR had a WUE three times more than the manual AIR. These results support the use of the model in
-  practice. \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
+  practice. 
+
+  \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} %All article types: you may provide up to 8 keywords; at least 5 are
 mandatory. \end{abstract}
 
@@ -55,15 +57,24 @@ Artificial Ice Reservoirs (AIRs) have recently received much attention in the li
 especially in semi-arid and arid mountain regions facing limited water availability and at the same time
 increased water needs. However, their water use efficiency (WUE) is very poor. 
 
+
 Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
 the same time, increase WUE. The goal of fountain scheduling is to make the most efficient use of water by
 spraying the right amount of water at the right time, making sure water is available when the AIR surface can
 freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water.  
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
-(b) How much water should be sprayed? Question (a) can be answered accurately based on the sign of the surface
-energy balance. However, question (b) requires information on both the magnitude of the energy balance and the
-fountain spray radius over which this energy balance acts.  
+(b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
+questions. Surface freezing rates can be calculated by means of two different approaches: physical
+energy-balance models and empirical models. The former may be defined as a model in which each of the relevant
+energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of the
+necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
+scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
+the freezing rate is calculated from an empirical formula in which air temperature is the primary measured input
+variable, although additional input variables, such as relative humidity, wind speed and incoming solar
+radiation, may be incorporated through parametrizations based on time and location. Empirical models have been
+widely used for both glaciological and hydrological applications due to their parsimony in data requirement in
+comparison with the more sophisticated energy-balance models.
 
 However, efficient AIR construction is challenging, due to the many factors that should be considered, including
 weather, water source, fountain characteristics and operation costs. Since this technology is currently being
@@ -78,7 +89,7 @@ fountain scheduling, one just needs to know the recommended freezing rate of the
 measure the spray radius of the fountain used. Given these materials and information, the fountain scheduling
 can be achieved by tuning the discharge rate according to the recommended freezing rate and switching on the
 fountain between sunset to sunrise. However, this approach is likely to yield lower WUE and ice volumes since it
-does not take advantage of the variations in the freezing rate and the freezing time windows during the day.
+does not take advantage of the freezing time windows during the day.
 
 Along with the materials required for the static approach, the dynamic approach requires a sophisticated
 automation system attached to the fountain pipeline. The additional energy required for the automation system
@@ -87,67 +98,110 @@ approach. Since this system makes real-time adjustments of the fountain discharg
 much higher WUE and ice volumes compared to the static method. However, the setup cost of such a system could be
 double that of the static method.
 
-Knowledge of surface freezing rates is important for the correct assessment and management of these water
-reservoirs. Surface freezing rates can be calculated by means of two different approaches: physical
-energy-balance models and empirical models. The former may be defined as a model in which each of the relevant
-energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of
-the necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
-scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
-the freezing rate is calculated from an empirical formula in which air temperature is the primary measured
-input variable, although additional input variables, such as relative humidity, wind speed and incoming solar
-radiation, may be incorporated through parametrizations based on time and location. Empirical models
-have been widely used for both glaciological and hydrological applications due to their parsimony in data
-requirement in comparison with the more sophisticated energy-balance models.
+The main aim of this study is to develop a model with lower data requirement than the energy-balance model
+presented in \cite{Balasubramanian_2022} and \cite{oerlemans-brief-communication-growth-2021}. This is achieved
+by approximating the model to a linear equation whose coefficients can be tuned based on the fountain used and
+construction location chosen to produce the recommended discharge rate.
 
-The main aim of this study is to develop a freeze model with lower data requirement than the energy-balance
-model presented in \cite{Balasubramanian_2022} that can be used to determine the recommended discharge rate of
-any construction location. This is achieved by:
-
-\begin{itemize}
-
-  \item incorporating assumptions that reduce the input requirements of \cite{Balasubramanian_2022} model to
-    variables readily available in reanalysis products.
-  \item developing a linear equation with the temperature-dependent energy sources through linear regression and
-    the solar-dependent energy sources using the coordinates and the altitude of the construction location. 
-
-\end{itemize}
-
-
-\section{Study Sites and data}
 
 \section{Automation software}
 The objective of the automation software is to estimate the freezing rate given minimal weather, fountain and
-location information. From \cite{Balasubramanian_2022}, the freezing rate of the AIR can be represented as: 
+location information. For this purpose, we construct a simplified model using components of the enrgy balance
+model used in \cite{Balasubramanian_2022} and \cite{oerlemans-brief-communication-growth-2021}. 
+
+The freezing rate of the AIR can be represented as: 
 
 \begin{equation}
 	 \frac{\Delta M_{freeze}}{\Delta t}  = (q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}) * A_{cone}
 	\label{eqn:freeze}
 \end{equation}
 
-We simplify the above equation with several assumptions relating to each of its components. We tend to use
-assumptions that underestimate the associated freezing rate to optimise for WUE. Further description of our
-assumptions are described in the Appendix. Below, we summarise the list of assumptions used:
+We simplify the estimation of each of the energy flux components using two assumptions namely, the surface
+temperature $T_{ice} = 0 \deg C$ and by estimating the effects of the AIR shape just by using the fountain spray
+radius $r_F$.  We tend to use assumptions that underestimate the associated freezing rate to optimise for WUE.
+Further description of our assumptions are described in the Appendix. Below, we summarise the list of
+assumptions used:
 
 \begin{itemize}
-  \item $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
-radius $r_F$. This assumption underestimates the surface area of the AIR during the accumulation period and
-thereby underestimates the freezing rate.
 
-  \item $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
-    altitude and time using the PVLIB module.
+  \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base produced
+    through the fountain spray radius $r_F$. This assumption is derived from
+    \cite{oerlemans-brief-communication-growth-2021} model and underestimates the surface area of the AIR during
+    the accumulation period and thereby underestimates the freezing rate.
 
-  \item $q_{LW}$: 
+  \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
+    altitude and time using the PVLIB python package described in \cite{pvlib_2018} . The algorithm used to
+    estimate the clear-sky global radiation is described in and the algorithm used to estimate the diffuse part
+    of the global radiation is described in . Furthermore, the solar area fraction is also approximated by
+    assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo (0.25). These
+    assumptions underestimate the freezing rate.
 
-  \item $q_{S}$:
+  \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$ and thereby
+    underestimates the freezing rate.
 
-  \item $q_{L}$:
+  \item Turbulent fluxes ($q_{L}$ and $q_{S}$): The software estimates the pressure using the altitude of the location and ignores
+    the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
 
-  \item $q_{F}$:
-
-  \item $q_{G}$:
+  \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux.
 
 \end{itemize}
 
+Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
+relative humidity, wind speed and altitude. 
+
+\begin{subequations}
+	\begin{align}
+		\label{eqn:T}
+  (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t & = a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d \cdot alt + e \\
+		\label{eqn:sun}
+  \frac{q_{SW}}{L_F}\cdot \Delta t & = G(time, coords, alt) \\
+		\label{eqn:auto}
+  \frac{\Delta M_{freeze}}{\Delta t} &= (G(time, coords, alt) + f(T_a, RH, v_a, alt)) \cdot \pi \cdot r_F^2 
+	\end{align}
+\end{subequations}
+
+where $G$ is the solar radiation flux described in the Appendix.
+
+\section{Automation hardware}
+
+The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
+fountain, pipeline and a logger. The logger feeds the weather station data to the automation equation and
+informs the expected freezing rate to the flowmeter. The flowmeter adjusts the control valve to match the
+discharge rate recommendation of the logger. In case this discharge recommendation is below the critical
+discharge rate of the the fountain, the drain and air valves empty the water in the pipeline to prevent any
+freezing events. Here the critical discharge rate is defined as the discharge rate below which the fountain
+pipeline can freeze.
+
+
+\section{Results}
+
+\subsection{Automation prototype}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/autovsmanual.png}
+	\end{center}
+	\caption{Comparison of discharge and ice volume between AIRs produced by automatic and manual methods. }
+	\label{fig:old_icestupa}
+\end{figure}
+
+\section{Discussion}
+\subsection{AIR construction approaches}
+\subsubsection{Manual approach}
+\subsubsection{Static approach}
+\subsubsection{Dynamic approach}
+
+\subsection{Limited and unlimited water availability}
+
+\subsection{Fountain vs weather influence}
+
+\subsection{Ideal fountains and locations for AIR construction}
+
+\section{Conclusions}
+
+
+\section{Appendix}
 
 The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
 radius $r_F$. Therefore, the surface area can be determined using
@@ -176,109 +230,7 @@ $q_{SW}$ contributes to solar radiation induced melt rate during the accumulatio
 For the static method, we only need to determine the night freezing rates whereas for the dynamic approach we
 also need to account for the day melt during the accumulation period.
 
-\subsubsection{Temperature induced freeze rate } \label{sec:Temp_rate}
-
-\begin{equation}
-	 f(T_a, RH, v_a; alt) = q_{LW} + q_{L} + q_{S}
-	\label{eqn:Temp_rate}
-\end{equation}
-
-\subsubsection{Radiation induced melt rate \texorpdfstring{$q_{SW}$}{Lg}}
-\label{sec:SW}
-\begin{equation}
-	 g(time) = q_{SW}
-	\label{eqn:Temp_rate}
-\end{equation}
-
-\subsection{Automation equation}
-
-Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
-relative humidity and wind speed. 
-
-
-\begin{subequations}
-
-	\begin{align}
-		\label{eqn:SW}
-    \frac{q_{SW} \cdot A_{cone} \cdot \Delta t}{L_F} & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-    exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) \\
-		\label{eqn:T}
-    \frac{(q_{LW} + q_{S} + q_{L}) \cdot A_{cone} \cdot \Delta t}{L_F} & = a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \\
-		\label{eqn:auto}
-    \frac{q_{total} \cdot A_{cone} \cdot \Delta t}{L_F} & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-    exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) + a \cdot T_a + b \cdot RH + c \cdot v_a + d
-	\end{align}
-\end{subequations}
-
-The first term in Eqn. \ref{eqn:auto} is the expected freezing/melting rate of the AIR. Hence the automation
-equation can now be formulated as:
-
-\begin{subequations}
-	\begin{align}
-		\label{eqn:SW}
-  \frac{q_{total} \cdot A_{cone} \cdot \Delta t}{L_F} & = \left\{ \begin{array}{ll}
-		\frac{\Delta M_{water}}{\Delta t} & \textit{ if } q_{total} > 0 \\
-		\frac{-\Delta M_{ice}}{\Delta t} & \textit{ if } q_{total} \leq 0
-	\end{array} \right. \\
-  f(time;T_a;RH;v_a) & = \left\{ \begin{array}{ll}
-		\frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-    exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) + a \cdot T_a + b \cdot RH + c \cdot v_a + d
-    & \textit{ if } \frac{\Delta M_{ice}}{\Delta t} > d_{crit} \\
-		0 & \textit{ if } \frac{\Delta M_{ice}}{\Delta t} \leq d_{crit}
-	\end{array} \right.
-	\end{align}
-\end{subequations}
-
-% Similarly, the diurnal variation of the shortwave radiation can be captured via a gaussian equation. However,
-% the seasonal variations in the amplitude of the solar radiation are poorly captured by such an equation. Since,
-% typical AIRs have a construction period spanning less than 3 months, we can ignore the seasonal variations of
-% solar radiation. Therefore, the net shortwave radiation $q_{SW}$ is computed as follows: 
-
-% , the automation equation is composed of two parts namely, (a) linear and (b) gaussian equation. (a)
-% approximates the influence of temperature, wind speed and humidity on the expected freezing rate. (b)
-% approximates the contribution of solar radiation on the expected freezing rates.
-
-% \begin{landscape}
-% \begin{table}[]
-% \centering
-% \caption{}
-% \label{tab:my-table}
-% \begin{tabular}{@{}lllll@{}}
-% \toprule
-% \textbf{Module name} & \textbf{Symbol} & \textbf{Full eqn} & \textbf{Simplified eqn} & \textbf{Assumptions} \\ \midrule
-% \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ &  & \pi \cdot r_{F}^2 & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ &  & (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ &  & \sigma \cdot \epsilon_a \cdot {(T_a+ 273.15)}^4 -\sigma \cdot \epsilon_{ice} \cdot {273.15}^4 & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Sensible Heat}       & $q_{S}$ &  &  & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Latent Heat}         & $q_{L}$ &  &  & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \end{tabular}
-% \end{table}
-% \end{landscape}
-\section{Automation hardware}
-
-\section{Results}
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/autovsmanual.png}
-	\end{center}
-	\caption{Comparison of discharge and ice volume between AIRs produced by automatic and manual methods. }
-	\label{fig:old_icestupa}
-\end{figure}
-
-\subsection{Validation}
-
-\section{Discussion}
-
-\section{Conclusions}
-
-\section{Appendix}
-
-\subsubsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
+\subsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
 The net longwave radiation $q_{LW}$ is determined as follows:
 
 \begin{equation}
@@ -306,7 +258,7 @@ with a cloudiness index $cld$, ranging from 0 for clear skies to 1 for complete 
 The software assumes $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$ and thereby underestimates
 the freezing rate.
 
-\subsubsection{Turbulent fluxes} \label{sec:Qs}
+\subsection{Turbulent fluxes} \label{sec:Qs}
 
 The turbulent sensible $q_{S}$ and latent heat $q_{L}$ fluxes are computed with the following expressions
 proposed by \cite{Garratt_1992}:
@@ -337,9 +289,10 @@ $kJ\,kg^{-1}$).  The vapor pressure of air with respect to water ($p_{v,w}$) and
 	\end{split} \label{eqn:vp}
 \end{equation}
 
-The software ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
+The software ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes. Since turbulent
+fluxes impact both the freezing and the melting rates, this assumption may not underestimate freezing rates.
 
-\subsubsection{Net shortwave radiation \texorpdfstring{$q_{SW}$}{Lg}}
+\subsection{Net shortwave radiation \texorpdfstring{$q_{SW}$}{Lg}}
 \label{sec:SW}
 
 The net shortwave radiation $q_{SW}$ is computed as follows:
@@ -371,3 +324,23 @@ model. This assumption overestimates the solar radiation absorption thereby unde
 \bibliographystyle{frontiersinSCNS_ENG_HUMS} \bibliography{refs}
 
 \end{document}
+
+% \begin{landscape}
+% \begin{table}[]
+% \centering
+% \caption{}
+% \label{tab:my-table}
+% \begin{tabular}{@{}lllll@{}}
+% \toprule
+% \textbf{Module name} & \textbf{Symbol} & \textbf{Full eqn} & \textbf{Simplified eqn} & \textbf{Assumptions} \\ \midrule
+% \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ &  & \pi \cdot r_{F}^2 & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ &  & (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ &  & \sigma \cdot \epsilon_a \cdot {(T_a+ 273.15)}^4 -\sigma \cdot \epsilon_{ice} \cdot {273.15}^4 & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Sensible Heat}       & $q_{S}$ &  &  & \multicolumn{1}{l|}{} \\ \midrule
+% \multicolumn{1}{|l}{Latent Heat}         & $q_{L}$ &  &  & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+% \end{tabular}
+% \end{table}
+% \end{landscape}
