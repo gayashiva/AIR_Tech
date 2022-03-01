@@ -37,15 +37,25 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \maketitle
 
 \begin{abstract}
-  To construct artificial ice reservoirs (AIRs) with limited water resources requires a high water use
-  efficiency (WUE). This can be achieved by the precise scheduling of the fountain water spray taking into
-  account the AIRs response to weather conditions. We solve the corresponding optimization problem, i.e. finding
-  the ideal discharge rate for maximum WUE by two approaches differing in operation costs which offer
-  straightforward application facilities . The automation software uses a simplified equation with 6
-  coefficients that captures the influence of temperature, humidity, wind and solar radiation variations on the
-  freezing rate. Historical meteorological data of the site is required to calculate these 6 coefficients. The
-  automated AIR had a WUE three times more than the manual AIR. These results support the use of the model in
-  practice. 
+  Artificial Ice Reservoirs (AIRs) are increasingly being used for water storage especially in arid mountain
+  regions. Given scarcity of water resources, optimal AIR construction is needed to reduce dicharge rates while
+  realizing maximal meltwater rates. Fountain scheduling methods are promising to improve the water use
+  efficiency (WUE) of the contruction process. Two such methods, namely static and dynamic are proposed. The
+  dynamic process requires an automation system for real-time fountain scheduling. The automation software uses
+  a simplified equation with 6 coefficients that captures the influence of temperature, humidity, wind and solar
+  radiation variations on the freezing rate. Historical meteorological data of the site is required to calculate
+  these 6 coefficients. The automated AIR had a WUE three times more than the manual AIR. These results support
+  the use of the model in practice. 
+
+  During the AIR construction campaigns in Guttannen in 2022, the dynamic fountain scheduling method was
+  compared with a unoptimised manual method using two AIRs. The required amount of water for the dynamic AIR was
+  applied acoording to the model. Compared to the manual AIR, 87 \% less fountain water was needed for the
+  dynamic AIR. Ice volume estimates validated with drone measurements indicate that the dynamic AIR achieved
+  higher volumes inspite the reduced discharge rate. However, this volume difference was due to the better design
+  of the dynamic fountain which produced a higher spray radius.   
+
+  Overall. our results show that the dynamic fountain scheduling method is attractive given its water use efficiency and automated
+  approach.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -70,9 +80,11 @@ necessary meteorological variables, and the freezing rate is calculated as the s
 scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
 the freezing rate is calculated from an empirical formula in which air temperature, relative humidity and wind
 speed are the measured input variable, although additional input variables, such as incoming solar radiation,
-may be incorporated through parametrizations based on time and location. Empirical models have been widely used
-for both glaciological and hydrological applications due to their parsimony in data requirement in comparison
-with the more sophisticated energy-balance models.
+may be incorporated through parametrizations based on time and location. In order to produce recommended
+discharge rates, empirical models are preferred due to their parsimony in data requirement in comparison with
+the more sophisticated energy-balance models. But only physical energy balance models exist for AIRs. Therefore,
+we present a new empirical model that produces fountain scheduling simulations with reduced data requirements
+compared to the physical models.
 
 Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
 maintenance and implementation costs. We propose two different methods of fountain scheduling based on operation
@@ -87,11 +99,12 @@ In such cases, the real-time adjustments of the automated discharge rate make ef
 possible. The static approach is better suited for other locations or for users who cannot afford the additional
 cost of the automation system.
 
-\section{Fountain scheduling software}
+\section{Empirical fountain scheduling algorithm}
 
-The objective of the automation software is to estimate the freezing rate given minimal weather, fountain and
-location information. For this purpose, we construct a simplified model using components of the energy balance
-model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and \cite{oerlemansBriefCommunicationGrowth2021}. 
+The objective of the fountain scheduling algorithm is to estimate the freezing rate given minimal weather,
+fountain and location information. For this purpose, we construct a simplified model using components of the
+energy balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and
+\cite{oerlemansBriefCommunicationGrowth2021}. 
 
 The freezing rate of the AIR can be represented as: 
 
@@ -129,21 +142,22 @@ Appendix. Below, we summarise the list of assumptions used:
 \end{itemize}
 
 Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
-relative humidity, wind speed and altitude. 
+relative humidity, wind speed and altitude. $q_{SW}$ can be approximated using a gaussian equation.
 
 \begin{subequations}
 	\begin{align}
 		\label{eqn:T}
-  (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t & = a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \cdot alt + e \\
+   (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t & = a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d \cdot alt + e = f(T_a, RH, v_a, alt) \\
 		\label{eqn:sun}
-  \frac{q_{SW}}{L_F}\cdot \Delta t & = G(time, coords, alt) \\
+  \frac{q_{SW}}{L_F}\cdot \Delta t & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+  exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) = g(time)  \\
 		\label{eqn:auto}
-  \frac{\Delta M_{freeze}}{\Delta t} &= (G(time, coords, alt) + f(T_a, RH, v_a, alt)) \cdot \pi \cdot r_F^2 
+  \frac{\Delta M_{freeze}}{\Delta t} &= (g(time) + f(T_a, RH, v_a, alt)) \cdot \pi \cdot r_F^2 
 	\end{align}
 \end{subequations}
 
-where $G$ is the solar radiation flux function described in the Appendix.
+where $r_F$ is the fountain spray radius.
 
 
 \begin{table}[ht]
@@ -158,6 +172,10 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 \end{tabular}
 \end{table}
 
+\subsection{Dynamic fountain scheduler equation }
+
+\subsection{Static fountain scheduler equation }
+
 \section{Dynamic fountain scheduling prototype}
 
 \begin{figure}[ht]
@@ -169,8 +187,8 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 \end{figure}
 
 \section{Recommendations}
-\subsection{Static fountain scheduling}
-\subsection{Dynamic fountain scheduling}
+\subsection{Static method}
+\subsection{Dynamic method}
 
 The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
 fountain, pipeline and a logger. The logger feeds the weather station data to the automation equation and
