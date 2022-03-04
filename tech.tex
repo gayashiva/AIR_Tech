@@ -26,7 +26,8 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \onecolumn
 \firstpage{1}
 
-\title[Scheduling AIR fountains]{Fountain scheduling recommendations to improve water use efficiency of artificial ice reservoir (Icestupas)}
+\title[Scheduling AIR fountains]{Fountain scheduling strategies to improve water use efficiency of artificial
+ice reservoirs (Icestupas)}
 
 \author[\firstAuthorLast ]{\Authors}
 \address{}
@@ -38,24 +39,18 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
 \begin{abstract}
   Artificial Ice Reservoirs (AIRs) are increasingly being used for water storage especially in arid mountain
-  regions. Given scarcity of water resources, optimal AIR construction is needed to reduce dicharge rates while
-  realizing maximal meltwater rates. Fountain scheduling methods are promising to improve the water use
-  efficiency (WUE) of the contruction process. Two such methods, namely static and dynamic are proposed. The
-  dynamic process requires an automation system for real-time fountain scheduling. The automation software uses
-  a simplified equation with 6 coefficients that captures the influence of temperature, humidity, wind and solar
-  radiation variations on the freezing rate. Historical meteorological data of the site is required to calculate
-  these 6 coefficients. The automated AIR had a WUE three times more than the manual AIR. These results support
-  the use of the model in practice. 
-
-  During the AIR construction campaigns in Guttannen in 2022, the dynamic fountain scheduling method was
-  compared with a unoptimised manual method using two AIRs. The required amount of water for the dynamic AIR was
-  applied acoording to the model. Compared to the manual AIR, 87 \% less fountain water was needed for the
-  dynamic AIR. Ice volume estimates validated with drone measurements indicate that the dynamic AIR achieved
-  higher volumes inspite the reduced discharge rate. However, this volume difference was due to the better design
-  of the dynamic fountain which produced a higher spray radius.   
-
-  Overall. our results show that the dynamic fountain scheduling method is attractive given its water use efficiency and automated
-  approach.
+  regions. Given scarcity of water resources, the water requirement of AIR construction needs to be reduced
+  while maximizing meltwater rates. To support improved fountain discharge scheduling, the AIR model was
+  selected due to its ability in estimating surface freezing rates in varied climates. To provide for the use of
+  the model at the project scale, a new empirical model that computes fountain discharge scheduling requirements
+  was developed by incorporating several assumptions into the physical model. Two scheduling modes, namely
+  static and dynamic are proposed. During winter of 2021-22, the dynamic scheduling mode was
+  compared with a manual mode though the construction of two AIRs in Guttannen, Switzerland. The water
+  requirement for the dynamic mode was 87 \% lesser than the manual mode. Ice volume estimates validated with
+  drone measurements indicate that the dynamic AIR also achieved higher volumes inspite of the reduced discharge
+  rate. However, this volume difference was due to the better design of the dynamic fountain which produced a
+  higher spray radius. Overall, our results show that the dynamic and static scheduling mode are attractive
+  given their much lower water requirement with much higher WUE.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -74,38 +69,40 @@ freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water.
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
 questions. Surface freezing rates can be calculated by means of two different approaches: physical
-energy-balance models and empirical models. The former may be defined as a model in which each of the relevant
+models and empirically based models. The former may be defined as a model in which each of the relevant
 energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of the
 necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
 scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
-the freezing rate is calculated from an empirical formula in which air temperature, relative humidity and wind
-speed are the measured input variable, although additional input variables, such as incoming solar radiation,
-may be incorporated through parametrizations based on time and location. In order to produce recommended
-discharge rates, empirical models are preferred due to their parsimony in data requirement in comparison with
-the more sophisticated energy-balance models. But only physical energy balance models exist for AIRs. Therefore,
-we present a new empirical model that produces fountain scheduling simulations with reduced data requirements
-compared to the physical models.
+the freezing rate is calculated based on an assumed linear relationship with air temperature, relative humidity
+and wind speed are the measured input variable, although additional input variables, such as incoming solar
+radiation, may be incorporated through parametrizations based on time and location. In order to produce
+recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
+computing time in comparison with the more sophisticated energy-balance models. But only physical energy balance
+models exist for AIRs. Therefore, we present an empirical model that seeks a balance between model complexity
+and data availablity.
 
 Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
-maintenance and implementation costs. We propose two different methods of fountain scheduling based on operation
-costs that can be classified as static or dynamic. According to the static approach, the total amount of water
+maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
+costs that can be classified as static or dynamic. In the static mode, the total amount of water
 for AIR construction is allocated without specifying its temporal distribution along the accumulation period. By
-contrast, in the dynamic approach water is allocated at specific time steps along the accumulation period in
+contrast, in the dynamic mode water is allocated at specific time steps along the accumulation period in
 order to achieve even higher WUE.
 
-Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic approach is
+Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic mode is
 better suited for locations where the diurnal and seasonal variations in the weather conditions are significant.
-In such cases, the real-time adjustments of the automated discharge rate make efficient fountain scheduling
-possible. The static approach is better suited for other locations or for users who cannot afford the additional
-cost of the automation system.
+In such cases, the real-time adjustments of the discharge rate make efficient fountain scheduling
+possible. The static mode is better suited for other locations or for users who cannot afford the additional
+hardware requirements to implement the dynamic fountain scheduling mode.
 
-\section{Empirical fountain scheduling algorithm}
+\section{Fountain scheduling algorithms}
 
 The objective of the fountain scheduling algorithm is to estimate the freezing rate given minimal weather,
 fountain and location information. For this purpose, we construct a simplified model using components of the
 energy balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and
-\cite{oerlemansBriefCommunicationGrowth2021}. 
+\cite{oerlemansBriefCommunicationGrowth2021}. We achieve this objective in two steps, namely, by reducing
+(a) data requirements and (b) model complexity 
 
+\subsection{Physical model simplification}
 The freezing rate of the AIR can be represented as: 
 
 \begin{equation}
@@ -113,16 +110,16 @@ The freezing rate of the AIR can be represented as:
 	\label{eqn:freeze}
 \end{equation}
 
-We simplify the estimation of each of the energy flux components using assumptions that underestimate the
-associated freezing rate to optimise for WUE. Further description of our assumptions are described in the
-Appendix. Below, we summarise the list of assumptions used:
+We reduce the data requirements for estimation of each of the energy flux components using assumptions that
+underestimate the associated freezing rate in order to optimise for WUE. Further description of our assumptions
+are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \begin{itemize}
 
   \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base
     produced through the fountain spray radius $r_F$. This assumption is derived from
-    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during
-    the accumulation period and thereby underestimates the freezing rate.
+    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during the
+    accumulation period and thereby underestimates the freezing rate.
 
   \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
     altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The algorithm used to
@@ -131,18 +128,29 @@ Appendix. Below, we summarise the list of assumptions used:
     assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo (0.25). These
     assumptions underestimate the freezing rate.
 
-  \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$ and thereby
-    underestimates the freezing rate.
+  \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$
+    and thereby underestimates the freezing rate.
 
-  \item Turbulent fluxes ($q_{L}$ and $q_{S}$): The software estimates the pressure using the altitude of the location and ignores
-    the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
+  \item Turbulent fluxes ($q_{L}$ and $q_{S}$): The software estimates the pressure using the altitude of the
+    location and ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
 
-  \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux.
+  \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux
+    thereby removing the need for water temperature measurements.
 
 \end{itemize}
 
-Using the above simplifications, we can now approximate $q_{LW}$, $q_{L}$ and $q_{S}$ using just temperature,
-relative humidity, wind speed and altitude. $q_{SW}$ can be approximated using a gaussian equation.
+\subsection{Surrogate model}
+
+We can now construct a surrogate model with two components which compute the thickness change induced by solar
+radiation and other heat fluxes respectively. Using the above simplifications and by assuming a linear
+relationship of the weather parameters namely, temperature, relative humidity, wind speed and altitude with the
+thickness change we get:
+
+\begin{equation}
+		\label{eqn:T}
+   (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t = a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d \cdot alt + e = f(T_a, RH, v_a, alt)
+\end{equation}
 
 \begin{subequations}
 	\begin{align}
@@ -172,9 +180,9 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 \end{tabular}
 \end{table}
 
-\subsection{Dynamic fountain scheduler equation }
+\subsection{Dynamic mode strategy}
 
-\subsection{Static fountain scheduler equation }
+\subsection{Static mode strategy}
 
 \section{Dynamic fountain scheduling prototype}
 
