@@ -94,7 +94,19 @@ In such cases, the real-time adjustments of the discharge rate make efficient fo
 possible. The static mode is better suited for other locations or for users who cannot afford the additional
 hardware requirements to implement the dynamic fountain scheduling mode.
 
-\section{Fountain scheduling algorithms}
+
+\section{Measurements}
+\subsection{The experiment site}
+\subsection{Dynamic fountain scheduling prototype}
+The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
+fountain, pipeline and a logger. The logger feeds the weather station data to the automation equation and
+informs the expected freezing rate to the flowmeter. The flowmeter adjusts the control valve to match the
+discharge rate recommendation of the logger. In case this discharge recommendation is below the critical
+discharge rate of the the fountain, the drain and air valves empty the water in the pipeline to prevent any
+freezing events. Here the critical discharge rate is defined as the discharge rate below which the fountain
+pipeline can freeze.
+
+\section{Development and testing of the new empirical model}
 
 The objective of the fountain scheduling algorithm is to estimate the freezing rate given minimal weather,
 fountain and location information. For this purpose, we construct a simplified model using components of the
@@ -102,7 +114,7 @@ energy balance model used in \cite{balasubramanianInfluenceMeteorologicalConditi
 \cite{oerlemansBriefCommunicationGrowth2021}. We achieve this objective in two steps, namely, by reducing
 (a) data requirements and (b) model complexity 
 
-\subsection{Physical model simplification}
+\subsection{Simplified energy balance model}
 The growth rate of the AIR can be represented as: 
 
 \begin{equation}
@@ -113,7 +125,7 @@ The growth rate of the AIR can be represented as:
 where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate of the AIR which can be represented as: 
 
 \begin{equation}
-  \frac{\Delta j_{cone}}{\Delta t}  = \frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G}}{L_F} + \frac{q_{L}}{L_V} 
+  \frac{\Delta j_{cone}}{\Delta t}  = \frac{1}{\rho_w} \cdot (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G}}{L_F} + \frac{q_{L}}{L_V} )
 	\label{eqn:freeze}
 \end{equation}
 
@@ -125,8 +137,10 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
   \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
     altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The
-    algorithm used to estimate the clear-sky global radiation is described in and the algorithm used to estimate
-    the diffuse part of the global radiation is described in . Furthermore, the solar area fraction is also
+    algorithm used to estimate the clear-sky global radiation is described in
+    \cite{ineichenBroadbandSimplifiedVersion2008} and the algorithm used to estimate the diffuse part of the
+    global radiation is described in \cite{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach
+    is discussed in \cite{ineichenValidationModelsThat2016}. Furthermore, the solar area fraction is also
     approximated by assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo
     (0.25). These assumptions underestimate the freezing rate.
 
@@ -146,33 +160,29 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \end{itemize}
 
-\subsection{Surrogate model}
+\subsection{Surrogate empirical model}
 
-We can now construct a surrogate model with two components which compute the thickness change induced by solar
-radiation and other heat fluxes respectively. Using the above simplifications and by assuming a linear
-relationship of the weather parameters namely, temperature, relative humidity, wind speed and altitude with the
-thickness change we get:
-
-\begin{equation}
-		\label{eqn:T}
-   (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t = a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \cdot alt + e = f(T_a, RH, v_a, alt)
-\end{equation}
+We can now construct a surrogate model that approximates the thickness change rate into a computationally
+inexpensive equation with fixed coefficients. We approximate the shortwave radiation flux using a gaussian
+function $g($ hour of day $)$ that accounts for its diurnal variation. We approximate the rest of the energy
+fluxes by assuming a linear relationship with the weather parameters namely, temperature, humidity, wind speed
+and altitude. Using the above simplifications, we can compute the expected thickness change rates using the following set of
+equations:
 
 \begin{subequations}
 	\begin{align}
-		\label{eqn:T}
-   (\frac{q_{LW} + q_{S}}{L_F} + \frac{q_L}{L_V}) \cdot \Delta t & = a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \cdot alt + e = f(T_a, RH, v_a, alt) \\
 		\label{eqn:sun}
-  \frac{q_{SW}}{L_F}\cdot \Delta t & = \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-  exp\left(\frac{-(time-\mu)^2}{2\sigma^2}\right) = g(time)  \\
+  \frac{q_{SW}}{\rho_w \cdot L_F} & \approx \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+  exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
+		\label{eqn:T}
+   \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d \cdot alt + e = f(T_a, RH, v_a, alt) \\
 		\label{eqn:auto}
-  \frac{\Delta M_{freeze}}{\Delta t} &= (g(time) + f(T_a, RH, v_a, alt)) \cdot \pi \cdot r_F^2 
+  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a, alt)
 	\end{align}
 \end{subequations}
 
-where $r_F$ is the fountain spray radius.
+where $r_F$ is the fountain spray radius and $hod$ is the hour of day.
 
 
 \begin{table}[ht]
@@ -181,25 +191,24 @@ where $r_F$ is the fountain spray radius.
 \label{tab:my-table}
 \begin{tabular}{@{}lllllll@{}}
 \toprule
-Coefficients of & $T_a$ & $RH$ & $v_a$ & $alt [km]$  & $constant$ \\ \midrule
+Coefficients of & $T_a\, [\degree C]$ & $RH\,[\%]$ & $v_a\, [m\, s^{-1}]$ & $alt\, [km]$  & $constant$ \\ \midrule
 Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\num{-3.5 e-3}$  & $\num{5.2 e-3}$
                 \\ \bottomrule
 \end{tabular}
 \end{table}
 
+
+\subsection{Calibration and validation}
 \subsection{Dynamic mode strategy}
 
-\subsection{Static mode strategy}
-
-\section{Dynamic fountain scheduling prototype}
-
-\begin{figure}[ht]
-	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/autovsman_dis.png}
-	\end{center}
-	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
-	\label{fig:old_icestupa}
-\end{figure}
+\section{Results}
+\subsection{Model Validation}
+\subsubsection{Eddy covariance comparison}
+\subsubsection{Surface temperature}
+\subsubsection{Ice volume}
+\subsection{Model comparison}
+\subsubsection{Shortwave radiation comparison}
+\subsubsection{Freezing rate comparison}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -209,6 +218,17 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 	\label{fig:old_icestupa}
 \end{figure}
 
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/autovsman_dis.png}
+	\end{center}
+	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
+	\label{fig:old_icestupa}
+\end{figure}
+
+\section{Water Use efficiency}
+
 \begin{figure}[ht]
 	\begin{center}
 		\includegraphics[width=\linewidth]{Figures/wue.png}
@@ -217,28 +237,15 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 	\label{fig:old_icestupa}
 \end{figure}
 
-\section{Recommendations}
-\subsection{Static method}
-\subsection{Dynamic method}
-
-The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
-fountain, pipeline and a logger. The logger feeds the weather station data to the automation equation and
-informs the expected freezing rate to the flowmeter. The flowmeter adjusts the control valve to match the
-discharge rate recommendation of the logger. In case this discharge recommendation is below the critical
-discharge rate of the the fountain, the drain and air valves empty the water in the pipeline to prevent any
-freezing events. Here the critical discharge rate is defined as the discharge rate below which the fountain
-pipeline can freeze.
-
-\subsection{Fountain height and spray radius}
-
-
 \section{Discussion}
-
 \subsection{Limited and unlimited water availability}
 
 \subsection{Fountain vs weather influence}
 
 \subsection{Ideal fountains and locations for AIR construction}
+
+\subsection{Fountain height and spray radius}
+
 
 \section{Conclusions}
 In this paper, an empirical model that predicts AIR freezing rates is presented. The model was developed and
