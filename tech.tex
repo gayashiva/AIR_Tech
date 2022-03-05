@@ -45,7 +45,7 @@ ice reservoirs (Icestupas)}
   the model at the project scale, a new empirical model that computes fountain discharge scheduling requirements
   was developed by incorporating several assumptions into the physical model. Two scheduling modes, namely
   static and dynamic are proposed. During winter of 2021-22, the dynamic scheduling mode was
-  compared with a manual mode though the construction of two AIRs in Guttannen, Switzerland. The water
+  compared with a manual mode through the construction of two AIRs in Guttannen, Switzerland. The water
   requirement for the dynamic mode was 87 \% lesser than the manual mode. Ice volume estimates validated with
   drone measurements indicate that the dynamic AIR also achieved higher volumes inspite of the reduced discharge
   rate. However, this volume difference was due to the better design of the dynamic fountain which produced a
@@ -103,10 +103,17 @@ energy balance model used in \cite{balasubramanianInfluenceMeteorologicalConditi
 (a) data requirements and (b) model complexity 
 
 \subsection{Physical model simplification}
-The freezing rate of the AIR can be represented as: 
+The growth rate of the AIR can be represented as: 
 
 \begin{equation}
-	 \frac{\Delta M_{freeze}}{\Delta t}  = (q_{SW} + q_{LW} + q_{L} + q_{S} + q_{F} + q_{G}) * A_{cone}
+  \frac{\Delta V_{ice}}{\Delta t}  =  \frac{\Delta j_{cone}}{ \Delta t} \cdot A_{cone}
+	\label{eqn:freeze}
+\end{equation}
+
+where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate of the AIR which can be represented as: 
+
+\begin{equation}
+  \frac{\Delta j_{cone}}{\Delta t}  = \frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G}}{L_F} + \frac{q_{L}}{L_V} 
 	\label{eqn:freeze}
 \end{equation}
 
@@ -116,17 +123,12 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \begin{itemize}
 
-  \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base
-    produced through the fountain spray radius $r_F$. This assumption is derived from
-    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during the
-    accumulation period and thereby underestimates the freezing rate.
-
   \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
-    altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The algorithm used to
-    estimate the clear-sky global radiation is described in and the algorithm used to estimate the diffuse part
-    of the global radiation is described in . Furthermore, the solar area fraction is also approximated by
-    assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo (0.25). These
-    assumptions underestimate the freezing rate.
+    altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The
+    algorithm used to estimate the clear-sky global radiation is described in and the algorithm used to estimate
+    the diffuse part of the global radiation is described in . Furthermore, the solar area fraction is also
+    approximated by assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo
+    (0.25). These assumptions underestimate the freezing rate.
 
   \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$
     and thereby underestimates the freezing rate.
@@ -136,6 +138,11 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
   \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux
     thereby removing the need for water temperature measurements.
+
+  \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base
+    produced through the fountain spray radius $r_F$. This assumption is derived from
+    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during the
+    accumulation period and thereby underestimates the freezing rate.
 
 \end{itemize}
 
@@ -188,7 +195,23 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 
 \begin{figure}[ht]
 	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/autovsmanual.png}
+		\includegraphics[width=\linewidth]{Figures/autovsman_dis.png}
+	\end{center}
+	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
+	\label{fig:old_icestupa}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/simvsreal_dis.jpg}
+	\end{center}
+	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
+	\label{fig:old_icestupa}
+\end{figure}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/wue.png}
 	\end{center}
 	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
 	\label{fig:old_icestupa}
@@ -218,6 +241,26 @@ pipeline can freeze.
 \subsection{Ideal fountains and locations for AIR construction}
 
 \section{Conclusions}
+In this paper, an empirical model that predicts AIR freezing rates is presented. The model was developed and
+tested using data collected at Guttannen, Switzerland during the 2021-22 winter season. 
+
+The main purpose of this study was to test the idea that scheduling AIR fountain systems could lead to a
+significant improvement in water use efficiency. The empirical fountain scheduling model was calculated and
+tested against hourly freezing rates computed by an energy-balance model. 
+
+This study has demonstrated the importance of fountain scheduling. Furthermore, the decrease in performance of
+the empirical model has been quantified through comparison of efficiency criteria. The study has demonstrated
+that, it is possible to compute more than 90 \% of the freeze rate variations by means of a simplified empirical
+model. This model satisfies the need for a less data demanding workflow for scheduling fountains worldwide using
+the computation of just 6 coefficents. Such a model will be compatible with the limited data amount that is
+typical of any new AIR construction location.
+
+This study has also compared the sensitivity of freezing rates between the weather components and the fountain's
+spray radius. It is clear that if improvements are to be achieved, future research must be devoted to modelling
+the impact of fountain design on the spray radius.
+
+The model discussed in this paper will be applied worldwide to identify favourable AIR locations in a future
+paper.
 
 
 \section{Appendix}
@@ -338,6 +381,7 @@ solar radiation by assuming $h_{cone} = r_{cone} = r_{F}$. Accordingly, $f_{cone
 
 The software ignores the variations in the albedo and assumes it to be equal to that of ice to simplify the
 model. This assumption overestimates the solar radiation absorption thereby underestimating the freezing rate.
+
 
 \bibliographystyle{frontiersinSCNS_ENG_HUMS} \bibliography{zot_refs}
 
