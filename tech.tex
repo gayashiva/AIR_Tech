@@ -38,19 +38,19 @@ ice reservoirs (Icestupas)}
 \maketitle
 
 \begin{abstract}
-  Artificial Ice Reservoirs (AIRs) are increasingly being used for water storage especially in arid mountain
-  regions. Given scarcity of water resources, the water requirement of AIR construction needs to be reduced
-  while maximizing meltwater rates. To support improved fountain discharge scheduling, the AIR model was
-  selected due to its ability in estimating surface freezing rates in varied climates. To provide for the use of
-  the model at the project scale, a new empirical model that computes fountain discharge scheduling requirements
-  was developed by incorporating several assumptions into the physical model. Two scheduling modes, namely
-  static and dynamic are proposed. During winter of 2021-22, the dynamic scheduling mode was
-  compared with a manual mode through the construction of two AIRs in Guttannen, Switzerland. The water
-  requirement for the dynamic mode was 87 \% lesser than the manual mode. Ice volume estimates validated with
-  drone measurements indicate that the dynamic AIR also achieved higher volumes inspite of the reduced discharge
-  rate. However, this volume difference was due to the better design of the dynamic fountain which produced a
-  higher spray radius. Overall, our results show that the dynamic and static scheduling mode are attractive
-  given their much lower water requirement with much higher WUE.
+  Automated fountain scheduling can be used to improve Artificial Ice Reservoir (AIR) construction efficiency by
+  reducing fountain wastewater production. Mass balance experiments have shown that over 80 \% of the water
+  sprayed during traditional AIR construction can be lost. This result gives an indication of the potential
+  improvement in water use efficiency that can be achieved by optimising the fountain discharge rate. To
+  generate the fountain scheduling requirements for the automation software, a new empirical model that computes
+  AIR freezing rates was developed. The automation hardware consisted of a weather station, flowmeter, control
+  valve, drain valves, air valves and a logger. During the winter of 2021-22, a traditional and an automated AIR
+  were built in Guttannen with the main aim of comparing and quantifying the benefits of using automation
+  systems. The water requirement for the automated AIR was 87 \% lesser than the traditional AIR. Ice volume
+  estimates validated with drone measurements indicate that the automated AIR also achieved higher volumes
+  inspite of the reduced discharge rates. However, this volume difference was due to the better design of the
+  automated fountain which produced a higher spray radius. Overall, our results show that the automated fountain
+  scheduling method increased the water use efficiency of AIR construction 5 fold.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -73,13 +73,11 @@ models and empirically based models. The former may be defined as a model in whi
 energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of the
 necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
 scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
-the freezing rate is calculated based on an assumed linear relationship with air temperature, relative humidity
-and wind speed are the measured input variable, although additional input variables, such as incoming solar
-radiation, may be incorporated through parametrizations based on time and location. In order to produce
-recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
-computing time in comparison with the more sophisticated energy-balance models. But only physical energy balance
-models exist for AIRs. Therefore, we present an empirical model that seeks a balance between model complexity
-and data availablity.
+the freezing rate is calculated based on an assumed relationship with weather and location parameters. In order
+to produce recommended discharge rates, empirical models are preferred due to their parsimony in data
+requirement and computing time in comparison with the more sophisticated energy-balance models. But only
+physical energy balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance
+between model complexity and data availablity.
 
 Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
 maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
@@ -94,27 +92,61 @@ In such cases, the real-time adjustments of the discharge rate make efficient fo
 possible. The static mode is better suited for other locations or for users who cannot afford the additional
 hardware requirements to implement the dynamic fountain scheduling mode.
 
+The main interest in using model results from the capability of the model to simulate alternative fountain
+schedules relative to various constrains in monetary investments as well as in water availability. The fountain
+scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
+during the accumulation period. The specific objectives of this paper include the presentatiion of the
+automation software and examples of its application to the computation of spatially distributed AIR construction
+requirements. 
+
 
 \section{Measurements}
 \subsection{The experiment site}
-\subsection{Dynamic fountain scheduling prototype}
-The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
-fountain, pipeline and a logger. The logger feeds the weather station data to the automation equation and
-informs the expected freezing rate to the flowmeter. The flowmeter adjusts the control valve to match the
-discharge rate recommendation of the logger. In case this discharge recommendation is below the critical
-discharge rate of the the fountain, the drain and air valves empty the water in the pipeline to prevent any
-freezing events. Here the critical discharge rate is defined as the discharge rate below which the fountain
-pipeline can freeze.
 
-\section{Development and testing of the new empirical model}
+The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) in the Bern region lies at 1047 $m$ a.s.l.. In the winter
+(Oct-Apr), mean daily minimum and maximum air temperatures vary between -13 and 15 $\degree C$. Clear skies are
+rare, averaging around 7 days during winter. Daily winter precipitation can sometimes be as high as 100 $mm$.
+These values are based on 30 years of hourly weather model simulations \citep{guttannen}. The water was
+transferred from a spring water source. In addition, a webcam guaranteed a continuous survey of the site during
+the construction of the AIR. Two AIRs were constructed here by the Guttannen Bewegt Association respectively
+during the winters of 2020-21 using different fountain discharge strategies namely manual and dynamic as shown
+in Fig. \ref{fig:2AIR}.
 
-The objective of the fountain scheduling algorithm is to estimate the freezing rate given minimal weather,
-fountain and location information. For this purpose, we construct a simplified model using components of the
-energy balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and
-\cite{oerlemansBriefCommunicationGrowth2021}. We achieve this objective in two steps, namely, by reducing
-(a) data requirements and (b) model complexity 
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=12 cm]{Figures/2AIRs.jpg}
+	\end{center}
+  \caption{Dynamic and manual AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+\label{fig:2AIR} \end{figure}
 
-\subsection{Simplified energy balance model}
+\subsection{Manual AIR construction strategy}
+
+In the manual strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
+process. The fountain discharge was maintained at maximum and its height was increased from 3 to 6\,$m$ during
+the construction period.
+
+\subsection{Automated AIR construction strategy}
+
+In the dynamic strategy, only the fountain pipe was erected before initiation of water spray. An automation
+system controlled the fountain discharge rate using real time weather input. The automation hardware consists of
+a weather station, flowmeter, control valve, drain valves, air valves, fountain, pipeline and a logger. The
+logger feeds the weather station data to the automation software and informs the recommended discharge rate to
+the flowmeter. The flowmeter adjusts the control valve to match the recommendation. In case the recommendation
+is below the critical discharge rate of the fountain, the drain and air valves empty the water in the pipeline
+to prevent any freezing events. Here the critical discharge rate is defined as the discharge rate below which
+the fountain pipeline can freeze.
+
+
+\section{Automation software}
+
+The objective of the automation software is to estimate the freezing rate in the (a) least data demanding and
+(b) computationally intensive way possible. Objective (a) is achieved by introducing assumptions to the energy
+balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and
+\cite{oerlemansBriefCommunicationGrowth2021}. Objective (b) is achieved by formulating a surrogate empirical
+model that best approximates the simplified physical model. 
+
+\subsection{Simplified physical model}
+
 The growth rate of the AIR can be represented as: 
 
 \begin{equation}
@@ -160,6 +192,7 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \end{itemize}
 
+
 \subsection{Surrogate empirical model}
 
 We can now construct a surrogate model that approximates the thickness change rate into a computationally
@@ -169,55 +202,48 @@ fluxes by assuming a linear relationship with the weather parameters namely, tem
 and altitude. Using the above simplifications, we can compute the expected thickness change rates using the following set of
 equations:
 
-\begin{subequations}
-	\begin{align}
-		\label{eqn:sun}
-  \frac{q_{SW}}{\rho_w \cdot L_F} & \approx \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-  exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
-		\label{eqn:T}
-   \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \cdot alt + e = f(T_a, RH, v_a, alt) \\
-		\label{eqn:auto}
-  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a, alt)
-	\end{align}
-\end{subequations}
+% \begin{subequations}
+% 	\begin{align}
+% 		\label{eqn:sun}
+%   \frac{q_{SW}}{\rho_w \cdot L_F} & \approx \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+%   exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
+% 		\label{eqn:T}
+%    \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
+%   d \cdot alt + e = f(T_a, RH, v_a, alt) \\
+% 		\label{eqn:auto}
+%   \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a, alt)
+% 	\end{align}
+% \end{subequations}
 
-where $r_F$ is the fountain spray radius and $hod$ is the hour of day.
-
-
-\begin{table}[ht]
-\centering
-\caption{}
-\label{tab:my-table}
-\begin{tabular}{@{}lllllll@{}}
-\toprule
-Coefficients of & $T_a\, [\degree C]$ & $RH\,[\%]$ & $v_a\, [m\, s^{-1}]$ & $alt\, [km]$  & $constant$ \\ \midrule
-Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\num{-3.5 e-3}$  & $\num{5.2 e-3}$
-                \\ \bottomrule
-\end{tabular}
-\end{table}
+% where $r_F$ is the fountain spray radius and $hod$ is the hour of day.
 
 
-\subsection{Calibration and validation}
-\subsection{Dynamic mode strategy}
+% \begin{table}[ht]
+% \centering
+% \caption{}
+% \label{tab:my-table}
+% \begin{tabular}{@{}lllllll@{}}
+% \toprule
+% Coefficients of & $T_a\, [\degree C]$ & $RH\,[\%]$ & $v_a\, [m\, s^{-1}]$ & $alt\, [km]$  & $constant$ \\ \midrule
+% Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\num{-3.5 e-3}$  & $\num{5.2 e-3}$
+%                 \\ \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+\subsection{Testing}
+
+\subsubsection{Freezing rate to discharge rate}
 
 \section{Results}
-\subsection{Model Validation}
-\subsubsection{Eddy covariance comparison}
-\subsubsection{Surface temperature}
-\subsubsection{Ice volume}
 \subsection{Model comparison}
+Nash equation
+
 \subsubsection{Shortwave radiation comparison}
+
 \subsubsection{Freezing rate comparison}
 
-\begin{figure}[ht]
-	\begin{center}
-		\includegraphics[width=\linewidth]{Figures/simvsreal_dis.jpg}
-	\end{center}
-	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
-	\label{fig:old_icestupa}
-\end{figure}
-
+\subsection{Model Validation}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -227,7 +253,19 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 	\label{fig:old_icestupa}
 \end{figure}
 
-\section{Water Use efficiency}
+
+
+% \begin{figure}[ht]
+% 	\begin{center}
+% 		\includegraphics[width=\linewidth]{Figures/simvsreal_dis.jpg}
+% 	\end{center}
+% 	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
+% 	\label{fig:old_icestupa}
+% \end{figure}
+
+
+
+\subsection{Water Use efficiency}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -246,21 +284,26 @@ Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\
 
 \subsection{Fountain height and spray radius}
 
+\subsection{Eddy covariance comparison}
+
+\subsection{Surface temperature}
 
 \section{Conclusions}
-In this paper, an empirical model that predicts AIR freezing rates is presented. The model was developed and
-tested using data collected at Guttannen, Switzerland during the 2021-22 winter season. 
+
+
+In this paper, two different construction strategies that yield better water use efficiency are presented.
+An automation system was developed to implement the dynamic fountain sischarge mode and tested using data
+collected at Guttannen, Switzerland during the 2021-22 winter season. 
 
 The main purpose of this study was to test the idea that scheduling AIR fountain systems could lead to a
-significant improvement in water use efficiency. The empirical fountain scheduling model was calculated and
-tested against hourly freezing rates computed by an energy-balance model. 
+significant improvement in water use efficiency.
 
 This study has demonstrated the importance of fountain scheduling. Furthermore, the decrease in performance of
 the empirical model has been quantified through comparison of efficiency criteria. The study has demonstrated
 that, it is possible to compute more than 90 \% of the freeze rate variations by means of a simplified empirical
-model. This model satisfies the need for a less data demanding workflow for scheduling fountains worldwide using
-the computation of just 6 coefficents. Such a model will be compatible with the limited data amount that is
-typical of any new AIR construction location.
+model. This model satisfies the need for a less data demanding and computationally intensive workflow for
+scheduling fountains worldwide using the computation of just 6 coefficents. Such a model will be compatible with
+the limited data amount that is typical of any new AIR construction location.
 
 This study has also compared the sensitivity of freezing rates between the weather components and the fountain's
 spray radius. It is clear that if improvements are to be achieved, future research must be devoted to modelling
@@ -269,6 +312,12 @@ the impact of fountain design on the spray radius.
 The model discussed in this paper will be applied worldwide to identify favourable AIR locations in a future
 paper.
 
+
+The automation system allows the easy handling of fountain scheduling implementation. Its capabilities for
+achieving a higher water saving was tested for Guttannen. The possibility for easily changing the automation
+coefficients allows tailoring the fountain discharge rate according to identified requirements. Other on-going
+improvements concern the use of the automation software as a decision support tool applicable at both the local
+and the global scale.
 
 \section{Appendix}
 
@@ -284,10 +333,10 @@ We approximate the energy balance at the surface of an AIR by a one-dimensional 
 used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}:
 
 
-Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first
-term represents the energy change used for freezing the fountain water and melting the ice respectively.
-$q_{SW}$ is the net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the
-turbulent latent and sensible heat fluxes. 
+Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
+represents the energy change used for freezing the fountain water and melting the ice. $q_{SW}$ is the net
+shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent and
+sensible heat fluxes. 
 
 The software assumes $T_{ice} = 0 \degree C$ and therefore ignores the temperature change flux $q_{T}$, fountain
 heat flux $q_{F}$ and ground heat flux $q_{G}$. All these assumptions overestimate the freezing rate.
