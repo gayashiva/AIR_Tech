@@ -41,16 +41,15 @@ ice reservoirs (Icestupas)}
   Automated fountain scheduling can be used to improve Artificial Ice Reservoir (AIR) construction efficiency by
   reducing fountain wastewater production. Mass balance experiments have shown that over 80 \% of the water
   sprayed during traditional AIR construction can be lost. This result gives an indication of the potential
-  improvement in water use efficiency that can be achieved by optimising the fountain discharge rate. To
-  generate the fountain scheduling requirements for the automation software, a new empirical model that computes
-  AIR freezing rates was developed. The automation hardware consisted of a weather station, flowmeter, control
-  valve, drain valves, air valves and a logger. During the winter of 2021-22, a traditional and an automated AIR
-  were built in Guttannen with the main aim of comparing and quantifying the benefits of using automation
-  systems. The water requirement for the automated AIR was 87 \% lesser than the traditional AIR. Ice volume
-  estimates validated with drone measurements indicate that the automated AIR also achieved higher volumes
-  inspite of the reduced discharge rates. However, this volume difference was due to the better design of the
-  automated fountain which produced a higher spray radius. Overall, our results show that the automated fountain
-  scheduling method increased the water use efficiency of AIR construction 5 fold.
+  improvement in water use efficiency that can be achieved by optimising the fountain discharge rate. Automated
+  fountain scheduling was realized using a automation system composed of software and hardware components. The
+  automation software composed of an empirical model that computes AIR freezing rates. The automation hardware
+  consisted of a weather station, flowmeter, control valve, drain valves, air valves and a logger. During the
+  winter of 2021-22, a traditional and an automated AIR were built in Guttannen with the main aim of comparing
+  and quantifying the benefits of using automation systems. The water requirement for the automated AIR was 87
+  \% lesser than the traditional AIR. Ice volume estimates validated with drone measurements indicate that the
+  automated AIR also achieved higher volumes inspite of the reduced discharge rates. Overall, our results show
+  that the automated fountain scheduling method increased the water use efficiency of AIR construction 5 fold.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -59,12 +58,12 @@ ice reservoirs (Icestupas)}
 \section{Introduction}
 Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
 especially in semi-arid and arid mountain regions facing limited water availability and at the same time
-increased water needs. However, their water use efficiency (WUE) is very poor. 
+increased water needs. However, their water use efficiency is very poor. 
 
 Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
-the same time, increase WUE. The goal of fountain scheduling is to make the most efficient use of water by
+the same time, increase water use efficiency. The goal of fountain scheduling is to make the most efficient use of water by
 spraying the right amount of water at the right time, making sure water is available when the AIR surface can
-freeze it. Scheduling maximizes AIR WUE by minimizing fountain waste water.  
+freeze it. Scheduling maximizes AIR water use efficiency by minimizing fountain waste water.  
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
@@ -79,29 +78,14 @@ requirement and computing time in comparison with the more sophisticated energy-
 physical energy balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance
 between model complexity and data availablity.
 
-Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
-maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
-costs that can be classified as static or dynamic. In the static mode, the total amount of water
-for AIR construction is allocated without specifying its temporal distribution along the accumulation period. By
-contrast, in the dynamic mode water is allocated at specific time steps along the accumulation period in
-order to achieve even higher WUE.
-
-Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic mode is
-better suited for locations where the diurnal and seasonal variations in the weather conditions are significant.
-In such cases, the real-time adjustments of the discharge rate make efficient fountain scheduling
-possible. The static mode is better suited for other locations or for users who cannot afford the additional
-hardware requirements to implement the dynamic fountain scheduling mode.
-
 The main interest in using model results from the capability of the model to simulate alternative fountain
 schedules relative to various constrains in monetary investments as well as in water availability. The fountain
 scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
 during the accumulation period. The specific objectives of this paper include the presentatiion of the
-automation software and examples of its application to the computation of spatially distributed AIR construction
-requirements. 
-
+automation system and examples of its application to the computation of fountain scheduling strategies.
 
 \section{Measurements}
-\subsection{The experiment site}
+\subsection{Experimental site}
 
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) in the Bern region lies at 1047 $m$ a.s.l.. In the winter
 (Oct-Apr), mean daily minimum and maximum air temperatures vary between -13 and 15 $\degree C$. Clear skies are
@@ -109,8 +93,8 @@ rare, averaging around 7 days during winter. Daily winter precipitation can some
 These values are based on 30 years of hourly weather model simulations \citep{guttannen}. The water was
 transferred from a spring water source. In addition, a webcam guaranteed a continuous survey of the site during
 the construction of the AIR. Two AIRs were constructed here by the Guttannen Bewegt Association respectively
-during the winters of 2020-21 using different fountain discharge strategies namely manual and dynamic as shown
-in Fig. \ref{fig:2AIR}.
+during the winters of 2020-21 using a traditional and an automated construction strategy as shown in in Fig.
+\ref{fig:2AIR}.
 
 \begin{figure}
 	\begin{center}
@@ -119,33 +103,47 @@ in Fig. \ref{fig:2AIR}.
   \caption{Dynamic and manual AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
 \label{fig:2AIR} \end{figure}
 
-\subsection{Manual AIR construction strategy}
 
-In the manual strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
+\subsection{Experimental design}
+
+% \subsection{Traditional AIR construction strategy}
+
+In the traditional strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
 process. The fountain discharge was maintained at maximum and its height was increased from 3 to 6\,$m$ during
 the construction period.
 
-\subsection{Automated AIR construction strategy}
+% \subsection{Automated AIR construction strategy}
 
-In the dynamic strategy, only the fountain pipe was erected before initiation of water spray. An automation
-system controlled the fountain discharge rate using real time weather input. The automation hardware consists of
-a weather station, flowmeter, control valve, drain valves, air valves, fountain, pipeline and a logger. The
-logger feeds the weather station data to the automation software and informs the recommended discharge rate to
-the flowmeter. The flowmeter adjusts the control valve to match the recommendation. In case the recommendation
-is below the critical discharge rate of the fountain, the drain and air valves empty the water in the pipeline
-to prevent any freezing events. Here the critical discharge rate is defined as the discharge rate below which
-the fountain pipeline can freeze.
+In the automated strategy, only the fountain pipe was erected before initiation of water spray. An automation
+system controlled the fountain discharge rate using real time weather input and several parameters exposed via
+the user interface. 
 
+\subsection{Automation system description}
 
-\section{Automation software}
+\subsubsection{Hardware}
+The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
+fountain, pipeline and a logger. The logger feeds the weather station data to the automation software and
+informs the recommended discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the
+recommendation. In case the recommendation is below the critical discharge rate of the fountain, the drain and
+air valves empty the water in the pipeline to prevent any freezing events. Here the critical discharge rate is
+defined as the discharge rate below which the fountain pipeline can freeze.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/automation_system.png}
+	\end{center}
+  \caption{Guttannen automation system}
+	\label{fig:layout}
+\end{figure}
+
+\subsubsection{Software}
 
 The objective of the automation software is to estimate the freezing rate in the (a) least data demanding and
 (b) computationally intensive way possible. Objective (a) is achieved by introducing assumptions to the energy
-balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} and
-\cite{oerlemansBriefCommunicationGrowth2021}. Objective (b) is achieved by formulating a surrogate empirical
+balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by formulating a surrogate empirical
 model that best approximates the simplified physical model. 
 
-\subsection{Simplified physical model}
+% \subsubsection{Simplified physical model}
 
 The growth rate of the AIR can be represented as: 
 
@@ -162,8 +160,8 @@ where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate of the AIR
 \end{equation}
 
 We reduce the data requirements for estimation of each of the energy flux components using assumptions that
-underestimate the associated freezing rate in order to optimise for WUE. Further description of our assumptions
-are described in the Appendix. Below, we summarise the list of assumptions used:
+underestimate the associated freezing rate in order to optimise for water use efficiency. Further description of
+our assumptions are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \begin{itemize}
 
@@ -192,15 +190,15 @@ are described in the Appendix. Below, we summarise the list of assumptions used:
 
 \end{itemize}
 
-
-\subsection{Surrogate empirical model}
+% \subsubsection{Surrogate empirical model}
 
 We can now construct a surrogate model that approximates the thickness change rate into a computationally
 inexpensive equation with fixed coefficients. We approximate the shortwave radiation flux using a gaussian
-function $g($ hour of day $)$ that accounts for its diurnal variation. We approximate the rest of the energy
-fluxes by assuming a linear relationship with the weather parameters namely, temperature, humidity, wind speed
-and altitude. Using the above simplifications, we can compute the expected thickness change rates using the following set of
-equations:
+function $g($ hour of day $)$ that accounts for its diurnal variation. The gaussian equation's three
+coefficients are calibrated based on estimation of solar radiation during the last day of the construction
+period. We approximate the rest of the energy fluxes by assuming a linear relationship with the weather
+parameters namely, temperature, humidity, wind speed and altitude. Using the above simplifications, we can
+compute the expected thickness change rates using the following set of equations:
 
 % \begin{subequations}
 % 	\begin{align}
@@ -231,9 +229,26 @@ equations:
 % \end{table}
 
 
-\subsection{Testing}
+\subsubsection{User interface}
+The software is configured in such a way that it works independently of a PC. Once switched on, the software
+starts automatically. The system runs if none of the following termination criteria apply:
 
-\subsubsection{Freezing rate to discharge rate}
+\begin{itemize}
+\item Wind speed greater than limit value
+\item Ambient temperature higher or lower than limit values
+\item Pipeline freezing event detected: $IW_{KH} > 20 \%$ and $Q_w = 0$ for atleast 20 seconds (Icing)
+\item Leakage detected: $Q_w > 65 l/min$
+\end{itemize}
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics[width=\linewidth]{Figures/user_interface.png}
+	\end{center}
+  \caption{User Interface}
+	\label{fig:UI}
+\end{figure}
+
+
 
 \section{Results}
 \subsection{Model comparison}
@@ -243,7 +258,7 @@ Nash equation
 
 \subsubsection{Freezing rate comparison}
 
-\subsection{Model Validation}
+\subsection{Ice Volume Validation}
 
 \begin{figure}[ht]
 	\begin{center}
@@ -287,6 +302,21 @@ Nash equation
 \subsection{Eddy covariance comparison}
 
 \subsection{Surface temperature}
+
+\subsection{Implementation costs}
+
+Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
+maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
+costs that can be classified as static or dynamic. In the static mode, the total amount of water
+for AIR construction is allocated without specifying its temporal distribution along the accumulation period. By
+contrast, in the dynamic mode water is allocated at specific time steps along the accumulation period in
+order to achieve even higher WUE.
+
+Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic mode is
+better suited for locations where the diurnal and seasonal variations in the weather conditions are significant.
+In such cases, the real-time adjustments of the discharge rate make efficient fountain scheduling
+possible. The static mode is better suited for other locations or for users who cannot afford the additional
+hardware requirements to implement the dynamic fountain scheduling mode.
 
 \section{Conclusions}
 
