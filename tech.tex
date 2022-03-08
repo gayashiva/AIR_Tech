@@ -42,14 +42,15 @@ ice reservoirs (Icestupas)}
   reducing fountain wastewater production. Mass balance experiments have shown that over 80 \% of the water
   sprayed during traditional AIR construction can be lost. This result gives an indication of the potential
   improvement in water use efficiency that can be achieved by optimising the fountain discharge rate. Automated
-  fountain scheduling was realized using a automation system composed of software and hardware components. The
-  automation software composed of an empirical model that computes AIR freezing rates. The automation hardware
-  consisted of a weather station, flowmeter, control valve, drain valves, air valves and a logger. During the
-  winter of 2021-22, a traditional and an automated AIR were built in Guttannen with the main aim of comparing
-  and quantifying the benefits of using automation systems. The water requirement for the automated AIR was 87
-  \% lesser than the traditional AIR. Ice volume estimates validated with drone measurements indicate that the
-  automated AIR also achieved higher volumes inspite of the reduced discharge rates. Overall, our results show
-  that the automated fountain scheduling method increased the water use efficiency of AIR construction 5 fold.
+  fountain scheduling was realized using an automation system. The automation system computes recommended
+  discharge rates using real-time weather inputs and location metadata. During the winter of 2021-22, a
+  traditional and an automated AIR were built in Guttannen with the main aim of comparing and quantifying the
+  benefits of using automation systems. The water requirement for the automated AIR was 87 \% lesser than the
+  traditional AIR. Ice volume estimates validated with drone measurements indicate that the automated AIR also
+  achieved higher volumes inspite of the reduced discharge rates. Automated AIR simulations when compared with
+  traditional AIR in other construction locations yield water use efficiency over 90 \%. Overall, our results
+  show that the automated fountain scheduling method increased the water use efficiency of AIR construction 5
+  fold.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -68,7 +69,7 @@ freeze it. Scheduling maximizes AIR water use efficiency by minimizing fountain 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
 questions. Surface freezing rates can be calculated by means of two different approaches: physical
-models and empirically based models. The former may be defined as a model in which each of the relevant
+and empirically based models. The former may be defined as a model in which each of the relevant
 energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of the
 necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
 scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
@@ -81,7 +82,7 @@ between model complexity and data availablity.
 The main interest in using model results from the capability of the model to simulate alternative fountain
 schedules relative to various constrains in monetary investments as well as in water availability. The fountain
 scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
-during the accumulation period. The specific objectives of this paper include the presentatiion of the
+during the accumulation period. The specific objectives of this paper include the presentation of the
 automation system and examples of its application to the computation of fountain scheduling strategies.
 
 \section{Measurements}
@@ -90,33 +91,32 @@ automation system and examples of its application to the computation of fountain
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) in the Bern region lies at 1047 $m$ a.s.l.. In the winter
 (Oct-Apr), mean daily minimum and maximum air temperatures vary between -13 and 15 $\degree C$. Clear skies are
 rare, averaging around 7 days during winter. Daily winter precipitation can sometimes be as high as 100 $mm$.
-These values are based on 30 years of hourly weather model simulations \citep{guttannen}. The water was
-transferred from a spring water source. In addition, a webcam guaranteed a continuous survey of the site during
-the construction of the AIR. Two AIRs were constructed here by the Guttannen Bewegt Association respectively
-during the winters of 2020-21 using a traditional and an automated construction strategy as shown in in Fig.
-\ref{fig:2AIR}.
+These values are based on 30 years of hourly weather model simulations \citep{guttannen}. Two AIRs were
+constructed here by the Guttannen Bewegt Association respectively during the winters of 2020-21 using a
+traditional and an automated construction strategy.
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=12 cm]{Figures/2AIRs.jpg}
 	\end{center}
-  \caption{Dynamic and manual AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+  \caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
 \label{fig:2AIR} \end{figure}
 
 
 \subsection{Experimental design}
 
-% \subsection{Traditional AIR construction strategy}
+In order to compare both the construction strategies, the automated and the traditional AIRs were constructed
+adjacent to each other as shown in in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
+and similar weather patterns. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
 process. The fountain discharge was maintained at maximum and its height was increased from 3 to 6\,$m$ during
 the construction period.
 
-% \subsection{Automated AIR construction strategy}
-
 In the automated strategy, only the fountain pipe was erected before initiation of water spray. An automation
 system controlled the fountain discharge rate using real time weather input and several parameters exposed via
-the user interface. 
+the user interface. A new fountain design was used for the automated strategy since the traditional fountain
+design was unable to function at low discharge rates. 
 
 \subsection{Automation system description}
 
@@ -140,10 +140,8 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 
 The objective of the automation software is to estimate the freezing rate in the (a) least data demanding and
 (b) computationally intensive way possible. Objective (a) is achieved by introducing assumptions to the energy
-balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by formulating a surrogate empirical
-model that best approximates the simplified physical model. 
-
-% \subsubsection{Simplified physical model}
+balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by
+formulating a surrogate empirical model that best approximates the simplified physical model. 
 
 The growth rate of the AIR can be represented as: 
 
@@ -190,8 +188,6 @@ our assumptions are described in the Appendix. Below, we summarise the list of a
 
 \end{itemize}
 
-% \subsubsection{Surrogate empirical model}
-
 We can now construct a surrogate model that approximates the thickness change rate into a computationally
 inexpensive equation with fixed coefficients. We approximate the shortwave radiation flux using a gaussian
 function $g($ hour of day $)$ that accounts for its diurnal variation. The gaussian equation's three
@@ -228,8 +224,6 @@ compute the expected thickness change rates using the following set of equations
 % \end{tabular}
 % \end{table}
 
-
-\subsubsection{User interface}
 The software is configured in such a way that it works independently of a PC. Once switched on, the software
 starts automatically. The system runs if none of the following termination criteria apply:
 
