@@ -11,7 +11,6 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{siunitx} %for SI units
-\usepackage{lscape} % for landscape table
 
 \def\keyFont{\fontsize{8}{11}\helveticabold }
 \def\firstAuthorLast{Balasubramanian {et~al.}} %use et al only if is more than 1 author
@@ -42,15 +41,14 @@ ice reservoirs (Icestupas)}
   reducing fountain wastewater production. Mass balance experiments have shown that over 80 \% of the water
   sprayed during traditional AIR construction can be lost. This result gives an indication of the potential
   improvement in water use efficiency that can be achieved by optimising the fountain discharge rate. Automated
-  fountain scheduling was realized using an automation system. The automation system computes recommended
-  discharge rates using real-time weather inputs and location metadata. During the winter of 2021-22, a
-  traditional and an automated AIR were built in Guttannen with the main aim of comparing and quantifying the
-  benefits of using automation systems. The water requirement for the automated AIR was 87 \% lesser than the
-  traditional AIR. Ice volume estimates validated with drone measurements indicate that the automated AIR also
-  achieved higher volumes inspite of the reduced discharge rates. Automated AIR simulations when compared with
-  traditional AIR in other construction locations yield water use efficiency over 90 \%. Overall, our results
-  show that the automated fountain scheduling method increased the water use efficiency of AIR construction 5
-  fold.
+  fountain scheduling was realized using an automation system that computes recommended discharge rates using
+  real-time weather inputs and location metadata. During the winter of 2021-22, a traditional and an automated
+  AIR were built in Guttannen with the main aim of comparing and quantifying the benefits of using automation
+  systems. The water requirement for the automated AIR was 87 \% lesser than the traditional AIR. Ice volume
+  estimates validated with drone measurements indicate that the automated AIR also achieved higher volumes
+  inspite of the reduced discharge rates. Automated AIR simulations when compared with traditional AIR in other
+  construction locations yield water use efficiency over 90 \%. Overall, our results show that the automated
+  fountain scheduling method increased the water use efficiency of AIR construction 5 fold.
 
   \tiny \keyFont{ \section{Keywords:} icestupa, water storage, climate change adaptation,
   geoengineering, nature based solution} 
@@ -79,11 +77,11 @@ requirement and computing time in comparison with the more sophisticated energy-
 physical energy balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance
 between model complexity and data availablity.
 
-The main interest in using model results from the capability of the model to simulate alternative fountain
-schedules relative to various constrains in monetary investments as well as in water availability. The fountain
+The main interest in using model results is to simulate alternative fountain schedules relative to various
+constrains in monetary investments, construction duration as well as in water availability. The fountain
 scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
-during the accumulation period. The specific objectives of this paper include the presentation of the
-automation system and examples of its application to the computation of fountain scheduling strategies.
+during the accumulation period. The specific objectives of this paper include the presentation of the automation
+system and examples of its application to the computation of fountain scheduling strategies.
 
 \section{Measurements}
 \subsection{Experimental site}
@@ -120,6 +118,13 @@ design was unable to function at low discharge rates.
 
 \subsection{Automation system description}
 
+The automation system implements fountain scheduling strategies for the twin objectives of ice volume and water
+use efficiency. The ice volume objective is attractive in locations with sufficient water volumes to freeze
+during the construction period. The water use efficiency objective is attractive in locations with favourable
+weather conditions constrained by available water supply. For the ice volume objective, the model assumptions
+overestimate the freezing rate whereas for the water use efficiency objective the model assumptions
+underestimate the freezing rate. 
+
 \subsubsection{Hardware}
 The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
 fountain, pipeline and a logger. The logger feeds the weather station data to the automation software and
@@ -138,10 +143,11 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 
 \subsubsection{Software}
 
-The objective of the automation software is to estimate the freezing rate in the (a) least data demanding and
-(b) computationally intensive way possible. Objective (a) is achieved by introducing assumptions to the energy
-balance model used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by
-formulating a surrogate empirical model that best approximates the simplified physical model. 
+
+The software performs the computations in the (a) least data demanding and (b) computationally intensive way
+possible. Objective (a) is achieved by introducing assumptions to the energy balance model used in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by formulating a
+surrogate empirical model that best approximates the simplified physical model. 
 
 The growth rate of the AIR can be represented as: 
 
@@ -157,36 +163,27 @@ where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate of the AIR
 	\label{eqn:freeze}
 \end{equation}
 
-We reduce the data requirements for estimation of each of the energy flux components using assumptions that
-underestimate the associated freezing rate in order to optimise for water use efficiency. Further description of
-our assumptions are described in the Appendix. Below, we summarise the list of assumptions used:
+We reduce the data requirements for estimation of each of the energy flux components using corresponding
+assumptions for each of the objectives as shown in Table. Further description of our assumptions are described
+in the Appendix. 
 
-\begin{itemize}
+\begin{table}[]
+\centering
+\caption{}
+\label{tab:my-table}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Objective} & \textbf{Symbol} & \textbf{Ice Volume} & \textbf{WUE} & \\ \midrule
+\multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ & $ \sqrt{2} \pi r_{F}^2$ & $\pi r_{F}^2$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $alb=0.25$ & $cld = 1$ ; $alb=0.85$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ & $cld = 0$ ; $T_{ice} = 0$ & $cld = 0$ ; $T_{ice} = 0$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Sensible and Latent Heat}       & $q_{S}$ &$\mu_{cone} = 1.5$  & $\mu_{cone} = 1$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\end{tabular}
+\end{table}
 
-  \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
-    altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The
-    algorithm used to estimate the clear-sky global radiation is described in
-    \cite{ineichenBroadbandSimplifiedVersion2008} and the algorithm used to estimate the diffuse part of the
-    global radiation is described in \cite{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach
-    is discussed in \cite{ineichenValidationModelsThat2016}. Furthermore, the solar area fraction is also
-    approximated by assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo
-    (0.25). These assumptions underestimate the freezing rate.
-
-  \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$
-    and thereby underestimates the freezing rate.
-
-  \item Turbulent fluxes ($q_{L}$ and $q_{S}$): The software estimates the pressure using the altitude of the
-    location and ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
-
-  \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux
-    thereby removing the need for water temperature measurements.
-
-  \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base
-    produced through the fountain spray radius $r_F$. This assumption is derived from
-    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during the
-    accumulation period and thereby underestimates the freezing rate.
-
-\end{itemize}
 
 We can now construct a surrogate model that approximates the thickness change rate into a computationally
 inexpensive equation with fixed coefficients. We approximate the shortwave radiation flux using a gaussian
@@ -263,17 +260,6 @@ Nash equation
 \end{figure}
 
 
-
-% \begin{figure}[ht]
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/simvsreal_dis.jpg}
-% 	\end{center}
-% 	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
-% 	\label{fig:old_icestupa}
-% \end{figure}
-
-
-
 \subsection{Water Use efficiency}
 
 \begin{figure}[ht]
@@ -344,6 +330,35 @@ improvements concern the use of the automation software as a decision support to
 and the global scale.
 
 \section{Appendix}
+
+Below, we summarise the list of assumptions used:
+
+\begin{itemize}
+
+  \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
+    altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The
+    algorithm used to estimate the clear-sky global radiation is described in
+    \cite{ineichenBroadbandSimplifiedVersion2008} and the algorithm used to estimate the diffuse part of the
+    global radiation is described in \cite{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach
+    is discussed in \cite{ineichenValidationModelsThat2016}. Furthermore, the solar area fraction is also
+    approximated by assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo
+    (0.25). These assumptions underestimate the freezing rate.
+
+  \item Longwave Radiation $q_{LW}$: We assume $T_{ice} = 0 \degree C$. This assumption overestimates $q_{LW}$
+    and thereby underestimates the freezing rate.
+
+  \item Turbulent fluxes ($q_{L}$ and $q_{S}$): The software estimates the pressure using the altitude of the
+    location and ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes.
+
+  \item $q_{F}$ and $q_{G}$: We ignore the influence of fountain water heat flux and the ground heat flux
+    thereby removing the need for water temperature measurements.
+
+  \item Surface Area $A_{cone}$ : The area of the conical AIR is approximated to the area of its circular base
+    produced through the fountain spray radius $r_F$. This assumption is derived from
+    \cite{oerlemansBriefCommunicationGrowth2021} model and underestimates the surface area of the AIR during the
+    accumulation period and thereby underestimates the freezing rate.
+
+\end{itemize}
 
 The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
 radius $r_F$. Therefore, the surface area can be determined using
@@ -467,22 +482,3 @@ model. This assumption overestimates the solar radiation absorption thereby unde
 
 \end{document}
 
-% \begin{landscape}
-% \begin{table}[]
-% \centering
-% \caption{}
-% \label{tab:my-table}
-% \begin{tabular}{@{}lllll@{}}
-% \toprule
-% \textbf{Module name} & \textbf{Symbol} & \textbf{Full eqn} & \textbf{Simplified eqn} & \textbf{Assumptions} \\ \midrule
-% \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ &  & \pi \cdot r_{F}^2 & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ &  & (1- \alpha_{ice}) \cdot ( (1- cld) \cdot SW_{global} \cdot f_{cone} + cld \cdot SW_{global}) & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ &  & \sigma \cdot \epsilon_a \cdot {(T_a+ 273.15)}^4 -\sigma \cdot \epsilon_{ice} \cdot {273.15}^4 & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Sensible Heat}       & $q_{S}$ &  &  & \multicolumn{1}{l|}{} \\ \midrule
-% \multicolumn{1}{|l}{Latent Heat}         & $q_{L}$ &  &  & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ &  & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-% \end{tabular}
-% \end{table}
-% \end{landscape}
