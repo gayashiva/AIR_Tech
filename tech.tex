@@ -22,19 +22,12 @@
 \title{Fountain scheduling strategies to improve water use efficiency of artificial
 ice reservoirs (Icestupas)}
 
-
-% \Author[affil]{given_name}{surname}
-
-
 \def\Authors{Suryanarayanan Balasubramanian\,$^{1}$, Roger Waser\,$^{2}$, Martin Hoelzle\,$^{1}$}
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
 Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
 \Author[1]{Suryanarayanan Balasubramanian}{Balasubramanian}
 \Author[1]{Martin Hoelzle}{Hoelzle}
 \Author[2]{Roger Waser}{Waser}
-% \Author[]{}{}
-% \Author[]{}{}
-
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
 \affil[2]{University of Applied Sciences and Arts, Luzern, Switzerland}
 
@@ -65,7 +58,6 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
 \end{abstract}
 
-
 \introduction
 
 Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
@@ -95,8 +87,6 @@ constrains in monetary investments, construction duration as well as in water av
 scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
 during the accumulation period. The specific objectives of this paper include the presentation of the automation
 system and examples of its application to the computation of fountain scheduling strategies.
-
-
 
 \section{Measurements}
 \subsection{Experimental site}
@@ -161,7 +151,7 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 
 The software performs the computations in the (a) least data demanding and (b) computationally intensive way
 possible. Objective (a) is achieved by introducing assumptions to the energy balance model used in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by formulating a
+\citet{balasubramanianInfluenceMeteorologicalConditions2022}. Objective (b) is achieved by formulating a
 surrogate empirical model that best approximates the simplified physical model. 
 
 The growth rate of the AIR can be represented as: 
@@ -190,8 +180,10 @@ in the Appendix.
 \toprule
 \textbf{Objective} & \textbf{Symbol} & \textbf{Ice Volume} & \textbf{WUE} & \\ \midrule
 \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ & $ \sqrt{2} \pi r_{F}^2$ & $\pi r_{F}^2$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $alb=0.25$ & $cld = 1$ ; $alb=0.85$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ & $cld = 0$ ; $T_{ice} = 0$ & $cld = 0$ ; $T_{ice} = 0$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $\alpha=\alpha_{ice}$; & $cld = 1$ ;
+$\alpha=\alpha_{snow}$; & \multicolumn{1}{l|}{} \\ 
+\multicolumn{1}{|l}{ } &  & $f_{cone} = \frac{cos \theta_{sun} + \pi sin \theta_{sun}}{2\sqrt{2}\pi}$  & $f_{cone} = sin \theta_{sun} / 2$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ & $cld = 0$ ; $T_{ice} = 0$ & $cld = 1$ ; $T_{ice} = 0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Sensible and Latent Heat}       & $q_{S}$ &$\mu_{cone} = 1.5$  & $\mu_{cone} = 1$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
@@ -200,10 +192,9 @@ in the Appendix.
 \end{table}
 
 
-
 We can now construct a surrogate model that approximates the thickness change rate into a computationally
 inexpensive equation with fixed coefficients. We approximate the shortwave radiation flux using a gaussian
-function $g($ hour of day $)$ that accounts for its diurnal variation. The gaussian equation's three
+function $g($ hour of day $)$ that accounts for its diurnal variation. The gaussian equation's three 
 coefficients are calibrated based on estimation of solar radiation during the last day of the construction
 period. We approximate the rest of the energy fluxes by assuming a linear relationship with the weather
 parameters namely, temperature, humidity, wind speed and altitude. Using the above simplifications, we can
@@ -253,8 +244,6 @@ starts automatically. The system runs if none of the following termination crite
 %   \caption{User Interface}
 % 	\label{fig:UI}
 % \end{figure}
-
-
 
 \section{Results}
 \subsection{Model comparison}
@@ -347,15 +336,17 @@ and the global scale.
 
 \appendix
 
+\section{Simplified energy balance model}
+
 Below, we summarise the list of assumptions used:
 
 \begin{itemize}
 
   \item Shortwave Radiation $q_{SW}$: The direct and diffuse components of shortwave radiation are estimated from the coordinates,
-    altitude and time using the PVLIB python package described in \cite{holmgrenPvlibPythonPython2018} . The
+    altitude and time using the PVLIB python package described in \citet{holmgrenPvlibPythonPython2018} . The
     algorithm used to estimate the clear-sky global radiation is described in
-    \cite{ineichenBroadbandSimplifiedVersion2008} and the algorithm used to estimate the diffuse part of the
-    global radiation is described in \cite{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach
+    \citet{ineichenBroadbandSimplifiedVersion2008} and the algorithm used to estimate the diffuse part of the
+    global radiation is described in \citet{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach
     is discussed in \cite{ineichenValidationModelsThat2016}. Furthermore, the solar area fraction is also
     approximated by assuming $h_{cone} = r_{cone} = r_{F}$ and the albedo is assumed to be equal to ice albedo
     (0.25). These assumptions underestimate the freezing rate.
@@ -375,6 +366,8 @@ Below, we summarise the list of assumptions used:
     accumulation period and thereby underestimates the freezing rate.
 
 \end{itemize}
+
+\subsection{Surface area}
 
 The area of the conical AIR is approximated to the area of its circular base produced through the fountain spray
 radius $r_F$. Therefore, the surface area can be determined using
@@ -404,22 +397,11 @@ For the static method, we only need to determine the night freezing rates wherea
 also need to account for the day melt during the accumulation period.
 
 \subsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg}} \label{sec:LW}
-The net longwave radiation $q_{LW}$ is determined as follows:
 
-\begin{equation}
-	q_{LW}= \sigma \cdot \epsilon_a \cdot {(T_a+ 273.15)}^4 -\sigma \cdot \epsilon_{ice} \cdot {(T_{ice}+ 273.15)}^4
-	\label{eqn:LW}
-\end{equation}
-
-where $T_a$ represents the measured air temperature, $\epsilon_a$ denotes the atmospheric emissivity $T_{ice}$
-is the modelled surface temperature given in [$\degree C$], $\sigma=5.67\cdot10^{-8}\,Jm^{-2}s^{-1}K^{-4}$ is
-the Stefan-Boltzmann constant and $\epsilon_{ice}$ is the corresponding emissivity value for the Icestupa
-surface (0.97).
-
-We approximate the atmospheric emissivity $\epsilon_a$ ,
-considering air temperature and vapor pressure (Eqn. \ref{eqn:atm_e}). The vapor pressure of air over water and
-ice was obtained using Eqn. \ref{eqn:vp}.  The expression defined in \cite{brutsaertDerivableFormulaLongwave1975} for clear skies
-(first term in equation \ref{eqn:atm_e}) is extended with the correction for cloudy skies after
+We approximate the atmospheric emissivity $\epsilon_a$ , considering air temperature and vapor pressure (Eqn.
+\ref{eqn:atm_e}). The vapor pressure of air over water and ice was obtained using Eqn. \ref{eqn:vp}.  The
+expression defined in \cite{brutsaertDerivableFormulaLongwave1975} for clear skies (first term in equation
+\ref{eqn:atm_e}) is extended with the correction for cloudy skies after
 \cite{brutsaertEvaporationAtmosphereTheory1982} as follows:
 
 \begin{equation}
@@ -433,37 +415,9 @@ the freezing rate.
 
 \subsection{Turbulent fluxes} \label{sec:Qs}
 
-The turbulent sensible $q_{S}$ and latent heat $q_{L}$ fluxes are computed with the following expressions
-proposed by \cite{garrattAtmosphericBoundaryLayer1992}:
-
-\begin{equation}
-	q_{S}= c_{a} \cdot \rho_{a} \cdot p_{a}/p_{0,a} \cdot \frac{\kappa^2 \cdot v_a \cdot
-		(T_a-T_{ice})}{{(\ln{\frac{h_{AWS}}{z_{0}}})}^2}
-	\label{eqn:qs}
-\end{equation}
-
-\begin{equation}
-	q_{L}= 0.623 \cdot L_s \cdot \rho_{a}/p_{0,a} \cdot \frac{\kappa^2 \cdot
-	v_a(p_{v,w}-p_{v,ice})}{{(\ln{\frac{h_{AWS}}{z_{0}}})}^2}
-\end{equation}
-
-where $h_{AWS}$ is the measurement height above the ground surface of the AWS (around $2\,m$ for all sites),
-$v_a$ is the wind speed in [$m\,s^{-1}$], $c_a$ is the specific heat of air at constant pressure (1010 J
-$kg^{-1} K^{-1}$), $\rho_{a}$ is the air density at standard sea level (1.29 $kg m^{-3}$), $p_{0,a}$ is the air
-pressure at standard sea level (1013 $hPa$), $p_{a}$ is the measured air pressure, $\kappa$ is the von Karman
-constant (0.4), $z_{0}$ is the surface roughness (3 $mm$) and $L_s$ is the heat of sublimation (2848
-$kJ\,kg^{-1}$).  The vapor pressure of air with respect to water ($p_{v,w}$) and with respect to ice
-($p_{v,ice}$) was obtained using the formulation given in \cite{huangSimpleAccurateFormula2018} :
-
-\begin{equation}
-	\begin{split}
-		p_{v,w}&=e^{\frac{(34.494 - \frac{4924.99}{T_{a} + 237.1})}{(T_a + 105)^{1.57} \cdot 100}} \cdot \frac{RH}{100} \\
-		p_{v,ice}&=e^{\frac{(43.494 - \frac{6545.89}{T_{ice} + 278})}{(T_{ice} + 868)^{2} \cdot 100}} \\
-	\end{split} \label{eqn:vp}
-\end{equation}
-
-The software ignores the $\mu_{cone}$ parameter thereby underestimating the turbulent fluxes. Since turbulent
-fluxes impact both the freezing and the melting rates, this assumption may not underestimate freezing rates.
+The software ignores the $\mu_{cone}$ parameter and computes the pressure from altitude thereby underestimating
+the turbulent fluxes. Since turbulent fluxes impact both the freezing and the melting rates, this assumption may
+not underestimate freezing rates.
 
 \subsection{Net shortwave radiation \texorpdfstring{$q_{SW}$}{Lg}}
 \label{sec:SW}
@@ -495,6 +449,7 @@ model. This assumption overestimates the solar radiation absorption thereby unde
 
 \noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
 
+\bibliographystyle{copernicus}
 \bibliography{zot_refs.bib}
 
 \end{document}
@@ -512,47 +467,7 @@ model. This assumption overestimates the solar radiation absorption thereby unde
 \appendixtables   %% needs to be added in front of appendix tables
 
 %% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
-
-
-
-\authorcontribution{TEXT} %% this section is mandatory
-
-\competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
-
-\disclaimer{TEXT} %% optional section
-
-\begin{acknowledgements}
-TEXT
-\end{acknowledgements}
-
-
-
-
-%% REFERENCES
-
-%% The reference list is compiled as follows:
-
-\begin{thebibliography}{}
-
-\bibitem[AUTHOR(YEAR)]{LABEL1}
-REFERENCE 1
-
-\bibitem[AUTHOR(YEAR)]{LABEL2}
-REFERENCE 2
-
-\end{thebibliography}
-
-% \bibliographystyle{frontiersinSCNS_ENG_HUMS} \bibliography{zot_refs}
-
-%% Since the Copernicus LaTeX package includes the BibTeX style file copernicus.bst,
-%% authors experienced with BibTeX only have to include the following two lines:
-%%
-%%
-%% URLs and DOIs can be entered in your BibTeX file as:
-%%
-%% URL = {http://www.xyz.org/~jones/idx_g.htm}
-%% DOI = {10.5194/xyz}
-
+age between each table and/or figure. Further guidelines on figures and tables can be found below.
 
 %% LITERATURE CITATIONS
 %%
@@ -565,7 +480,6 @@ REFERENCE 2
 %% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
 %% \citeauthor{jones90}|          & Jones et al.
 %% \citeyear{jones90}|            & 1990
-
 
 
 %% FIGURES
@@ -696,19 +610,6 @@ REFERENCE 2
 %...
 %\end{algorithmic}
 %\end{algorithm}
-%
-%
-%%% CHEMICAL FORMULAS AND REACTIONS
-%
-%%% For formulas embedded in the text, please use \chem{}
-%
-%%% The reaction environment creates labels including the letter R, i.e. (R1), (R2), etc.
-%
-%\begin{reaction}
-%%% \rightarrow should be used for normal (one-way) chemical reactions
-%%% \rightleftharpoons should be used for equilibria
-%%% \leftrightarrow should be used for resonance structures
-%\end{reaction}
 %
 %
 %%% PHYSICAL UNITS
