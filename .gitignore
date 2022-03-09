@@ -11,4 +11,5 @@
 *.synctex
 .python*
 .tasks
+archive/
 
