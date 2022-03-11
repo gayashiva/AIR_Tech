@@ -88,8 +88,7 @@ scheduling alternatives are evaluated from the relative water use efficiency and
 during the accumulation period. The specific objectives of this paper include the presentation of the automation
 system and examples of its application to the computation of fountain scheduling strategies.
 
-\section{Measurements}
-\subsection{Experimental site}
+\section{Study site and data}
 
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) in the Bern region lies at 1047 $m$ a.s.l.. In the winter
 (Oct-Apr), mean daily minimum and maximum air temperatures vary between -13 and 15 $\degree C$. Clear skies are
@@ -106,8 +105,6 @@ traditional and an automated construction strategy.
 % \label{fig:2AIR} \end{figure}
 
 
-\subsection{Experimental design}
-
 In order to compare both the construction strategies, the automated and the traditional AIRs were constructed
 adjacent to each other as shown in in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
 and similar weather patterns. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
@@ -118,19 +115,56 @@ the construction period.
 
 In the automated strategy, only the fountain pipe was erected before initiation of water spray. An automation
 system controlled the fountain discharge rate using real time weather input and several parameters exposed via
-the user interface. A new fountain design was used for the automated strategy since the traditional fountain
-design was unable to function at low discharge rates. 
+the user interface. 
 
-\subsection{Automation system description}
+\subsection{Meteorological data}
+Air temperature, relative humidity, wind speed, pressure, longwave, shortwave direct and diffuse radiation are
+required to calculate the surface energy balance of an AIR (see Fig. ). The construction period starts when the
+fountain was first switched on and ends when the fountain was last switched off. These two dates are denoted as
+start and fountain off dates henceforth.
 
-The automation system implements fountain scheduling strategies for the twin objectives of ice volume and water
-use efficiency. The ice volume objective is attractive in locations with sufficient water volumes to freeze
-during the construction period. The water use efficiency objective is attractive in locations with favourable
-weather conditions constrained by available water supply. For the ice volume objective, the model assumptions
-overestimate the freezing rate whereas for the water use efficiency objective the model assumptions
-underestimate the freezing rate. 
+The primary weather data source was a automatic weather station (AWS) located around 20 meters away as shown in
+Fig. . In addition, we used ERA5 reanalaysis dataset for filling data gaps and adding the shortwave and longwave
+radiation data that were not measured directly. The ERA5 reanalysis dataset is known to have a high correlation
+with sites in Switzerland (). The Guttannen temperature dataset had a correlation greater the ? with the ERA5
+temperature. The ERA5 grid point chosen () for the Guttannen site was around 3.6 km away from the actual site.
+ERA5 variables were fitted to the AWS data via linear regressions. 
 
-\subsubsection{Hardware}
+\subsection{Fountain observations}
+We define the fountain used through four attributes; namely, its spray radius, discharge rate, height and water
+temperature. The spray radius $r_F$ was estimated from the mean AIR circumference
+measured in the drone surveys during the fountain runtime. 
+
+Measurements of the discharge rate for the automated fountain were used to determine the mean discharge of the
+traditional fountain. A new fountain design was used for the automated strategy since the traditional fountain
+design was unable to function in the whole range of discharge rates suggested by the automation system.
+
+
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=12 cm]{Figures/2AIRs.jpg}
+% 	\end{center}
+%   \caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+% \label{fig:2AIR} \end{figure}
+
+\subsection{Drone surveys}
+Several photogrammetric surveys were conducted on the traditional and the automated AIRs. The details of these
+surveys and the methodology used to produce the corresponding outputs are explained in the Appendix. The digital
+elevation maps (DEMs) generated from the obtained imagery were analysed to document the radius, surface area and
+volume of the ice structures. The number of surveys conducted for the traditional and the automated AIRs were
+? and ? respectively (see Table). The last drone flight was used to set the dome volume for the traditional AIR.
+The dome volume for the automated AIR was zero.  The remaining surveys were used for model validation.
+
+\section{Methods}
+
+\subsection{Automation system}
+The automation system implements fountain scheduling strategies for the twin objectives of ice volume (IV) and water
+use efficiency (WUE). The ice volume objective is attractive in locations with sufficient water volumes to
+freeze during the construction period. The water use efficiency objective is attractive in locations with
+favourable weather conditions constrained by available water supply. For the IV objective, the model assumptions
+overestimate the freezing rate whereas for the WUE objective the model assumptions underestimate the freezing
+rate. 
+
 The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
 fountain, pipeline and a logger. The logger feeds the weather station data to the automation software and
 informs the recommended discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the
@@ -146,8 +180,6 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 % 	\label{fig:layout}
 % \end{figure}
 
-\subsubsection{Software}
-
 The software performs the computations in the least (a) data demanding and (b) computationally intensive way
 possible. Objective (a) is achieved by introducing assumptions to the energy balance model as described in the
 Appendix . Objective (b) is achieved by formulating a surrogate empirical model that best approximates the
@@ -157,7 +189,7 @@ simplified physical model.
 \begin{table}[]
 \centering
 \caption{Assumptions introduced to simplify the model.}
-\label{tab:my-table}
+\label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
 \textbf{Objective} & \textbf{Symbol} & \textbf{Ice Volume} & \textbf{WUE} & \\ \midrule
@@ -230,9 +262,21 @@ starts automatically. The system runs if none of the following termination crite
 % 	\label{fig:UI}
 % \end{figure}
 
+\subsection{Model calibration}
+\subsection{Model comparison and validation}
+The success of the empirical model in approximating the physical model is judged using the efficiency criteria,
+$R^2$, (Nash and Sutcliffe,1970) of the empirically and physically estimated freezing rates, $Q_{phy/emp}$: 
+
+\begin{equation}
+  R^2 = 1 - \frac{\Sigma(Q_{phy} - Q_{emp})^2}{\Sigma(Q_{phy} - Q_{phy})^2}
+\end{equation}
+
+An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates that the average value of all observations is a better
+predictor than the model itself. 
+
+For the physical model validation, simulated and observed ice volume changes are compared.
+
 \section{Results}
-\subsection{Model comparison}
-Nash equation
 
 \subsubsection{Shortwave radiation comparison}
 
