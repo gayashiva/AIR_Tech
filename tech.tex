@@ -25,9 +25,10 @@ ice reservoirs (Icestupas)}
 \def\Authors{Suryanarayanan Balasubramanian\,$^{1}$, Roger Waser\,$^{2}$, Martin Hoelzle\,$^{1}$}
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
 Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
-\Author[1]{Suryanarayanan Balasubramanian}{Balasubramanian}
-\Author[1]{Martin Hoelzle}{Hoelzle}
-\Author[2]{Roger Waser}{Waser}
+\Author[1]{Suryanarayanan}{Balasubramanian}
+\Author[1]{Martin}{Hoelzle}
+\Author[2]{Roger}{Waser}
+\Author[2]{Martin}{Von Burg}
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
 \affil[2]{University of Applied Sciences and Arts, Luzern, Switzerland}
 
@@ -121,7 +122,6 @@ required to calculate the surface energy balance of an AIR (see Fig. ). The cons
 fountain was first switched on and ends when the fountain was last switched off. These two dates are denoted as
 start and fountain off dates henceforth.
 
-
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/input.png}
 \caption{TEXT}
@@ -154,12 +154,15 @@ The dome volume for the automated AIR was zero.  The remaining surveys were used
 \section{Methods}
 
 \subsection{Automation system}
-The automation system implements fountain scheduling strategies for the twin objectives of ice volume (ICV) and water
-use efficiency (WUE). The ice volume objective is attractive in locations with sufficient water volumes to
-freeze during the construction period. The water use efficiency objective is attractive in locations with
-favourable weather conditions constrained by available water supply. For the ICV objective, the model assumptions
-overestimate the freezing rate whereas for the WUE objective the model assumptions underestimate the freezing
-rate. 
+
+
+\subsubsection{Automation hardware}
+The automation system implements fountain scheduling strategies for the twin objectives of ice volume (ICV) and
+water use efficiency (WUE). The ice volume objective is suitable in locations with sufficient water volumes to
+freeze during the construction period. The water use efficiency objective is suitable in locations with
+favourable weather conditions constrained by available water supply. For the ICV objective, the model
+assumptions overestimate the freezing rate whereas for the WUE objective the model assumptions underestimate the
+freezing rate. 
 
 The automation hardware consists of a weather station, flowmeter, control valve, drain valves, air valves,
 fountain, pipeline and a logger. The logger feeds the weather station data to the automation software and
@@ -168,13 +171,8 @@ recommendation. In case the recommendation is below the critical discharge rate 
 air valves empty the water in the pipeline to prevent any freezing events. Here the critical discharge rate is
 defined as the discharge rate below which the fountain pipeline can freeze.
 
-% \begin{figure}[ht]
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/automation_system.png}
-% 	\end{center}
-%   \caption{Guttannen automation system}
-% 	\label{fig:layout}
-% \end{figure}
+\subsubsection{Automation software}
+
 
 The software performs the computations in the least (a) data demanding and (b) computationally intensive way
 possible. Objective (a) is achieved by introducing assumptions to the energy balance model as described in the
@@ -190,8 +188,8 @@ simplified physical model.
 \toprule
 \textbf{Objective} & \textbf{Symbol} & \textbf{Ice Volume} & \textbf{WUE} & \\ \midrule
 \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ & $ \sqrt{2} \pi r_{F}^2$ & $\pi r_{F}^2$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $\alpha=\alpha_{ice}$; & $cld = 1$ ;
-$\alpha=\alpha_{snow}$; & \multicolumn{1}{l|}{} \\ 
+\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $\alpha=\alpha_{snow}$; & $cld = 1$ ;
+$\alpha=\alpha_{ice}$; & \multicolumn{1}{l|}{} \\ 
 \multicolumn{1}{|l}{ } &  & $f_{cone} = \frac{cos \theta_{sun} + \pi sin \theta_{sun}}{2\sqrt{2}\pi}$  & $f_{cone} = sin \theta_{sun} / 2$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ & $cld = 0$ ; $T_{ice} = 0$ & $cld = 1$ ; $T_{ice} = 0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Sensible and Latent Heat}       & $q_{S}$ &$\mu_{cone} = 1.5$  & $\mu_{cone} = 1$ & \multicolumn{1}{l|}{} \\ \midrule
@@ -202,7 +200,7 @@ $\alpha=\alpha_{snow}$; & \multicolumn{1}{l|}{} \\
 \end{table}
 
 For objective (b), we approximate the shortwave radiation flux into a gaussian equation with three coefficients
-and the rest of the heat flux components into a linear equation with 4 coefficients. The coefficients of the
+and the rest of the heat flux components into a linear equation with 5 coefficients. The coefficients of the
 shortwave gaussian function $g($ hour of day $)$ are calibrated based on estimation of solar radiation during
 the last day of the construction period. We approximate the rest of the energy fluxes by assuming a linear
 relationship with the weather parameters namely, temperature, humidity, wind speed and altitude. Using the above
@@ -227,6 +225,17 @@ simplifications, we can compute the expected thickness change rates using the fo
 where $r_F$ is the fountain spray radius, $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate,
 $\frac{\Delta Q_{F}}{\Delta t}$ is the discharge rate and $hod$ is the hour of day.
 
+Once switched on, the automation system regulates the fountain discharge rate based on the empirical equation.
+However, the automation system has some additional termination criterias, namely: 
+
+\begin{itemize}
+\item Wind speed greater than limit value
+\item Ambient temperature higher or lower than limit values
+\item Pipeline freezing event detected: $IW_{KH} > 20 \%$ and $Q_F = 0$ for atleast 20 seconds (Icing)
+\item Leakage detected: $Q_F > 65 l/min$
+\item Discharge recommendation below critical discharge: $Q_F < Q_crit$
+\end{itemize}
+
 % \begin{table}[ht]
 % \centering
 % \caption{}
@@ -240,23 +249,17 @@ $\frac{\Delta Q_{F}}{\Delta t}$ is the discharge rate and $hod$ is the hour of d
 % \end{tabular}
 % \end{table}
 
-The software is configured in such a way that it works independently of a PC. Once switched on, the software
-starts automatically. The system runs if none of the following termination criteria apply:
 
-\begin{itemize}
-\item Wind speed greater than limit value
-\item Ambient temperature higher or lower than limit values
-\item Pipeline freezing event detected: $IW_{KH} > 20 \%$ and $Q_w = 0$ for atleast 20 seconds (Icing)
-\item Leakage detected: $Q_w > 65 l/min$
-\end{itemize}
+% \subsubsection{Automation user interface}
 
-% \begin{figure}[ht]
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/user_interface.png}
-% 	\end{center}
-%   \caption{User Interface}
-% 	\label{fig:UI}
+% The main window of the automation software consists of 4 columns. 
+
+% \begin{figure}[t]
+% \includegraphics[width=12cm]{Figures/user_interface.png}
+% \caption{Picture credits: Martin Von Burg }
+% \label{fig:UI} 
 % \end{figure}
+
 
 \subsection{Model calibration}
 \subsection{Model comparison and validation}
@@ -274,41 +277,32 @@ For the physical model validation, simulated and observed ice volume changes are
 
 \section{Results}
 
-\subsubsection{Shortwave radiation comparison}
+\subsection{Physical model validation}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/autovsman.png}
+\caption{TEXT}
+\end{figure*}
+
+\subsubsection{Bulk temperature Validation}
+
+\subsubsection{Ice Volume Validation}
+
+\subsection{Empirical vs Physical model}
 
 \subsubsection{Freezing rate comparison}
 
-\subsection{Ice Volume Validation}
+\subsubsection{Shortwave radiation comparison}
 
-% \begin{figure}[ht]
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/autovsman_dis.png}
-% 	\end{center}
-% 	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
-% 	\label{fig:old_icestupa}
-% \end{figure}
-
-
-\subsection{Water Use efficiency}
-
-% \begin{figure}[ht]
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{Figures/wue.png}
-% 	\end{center}
-% 	\caption{Comparison of discharge and ice volume between AIRs produced by dynamic and static fountains. }
-% 	\label{fig:old_icestupa}
-% \end{figure}
+\subsection{Automated vs Traditional AIR water consumption}
 
 \section{Discussion}
+
 \subsection{Fountain vs weather influence}
 
-\subsection{Ideal fountains and locations for AIR construction}
+\subsection{ICV vs WUE objective}
 
 \subsection{Fountain height and spray radius}
-
-% \subsection{Eddy covariance comparison}
-
-\subsection{Surface temperature}
 
 \subsection{Implementation costs}
 
@@ -326,36 +320,25 @@ possible. The static mode is better suited for other locations or for users who 
 hardware requirements to implement the dynamic fountain scheduling mode.
 
 \conclusions
-
-In this paper, two different construction strategies that yield better water use efficiency are presented.
-An automation system was developed to implement the dynamic fountain sischarge mode and tested using data
-collected at Guttannen, Switzerland during the 2021-22 winter season. 
+In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
+using data collected in Guttannen, Switzerland.
 
 The main purpose of this study was to test the idea that scheduling AIR fountain systems could lead to a
-significant improvement in water use efficiency.
+significant improvement in water use efficiency and ice volumes. An empirical model compatible with the limited
+data availability of any new location and limited computational power of the automation system was used to
+produce recommended discharge rate. Nevertheless, this model was able to capture 90 \% of the freezing rate
+variations produced by the physically based model.
 
-This study has demonstrated the importance of fountain scheduling. Furthermore, the decrease in performance of
-the empirical model has been quantified through comparison of efficiency criteria. The study has demonstrated
-that, it is possible to compute more than 90 \% of the freeze rate variations by means of a simplified empirical
-model. This model satisfies the need for a less data demanding and computationally intensive workflow for
-scheduling fountains worldwide using the computation of just 6 coefficents. Such a model will be compatible with
-the limited data amount that is typical of any new AIR construction location.
+The automation system allows the easy handling of fountain scheduling implementation. The possibility for
+changing the coefficients of the empirical model directly in the user interface allows tailoring the fountain
+discharge rate according to the location's water supply and weather conditions. Furthermore, this construction
+strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever fountain is not in
+use.
 
 This study has also compared the sensitivity of freezing rates between the weather components and the fountain's
 spray radius. It is clear that if improvements are to be achieved, future research must be devoted to modelling
-the impact of fountain design on the spray radius.
-
-The model discussed in this paper will be applied worldwide to identify favourable AIR locations in a future
-paper.
-
-
-The automation system allows the easy handling of fountain scheduling implementation. Its capabilities for
-achieving a higher water saving was tested for Guttannen. The possibility for easily changing the automation
-coefficients allows tailoring the fountain discharge rate according to identified requirements. Other on-going
-improvements concern the use of the automation software as a decision support tool applicable at both the local
-and the global scale.
-
-
+the impact of fountain design on the spray radius. The model discussed in this paper will be applied worldwide
+to identify favourable AIR locations in a future paper.
 
 \appendix
 
