@@ -1,21 +1,8 @@
 \documentclass[tc, manuscript]{copernicus}
 
-%% \usepackage commands included in the copernicus.cls:
-%\usepackage[german, english]{babel}
-%\usepackage{tabularx}
-%\usepackage{cancel}
-%\usepackage{multirow}
-%\usepackage{supertabular}
-%\usepackage{algorithmic}
-%\usepackage{algorithm}
-%\usepackage{amsthm}
-%\usepackage{float}
-%\usepackage{subfig}
-%\usepackage{rotating}
-
 \usepackage{booktabs}
 \usepackage{multirow}
-% \usepackage{datetime}
+\usepackage{siunitx} %for SI units
 
 \begin{document}
 
@@ -61,33 +48,48 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
 \introduction
 
-Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
-especially in semi-arid and arid mountain regions facing limited water availability and at the same time
-increased water needs. However, their water use efficiency is very poor. 
+In some arid mountain regions the lack of glacier meltwater is the main constraint on agricultural production.
+As the area irrigated is often governed by the limited availability of water or labour to carry water, there is
+much interest at the village level in adopting water storage techniques. One such technique that has gained many
+users is called artificial ice reservoirs (AIRs). These AIRs are traditionally constructed by diverting glacial
+streams into fountain spray systems via embankments and pipelines. However, traditional construction strategies
+are prone to pipeline freezing events that increase the manual effort required to maintain the AIRs. Moreover,
+this strategy uses unscheduled fountains that spray all the available water all the time thereby resulting in
+low water use efficiency. Improvement of these construction strategies, therefore, will allow the farmers to
+cultivate larger areas or to devote more time to other activities. 
 
 Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
-the same time, increase water use efficiency. The goal of fountain scheduling is to make the most efficient use of water by
-spraying the right amount of water at the right time, making sure water is available when the AIR surface can
-freeze it. Scheduling maximizes AIR water use efficiency by minimizing fountain waste water.  
+the same time, increase water use efficiency. The goal of fountain scheduling is to make the most efficient use
+of water by spraying the right amount of water at the right time, making sure water is available when the AIR
+surface can freeze it. Scheduled fountains may produce higher water use efficiency since they produce lower fountain wastewater.
+Additionally, lower fountain wastewater productions also lowers the melting energy resulting in higher ice
+volumes.
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
-questions. Surface freezing rates can be calculated by means of two different approaches: physical
-and empirically based models. The former may be defined as a model in which each of the relevant
-energy fluxes at the AIR surface is computed from physically based calculations using direct measurements of the
-necessary meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes
-scaled with the AIR surface area during the accumulation period. The latter may be defined as a model in which
-the freezing rate is calculated based on an assumed relationship with weather and location parameters. In order
-to produce recommended discharge rates, empirical models are preferred due to their parsimony in data
-requirement and computational time in comparison with the more sophisticated energy-balance models. But only
-physical energy balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance
-between model complexity and data availablity.
+questions. Surface freezing rates can be calculated by means of two different approaches: physical and
+empirically based models. The former may be defined as a model in which each of the relevant energy fluxes at
+the AIR surface is computed from physically based calculations using direct measurements of the necessary
+meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes scaled with
+the AIR surface area during the accumulation period. The latter may be defined as a model in which the freezing
+rate is calculated based on an assumed relationship with weather and location parameters. In order to produce
+recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
+computational time in comparison with the more sophisticated energy-balance models. But only physical energy
+balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance between model
+complexity and data availablity.
 
-The main interest in using model results is to simulate alternative fountain schedules relative to various
-constrains in monetary investments, construction duration as well as in water availability. The fountain
-scheduling alternatives are evaluated from the relative water use efficiency and maximum ice volume produced
-during the accumulation period. The specific objectives of this paper include the presentation of the automation
-system and examples of its application to the computation of fountain scheduling strategies.
+However, it is unrealistic to schedule fountains manually due to two reasons. One, constant adjustments of
+discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
+impractical. Two, frequent pipeline water drainage required to prevent freezing events during scheduled fountain
+disuse intervals is unfeasible. Therefore, fountains can only be scheduled via an automation system that
+regulates fountain discharge rate via the empirical model and drains the pipeline whenever the fountain is
+unused.
+
+The main interest in using model results is to simulate fountain schedules relative to various constrains in
+monetary investments, construction duration as well as in water availability. The fountain scheduling strategies
+are evaluated from the relative water use efficiency and maximum ice volume produced during the construction
+period. The specific objectives of this paper include the presentation of the automation system and examples of
+its application to the computation of fountain scheduling strategies.
 
 \section{Study site and data}
 
@@ -100,7 +102,7 @@ traditional and an automated construction strategy.
 
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{Figures/2AIRs.jpg}
-\caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+\caption{Automated and traditional AIRs  at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
 \label{fig:2AIR} 
 \end{figure}
 
@@ -124,7 +126,8 @@ start and fountain off dates henceforth.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/input.png}
-\caption{TEXT}
+\caption{AWS measurements at the Guttannen construction site}
+\label{fig:aws} 
 \end{figure*}
 
 The primary weather data source was a automatic weather station (AWS) located around 20 meters away as shown in
@@ -135,6 +138,7 @@ temperature. The ERA5 grid point chosen () for the Guttannen site was around 3.6
 ERA5 variables were fitted to the AWS data via linear regressions. 
 
 \subsection{Fountain observations}
+
 We define the fountain used through four attributes; namely, its spray radius, discharge rate, height and water
 temperature. The spray radius $r_F$ was estimated from the mean AIR circumference
 measured in the drone surveys during the fountain runtime. 
@@ -144,6 +148,7 @@ traditional fountain. A new fountain design was used for the automated strategy 
 design was unable to function in the whole range of discharge rates suggested by the automation system.
 
 \subsection{Drone surveys}
+
 Several photogrammetric surveys were conducted on the traditional and the automated AIRs. The details of these
 surveys and the methodology used to produce the corresponding outputs are explained in the Appendix. The digital
 elevation maps (DEMs) generated from the obtained imagery were analysed to document the radius, surface area and
@@ -151,12 +156,16 @@ volume of the ice structures. The number of surveys conducted for the traditiona
 ? and ? respectively (see Table). The last drone flight was used to set the dome volume for the traditional AIR.
 The dome volume for the automated AIR was zero.  The remaining surveys were used for model validation.
 
+\subsection{Bulk temperature measurements}
+
+Eight thermistors recorded temperature variations across the interior of the Automated Guttannen AIR. 
+
 \section{Methods}
 
 \subsection{Automation system}
 
-
 \subsubsection{Automation hardware}
+
 The automation system implements fountain scheduling strategies for the twin objectives of ice volume (ICV) and
 water use efficiency (WUE). The ice volume objective is suitable in locations with sufficient water volumes to
 freeze during the construction period. The water use efficiency objective is suitable in locations with
@@ -173,7 +182,6 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 
 \subsubsection{Automation software}
 
-
 The software performs the computations in the least (a) data demanding and (b) computationally intensive way
 possible. Objective (a) is achieved by introducing assumptions to the energy balance model as described in the
 Appendix . Objective (b) is achieved by formulating a surrogate empirical model that best approximates the
@@ -186,7 +194,7 @@ simplified physical model.
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-\textbf{Objective} & \textbf{Symbol} & \textbf{Ice Volume} & \textbf{WUE} & \\ \midrule
+\textbf{Estimation of} & \textbf{Symbol} & \textbf{ICV Assumptions} & \textbf{WUE Assumptions} & \\ \midrule
 \multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ & $ \sqrt{2} \pi r_{F}^2$ & $\pi r_{F}^2$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $\alpha=\alpha_{snow}$; & $cld = 1$ ;
 $\alpha=\alpha_{ice}$; & \multicolumn{1}{l|}{} \\ 
@@ -213,67 +221,49 @@ simplifications, we can compute the expected thickness change rates using the fo
   exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
 		\label{eqn:T}
    \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d \cdot alt + e = f(T_a, RH, v_a, alt) \\
+  d = f(T_a, RH, v_a) \\
+		\label{eqn:temp}
+  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a)\\
 		\label{eqn:auto}
-  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a, alt)\\
-		\label{eqn:auto}
-  \frac{\Delta Q_{F}}{\Delta t} & \approx \frac{\Delta j_{cone}}{\Delta t} \cdot \pi r_{F}^2 \cdot
+  Q_{F} & \approx \frac{\Delta j_{cone}}{\Delta t} \cdot \pi r_{F}^2 \cdot
   \frac{1000}{60}
 	\end{align}
 \end{subequations}
 
 where $r_F$ is the fountain spray radius, $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate,
-$\frac{\Delta Q_{F}}{\Delta t}$ is the discharge rate and $hod$ is the hour of day.
+$Q_{F}$ is the discharge rate and $hod$ is the hour of day.
 
-Once switched on, the automation system regulates the fountain discharge rate based on the empirical equation.
-However, the automation system has some additional termination criterias, namely: 
+Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
+each of its 9 coefficients. Once switched on, the automation system regulates the fountain discharge rate based
+on the recommended discharge rate. However, certain termination criterias override the discharge rate
+recommendation, namely: 
 
 \begin{itemize}
 \item Wind speed greater than limit value
 \item Ambient temperature higher or lower than limit values
-\item Pipeline freezing event detected: $IW_{KH} > 20 \%$ and $Q_F = 0$ for atleast 20 seconds (Icing)
-\item Leakage detected: $Q_F > 65 l/min$
-\item Discharge recommendation below critical discharge: $Q_F < Q_crit$
+\item Pipeline freezing event detected: $Q_F = 0$ for atleast 20 seconds
+\item Leakage detected: $Q_F > Q_{leak} l/min$
+\item Discharge recommendation below critical discharge: $Q_F < Q_{crit}$
 \end{itemize}
 
-% \begin{table}[ht]
-% \centering
-% \caption{}
-% \label{tab:my-table}
-% \begin{tabular}{@{}lllllllll@{}}
-% \toprule
-% Coefficients  & $T_a\, [\degree C]$ & $RH\,[\%]$ & $v_a\, [m\, s^{-1}]$ & $alt\, [km]$  & $constant$ \\ \midrule
-% Coefficients  & $a$ & $b$ & $c$ & $d$  & $e$ & $amp$ & $\mu$ & $\sigma$ \\ \midrule
-% Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\num{-3.5 e-3}$  & $\num{5.2
-% e-3}$ & $\num{5.2 e-3}$ & $\num{5.2 e-3}$ & $\num{5.2 e-3}$  \\ \bottomrule
-% \end{tabular}
-% \end{table}
+\subsection{Validation}
+ Hourly bulk temperature measurements were used to validate the physical model. Root mean squared error (RMSE)
+ served as the evaluation metric. Bulk temperature measurements were taken from the mean of two thermistors
+ located at the interior of the AIR throughout the construction duration.
 
-
-% \subsubsection{Automation user interface}
-
-% The main window of the automation software consists of 4 columns. 
-
-% \begin{figure}[t]
-% \includegraphics[width=12cm]{Figures/user_interface.png}
-% \caption{Picture credits: Martin Von Burg }
-% \label{fig:UI} 
-% \end{figure}
-
-
-\subsection{Model calibration}
-\subsection{Model comparison and validation}
-The success of the empirical model in approximating the physical model is judged using the efficiency criteria,
-$R^2$, (Nash and Sutcliffe,1970) of the empirically and physically estimated freezing rates, $Q_{phy/emp}$: 
+ To assess the performance of the empirical model, the efficiency criterion $R^2$ \citep{nashRiverFlowForecasting1970} was employed, defined as:
 
 \begin{equation}
-  R^2 = 1 - \frac{\Sigma(Q_{phy} - Q_{emp})^2}{\Sigma(Q_{phy} - Q_{phy})^2}
+  R^2 = 1 - \frac{\Sigma(Q^{phy}_{F} - Q^{emp}_{F})^2}{\Sigma(Q^{phy}_{F} - \overline{{Q^{phy}_{F}}})^2}
 \end{equation}
+
+where $Q_{F}$ is the hourly freezing rate and the superscripts phy and emp refer to the physically and
+empirically estimated freezing rates, respectively. The bar refers to the mean. The criterion has been used for
+the evaluation of model performance in a wide range of hydrrological studies
+\citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}.
 
 An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates that the average value of all observations is a better
 predictor than the model itself. 
-
-For the physical model validation, simulated and observed ice volume changes are compared.
 
 \section{Results}
 
@@ -284,40 +274,27 @@ For the physical model validation, simulated and observed ice volume changes are
 \caption{TEXT}
 \end{figure*}
 
-\subsubsection{Bulk temperature Validation}
+\subsection{Automation coefficients}
 
-\subsubsection{Ice Volume Validation}
+\begin{table}[]
+\centering
+\caption{Coefficients of the automation equation}
+\label{tab:assumptions}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{Coefficient for} & \textbf{Symbol} & \textbf{Real Strategy} & \textbf{ICV Strategy} & \textbf{WUE Strategy} & \\ \midrule
+\multicolumn{1}{|l}{Temperature}       &$a$  & & $\num{-1.4 e-3}$ & $\num{-1.4 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Relative humidity}      &$b$  & & $\num{-6.6 e-5}$ & $\num{-1.0 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Wind speed}      &$c$  & & $\num{-2.4 e-3}$ & $\num{-2.3 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Rest}      &$d$  & & $\num{-1.8 e-3}$ & $\num{2.8 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar amplitude}      &$A$  & & $\num{-9.0 e-2}$ & $\num{-9.4 e-2}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar mean}    &$\mu$  & & $\num{1.3 e+1}$  & $\num{1.3 e+1}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar variance} &$\sigma$  & & $\num{2.4 e+0}$  & $\num{2.0 e+0}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Spray radius} &$r_F$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\multicolumn{1}{|l}{Efficiency criteria} &$R^2$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Empirical vs Physical model}
-
-\subsubsection{Freezing rate comparison}
-
-\subsubsection{Shortwave radiation comparison}
-
-\subsection{Automated vs Traditional AIR water consumption}
-
-\section{Discussion}
-
-\subsection{Fountain vs weather influence}
-
-\subsection{ICV vs WUE objective}
-
-\subsection{Fountain height and spray radius}
-
-\subsection{Implementation costs}
-
-Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
-maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
-costs that can be classified as static or dynamic. In the static mode, the total amount of water
-for AIR construction is allocated without specifying its temporal distribution along the accumulation period. By
-contrast, in the dynamic mode water is allocated at specific time steps along the accumulation period in
-order to achieve even higher WUE.
-
-Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic mode is
-better suited for locations where the diurnal and seasonal variations in the weather conditions are significant.
-In such cases, the real-time adjustments of the discharge rate make efficient fountain scheduling
-possible. The static mode is better suited for other locations or for users who cannot afford the additional
-hardware requirements to implement the dynamic fountain scheduling mode.
 
 \conclusions
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
@@ -337,8 +314,7 @@ use.
 
 This study has also compared the sensitivity of freezing rates between the weather components and the fountain's
 spray radius. It is clear that if improvements are to be achieved, future research must be devoted to modelling
-the impact of fountain design on the spray radius. The model discussed in this paper will be applied worldwide
-to identify favourable AIR locations in a future paper.
+the impact of fountain design on the spray radius.
 
 \appendix
 
@@ -443,9 +419,7 @@ Similarly, for the WUE objective, since we assume the slope of the cone to be ne
 		f_{cone} =\frac{ sin \theta_{sun} }{2 }
 \end{equation}
 
-
 \subsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg} assumptions} \label{sec:LW}
-
 
 We assume $T_{ice} = 0 \degree C$ in order to determine outgoing longwave radiation. Since it is challenging to
 contrain the minimum ice temperature, we maintain this assumption for both our objectives. However, in order to
@@ -468,170 +442,5 @@ objectives for certain sites.
 
 \bibliographystyle{copernicus}
 \bibliography{zot_refs.bib}
-
-\end{document}
-
-%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
-
-%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
-%% They will be correctly named automatically.
-
-%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
-%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
-
-\appendixfigures  %% needs to be added in front of appendix figures
-
-\appendixtables   %% needs to be added in front of appendix tables
-
-%% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
-age between each table and/or figure. Further guidelines on figures and tables can be found below.
-
-%% LITERATURE CITATIONS
-%%
-%% command                        & example result
-%% \citet{jones90}|               & Jones et al. (1990)
-%% \citep{jones90}|               & (Jones et al., 1990)
-%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
-%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
-%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
-%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
-%% \citeauthor{jones90}|          & Jones et al.
-%% \citeyear{jones90}|            & 1990
-
-
-%% FIGURES
-
-%% When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage
-%% between bibliography and first table and/or figure as well as between each table and/or figure.
-
-% The figure files should be labelled correctly with Arabic numerals (e.g. fig01.jpg, fig02.png).
-
-
-%% ONE-COLUMN FIGURES
-
-%%f
-%\begin{figure}[t]
-%\includegraphics[width=8.3cm]{FILE NAME}
-%\caption{TEXT}
-%\end{figure}
-%
-%%% TWO-COLUMN FIGURES
-%
-%%f
-%\begin{figure*}[t]
-%\includegraphics[width=12cm]{FILE NAME}
-%\caption{TEXT}
-%\end{figure*}
-%
-%
-%%% TABLES
-%%%
-%%% The different columns must be seperated with a & command and should
-%%% end with \\ to identify the column brake.
-%
-%%% ONE-COLUMN TABLE
-%
-%%t
-%\begin{table}[t]
-%\caption{TEXT}
-%\begin{tabular}{column = lcr}
-%\tophline
-%
-%\middlehline
-%
-%\bottomhline
-%\end{tabular}
-%\belowtable{} % Table Footnotes
-%\end{table}
-%
-%%% TWO-COLUMN TABLE
-%
-%%t
-%\begin{table*}[t]
-%\caption{TEXT}
-%\begin{tabular}{column = lcr}
-%\tophline
-%
-%\middlehline
-%
-%\bottomhline
-%\end{tabular}
-%\belowtable{} % Table Footnotes
-%\end{table*}
-%
-%%% LANDSCAPE TABLE
-%
-%%t
-%\begin{sidewaystable*}[t]
-%\caption{TEXT}
-%\begin{tabular}{column = lcr}
-%\tophline
-%
-%\middlehline
-%
-%\bottomhline
-%\end{tabular}
-%\belowtable{} % Table Footnotes
-%\end{sidewaystable*}
-%
-%
-%%% MATHEMATICAL EXPRESSIONS
-%
-%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
-%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
-%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
-%%%
-%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
-%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
-%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
-%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
-%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
-%%% Vectors are identified in bold italic font using \vec{x}
-%%% Matrices are identified in bold roman font
-%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
-%%% The character * should not be applied as mutliplication sign
-%
-%
-%%% EQUATIONS
-%
-%%% Single-row equation
-%
-%\begin{equation}
-%
-%\end{equation}
-%
-%%% Multiline equation
-%
-%\begin{align}
-%& 3 + 5 = 8\\
-%& 3 + 5 = 8\\
-%& 3 + 5 = 8
-%\end{align}
-%
-%
-%%% MATRICES
-%
-%\begin{matrix}
-%x & y & z\\
-%x & y & z\\
-%x & y & z\\
-%\end{matrix}
-%
-%
-%%% ALGORITHM
-%
-%\begin{algorithm}
-%\caption{...}
-%\label{a1}
-%\begin{algorithmic}
-%...
-%\end{algorithmic}
-%\end{algorithm}
-%
-%
-%%% PHYSICAL UNITS
-%%%
-%%% Please use \unit{} and apply the exponential notation
-
 
 \end{document}

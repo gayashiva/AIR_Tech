@@ -2409,11 +2409,11 @@
       \let\noexpand\chem\noexpand\@firstofone}%
   \endgroup}
  {\relax}
-\DeclareRobustCommand*\unit[1]
- {\ensuremath{%
-   {\thinmuskip3mu\relax
-    \def\mu{\text{\textmu}}\def~{\,}%
-    \ifx\f@series\testbx\mathbf{#1}\else\mathrm{#1}\fi}}}
+% \DeclareRobustCommand*\unit[1]
+%  {\ensuremath{%
+%    {\thinmuskip3mu\relax
+%     \def\mu{\text{\textmu}}\def~{\,}%
+%     \ifx\f@series\testbx\mathbf{#1}\else\mathrm{#1}\fi}}}
 \@definecounter{reaction}
 \def\thereaction{R\@arabic\c@reaction}
 \let\c@org@eq\c@equation

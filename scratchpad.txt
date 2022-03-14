@@ -1,0 +1,242 @@
+
+
+The model discussed in this paper will be applied worldwide
+to identify favourable AIR locations in a future paper
+
+\subsubsection{Bulk temperature Validation}
+
+\subsubsection{Ice Volume Validation}
+
+\subsection{Empirical vs Physical model}
+
+\subsubsection{Freezing rate comparison}
+
+\subsubsection{Shortwave radiation comparison}
+
+\subsection{Automated vs Traditional AIR water consumption}
+
+\section{Discussion}
+
+\subsection{Fountain vs weather influence}
+
+\subsection{ICV vs WUE objective}
+
+\subsection{Fountain height and spray radius}
+
+\subsection{Implementation costs}
+
+Since this technology is currently being used by subsistence farmers, we also need to be mindful of the
+maintenance and implementation costs. We propose two different modes of fountain scheduling based on operation
+costs that can be classified as static or dynamic. In the static mode, the total amount of water
+for AIR construction is allocated without specifying its temporal distribution along the accumulation period. By
+contrast, in the dynamic mode water is allocated at specific time steps along the accumulation period in
+order to achieve even higher WUE.
+
+Both the approaches use a fountain and pipeline system with minimal manual intervention. The dynamic mode is
+better suited for locations where the diurnal and seasonal variations in the weather conditions are significant.
+In such cases, the real-time adjustments of the discharge rate make efficient fountain scheduling
+possible. The static mode is better suited for other locations or for users who cannot afford the additional
+hardware requirements to implement the dynamic fountain scheduling mode.
+
+Artificial Ice Reservoirs (AIRs) have recently received much attention in the light of increasing users,
+especially in semi-arid and arid mountain regions facing limited water availability and at the same time
+increased water needs. However, their water use efficiency is very poor. 
+
+% \begin{table}[ht]
+% \centering
+% \caption{}
+% \label{tab:my-table}
+% \begin{tabular}{@{}lllllllll@{}}
+% \toprule
+% Coefficients  & $T_a\, [\degree C]$ & $RH\,[\%]$ & $v_a\, [m\, s^{-1}]$ & $alt\, [km]$  & $constant$ \\ \midrule
+% Coefficients  & $a$ & $b$ & $c$ & $d$  & $e$ & $amp$ & $\mu$ & $\sigma$ \\ \midrule
+% Value           & $\num{-5.6 e-3}$     & $\num{-3.2 e-4}$ & $\num{4.7 e-3}$ & $\num{-3.5 e-3}$  & $\num{5.2
+% e-3}$ & $\num{5.2 e-3}$ & $\num{5.2 e-3}$ & $\num{5.2 e-3}$  \\ \bottomrule
+% \end{tabular}
+% \end{table}
+
+
+% \subsubsection{Automation user interface}
+
+% The main window of the automation software consists of 4 columns. 
+
+% \begin{figure}[t]
+% \includegraphics[width=12cm]{Figures/user_interface.png}
+% \caption{Picture credits: Martin Von Burg }
+% \label{fig:UI} 
+% \end{figure}
+
+%% \usepackage commands included in the copernicus.cls:
+%\usepackage[german, english]{babel}
+%\usepackage{tabularx}
+%\usepackage{cancel}
+%\usepackage{multirow}
+%\usepackage{supertabular}
+%\usepackage{algorithmic}
+%\usepackage{algorithm}
+%\usepackage{amsthm}
+%\usepackage{float}
+%\usepackage{subfig}
+%\usepackage{rotating}
+
+
+%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
+%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
+%% They will be correctly named automatically.
+
+%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
+%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+
+\appendixfigures  %% needs to be added in front of appendix figures
+
+\appendixtables   %% needs to be added in front of appendix tables
+
+%% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
+age between each table and/or figure. Further guidelines on figures and tables can be found below.
+
+%% LITERATURE CITATIONS
+%%
+%% command                        & example result
+%% \citet{jones90}|               & Jones et al. (1990)
+%% \citep{jones90}|               & (Jones et al., 1990)
+%% \citep{jones90,jones93}|       & (Jones et al., 1990, 1993)
+%% \citep[p.~32]{jones90}|        & (Jones et al., 1990, p.~32)
+%% \citep[e.g.,][]{jones90}|      & (e.g., Jones et al., 1990)
+%% \citep[e.g.,][p.~32]{jones90}| & (e.g., Jones et al., 1990, p.~32)
+%% \citeauthor{jones90}|          & Jones et al.
+%% \citeyear{jones90}|            & 1990
+
+
+%% FIGURES
+
+%% When figures and tables are placed at the end of the MS (article in one-column style), please add \clearpage
+%% between bibliography and first table and/or figure as well as between each table and/or figure.
+
+% The figure files should be labelled correctly with Arabic numerals (e.g. fig01.jpg, fig02.png).
+
+
+%% ONE-COLUMN FIGURES
+
+%%f
+%\begin{figure}[t]
+%\includegraphics[width=8.3cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure}
+%
+%%% TWO-COLUMN FIGURES
+%
+%%f
+%\begin{figure*}[t]
+%\includegraphics[width=12cm]{FILE NAME}
+%\caption{TEXT}
+%\end{figure*}
+%
+%
+%%% TABLES
+%%%
+%%% The different columns must be seperated with a & command and should
+%%% end with \\ to identify the column brake.
+%
+%%% ONE-COLUMN TABLE
+%
+%%t
+%\begin{table}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table}
+%
+%%% TWO-COLUMN TABLE
+%
+%%t
+%\begin{table*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{table*}
+%
+%%% LANDSCAPE TABLE
+%
+%%t
+%\begin{sidewaystable*}[t]
+%\caption{TEXT}
+%\begin{tabular}{column = lcr}
+%\tophline
+%
+%\middlehline
+%
+%\bottomhline
+%\end{tabular}
+%\belowtable{} % Table Footnotes
+%\end{sidewaystable*}
+%
+%
+%%% MATHEMATICAL EXPRESSIONS
+%
+%%% All papers typeset by Copernicus Publications follow the math typesetting regulations
+%%% given by the IUPAC Green Book (IUPAC: Quantities, Units and Symbols in Physical Chemistry,
+%%% 2nd Edn., Blackwell Science, available at: http://old.iupac.org/publications/books/gbook/green_book_2ed.pdf, 1993).
+%%%
+%%% Physical quantities/variables are typeset in italic font (t for time, T for Temperature)
+%%% Indices which are not defined are typeset in italic font (x, y, z, a, b, c)
+%%% Items/objects which are defined are typeset in roman font (Car A, Car B)
+%%% Descriptions/specifications which are defined by itself are typeset in roman font (abs, rel, ref, tot, net, ice)
+%%% Abbreviations from 2 letters are typeset in roman font (RH, LAI)
+%%% Vectors are identified in bold italic font using \vec{x}
+%%% Matrices are identified in bold roman font
+%%% Multiplication signs are typeset using the LaTeX commands \times (for vector products, grids, and exponential notations) or \cdot
+%%% The character * should not be applied as mutliplication sign
+%
+%
+%%% EQUATIONS
+%
+%%% Single-row equation
+%
+%\begin{equation}
+%
+%\end{equation}
+%
+%%% Multiline equation
+%
+%\begin{align}
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8\\
+%& 3 + 5 = 8
+%\end{align}
+%
+%
+%%% MATRICES
+%
+%\begin{matrix}
+%x & y & z\\
+%x & y & z\\
+%x & y & z\\
+%\end{matrix}
+%
+%
+%%% ALGORITHM
+%
+%\begin{algorithm}
+%\caption{...}
+%\label{a1}
+%\begin{algorithmic}
+%...
+%\end{algorithmic}
+%\end{algorithm}
+%
+%
+%%% PHYSICAL UNITS
+%%%
+%%% Please use \unit{} and apply the exponential notation
