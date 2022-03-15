@@ -9,15 +9,16 @@
 \title{Fountain scheduling strategies to improve water use efficiency of artificial
 ice reservoirs (Icestupas)}
 
-\def\Authors{Suryanarayanan Balasubramanian\,$^{1}$, Roger Waser\,$^{2}$, Martin Hoelzle\,$^{1}$}
+\def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$,Martin Von Burg\,$^{3}$,}
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
 Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
-\Author[1]{Suryanarayanan}{Balasubramanian}
+\Author[1,2]{Suryanarayanan}{Balasubramanian}
 \Author[1]{Martin}{Hoelzle}
-\Author[2]{Roger}{Waser}
-\Author[2]{Martin}{Von Burg}
+\Author[3]{Roger}{Waser}
+\Author[3]{Martin}{Von Burg}
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
-\affil[2]{University of Applied Sciences and Arts, Luzern, Switzerland}
+\affil[2]{Himalayan Institute of Alternatives, Ladakh, India}
+\affil[3]{University of Applied Sciences and Arts, Luzern, Switzerland}
 
 \correspondence{suryanarayanan.balasubramanian@unifr.ch}
 
@@ -61,9 +62,15 @@ cultivate larger areas or to devote more time to other activities.
 Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
 the same time, increase water use efficiency. The goal of fountain scheduling is to make the most efficient use
 of water by spraying the right amount of water at the right time, making sure water is available when the AIR
-surface can freeze it. Scheduled fountains may produce higher water use efficiency since they produce lower fountain wastewater.
-Additionally, lower fountain wastewater productions also lowers the melting energy resulting in higher ice
-volumes.
+surface can freeze it. We expect scheduled fountains to produce higher water use efficiency since they produce
+lower fountain wastewater. Additionally, lower fountain wastewater productions also lowers the melting energy
+resulting in higher ice volumes.
+
+However, it is unrealistic to schedule fountains manually due to two reasons. One, constant adjustments of
+discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
+impractical. Two, frequent pipeline water drainage required to prevent freezing events during scheduled fountain
+disuse intervals is unfeasible. Therefore, fountains can only be scheduled via an automation system that
+regulates fountain discharge rate and drains the pipeline whenever the fountain is unused.
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
@@ -75,15 +82,9 @@ the AIR surface area during the accumulation period. The latter may be defined a
 rate is calculated based on an assumed relationship with weather and location parameters. In order to produce
 recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
 computational time in comparison with the more sophisticated energy-balance models. But only physical energy
-balance models exist for AIRs. Therefore, we present an empirical model that seeks a balance between model
-complexity and data availablity.
-
-However, it is unrealistic to schedule fountains manually due to two reasons. One, constant adjustments of
-discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
-impractical. Two, frequent pipeline water drainage required to prevent freezing events during scheduled fountain
-disuse intervals is unfeasible. Therefore, fountains can only be scheduled via an automation system that
-regulates fountain discharge rate via the empirical model and drains the pipeline whenever the fountain is
-unused.
+balance models exist for AIRs. Therefore, we develop an empirical model that seeks a balance between model
+complexity and data availablity in order to produce recommended discharge rates for the automation system
+efficiently.
 
 The main interest in using model results is to simulate fountain schedules relative to various constrains in
 monetary investments, construction duration as well as in water availability. The fountain scheduling strategies
@@ -107,7 +108,7 @@ traditional and an automated construction strategy.
 \end{figure}
 
 In order to compare both the construction strategies, the automated and the traditional AIRs were constructed
-adjacent to each other as shown in in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
+adjacent to each other as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
 and similar weather patterns. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
@@ -120,7 +121,7 @@ the user interface.
 
 \subsection{Meteorological data}
 Air temperature, relative humidity, wind speed, pressure, longwave, shortwave direct and diffuse radiation are
-required to calculate the surface energy balance of an AIR (see Fig. ). The construction period starts when the
+required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period starts when the
 fountain was first switched on and ends when the fountain was last switched off. These two dates are denoted as
 start and fountain off dates henceforth.
 
@@ -130,12 +131,9 @@ start and fountain off dates henceforth.
 \label{fig:aws} 
 \end{figure*}
 
-The primary weather data source was a automatic weather station (AWS) located around 20 meters away as shown in
-Fig. . In addition, we used ERA5 reanalaysis dataset for filling data gaps and adding the shortwave and longwave
-radiation data that were not measured directly. The ERA5 reanalysis dataset is known to have a high correlation
-with sites in Switzerland (). The Guttannen temperature dataset had a correlation greater the ? with the ERA5
-temperature. The ERA5 grid point chosen () for the Guttannen site was around 3.6 km away from the actual site.
-ERA5 variables were fitted to the AWS data via linear regressions. 
+The weather data source was an automatic weather station (AWS) located around 20 meters away as shown in Fig.
+\ref{fig:2AIR}. Less than 0.4 \% of the data was found to be corrupted and these were filled by linear
+interpolation. 
 
 \subsection{Fountain observations}
 
@@ -155,6 +153,39 @@ elevation maps (DEMs) generated from the obtained imagery were analysed to docum
 volume of the ice structures. The number of surveys conducted for the traditional and the automated AIRs were
 ? and ? respectively (see Table). The last drone flight was used to set the dome volume for the traditional AIR.
 The dome volume for the automated AIR was zero.  The remaining surveys were used for model validation.
+
+\begin{table}
+	\centering
+	\caption{ Summary of the drone surveys}
+	\label{tab:uav}
+	\begin{tabular}{@{}|llllll|@{}}
+		\toprule
+		\textbf{}              & \textbf{No.} & \textbf{Date} & \textbf{Volume} & \textbf{Radius} & \textbf{Surface Area} \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Traditional}}}
+		                       & 1            & Dec 23, 2021  & 17 $m^{3}$     & 2.9 $m$
+		                       & 47 $m^{2}$                                                                      \\
+		\multicolumn{1}{|l|}{} & 2            & Jan 3, 2022  & 22 $m^{3}$     & 3.4 $m$
+		                       & 61 $m^{2}$                                                                      \\
+		\multicolumn{1}{|l|}{} & 3            & Jan 22, 2022   & 626 $m^{3}$     & 4 $m$
+		                       & 79 $m^{2}$                                                                      \\
+		\multicolumn{1}{|l|}{} & 4            & Feb 6, 2022  & 44 $m^{3}$     & 4.2 $m$
+		                       & 86 $m^{2}$                                                                      \\
+		\multicolumn{1}{|l|}{} & 5            & Feb 12, 2022  & 62 $m^{3}$     & 4.2 $m$
+		                       & 108 $m^{2}$                                                                      \\
+		\multicolumn{1}{|l|}{} & 6            & Apr 3, 2021   & 620 $m^{3}$     & 10.1 $m$
+		                       & 658 $m^{2}$
+		\\\midrule
+		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Automatic}}}
+		                       & 1            & Dec 23, 2021  & 22 $m^{3}$      & 3.7 $m$
+		                       & 57 $m^{2}$                                                                       \\
+		\multicolumn{1}{|l|}{} & 2            & Jan 3, 2022   & 30 $m^{3}$      & 3.9 $m$
+		                       & 66 $m^{2}$                                                                       \\
+		\multicolumn{1}{|l|}{} & 3            &               &    $m^{3}$      &     $m$
+		                       &    $m^{2}$                                                                       \\
+		\bottomrule
+	\end{tabular}
+
+\end{table}
 
 \subsection{Bulk temperature measurements}
 
@@ -300,11 +331,11 @@ predictor than the model itself.
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
 using data collected in Guttannen, Switzerland.
 
-The main purpose of this study was to test the idea that scheduling AIR fountain systems could lead to a
-significant improvement in water use efficiency and ice volumes. An empirical model compatible with the limited
-data availability of any new location and limited computational power of the automation system was used to
-produce recommended discharge rate. Nevertheless, this model was able to capture 90 \% of the freezing rate
-variations produced by the physically based model.
+The main purpose of this study was to test the idea that scheduled AIR fountains could lead to a significant
+improvement in water use efficiency and ice volumes. An empirical model compatible with the limited data
+availability of any new location and limited computational power of the automation system was used to produce
+recommended discharge rate. Nevertheless, this model was able to capture 90 \% of the freezing rate variations
+produced by the physically based model.
 
 The automation system allows the easy handling of fountain scheduling implementation. The possibility for
 changing the coefficients of the empirical model directly in the user interface allows tailoring the fountain
@@ -438,7 +469,23 @@ Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
 
-\noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
+\subsection{Model Update}
+Besides the assumptions, the calculation of the fountain discharge heat flux was also updated. This update helps the
+model better estimate the water temperature of the fontain droplets. In the previous model version, this water
+temperature was assumed to be constant at 1.5 C. However, in reality, the water temperature depends on the
+ambient air temperature. Under subzero conditions, the water droplets are likely to cool to 0 C duting their
+flight time. Therefore, the fountain water temperature was instead determined as follows:
+
+\begin{equation}
+	T_{F} = \left\{ \begin{array}{ll}
+		0 & \textit{ if } T_{temp} < 0 \\
+		T_{G} & \textit{ otherwise}
+	\end{array} \right.
+\end{equation}
+
+where $T_{G}$ is the measured or estimated ground temperature.
+
+\noappendix 
 
 \bibliographystyle{copernicus}
 \bibliography{zot_refs.bib}
