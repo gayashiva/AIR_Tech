@@ -1,4 +1,19 @@
 
+\subsection{Model Update}
+Besides the assumptions, the calculation of the fountain discharge heat flux was also updated. This update helps the
+model better estimate the water temperature of the fontain droplets. In the previous model version, this water
+temperature was assumed to be constant at 1.5 C. However, in reality, the water temperature depends on the
+ambient air temperature. Under subzero conditions, the water droplets are likely to cool to 0 C duting their
+flight time. Therefore, the fountain water temperature was instead determined as follows:
+
+\begin{equation}
+	T_{F} = \left\{ \begin{array}{ll}
+		0 & \textit{ if } T_{temp} < 0 \\
+		T_{G} & \textit{ otherwise}
+	\end{array} \right.
+\end{equation}
+
+where $T_{G}$ is the measured or estimated ground temperature.
 
 The model discussed in this paper will be applied worldwide
 to identify favourable AIR locations in a future paper

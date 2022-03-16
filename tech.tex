@@ -141,9 +141,17 @@ We define the fountain used through four attributes; namely, its spray radius, d
 temperature. The spray radius $r_F$ was estimated from the mean AIR circumference
 measured in the drone surveys during the fountain runtime. 
 
-Measurements of the discharge rate for the automated fountain were used to determine the mean discharge of the
+The discharge rate of the scheduled fountain was measured by the automation system. The discharge of the
+unscheduled fountain was estimated using the maximum discharge rate recorded by the automation system. This was
+because the unscheduled fountain was spraying the maximum discharge rate for the whole construction period. But
+the discharge rate of the unscheduled fountain also varied due to the increase in fountain height. We reduced
+the discharge rate by half whenever there was a fountain height increase event since we observed a similar
+reduction in magnitude for the scheduled fountain discharge rate.
+
+Measurements of the discharge rate for the automated fountain were used to determine the discharge of the
 traditional fountain. A new fountain design was used for the automated strategy since the traditional fountain
 design was unable to function in the whole range of discharge rates suggested by the automation system.
+
 
 \subsection{Drone surveys}
 
@@ -172,8 +180,8 @@ The dome volume for the automated AIR was zero.  The remaining surveys were used
 		                       & 86 $m^{2}$                                                                      \\
 		\multicolumn{1}{|l|}{} & 5            & Feb 12, 2022  & 62 $m^{3}$     & 4.2 $m$
 		                       & 108 $m^{2}$                                                                      \\
-		\multicolumn{1}{|l|}{} & 6            & Apr 3, 2021   & 620 $m^{3}$     & 10.1 $m$
-		                       & 658 $m^{2}$
+		\multicolumn{1}{|l|}{} & 6            & & $m^{3}$     & $m$
+		                       & $m^{2}$
 		\\\midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Automatic}}}
 		                       & 1            & Dec 23, 2021  & 22 $m^{3}$      & 3.7 $m$
@@ -273,16 +281,43 @@ recommendation, namely:
 \item Wind speed greater than limit value
 \item Ambient temperature higher or lower than limit values
 \item Pipeline freezing event detected: $Q_F = 0$ for atleast 20 seconds
-\item Leakage detected: $Q_F > Q_{leak} l/min$
+\item Leakage detected: $Q_F > Q_{leak}$
 \item Discharge recommendation below critical discharge: $Q_F < Q_{crit}$
 \end{itemize}
 
-\subsection{Validation}
- Hourly bulk temperature measurements were used to validate the physical model. Root mean squared error (RMSE)
- served as the evaluation metric. Bulk temperature measurements were taken from the mean of two thermistors
- located at the interior of the AIR throughout the construction duration.
+\subsection{Calibration}
+The only sensitive parameter in the physical model was found to be the surface layer thickness $\Delta x$. We
+use the same calibrated value of $45 mm$ as used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}
+in our analysis. In addition, we also better parametrise the water temperature parameter using our ground
+temperature measurements. In the previous model version, this parameter was assumed to be constant. However, in
+reality, the water temperature depends on the ambient air temperature. Under subzero conditions, the water
+droplets are likely to cool to 0 C duting their flight time. Therefore, the fountain water temperature was
+was instead determined as follows:
 
- To assess the performance of the empirical model, the efficiency criterion $R^2$ \citep{nashRiverFlowForecasting1970} was employed, defined as:
+\begin{equation}
+	T_{F} = \left\{ \begin{array}{ll}
+		0 & \textit{ if } T_{temp} < 0 \\
+		T_{G} & \textit{ otherwise}
+	\end{array} \right.
+\end{equation}
+
+where $T_{G}$ is the measured ground temperature.
+
+\subsection{Validation}
+We performed the validation of the physical model on the two different AIRs using two different datasets namely,
+bulk temperature and ice volume measurements. This was because there were fewer successful ice volume
+measurements for the automated AIR aue to lack of features on the snow covered structure. Meanwhile, the traditional
+AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a bulk
+temperature dataset. Therefore, the calibrated physical model was tested using the hourly bulk temperature
+measurements for the automated AIR and the ice volume measurements for the traditional AIR respectively. Root
+mean squared error (RMSE) served as the evaluation metric in both the cases. Hourly bulk temperature
+measurements were produced from the mean of all the thermistor measurements located at the interior of the AIR
+throughout the construction duration. Ice volume was recorded using several drone surveys as shown in Table
+\ref{tab:uav}.
+
+The performance of the ICV and WUE versions of the empirical model was assessed using the freezing rate
+estimates of the physical model. The efficiency criterion $R^2$ \citep{nashRiverFlowForecasting1970} was
+employed for this, defined as:
 
 \begin{equation}
   R^2 = 1 - \frac{\Sigma(Q^{phy}_{F} - Q^{emp}_{F})^2}{\Sigma(Q^{phy}_{F} - \overline{{Q^{phy}_{F}}})^2}
@@ -291,29 +326,25 @@ recommendation, namely:
 where $Q_{F}$ is the hourly freezing rate and the superscripts phy and emp refer to the physically and
 empirically estimated freezing rates, respectively. The bar refers to the mean. The criterion has been used for
 the evaluation of model performance in a wide range of hydrrological studies
-\citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}.
-
-An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates that the average value of all observations is a better
-predictor than the model itself. 
+\citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}. An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates
+that the average value of all observations is a better predictor than the model itself. 
 
 \section{Results}
 
-\subsection{Physical model validation}
-
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/autovsman.png}
-\caption{TEXT}
-\end{figure*}
-
 \subsection{Automation coefficients}
+
+We present three different scenarios namely, field, ICV and WUE for which the automation coefficients were
+tuned. The field scenario represents the actual values of coefficients used for scheduling the fountain of the
+automated AIR. The other two are hypothetical scenarios tuned for the ICV and WUE objectives described above.
 
 \begin{table}[]
 \centering
-\caption{Coefficients of the automation equation}
+\caption{Coefficients of the automation equation for the field, ICV and WUE scenarios}
 \label{tab:assumptions}
 \begin{tabular}{@{}llllll@{}}
 \toprule
-\textbf{Coefficient for} & \textbf{Symbol} & \textbf{Real Strategy} & \textbf{ICV Strategy} & \textbf{WUE Strategy} & \\ \midrule
+\textbf{Coefficient for} & \textbf{Symbol} & \textbf{Field Scenario} & \textbf{ICV Scenario} & \textbf{WUE
+Scenario} & \\ \midrule
 \multicolumn{1}{|l}{Temperature}       &$a$  & & $\num{-1.4 e-3}$ & $\num{-1.4 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Relative humidity}      &$b$  & & $\num{-6.6 e-5}$ & $\num{-1.0 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Wind speed}      &$c$  & & $\num{-2.4 e-3}$ & $\num{-2.3 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
@@ -321,11 +352,36 @@ predictor than the model itself.
 \multicolumn{1}{|l}{Solar amplitude}      &$A$  & & $\num{-9.0 e-2}$ & $\num{-9.4 e-2}$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Solar mean}    &$\mu$  & & $\num{1.3 e+1}$  & $\num{1.3 e+1}$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Solar variance} &$\sigma$  & & $\num{2.4 e+0}$  & $\num{2.0 e+0}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Spray radius} &$r_F$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\multicolumn{1}{|l}{Spray radius} &$r_F$ & & 4 & 4 & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Efficiency criteria} &$R^2$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Physical model validation}
+The physical model achieved an RMSE of $\degree C$ with the bulk temperature measurements of the automated AIR
+and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured bulk
+temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{iceV}
+ 
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/autovsman.png}
+\caption{Discharge rate and ice Volume evolution of the automated and traditional AIRs}
+\label{fig:iceV}
+\end{figure*}
+
+\subsection{Empirical model performance}
+
+
+\section{Discussion}
+\subsection{Comparison of the different construction strategies}
+\subsubsection{Water consumption}
+\subsubsection{Ice Volumes}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/wue.png}
+\caption{The maximum ice volume and water use efficiency estimated for the different locations and construction
+strategies used} 
+\label{fig:wue} 
+\end{figure*}
 
 \conclusions
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
@@ -469,21 +525,6 @@ Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
 
-\subsection{Model Update}
-Besides the assumptions, the calculation of the fountain discharge heat flux was also updated. This update helps the
-model better estimate the water temperature of the fontain droplets. In the previous model version, this water
-temperature was assumed to be constant at 1.5 C. However, in reality, the water temperature depends on the
-ambient air temperature. Under subzero conditions, the water droplets are likely to cool to 0 C duting their
-flight time. Therefore, the fountain water temperature was instead determined as follows:
-
-\begin{equation}
-	T_{F} = \left\{ \begin{array}{ll}
-		0 & \textit{ if } T_{temp} < 0 \\
-		T_{G} & \textit{ otherwise}
-	\end{array} \right.
-\end{equation}
-
-where $T_{G}$ is the measured or estimated ground temperature.
 
 \noappendix 
 
