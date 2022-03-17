@@ -74,17 +74,10 @@ regulates fountain discharge rate and drains the pipeline whenever the fountain 
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
-questions. Surface freezing rates can be calculated by means of two different approaches: physical and
-empirically based models. The former may be defined as a model in which each of the relevant energy fluxes at
-the AIR surface is computed from physically based calculations using direct measurements of the necessary
-meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes scaled with
-the AIR surface area during the accumulation period. The latter may be defined as a model in which the freezing
-rate is calculated based on an assumed relationship with weather and location parameters. In order to produce
-recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
-computational time in comparison with the more sophisticated energy-balance models. But only physical energy
-balance models exist for AIRs. Therefore, we develop an empirical model that seeks a balance between model
-complexity and data availablity in order to produce recommended discharge rates for the automation system
-efficiently.
+questions. Surface freezing rates can be calculated by means of the physical model described in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. However, in order to produce recommended discharge
+rates, we develop a simpler version of this physical model that seeks a balance between model complexity and
+data availablity in order to produce recommended discharge rates for the automation system efficiently.
 
 The main interest in using model results is to simulate fountain schedules relative to various constrains in
 monetary investments, construction duration as well as in water availability. The fountain scheduling strategies
@@ -221,11 +214,9 @@ defined as the discharge rate below which the fountain pipeline can freeze.
 
 \subsubsection{Automation software}
 
-The software performs the computations in the least (a) data demanding and (b) computationally intensive way
-possible. Objective (a) is achieved by introducing assumptions to the energy balance model as described in the
-Appendix . Objective (b) is achieved by formulating a surrogate empirical model that best approximates the
-simplified physical model. 
-
+The software uses several assumptions assumptions to reduce the data requirement of the energy balance model.
+The assumptions are categorised into two kinds based on whether they favour higher water use efficiency or ice
+volumes and are described in the Appendix and summarised in Table \ref{tab:assumptions}.  
 
 \begin{table}[]
 \centering
@@ -246,43 +237,40 @@ $\alpha=\alpha_{ice}$; & \multicolumn{1}{l|}{} \\
 \end{tabular}
 \end{table}
 
-For objective (b), we approximate the shortwave radiation flux into a gaussian equation with three coefficients
-and the rest of the heat flux components into a linear equation with 5 coefficients. The coefficients of the
-shortwave gaussian function $g($ hour of day $)$ are calibrated based on estimation of solar radiation during
-the last day of the construction period. We approximate the rest of the energy fluxes by assuming a linear
-relationship with the weather parameters namely, temperature, humidity, wind speed and altitude. Using the above
-simplifications, we can compute the expected thickness change rates using the following set of equations:
+Using the simplifications shown in Table \ref{tab:assumptions}, we can compute the expected freezing rate or
+recommeded discharge rate rates using the following set of equations:
 
 \begin{subequations}
 	\begin{align}
-		\label{eqn:sun}
-  \frac{q_{SW}}{\rho_w \cdot L_F} & \approx \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
-  exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
 		\label{eqn:T}
-   \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
-  d = f(T_a, RH, v_a) \\
-		\label{eqn:temp}
-  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a)\\
+   \frac{q_{SW} + q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx f(hod, T_a, RH,
+   v_a, alt) \\
 		\label{eqn:auto}
-  Q_{F} & \approx \frac{\Delta j_{cone}}{\Delta t} \cdot \pi r_{F}^2 \cdot
+  Q_{F} & \approx f(hod, T_a, RH, v_a) \cdot \pi r_{F}^2 \cdot
   \frac{1000}{60}
 	\end{align}
 \end{subequations}
 
-where $r_F$ is the fountain spray radius, $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change rate,
-$Q_{F}$ is the discharge rate and $hod$ is the hour of day.
+where $r_F$ is the fountain spray radius, $Q_{F}$ is the discharge rate and $hod$ is the hour of day.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
-each of its 9 coefficients. Once switched on, the automation system regulates the fountain discharge rate based
-on the recommended discharge rate. However, certain termination criterias override the discharge rate
-recommendation, namely: 
+the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
+automation system regulates the fountain discharge rate based on the recommended discharge rate. However,
+certain termination criterias override the discharge rate recommendation, namely: 
 
 \begin{itemize}
-\item Wind speed greater than limit value
-\item Ambient temperature higher or lower than limit values
-\item Pipeline freezing event detected: $Q_F = 0$ for atleast 20 seconds
-\item Leakage detected: $Q_F > Q_{leak}$
-\item Discharge recommendation below critical discharge: $Q_F < Q_{crit}$
+
+\item Loss of water droplets due to high wind speed are avoided by introducing a wind speed limit 
+
+\item Pipeline freezing events due to very cold conditions are avoided by setting a minimum temperature limit 
+
+\item Pipeline damage is avoided by draining the pipeline upon a pipeline freezing event detection. Pipeline
+  freezing events are assumed if $Q_F = 0$ for atleast 20 seconds.
+
+\item Water loss is avoided by detection of pipeline leakage/damage. Pipeline leakage is assumed if $Q_F > Q_{leak}$. 
+
+\item Pipeline freezing events are prevented by ignoring low discharge rate recommendations  
+
 \end{itemize}
 
 \subsection{Calibration}
@@ -315,47 +303,10 @@ bulk temperature measurements were produced from the mean of all the thermistor 
 interior of the AIR throughout the construction duration. Ice volume was recorded using several drone surveys as
 shown in Table \ref{tab:uav}.
 
-The performance of the ICV and WUE versions of the empirical model was assessed using the freezing rate
-estimates of the physical model. The efficiency criterion $R^2$ \citep{nashRiverFlowForecasting1970} was
-employed for this, defined as:
-
-\begin{equation}
-  R^2 = 1 - \frac{\Sigma(Q^{phy}_{F} - Q^{emp}_{F})^2}{\Sigma(Q^{phy}_{F} - \overline{{Q^{phy}_{F}}})^2}
-\end{equation}
-
-where $Q_{F}$ is the hourly freezing rate and the superscripts phy and emp refer to the physically and
-empirically estimated freezing rates, respectively. The bar refers to the mean. The criterion has been used for
-the evaluation of model performance in a wide range of hydrological studies
-\citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}. An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates
-that the average value of all observations is a better predictor than the model itself. 
+The performance of the ICV and WUE versions of the physical model was assessed by comparing its estimates with
+the validated freezing rate of the calibrated physical model.
 
 \section{Results}
-
-\subsection{Automation coefficients}
-
-We present three different scenarios namely, field, ICV and WUE for which the automation coefficients were
-tuned. The field scenario represents the actual values of coefficients used for scheduling the fountain of the
-automated AIR. The other two are hypothetical scenarios tuned for the ICV and WUE objectives described above.
-
-\begin{table}[]
-\centering
-\caption{Coefficients of the automation equation for the field, ICV and WUE scenarios}
-\label{tab:assumptions}
-\begin{tabular}{@{}llllll@{}}
-\toprule
-\textbf{Coefficient for} & \textbf{Symbol} & \textbf{Field Scenario} & \textbf{ICV Scenario} & \textbf{WUE
-Scenario} & \\ \midrule
-\multicolumn{1}{|l}{Temperature}       &$a$  & & $\num{-1.4 e-3}$ & $\num{-1.4 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Relative humidity}      &$b$  & & $\num{-6.6 e-5}$ & $\num{-1.0 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Wind speed}      &$c$  & & $\num{-2.4 e-3}$ & $\num{-2.3 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Rest}      &$d$  & & $\num{-1.8 e-3}$ & $\num{2.8 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Solar amplitude}      &$A$  & & $\num{-9.0 e-2}$ & $\num{-9.4 e-2}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Solar mean}    &$\mu$  & & $\num{1.3 e+1}$  & $\num{1.3 e+1}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Solar variance} &$\sigma$  & & $\num{2.4 e+0}$  & $\num{2.0 e+0}$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Spray radius} &$r_F$ & & 4 & 4 & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Efficiency criteria} &$R^2$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
-\end{tabular}
-\end{table}
 
 \subsection{Physical model validation}
 The physical model achieved an RMSE of $\degree C$ with the bulk temperature measurements of the automated AIR
@@ -363,12 +314,15 @@ and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. Th
 temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{fig:iceV}
  
 \begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/autovsman_vol.png}
+\includegraphics[width=12cm]{Figures/validation.png}
 \caption{Ice volume evolution of the automated and traditional AIRs.}
 \label{fig:iceV}
 \end{figure*}
 
-\subsection{Empirical model performance}
+\subsection{Scheduled discharge rate estimation}
+
+We found that the simplified physical model could estimate the freezing rate of the unscheduled fountain with a
+correlation higher that 0.5 and RMSE less than 1 $l/min$ for both the ICV and WUE objectives.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
@@ -376,11 +330,12 @@ temperatures are shown in Fig. . The estimated and measured ice volumes are show
 \label{fig:iceV}
 \end{figure*}
 
-
-\section{Discussion}
-\subsection{Comparison of the different construction strategies}
-\subsubsection{Water consumption}
-\subsubsection{Ice Volumes}
+\subsection{Comparison of AIR construction strategies}
+We evaluate the benefits of the automated construction strategies by comparing them with the
+traditional construction strategies used in the IN21 and CH21 locations presented in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
+ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
+\ref{fig:wue}.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
@@ -388,6 +343,7 @@ temperatures are shown in Fig. . The estimated and measured ice volumes are show
 strategies used} 
 \label{fig:wue} 
 \end{figure*}
+
 
 \conclusions
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy

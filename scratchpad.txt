@@ -1,4 +1,64 @@
 
+\begin{equation}
+  R^2 = 1 - \frac{\Sigma(Q^{phy}_{F} - Q^{emp}_{F})^2}{\Sigma(Q^{phy}_{F} - \overline{{Q^{phy}_{F}}})^2}
+\end{equation}
+
+where $Q_{F}$ is the hourly freezing rate and the superscripts phy and emp refer to the physically and
+empirically estimated freezing rates, respectively. The bar refers to the mean. The criterion has been used for
+the evaluation of model performance in a wide range of hydrological studies
+\citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}. An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates
+that the average value of all observations is a better predictor than the model itself.
+
+Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
+(b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
+questions. Surface freezing rates can be calculated by means of two different approaches: physical and
+empirically based models. The former may be defined as a model in which each of the relevant energy fluxes at
+the AIR surface is computed from physically based calculations using direct measurements of the necessary
+meteorological variables, and the freezing rate is calculated as the sum of the individual fluxes scaled with
+the AIR surface area during the accumulation period. The latter may be defined as a model in which the freezing
+rate is calculated based on an assumed relationship with weather and location parameters. In order to produce
+recommended discharge rates, empirical models are preferred due to their parsimony in data requirement and
+computational time in comparison with the more sophisticated energy-balance models. But only physical energy
+balance models exist for AIRs. Therefore, we develop an empirical model that seeks a balance between model
+complexity and data availablity in order to produce recommended discharge rates for the automation system
+efficiently.
+
+\begin{subequations}
+	\begin{align}
+		\label{eqn:sun}
+  \frac{q_{SW}}{\rho_w \cdot L_F} & \approx \frac{amp}{(\sigma \sqrt{2\pi})} \cdot
+  exp\left(\frac{-(hod-\mu)^2}{2\sigma^2}\right) = g(hod)  \\
+		\label{eqn:T}
+   \frac{q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx a \cdot T_a + b \cdot RH + c \cdot v_a +
+  d = f(T_a, RH, v_a) \\
+		\label{eqn:temp}
+  \frac{\Delta j_{cone}}{\Delta t} & \approx g(hod) + f(T_a, RH, v_a)\\
+		\label{eqn:auto}
+  Q_{F} & \approx \frac{\Delta j_{cone}}{\Delta t} \cdot \pi r_{F}^2 \cdot
+  \frac{1000}{60}
+	\end{align}
+\end{subequations}
+
+\begin{table}[]
+\centering
+\caption{Coefficients of the automation equation for the field, ICV and WUE scenarios}
+\label{tab:assumptions}
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{Coefficient for} & \textbf{Symbol} & \textbf{Field Scenario} & \textbf{ICV Scenario} & \textbf{WUE
+Scenario} & \\ \midrule
+\multicolumn{1}{|l}{Temperature}       &$a$  & & $\num{-1.4 e-3}$ & $\num{-1.4 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Relative humidity}      &$b$  & & $\num{-6.6 e-5}$ & $\num{-1.0 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Wind speed}      &$c$  & & $\num{-2.4 e-3}$ & $\num{-2.3 e-3}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Rest}      &$d$  & & $\num{-1.8 e-3}$ & $\num{2.8 e-4}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar amplitude}      &$A$  & & $\num{-9.0 e-2}$ & $\num{-9.4 e-2}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar mean}    &$\mu$  & & $\num{1.3 e+1}$  & $\num{1.3 e+1}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Solar variance} &$\sigma$  & & $\num{2.4 e+0}$  & $\num{2.0 e+0}$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Spray radius} &$r_F$ & & 4 & 4 & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Efficiency criteria} &$R^2$ & & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Model Update}
 Besides the assumptions, the calculation of the fountain discharge heat flux was also updated. This update helps the
 model better estimate the water temperature of the fontain droplets. In the previous model version, this water
