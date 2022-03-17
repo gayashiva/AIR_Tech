@@ -126,8 +126,8 @@ fountain was first switched on and ends when the fountain was last switched off.
 start and fountain off dates henceforth.
 
 \begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/input.png}
-\caption{AWS measurements at the Guttannen construction site}
+\includegraphics[width=12cm]{Figures/data.png}
+\caption{Temperature, precipitation and discharge measurements at the Guttannen construction site}
 \label{fig:aws} 
 \end{figure*}
 
@@ -306,14 +306,14 @@ where $T_{G}$ is the measured ground temperature.
 \subsection{Validation}
 We performed the validation of the physical model on the two different AIRs using two different datasets namely,
 bulk temperature and ice volume measurements. This was because there were fewer successful ice volume
-measurements for the automated AIR aue to lack of features on the snow covered structure. Meanwhile, the traditional
+measurements for the automated AIR due to lack of features on the snow covered structure. Meanwhile, the traditional
 AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a bulk
 temperature dataset. Therefore, the calibrated physical model was tested using the hourly bulk temperature
 measurements for the automated AIR and the ice volume measurements for the traditional AIR respectively. Root
-mean squared error (RMSE) served as the evaluation metric in both the cases. Hourly bulk temperature
-measurements were produced from the mean of all the thermistor measurements located at the interior of the AIR
-throughout the construction duration. Ice volume was recorded using several drone surveys as shown in Table
-\ref{tab:uav}.
+mean squared error (RMSE) and correlation coefficient served as the evaluation metric in both the cases. Hourly
+bulk temperature measurements were produced from the mean of all the thermistor measurements located at the
+interior of the AIR throughout the construction duration. Ice volume was recorded using several drone surveys as
+shown in Table \ref{tab:uav}.
 
 The performance of the ICV and WUE versions of the empirical model was assessed using the freezing rate
 estimates of the physical model. The efficiency criterion $R^2$ \citep{nashRiverFlowForecasting1970} was
@@ -325,7 +325,7 @@ employed for this, defined as:
 
 where $Q_{F}$ is the hourly freezing rate and the superscripts phy and emp refer to the physically and
 empirically estimated freezing rates, respectively. The bar refers to the mean. The criterion has been used for
-the evaluation of model performance in a wide range of hydrrological studies
+the evaluation of model performance in a wide range of hydrological studies
 \citep[e.g.,][]{wilcoxPredictingRunoffRangeland1990}. An $R^2$ of 1 indicates perfect fit; $R^2<0$ indicates
 that the average value of all observations is a better predictor than the model itself. 
 
@@ -360,15 +360,21 @@ Scenario} & \\ \midrule
 \subsection{Physical model validation}
 The physical model achieved an RMSE of $\degree C$ with the bulk temperature measurements of the automated AIR
 and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured bulk
-temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{iceV}
+temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{fig:iceV}
  
 \begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/autovsman.png}
-\caption{Discharge rate and ice Volume evolution of the automated and traditional AIRs}
+\includegraphics[width=12cm]{Figures/autovsman_vol.png}
+\caption{Ice volume evolution of the automated and traditional AIRs.}
 \label{fig:iceV}
 \end{figure*}
 
 \subsection{Empirical model performance}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
+\caption{Ice volume evolution of the automated and traditional AIRs.}
+\label{fig:iceV}
+\end{figure*}
 
 
 \section{Discussion}
@@ -390,7 +396,7 @@ using data collected in Guttannen, Switzerland.
 The main purpose of this study was to test the idea that scheduled AIR fountains could lead to a significant
 improvement in water use efficiency and ice volumes. An empirical model compatible with the limited data
 availability of any new location and limited computational power of the automation system was used to produce
-recommended discharge rate. Nevertheless, this model was able to capture 90 \% of the freezing rate variations
+recommended discharge rate. Nevertheless, this model was able to capture ? \% of the freezing rate variations
 produced by the physically based model.
 
 The automation system allows the easy handling of fountain scheduling implementation. The possibility for
@@ -398,6 +404,8 @@ changing the coefficients of the empirical model directly in the user interface 
 discharge rate according to the location's water supply and weather conditions. Furthermore, this construction
 strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever fountain is not in
 use.
+
+Nevertheless, the real world application of this method is challenging.
 
 This study has also compared the sensitivity of freezing rates between the weather components and the fountain's
 spray radius. It is clear that if improvements are to be achieved, future research must be devoted to modelling
