@@ -277,11 +277,14 @@ freezing events, namely:
 \subsection{Calibration}
 The only sensitive parameter in the physical model was found to be the surface layer thickness $\Delta x$. We
 use the same calibrated value of $45 mm$ as used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}
-in our analysis. In addition, we also better parametrise the water temperature parameter using our ground
-temperature measurements. In the previous model version, this parameter was assumed to be constant. However, in
-reality, the water temperature depends on the ambient air temperature. Under subzero conditions, the water
-droplets are likely to cool to 0 C duting their flight time. Therefore, the fountain water temperature was
-was instead determined as follows:
+in our analysis. 
+
+In addition, we also better parametrise two model variables, namely, fountain water temperature
+($T_F$) and AIR density ($\rho_{AIR}$). Both these parameters were assumed to be constant in the previous
+versions of the model. With the extended measurement dataset of CH22 AIR, we could better estimate the water
+temperature parameter by assuming it is equal to our ground temperature measurements but only when the air
+temperature was not subzero. Under subzero conditions, the water droplets are likely to cool to 0 C duting their
+flight time. Therefore, the fountain water temperature was was instead determined as follows:
 
 \begin{equation}
 	T_{F} = \left\{ \begin{array}{ll}
@@ -291,6 +294,19 @@ was instead determined as follows:
 \end{equation}
 
 where $T_{G}$ is the measured ground temperature.
+
+The snowfall mass input of CH22 AIR was comparable to the mass input via the fountain discharge. Therefore, we
+could no longer assume that the AIR density was equal to ice density. We instead parameterised AIR density
+$\rho_{AIR}$ as follows:
+
+\begin{equation}
+  \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
+\end{equation}
+
+where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
+$M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917
+$kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
+\cite{cuffeyPhysicsGlaciers2010} .
 
 \subsection{Validation}
 We performed the validation of the physical model on the two different AIRs using two different datasets namely,
