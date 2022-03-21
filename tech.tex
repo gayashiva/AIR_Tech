@@ -275,16 +275,15 @@ freezing events, namely:
 \end{itemize}
 
 \subsection{Calibration}
-The only sensitive parameter in the physical model was found to be the surface layer thickness $\Delta x$. We
-use the same calibrated value of $45 mm$ as used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}
-in our analysis. 
+We retain the default values of all parameters used in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
 
-In addition, we also better parametrise two model variables, namely, fountain water temperature
-($T_F$) and AIR density ($\rho_{AIR}$). Both these parameters were assumed to be constant in the previous
-versions of the model. With the extended measurement dataset of CH22 AIR, we could better estimate the water
-temperature parameter by assuming it is equal to our ground temperature measurements but only when the air
-temperature was not subzero. Under subzero conditions, the water droplets are likely to cool to 0 C duting their
-flight time. Therefore, the fountain water temperature was was instead determined as follows:
+In addition, we also parametrise two model variables, namely, fountain water temperature ($T_F$) and AIR density
+($\rho_{AIR}$). Both these parameters were assumed to be constant in the previous versions of the model. With
+the extended measurement dataset of CH22 AIR, we could estimate the water temperature parameter by assuming it
+is equal to our ground temperature measurements but only when the air temperature was not subzero. Under subzero
+conditions, the water droplets are likely to cool to 0 C during their flight time. Therefore, the fountain water
+temperature was instead determined as follows:
 
 \begin{equation}
 	T_{F} = \left\{ \begin{array}{ll}
@@ -310,15 +309,16 @@ $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) ta
 
 \subsection{Validation}
 We performed the validation of the physical model on the two different AIRs using two different datasets namely,
-bulk temperature and ice volume measurements. This was because there were fewer successful ice volume
+AIR mean temperature and ice volume measurements. This was because there were fewer successful ice volume
 measurements for the automated AIR due to lack of features on the snow covered structure. Meanwhile, the traditional
-AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a bulk
-temperature dataset. Therefore, the calibrated physical model was tested using the hourly bulk temperature
+AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a AIR
+mean temperature dataset. Therefore, the calibrated physical model was tested using the hourly AIR mean temperature
 measurements for the automated AIR and the ice volume measurements for the traditional AIR respectively. Root
 mean squared error (RMSE) and correlation coefficient served as the evaluation metric in both the cases. Hourly
-bulk temperature measurements were produced from the mean of all the thermistor measurements located at the
-interior of the AIR throughout the construction duration. Ice volume was recorded using several drone surveys as
-shown in Table \ref{tab:uav}.
+AIR mean temperature measurements were produced from the mean of all the six thermistor measurements located at the
+interior of the AIR throughout the construction duration. Mean AIR temperature was estimated to be the modelled
+average of surface temperature $T_{ice}$ and bulk temperature $T_{bulk}$. Ice volume was recorded using several
+drone surveys as shown in Table \ref{tab:uav}.
 
 The performance of the ICV and WUE versions of the physical model was assessed by comparing its discharge rate
 estimates with the validated freezing rate of the calibrated physical model.
@@ -326,15 +326,14 @@ estimates with the validated freezing rate of the calibrated physical model.
 \section{Results}
 
 \subsection{Energy balance model validation}
-The physical model achieved an RMSE of $\degree C$ with the bulk temperature measurements of the automated AIR
-and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured bulk
-temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{fig:iceV}
+The physical model achieved an RMSE of $\degree C$ with the AIR mean temperature measurements of the automated
+AIR and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured AIR
+mean temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{fig:iceV}
  
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/validation.png}
-\caption{Bulk temperature and ice volume validation of the scheduled and unscheduled fountain construction
-strategies.}
-\label{fig:iceV}
+\begin{figure*}[t] 
+  \includegraphics[width=12cm]{Figures/validation.png} 
+  \caption{Bulk temperature and ice volume validation of the scheduled and unscheduled fountain construction strategies.} 
+\label{fig:iceV} 
 \end{figure*}
 
 \subsection{Scheduled discharge rate estimation}
@@ -375,9 +374,10 @@ model was able to capture more than 65 \% of the freezing rate variations produc
 model.
 
 The automation system allows the easy handling of fountain scheduling implementation. The possibility for
-changing the location and fountain metadata directly in the user interface allows tailoring the fountain discharge rate
-according to the location's water supply and weather conditions. Furthermore, this construction strategy reduces
-the occurence of pipeline freezing events as it drains the pipeline whenever fountain is not in use.
+changing the location and fountain metadata directly in the user interface allows tailoring the fountain
+discharge rate according to the location's water supply and weather conditions. Furthermore, this construction
+strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever fountain is not in
+use.
 
 Nevertheless, the real world application of this method is challenging. It is clear that if improvements are to
 be achieved, future research must be devoted to modelling the impact of fountain design on the spray radius.
@@ -398,7 +398,7 @@ represented as:
 where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change determined as follows:
 
 \begin{equation}
-  \frac{\Delta j_{cone}}{\Delta t}  = \frac{1}{\rho_w} \cdot (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G} -
+  \frac{\Delta j_{cone}}{\Delta t}  = \frac{1}{\rho_{AIR}} \cdot (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G} -
   q_{T}}{L_F} + \frac{q_{L}}{L_V} )
 	\label{eqn:freeze}
 \end{equation}
@@ -409,18 +409,10 @@ $q_{SW}$ is the net shortwave radiation; $q_{LW}$ is the net longwave radiation;
 turbulent latent and sensible heat fluxes; $q_{F}$ is the fountain heat flux; $q_{G}$ is the ground heat flux
 and $q_{T}$ is the temperature heat flux. However, we assume $q_{F}$, $q_{G}$ and $q_{T}$ to be negligible.
 
-We reduce the data requirement for estimation of each of the energy flux components in two ways:
-
-\begin{itemize}
-  \item Pressure estimation using the location's altitude through the PVLIB model described in
-    \citet{holmgrenPvlibPythonPython2018}.
-  \item Direct and diffuse shortwave radiation estimation using the location's coordinates and altitude through the
-    PVLIB model described in \citet{holmgrenPvlibPythonPython2018}. The algorithm used to estimate the
-    clear-sky global radiation is described in \citet{ineichenBroadbandSimplifiedVersion2008} and the algorithm
-    used to estimate the diffuse part of the global radiation is described in
-\citet{erbsEstimationDiffuseRadiation1982}. The uncertainty of this approach is discussed in
-\cite{ineichenValidationModelsThat2016}. 
-\end{itemize}
+The data requirement was reduced by estimating the global shortwave radiation and pressure directly using the
+location's coordinates and altitude through the solar radiation model described in
+\citet{holmgrenPvlibPythonPython2018}. The algorithm used to estimate the clear-sky global radiation is
+described in \citet{ineichenBroadbandSimplifiedVersion2008}.  
 
 The model complexity was reduced through assumptions that optimise for the ice volume objective or the water use
 efficiency objective. Assumptions are chosen based on whether they overestimate/underestimate the freezing rate.
@@ -432,19 +424,25 @@ below:
 
 Since we are only interested in determination of the surface area during the accumulation period we can assume a
 constant ice cone radius equal to the fountain spray radius. The surface area scales the freezing rate of the
-AIR. Hence, for the IceV objective we assume the maximum possible slope of 1 for the ice cone or in other words
-$h_{cone} = r_{F}$. Similarly, for the WUE objective, the area of the conical AIR is
-approximated to the area of its circular base. 
+AIR. Hence, for the ICV objective we assume the maximum possible slope of 1 for the ice cone or in other words
+$h_{cone} = r_{F}$. Therefore, area is estimated as:  
 
 \begin{equation} A_{cone} =\pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
+
+Similarly, for the WUE objective, the area of the conical AIR is approximated to the area of its circular
+base.Therefore, area is estimated as:
+
+\begin{equation} A_{cone} =\sqrt{2} \cdot \pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
 
 \subsection{Net shortwave radiation \texorpdfstring{$q_{SW}$}{Lg} assumptions}
 \label{sec:SW}
 
 The net shortwave radiation $q_{SW}$ is computed as follows:
 
-\begin{equation} q_{SW} = (1- \alpha) \cdot ( SW_{direct} \cdot f_{cone} + SW_{diffuse})
-\label{eqn:SW} \end{equation}
+\begin{equation} 
+q_{SW} = (1- \alpha) \cdot ( SW_{direct} \cdot f_{cone} + SW_{diffuse})
+\label{eqn:SW} 
+\end{equation}
 
 where $\alpha$ is the albedo value ; $SW_{direct}$ is the direct shortwave radiation; $SW_{diffuse}$ is the
 diffuse shortwave radiation and $f_{cone}$ is the solar area fraction.
@@ -472,7 +470,7 @@ shape considered. It is computed as
 			{(r_{cone})}^2/2) \cdot sin \theta_{sun} }{\pi \cdot r_{cone} \cdot ({(r_{cone})}^2+{(h_{cone})}^2)^{1/2}}\\
 \end{equation}
 
-For the IceV objective, since we assume the slope of the cone to be 1 $f_{cone}$ is determined
+For the ICV objective, since we assume the slope of the cone to be 1 $f_{cone}$ is determined
 as follows:
 
 \begin{equation}
