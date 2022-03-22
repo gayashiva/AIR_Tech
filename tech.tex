@@ -326,25 +326,28 @@ estimates with the validated freezing rate of the calibrated physical model.
 \section{Results}
 
 \subsection{Energy balance model validation}
-The physical model achieved an RMSE of $\degree C$ with the AIR mean temperature measurements of the automated
+The physical model achieved an RMSE of $4 \degree C$ with the AIR mean temperature measurements of the automated
 AIR and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured AIR
-mean temperatures are shown in Fig. . The estimated and measured ice volumes are shown in Fig. \ref{fig:iceV}
+mean temperatures and ice volumes are shown in Fig. \ref{fig:validation}
  
 \begin{figure*}[t] 
   \includegraphics[width=12cm]{Figures/validation.png} 
   \caption{Bulk temperature and ice volume validation of the scheduled and unscheduled fountain construction strategies.} 
-\label{fig:iceV} 
+\label{fig:validation} 
 \end{figure*}
 
 \subsection{Scheduled discharge rate estimation}
 
-We found that the simplified energy balance model could estimate the freezing rate of the unscheduled fountain with a
-correlation higher that 0.5 and RMSE less than 1 $l/min$ for both the ICV and WUE objectives.
+We found that the simplified energy balance model could estimate the freezing rate of the unscheduled fountain
+with a correlation higher that 0.5 and RMSE less than 1 $l/min$ for both the ICV and WUE objectives. The
+ICV scheduled fountain overestimated the freezing rate 90 \% of the construction duration whereas the WUE
+scheduled fountain underestimated the freezing rate 80 \% of the construction duration as shown in Fig.
+\ref{fig:freezing_rate}.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
 \caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
-assumptions campared with the validated freezing rate of the full energy balance model.}
+assumptions compared with the validated freezing rate of the full energy balance model.}
 \label{fig:freezing_rate}
 \end{figure*}
 
@@ -355,11 +358,6 @@ wastewater output is an order of magnitude higher than the scheduled fountain. B
 volume of the traditional AIR, it is unexpected that it corresponds to a higher ice mass. This is because the
 lower snowfall input of the traditional AIR made it more dense than the automated AIR (see Table \ref{tab:mb}). 
 
-We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies used in the IN21 and CH21 locations presented in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
-ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
-\ref{fig:wue}.
 
 \begin{table}
 	\centering
@@ -385,6 +383,16 @@ ice volumes expected between unscheduled and scheduled fountains in the three lo
 		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 5             & 30            & \% \\\midrule
 	\end{tabular}
 \end{table}
+
+\section{Discussion}
+
+\subsection{Simulations of scheduled fountains}
+
+We evaluate the benefits of the automated construction strategies by comparing them with the traditional
+construction strategies used in the IN21 and CH21 locations presented in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
+ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
+\ref{fig:wue}.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
