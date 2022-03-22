@@ -349,11 +349,42 @@ assumptions campared with the validated freezing rate of the full energy balance
 \end{figure*}
 
 \subsection{Comparison of AIR construction strategies}
+
+Given the excessive discharge rate of the unscheduled fountain, it is not surprising that its fountain
+wastewater output is an order of magnitude higher than the scheduled fountain. But given the lower measured
+volume of the traditional AIR, it is unexpected that it corresponds to a higher ice mass. This is because the
+lower snowfall input of the traditional AIR made it more dense than the automated AIR (see Table \ref{tab:mb}). 
+
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
 construction strategies used in the IN21 and CH21 locations presented in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
 ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
 \ref{fig:wue}.
+
+\begin{table}
+	\centering
+	\caption{ Summary of the mass balance and AIR characteristics estimated at the end of the respective
+  simulation duration for the automated and the traditional AIRs}
+	\label{tab:mb}
+	\begin{tabular}{@{}|llllll|@{}}
+		\toprule
+		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
+		\textbf{Units}                                                                                                       \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
+		                       & Fountain discharge              & $M_F$           & \num{7.3e5}   & \num{6.6e4}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.3e4}   & \num{2.1e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{2.3e2}   & \num{8.9e2}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
+		                       & Meltwater                       & $M_{water}$     & \num{2.0e4} & \num{1.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{2.2e4} & \num{2.1e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{1.5e3} & \num{1.2e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{7.0e5} & \num{1.2e4}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
+
+		                       & Maximum Ice Volume              &                 & 47            & 67            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 5             & 30            & \% \\\midrule
+	\end{tabular}
+\end{table}
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
