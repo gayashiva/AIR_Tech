@@ -204,6 +204,9 @@ Eight thermistors recorded temperature variations across the interior of the Aut
 
 \section{Methods}
 
+
+
+
 \subsection{Automation system}
 
 \subsubsection{Automation hardware}
@@ -224,9 +227,16 @@ criteria is valid, the drain and air valves empty the water in the pipeline.
 
 \subsubsection{Automation software}
 
-The software uses several assumptions to reduce the data requirement of the energy balance model. The
-assumptions are categorised into two kinds based on whether they favour higher water use efficiency or ice
-volumes and are described in the Appendix and summarised in Table \ref{tab:assumptions}.  
+Any construction location can either be constrained by the available water supply or the cold weather windows
+for fountain operation. If the respective location has limited water supply then the fountain scheduling
+strategy should be optimised for high water use efficiency (WUE). But if the location is limited by the time
+period when the fountain can function then the scheduling strategy should be optimised for high ice volumes
+(ICV).
+
+We introduce two kinds of approximations in the automation software that optimise for the ICV and WUE objective
+respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface properties
+using its surface albedo and (c) weather conditions using the cloudiness parameter. The assumptions are
+described in the Appendix and summarised in Table \ref{tab:assumptions}.  
 
 \begin{table}[]
 \centering
