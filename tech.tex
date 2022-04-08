@@ -227,11 +227,11 @@ criteria is valid, the drain and air valves empty the water in the pipeline.
 
 \subsubsection{Automation software}
 
-Any construction location can either be constrained by the available water supply or the cold weather windows
-for fountain operation. If the respective location has limited water supply then the fountain scheduling
-strategy should be optimised for high water use efficiency (WUE). But if the location is limited by the time
-period when the fountain can function then the scheduling strategy should be optimised for high ice volumes
-(ICV).
+Any construction location can either be constrained by the available water supply or the duration of subzero
+weather windows for fountain operation. If the respective location has limited water supply then the fountain
+scheduling strategy should be optimised for high water use efficiency (WUE). But if the location is limited by
+the time period when the fountain can function then the scheduling strategy should be optimised for high ice
+volumes (ICV).
 
 We introduce two kinds of approximations in the automation software that optimise for the ICV and WUE objective
 respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface properties
@@ -245,15 +245,9 @@ described in the Appendix and summarised in Table \ref{tab:assumptions}.
 \begin{tabular}{@{}lllll@{}}
 \toprule
 \textbf{Estimation of} & \textbf{Symbol} & \textbf{ICV Assumptions} & \textbf{WUE Assumptions} & \\ \midrule
-\multicolumn{1}{|l}{Surface Area}        & $A_{cone}$ & $ \sqrt{2} \pi r_{F}^2$ & $\pi r_{F}^2$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Shortwave Radiation} & $q_{SW}$ & $cld = 0$ ; $\alpha=\alpha_{snow}$; & $cld = 1$ ;
-$\alpha=\alpha_{ice}$; & \multicolumn{1}{l|}{} \\ 
-\multicolumn{1}{|l}{ } &  & $f_{cone} = \frac{cos \theta_{sun} + \pi sin \theta_{sun}}{2\sqrt{2}\pi}$  & $f_{cone} = sin \theta_{sun} / 2$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Longwave Radiation}  & $q_{LW}$ & $cld = 0$ ; $T_{ice} = 0$ & $cld = 1$ ; $T_{ice} = 0$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Sensible and Latent Heat}       & $q_{S}$ &$\mu_{cone} = 1.5$  & $\mu_{cone} = 1$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Temperature heat flux} & $q_{T}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Fountain discharge heat flux} & $q_{F}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Ground heat flux}    & $q_{G}$ & 0 & 0 & \multicolumn{1}{l|}{} \\ \bottomrule
+\multicolumn{1}{|l}{AIR slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
+\multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
 \end{tabular}
 \end{table}
 
