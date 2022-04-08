@@ -49,25 +49,36 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
 In some arid mountain regions the lack of glacier meltwater is the main constraint on agricultural production.
 As the area irrigated is often governed by the limited availability of water or labour to carry water, there is
-much interest at the village level in adopting water storage techniques. One of such a technique has gained many
-users and is called artificial ice reservoirs (AIRs) or also mentioned icestupas. These AIRs are traditionally constructed by diverting glacial
-streams into fountain spray systems via embankments and pipelines. However, traditional construction strategies
-are prone to pipeline freezing events that increase the manual effort required to maintain the AIRs. Moreover,
-this strategy uses unscheduled fountains that spray all the available water all the time thereby resulting in
-low water use efficiency. Improvement of these construction strategies, therefore, will allow the farmers to
-cultivate larger areas or to devote more time to other activities. 
+much interest at the village level in adopting water storage techniques. One such technique that has gained many
+users is called artificial ice reservoirs (AIRs) or icestupas. These AIRs are traditionally constructed by
+diverting glacial streams into fountain spray systems via embankments and pipelines. However, traditional
+construction strategies require significant maintenance and produce high water losses. Improvement of these
+construction strategies, therefore, will allow the farmers to cultivate larger areas or to devote more time to
+other activities. 
 
-Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems and, at
-the same time, increase water use efficiency. The goal of fountain scheduling is to make the most efficient use
-of water by spraying the right amount of water at the right time, making sure water is available when the AIR
-surface can freeze it. We expect scheduled fountains to produce higher water use efficiency since they produce
-lower fountain wastewater. Additionally, lower fountain wastewater productions also lowers the melting energy
-resulting in higher ice volumes.
+Several AIR construction efforts have been abandoned despite having favourable weather conditions. This is
+because colder weather conditions  not just build bigger AIRs but also increase maintenance and pipeline damage
+by also freezing water inside the pipeline. In order to circumvent these issues, AIR constructors often maintain
+the maximum possible flow in the pipeline even during time periods when temperature conditions are far from
+ideal. This reduces the risk of pipeline freezing events but at the expense of water use efficiency. However,
+AIR constructors also increase the fountain periodically which lowers the discharge rate and thereby increases
+the risk of pipeline freezing events. Hence, traditional AIR constructions often come to a halt in the middle of
+winter when increases in height and fluctuations of weather inevitabily leads to a pipeline freezing event.
+
+An optimum construction strategy, therefore, should prevent pipeline freezing events while maintaining high
+water use efficiency. Typical solutions to prevent pipeline freezing events are to bury or drain the pipeline.
+Burying the pipeline at a sufficient depth can reduce the influence of atmospheric conditions on the pipeline
+water temperature. Even though this method is ideal, it can quickly get expensive depending on the length of the
+pipeline and the frost depth. Therefore, such an effort is warranted only in the case of a permanent
+construction location. Comparatively, draining the pipeline is a much cheaper strategy. Moreover, it can be
+combined with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems.
+Additionally, lower fountain wastewater productions also lowers the melting energy resulting in higher ice
+volumes.
 
 However, it is unrealistic to schedule fountains manually due to two reasons. One, constant adjustments of
 discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
-impractical. Two, frequent pipeline water drainage required to prevent freezing events during scheduled fountain
-disuse intervals is unfeasible. Therefore, operation of scheduled fountains via automation systems is preferred.
+impractical. Two, frequent pipeline water drainage required to prevent freezing events during critical weather
+windows is unfeasible. Therefore, operation of scheduled fountains via automation systems is preferred.
 
 Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
 (b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
@@ -75,7 +86,7 @@ questions. Surface freezing rates can be calculated by means of the full energy 
 \cite{balasubramanianInfluenceMeteorologicalConditions2022} and \cite{oerlemansBriefCommunicationGrowth2021}.
 However, in order to produce recommended discharge rates, we develop a simpler version of this energy balance
 model that seeks a balance between model complexity and data availablity in order to produce recommended
-discharge rates for the automation system efficiently.
+discharge rates for the automation system.
 
 The main interest in using model results is to simulate fountain schedules relative to various constrains in
 monetary investments, construction duration as well as in water availability. The fountain scheduling strategies
@@ -424,8 +435,8 @@ model.
 The automation system allows the easy handling of fountain scheduling implementation. The possibility for
 changing the location and fountain metadata directly in the user interface allows tailoring the fountain
 discharge rate according to the location's water supply and weather conditions. Furthermore, this construction
-strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever fountain is not in
-use.
+strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever critical weather
+windows are detected.
 
 Nevertheless, the real world application of this method is challenging. It is clear that if improvements are to
 be achieved, future research must be devoted to modelling the impact of fountain design on the spray radius.

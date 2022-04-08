@@ -1,4 +1,20 @@
 
+This is because
+it is challenging to optimise the pipeline and fountain charecteristics based on the high diurnal and seasonal
+weather fluctuations during winter.
+The
+goal of fountain scheduling is to make the most efficient use of water by spraying the right amount of water at
+the right time, making sure water is available when the AIR surface can freeze it.
+Fountain scheduling methods are one option for reducing watering volumes for AIR construction systems. The goal
+of fountain scheduling is to make the most efficient use of water by spraying the right amount of water at the
+right time, making sure water is available when the AIR surface can freeze it. In order for this construction
+method to also prevent pipeline freezing events, the pipeline needs to be additionally buried or operated under
+periods of safe weather conditions. Burying the pipeline at a sufficient depth can reduce the influence of
+atmospheric conditions on the pipeline water temperature. Even though this method is ideal, it can quickly get
+expensive depending on the length of the pipeline. Therefore, such an effort is warranted only in the case of a
+permanent construction location. Comparatively, draining the pipeline is a cheaper strategy but this requires
+the quantification of real-time atmospheric influences in triggering such pipeline freezing events.  
+
 \begin{equation}
   R^2 = 1 - \frac{\Sigma(Q^{phy}_{F} - Q^{emp}_{F})^2}{\Sigma(Q^{phy}_{F} - \overline{{Q^{phy}_{F}}})^2}
 \end{equation}
