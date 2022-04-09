@@ -72,27 +72,26 @@ water temperature. Even though this method is ideal, it can quickly get expensiv
 pipeline and the frost depth. Therefore, such an effort is warranted only in the case of a permanent
 construction location. Comparatively, draining the pipeline is a much cheaper strategy. Moreover, it can be
 combined with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems.
-Additionally, lower fountain wastewater productions also lowers the melting energy resulting in higher ice
-volumes.
+
+Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
+(b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
+questions. Surface freezing rates can be calculated by means of the full energy balance model developed in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. But this model needs to be forced with weather data
+to recommend fountain scheduling strategies. Historical weather data or real-time weather data could be used to
+force the model. To accomodate for the limited quantity of data available in any new location, we further
+approximate the model by including two kinds of assumptions that are considerate for the limited water
+availability or the favourable weather windows respectively.
 
 However, it is unrealistic to schedule fountains manually due to two reasons. One, constant adjustments of
 discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
 impractical. Two, frequent pipeline water drainage required to prevent freezing events during critical weather
 windows is unfeasible. Therefore, operation of scheduled fountains via automation systems is preferred.
 
-Proper fountain scheduling requires answers to two questions: (a) When should the water be turned on and off?
-(b) How much water should be sprayed? Knowledge of surface freezing rates is important for answering these
-questions. Surface freezing rates can be calculated by means of the full energy balance model developed in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} and \cite{oerlemansBriefCommunicationGrowth2021}.
-However, in order to produce recommended discharge rates, we develop a simpler version of this energy balance
-model that seeks a balance between model complexity and data availablity in order to produce recommended
-discharge rates for the automation system.
-
 The main interest in using model results is to simulate fountain schedules relative to various constrains in
-monetary investments, construction duration as well as in water availability. The fountain scheduling strategies
-are evaluated from the relative water use efficiency and maximum ice volume produced during the construction
-period. The specific objectives of this paper include the presentation of the automation system and examples of
-its application to the computation of fountain scheduling strategies.
+favourable weather windows and water availability. The fountain scheduling strategies are evaluated from the
+relative water use efficiency and maximum ice volume produced during the construction period. The specific
+objectives of this paper include the presentation of the automation system and examples of its application to
+the computation of fountain scheduling strategies.
 
 \section{Study site and data}
 
@@ -111,7 +110,7 @@ traditional and an automated construction strategy.
 
 In order to compare both the construction strategies, the automated and the traditional AIRs were constructed
 adjacent to each other as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
-and similar weather patterns. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
+and similar weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, tree branches were laid covering the fountain pipe to initiate the ice formation
 process. The fountain discharge was maintained at maximum and its height was increased from 3 to 6\,$m$ during
@@ -122,10 +121,11 @@ system controlled the fountain discharge rate using real time weather input and 
 the user interface. 
 
 \subsection{Meteorological data}
+
 Air temperature, relative humidity, wind speed, pressure, longwave, shortwave direct and diffuse radiation are
-required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period starts when the
-fountain was first switched on and ends when the fountain was last switched off. These two dates are denoted as
-start and fountain off dates henceforth.
+required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period
+starts when the fountain was first switched on and ends when the fountain was last switched off. These two dates
+are denoted as start and fountain off dates henceforth.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/data.png}
@@ -153,7 +153,6 @@ reduction in magnitude for the scheduled fountain discharge rate.
 Measurements of the discharge rate for the automated fountain were used to determine the discharge of the
 traditional fountain. A new fountain design was used for the automated strategy since the traditional fountain
 design was unable to function in the whole range of discharge rates suggested by the automation system.
-
 
 \subsection{Drone surveys}
 
@@ -198,14 +197,7 @@ remaining surveys were used for model validation.
 
 \end{table}
 
-\subsection{Bulk temperature measurements}
-
-Eight thermistors recorded temperature variations across the interior of the Automated Guttannen AIR. 
-
 \section{Methods}
-
-
-
 
 \subsection{Automation system}
 
@@ -236,7 +228,11 @@ volumes (ICV).
 We introduce two kinds of approximations in the automation software that optimise for the ICV and WUE objective
 respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface properties
 using its surface albedo and (c) weather conditions using the cloudiness parameter. The assumptions are
-described in the Appendix and summarised in Table \ref{tab:assumptions}.  
+described in the Appendix and summarised in Table \ref{tab:assumptions}. 
+
+We assume the surface temperature is always at melting point and ignore the contribution of fountain heat
+flux and ground heat flux to the energy balance to estimate both the scheduling strategies. The consequences of
+these assumptions in the determination of all the energy balance terms are discussed in the Appendix.
 
 \begin{table}[]
 \centering
@@ -250,23 +246,6 @@ described in the Appendix and summarised in Table \ref{tab:assumptions}.
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
 \end{tabular}
 \end{table}
-
-Using the simplifications shown in Table \ref{tab:assumptions}, we can compute the expected freezing rate or
-recommeded discharge rates using the following set of equations:
-
-\begin{subequations}
-	\begin{align}
-		\label{eqn:T}
-   \frac{q_{SW} + q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx f(hod, T_a, RH,
-   v_a) \\
-		\label{eqn:auto}
-  Q_{F} & \approx f(hod, T_a, RH, v_a) \cdot \pi r_{F}^2 \cdot
-  \frac{1000}{60}
-	\end{align}
-\end{subequations}
-
-where $r_F$ is the fountain spray radius, $Q_{F}$ is the discharge rate, f is the simplified energy balance
-function and $hod$ is the hour of day.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
@@ -323,20 +302,15 @@ $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) ta
 \cite{cuffeyPhysicsGlaciers2010} .
 
 \subsection{Validation}
-We performed the validation of the physical model on the two different AIRs using two different datasets namely,
-AIR mean temperature and ice volume measurements. This was because there were fewer successful ice volume
-measurements for the automated AIR due to lack of features on the snow covered structure. Meanwhile, the traditional
-AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a AIR
-mean temperature dataset. Therefore, the calibrated physical model was tested using the hourly AIR mean temperature
-measurements for the automated AIR and the ice volume measurements for the traditional AIR respectively. Root
-mean squared error (RMSE) and correlation coefficient served as the evaluation metric in both the cases. Hourly
-AIR mean temperature measurements were produced from the mean of all the six thermistor measurements located at the
-interior of the AIR throughout the construction duration. Mean AIR temperature was estimated to be the modelled
-average of surface temperature $T_{ice}$ and bulk temperature $T_{bulk}$. Ice volume was recorded using several
-drone surveys as shown in Table \ref{tab:uav}.
+We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
+squared error (RMSE) between ice volume estimates and measurements . Even though the number of drone flights
+were identical for both AIRs, fewer successful volume observations were possible for the automated AIR as shown
+in Table \ref{tab:uav}. This was because the DEMs generated for the automated AIR could not georeference the
+automated AIR's snow covered surface. Since the traditional AIR was steeper, its surface revealed ice patches
+that could be georeferenced. Root mean squared error (RMSE) served as the evaluation metric in both the cases.
 
-The performance of the ICV and WUE versions of the physical model was assessed by comparing its discharge rate
-estimates with the validated freezing rate of the calibrated physical model.
+The performance of the ICV and WUE versions of the physical model was assessed by comparing correlation of its
+discharge rate estimates with the validated freezing rate of the calibrated physical model.
 
 \section{Results}
 

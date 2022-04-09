@@ -1,4 +1,37 @@
 
+We performed the validation of the physical model on the two different AIRs using two different datasets namely,
+AIR mean temperature and ice volume measurements. This was because there were fewer successful ice volume
+measurements for the automated AIR due to lack of features on the snow covered structure. Meanwhile, the traditional
+AIR being steeper exposed ice features that resulted in more ice volume measurements but it did not have a AIR
+mean temperature dataset. Therefore, the calibrated physical model was tested using the hourly AIR mean temperature
+measurements for the automated AIR and the ice volume measurements for the traditional AIR respectively. Root
+mean squared error (RMSE) and correlation coefficient served as the evaluation metric in both the cases. Hourly
+AIR mean temperature measurements were produced from the mean of all the six thermistor measurements located at the
+interior of the AIR throughout the construction duration. Mean AIR temperature was estimated to be the modelled
+average of surface temperature $T_{ice}$ and bulk temperature $T_{bulk}$. Ice volume was recorded using several
+drone surveys as shown in Table \ref{tab:uav}.
+
+Using the simplifications shown in Table \ref{tab:assumptions}, we can compute the expected freezing rate or
+recommended discharge rates using the following set of equations:
+
+\begin{subequations}
+	\begin{align}
+		\label{eqn:T}
+   \frac{q_{SW} + q_{LW} + q_{S}}{\rho_w \cdot L_F} + \frac{q_L}{\rho_w \cdot L_V} & \approx f(hod, T_a, RH,
+   v_a) \\
+		\label{eqn:auto}
+  Q_{F} & \approx f(hod, T_a, RH, v_a) \cdot \pi r_{F}^2 \cdot
+  \frac{1000}{60}
+	\end{align}
+\end{subequations}
+
+where $r_F$ is the fountain spray radius, $Q_{F}$ is the discharge rate, f is the simplified energy balance
+function and $hod$ is the hour of day.
+
+However, in order to produce recommended discharge rates, we develop a simpler version of this energy balance
+model that seeks a balance between model complexity and data availablity in order to produce recommended
+discharge rates for the automation system.
+
 \begin{table}[]
 \centering
 \caption{Assumptions introduced to simplify the model.}
