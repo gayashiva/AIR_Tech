@@ -1,3 +1,16 @@
+But the surprisingly it also has a considerable influence on the energy
+balance. The melting energy of the traditional AIR is increased due to increase in shortwave and fountain water
+heat flux impact whereas the freezing energy is decreased due to longwave and latent energy difference. The
+diurnal cycle of the growth rate is more pronounced in the traditional AIR because of the increased solar
+radiation and decreased longwave radiation impact on the AIR surface. The main cause of the higher solar
+radiation fountain water heat impact and lower longwave latent heat radiation is the dampening effect of
+fountain discharge on the surface albedo and the surface temperature respectively. 
+
+
+Given the excessive discharge rate of the unscheduled fountain, it is not surprising that its fountain
+wastewater output is an order of magnitude higher than the scheduled fountain. But given the lower measured
+volume of the traditional AIR, it is unexpected that it corresponds to a higher ice mass. This is because the
+lower snowfall input of the traditional AIR made it more dense than the automated AIR (see Table \ref{tab:mb}). 
 
 We performed the validation of the physical model on the two different AIRs using two different datasets namely,
 AIR mean temperature and ice volume measurements. This was because there were fewer successful ice volume
