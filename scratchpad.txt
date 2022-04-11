@@ -1,3 +1,10 @@
+
+The automation system implements fountain scheduling strategies for the twin objectives of ice volume (ICV) and
+water use efficiency (WUE). The ICV objective is suitable at locations with sufficient water volumes to freeze
+during the construction period. The WUE objective is suitable at locations with favourable weather conditions
+constrained by available water supply. For the ICV objective, the model assumptions overestimate the freezing
+rate whereas for the WUE objective the model assumptions underestimate the freezing rate. 
+
 But the surprisingly it also has a considerable influence on the energy
 balance. The melting energy of the traditional AIR is increased due to increase in shortwave and fountain water
 heat flux impact whereas the freezing energy is decreased due to longwave and latent energy difference. The
