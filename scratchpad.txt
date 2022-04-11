@@ -1,4 +1,15 @@
 
+
+Quantification of weather and fountain influences and improvement of these construction strategies, therefore,
+will allow the farmers to cultivate larger areas or to devote more time to other activities. 
+
+In order to circumvent these issues, AIR constructors often maintain the maximum possible flow in the pipeline
+even during time periods when temperature conditions are far from ideal. This reduces the risk of pipeline
+freezing events but at the expense of water use efficiency. However, AIR constructors also increase the fountain
+periodically which lowers the discharge rate and thereby increases the risk of pipeline freezing events. Hence,
+traditional AIR constructions often come to a halt in the middle of winter when increases in height and
+fluctuations of weather inevitabily leads to a pipeline freezing event.
+
 The automation system implements fountain scheduling strategies for the twin objectives of ice volume (ICV) and
 water use efficiency (WUE). The ICV objective is suitable at locations with sufficient water volumes to freeze
 during the construction period. The WUE objective is suitable at locations with favourable weather conditions

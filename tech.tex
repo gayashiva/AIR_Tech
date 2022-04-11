@@ -35,45 +35,49 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
   Artificial Ice Reservoir (AIR), often also called - Ice Stupa - are a climate adaptation strategy developed in
   the Indian Himalayas (Ladakh). With this technology, otherwise unused stream or lake water is stored in large
-  ice towers in winter. The melt water that is then available in spring is used for irrigation in agriculture
-  when the melt water from glaciers is still not sufficient. Recent studies have shown that during construction
-  of traditional AIRs over 75 \% of the water sprayed was lost. Therefore, fountain wastewater production have
-  to be reduced to improve water use efficiency. Improved fountain scheduling was realized using an automation
-  system that computes recommended discharge rates using real-time weather inputs and location metadata. During
-  the winter of 2021-22, a traditional and an automated AIR were built in Guttannen, Canton of Berne,
-  Switzerland with the main aim of comparing and quantifying the benefits of using such automation systems. The
-  scheduled fountain produced similar ice volumes while consuming 87 \% lesser water than the unscheduled
-  fountain. Overall, these results show that scheduled fountains can increase the water use efficiency without
+  ice towers in winter. The surplus melt water that is then available in spring is used for satisfying
+  irrigation water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of
+  the water sprayed was lost. Therefore, fountain wastewater production have to be reduced to improve water use
+  efficiency. Improved fountain scheduling was realized using an automation system that computes recommended
+  discharge rates using real-time weather inputs and location metadata. During the winter of 2021-22, a
+  traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
+  comparing and quantifying the benefits of fountain scheduling through automation systems. The scheduled
+  fountain produced similar ice volumes while consuming 87 \% lesser water than the unscheduled fountain.
+  Overall, these results show that scheduled fountains can increase the water use efficiency without
   compromising on meltwater production.
 
 \end{abstract}
 
 \introduction
 
-In some arid mountain regions the lack of water is the main constraint on agricultural production. Therefore,
-there is much interest at the village level in adopting water storage techniques. One such technique that has
-gained many users is called artificial ice reservoirs (AIRs) or icestupas. These AIRs are traditionally
-constructed by diverting springs, glacial streams or lakes into fountain spray systems via embankments and
-pipelines. However, traditional construction strategies require significant maintenance and produce high water
-losses. Improvement of these construction strategies, therefore, will allow the farmers to cultivate larger
-areas or to devote more time to other activities. 
+In some arid mountain regions the lack of water during the irrigation season is the main constraint on
+agricultural production. Recently, an increasing need of irrigation water supply has prompted more than 30
+villages in Ladakh, India to construct artificial ice reservoirs (AIRs) or icestupas. These AIRs are
+traditionally constructed by diverting springs, glacial streams or lakes into fountain spray systems via
+embankments and pipelines. However, there is a large variability associated with this water supply due to the
+local weather influences and discharge rate of the chosen location and fountain respectively. Moreover,
+traditional construction strategies require significant maintenance and produce high water losses.
 
-Several AIR construction efforts have been abandoned despite having favourable weather conditions. This is
-because colder weather conditions not just build bigger AIRs but also increase risk of water freezing inside the
-pipeline. In order to circumvent these issues, AIR constructors often maintain the maximum possible flow in the
-pipeline even during time periods when temperature conditions are far from ideal. This reduces the risk of
-pipeline freezing events but at the expense of water use efficiency. However, AIR constructors also increase the
-fountain periodically which lowers the discharge rate and thereby increases the risk of pipeline freezing
-events. Hence, traditional AIR constructions often come to a halt in the middle of winter when increases in
-height and fluctuations of weather inevitabily leads to a pipeline freezing event.
+Previous studies (\citep{balasubramanianInfluenceMeteorologicalConditions2022},
+\citep{oerlemansBriefCommunicationGrowth2021}) have already quantified the meteorological influences on AIR
+volume evolution by comparing several AIRs built in India and Switzerland. The results of these previous study
+revealed the high sensitivity of AIR volume evolution on the fountain characteristics. Moreover, it was found
+that all the AIRs constructed suffered from very high water losses due to excessive fountain discharge input. 
+
+A straightforward solution to this issue is to reduce the fountain discharge input but it is challenging to
+implement it in practice. For example, in the case of the Indian AIR, the model estimates that water use
+efficiency can be increased without compromising the ice volume by just reducing the fountain discharge rate by
+half. However, in practice, this strategy would have further increased the number of pipeline freezing events
+due to much lower water velocities in the pipeline. 
 
 An optimum construction strategy, therefore, should prevent pipeline freezing events while maintaining high
-water use efficiency. Typical solutions to prevent pipeline freezing events are to bury or drain the pipeline.
-Burying the pipeline at a sufficient depth can reduce the influence of atmospheric conditions on the pipeline
-water temperature. Even though this method is ideal, it can quickly get expensive depending on the length of the
-pipeline and the frost depth. Therefore, such an effort is warranted only in the case of a permanent
-construction location. Comparatively, draining the pipeline is a much cheaper strategy. Moreover, it can be
-combined with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems.
+water use efficiency. Typical solutions to prevent pipeline freezing events given pipeline dimensions and
+discharge rates are to bury or drain the pipeline. Burying the pipeline at a sufficient depth can reduce the
+influence of atmospheric conditions on the pipeline water temperature. Even though this method is ideal, it can
+quickly get expensive depending on the length of the pipeline and the frost depth. Therefore, such an effort is
+warranted only in the case of a permanent construction location. Comparatively, draining the pipeline is a much
+cheaper strategy. Moreover, it can be combined with fountain scheduling methods to achieve reduced watering
+volumes for AIR construction systems.
 
 Proper fountain scheduling requires answers to two questions: 
 (a) When should the water be turned on and off ?
@@ -81,26 +85,24 @@ Proper fountain scheduling requires answers to two questions:
 
 For answering these questions, knowledge of surface freezing rates is important . Surface freezing rates can be
 calculated by means of the full energy balance model developed in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. But this model needs to be forced with weather data
-to recommend fountain scheduling strategies. Historical weather data or real-time weather data could be used to
-force the model. To accomodate for the limited quantity of data available in any new location, we further
-approximate the model by including two kinds of assumptions that are considerate for the limited water
-availability or the favourable weather windows respectively.
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
+weather data or real-time weather data to produce recommended discharge rates. We further approximate the model
+by including two kinds of assumptions that are considerate for the limited water availability or the favourable
+weather windows respectively.
 
 However, manually adjusting the fountain discharge rate is unrealistic. Firstly, constant adjustments of
 discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
 impractical. Secondly, frequent pipeline water drainage required to prevent freezing events during critical weather
 windows is unfeasible. Therefore, operation of scheduled fountains via automation systems is preferred.
 
-The present study builds upon previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022}, which
-quantified the influence of meteorological conditions on AIR volume evolution. The current study attempts to
-quantify the influence of different fountain scheduling strategies on the mass and energy balance of AIRs with
-identical meteorological conditions. The main interest in using model results is to simulate fountain schedules
-relative to various constraints in favourable weather windows and water availability. The fountain scheduling
-strategies are evaluated from the relative water use efficiency and maximum ice volume produced during the
-construction period. The specific objectives of this paper include the mass and energy balance comparison of
-fountain scheduling strategies, presentation of the automation system, and examples of its application to the
-computation of fountain scheduling strategies.
+The present study builds upon previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022}, in
+order to quantify the influence of different fountain scheduling strategies on the mass and energy balance of
+AIRs with identical meteorological conditions. The main interest in using model results is to simulate fountain
+schedules relative to constraints in favourable weather windows and water availability. The fountain
+scheduling strategies are evaluated from the relative water use efficiency and maximum ice volume produced
+during the study period. The specific objectives of this paper include the mass and energy balance
+comparison of fountain scheduling strategies, presentation of the automation system, and examples of its
+application to the computation of fountain scheduling strategies.
 
 \section{Study site and data}
 
@@ -118,13 +120,13 @@ traditional and an automated construction strategy.
 \label{fig:2AIR} 
 \end{figure}
 
-In order to compare both the construction strategies, the automated and the traditional AIRs were constructed
-adjacent to each other as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source
-and similar weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
+The automated and the traditional AIRs were constructed adjacent to each other as shown in Fig. \ref{fig:2AIR}.
+This ensured both AIRs shared the same water source and similar weather conditions. In addition, a webcam
+guaranteed a continuous survey of the automated AIR.   
 
-In the traditional strategy, tree branches were laid covering the fountain pipe to initiate and speed up of
-generating a fast ice cone formation process. The fountain discharge was maintained at maximum and its height
-was increased from 3 to 6\,$m$ during the construction period.
+In the traditional strategy, tree branches were laid covering the fountain pipe to initiate and speed up the ice
+cone formation process. The fountain discharge was maintained at maximum and its height was increased from 3 to
+6\,$m$ during the construction period.
 
 In the automated strategy, only the fountain pipe was placed before the water spray started. A programmed
 automation system controlled the fountain discharge rate during the whole winter season using real time weather
@@ -155,7 +157,7 @@ fountain runtime. The discharge rate and water temperature of the scheduled foun
 automation system but no such datasets were recorded for the unscheduled fountain. The unscheduled fountain was
 operated at the maximum discharge rate using the same water source. Therefore, the maximum recorded discharge
 rate and water temperature dataset of the scheduled fountain was used to estimate the corresponding variables of
-the unscheduled fountain. The discharge rate of both fountains varied with increase in its fountain pipeline
+the unscheduled fountain. The discharge rate of both fountains decreased with increase in its fountain pipeline
 height. We observed a reduction in the scheduled fountain's maximum discharge rate by a factor of two whenever
 the height was increased by a meter. The same reduction in magnitude was also applied for the unscheduled
 fountain's discharge rate whenever pipeline height increase events occurred. A new fountain design was used for
@@ -220,18 +222,17 @@ and air valves empty the water in the pipeline.
 
 \subsubsection{Automation software}
 
-Any construction location can either be constrained by the available water supply or the duration of subzero
+Any construction location can either be constrained by the available water supply or the duration of favourable
 weather windows for fountain operation. If the respective location has limited water supply then the fountain
 scheduling strategy should be optimised for high water use efficiency (WUE). But if the location is limited by
 the time period when the fountain can function then the scheduling strategy should be optimised for high ice
 volumes (ICV).
 
-Accordingly, we introduce two kinds of approximations in the automation software that optimise for the ICV and
+Accordingly, we introduce three kinds of approximations in the automation software that optimise for the ICV and
 WUE objective respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface
-properties using its surface albedo and (c) weather conditions using the cloudiness parameter. For the ICV
-objective, the model assumptions overestimate the freezing rate whereas for the WUE objective the model
-assumptions underestimate the freezing rate.The assumptions are described in the Appendix and summarised in
-Table \ref{tab:assumptions}. 
+properties using its surface albedo and (c) weather conditions using the cloudiness parameter. The model
+assumptions overestimate and underestimate the freezing rate for the ICV and WUE objectives respectively. These
+assumptions are summarised in Table \ref{tab:assumptions}. 
 
 We assume the surface temperature is always at melting point and ignore the contribution of fountain heat
 flux and ground heat flux to the energy balance to estimate both the scheduling strategies. The consequences of
@@ -252,9 +253,10 @@ these assumptions in the determination of all the energy balance terms are discu
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
-automation system regulates the fountain discharge rate based on the recommended discharge rate. However,
-certain termination criterias override the discharge rate recommendation to prevent water loss and pipeline
-freezing events, namely: 
+automation system regulates the fountain discharge rate based on the recommended discharge rate. 
+
+However, certain termination criterias override the discharge rate recommendation to prevent water loss and
+pipeline freezing events, namely: 
 
 \begin{itemize}
 
@@ -271,20 +273,15 @@ freezing events, namely:
 \end{itemize}
 
 \subsection{Calibration}
-We retain the default values of all parameters used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
 
-In addition, two model variables, fountain water temperature ($T_F$) and AIR density ($\rho_{AIR}$) are parametrised. Both variables were assumed to be constant in the previous versions of the model. With the extended measurement dataset of CH22 AIR, we estimate the water temperature variable by assuming it is equal to our ground temperature measurements but only when the air temperature was not subzero. Under subzero conditions, the water droplets are likely to cool to 0 C during their flight time. Therefore, the fountain water temperature was instead determined as follows:
+We retain the default values of all parameters used in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
 
-\begin{equation}
-	T_{F} = \left\{ \begin{array}{ll}
-		0 & \textit{ if } T_{temp} < 0 \\
-		T_{G} & \textit{ otherwise}
-	\end{array} \right.
-\end{equation}
+In addition, two model variables, fountain water temperature ($T_F$) and AIR density ($\rho_{AIR}$) are
+parametrised. Both variables were assumed to be constant in the previous versions of the model. 
 
-where $T_{G}$ is the measured ground temperature.
-
-The snowfall mass input of CH22 AIR was comparable to the mass input via the fountain discharge. Therefore, we could no longer assume that the AIR density was equal to ice density. We instead parameterised AIR density $\rho_{AIR}$ as follows:
+It is inaccurate to assume AIR density to be that of ice since the CH22 AIR had a significant mass contribution
+in the form of snowfall. We instead parameterised AIR density $\rho_{AIR}$ as follows:
 
 \begin{equation}
   \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
@@ -292,6 +289,25 @@ The snowfall mass input of CH22 AIR was comparable to the mass input via the fou
 
 where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation; $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
 \cite{cuffeyPhysicsGlaciers2010} .
+
+Also, a better fountain water temperature parameterisation is desired to accurately distinguish between the
+fountain water heat flux of different scheduling strategies. With the extended measurement dataset of CH22 AIR,
+we estimate the water temperature variable by assuming it is equal to our water temperature measurements but
+only when the air temperature was not below the water temperature. Otherwise the water droplets are assumed to
+cool to the ambient zir temperature. Additionally, under subzero conditions, the water droplets are likely to
+cool to 0 C during their flight time. Therefore, the fountain water temperature was instead determined as
+follows:
+
+\begin{equation}
+	T_{F} = \left\{ \begin{array}{ll}
+		0 & \textit{ if } T_{a} < 0 \\
+		T_a & \textit{ if } T_{F} > T_a \\
+		T_{F} & \textit{ otherwise}
+	\end{array} \right.
+\end{equation}
+
+where $T_{F}$ is the measured fountain water temperature.
+
 
 \subsection{Validation}
 
@@ -331,6 +347,13 @@ scheduled fountain underestimated the freezing rate 80 \% of the construction du
 % \end{figure*}
 
 \subsection{Comparison of AIR construction strategies}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/dis_processes.png}
+\caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
+assumptions compared with the validated freezing rate of the full energy balance model.}
+\label{fig:freezing_rate}
+\end{figure*}
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass
 and energy balance of the respective AIR. As expected, unscheduled fountains produce an order of magnitude
@@ -411,6 +434,9 @@ strategies used}
 \end{figure*}
 
 
+\subsection{Recommended construction strategy}
+Fix fountain height, make multiple AIRs, fountain design.
+
 \conclusions
 
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
@@ -423,12 +449,12 @@ AIRs mainly due to its surface albedo and surface temperature feedbacks. Therefo
 to achieve a 20 \% higher maximum ice volume with a 8 fold increase in the water use efficiency compared to the
 traditional AIR.
 
-The automation system allows the easy handling of fountain scheduling implementation. The possibility for
-changing the location and fountain metadata directly in the user interface allows tailoring the fountain
-discharge rate according to the location's water supply and weather conditions. Furthermore, this construction
-strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever critical weather
-windows are detected. Although, the automation system increases installation costs, we believe use of such
-systems is warranted when considering the reduced maintenance costs long term.
+The automation system allows the easy handling of fountain scheduling implementation in any new location. The
+possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
+fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
+construction strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever
+critical weather windows are detected. Although, the automation system increases installation costs, we believe
+use of such systems is warranted when considering the reduced maintenance costs long term.
 
 A simplified energy balance model compatible with the limited data availability of a new location was used to
 produce recommended discharge rate. Nevertheless, this model was able to capture more than 65 \% of the freezing
