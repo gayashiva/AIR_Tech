@@ -233,10 +233,6 @@ properties using its surface albedo and (c) weather conditions using the cloudin
 assumptions overestimate and underestimate the freezing rate for the ICV and WUE objectives respectively. These
 assumptions are summarised in Table \ref{tab:assumptions}. 
 
-We assume the surface temperature is always at melting point and ignore the contribution of fountain heat
-flux and ground heat flux to the energy balance to estimate both the scheduling strategies. The consequences of
-these assumptions in the determination of all the energy balance terms are discussed in the Appendix.
-
 \begin{table}[]
 \centering
 \caption{Assumptions introduced to simplify the model.}
@@ -250,24 +246,40 @@ these assumptions in the determination of all the energy balance terms are discu
 \end{tabular}
 \end{table}
 
+We apply the assumptions described in Table \ref{tab:assumptions} on the one-dimensional description of energy
+fluxes as used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} to obtain the rate of change of
+AIR ice mass as follows: 
+
+\begin{equation}
+  \frac{\Delta M_{ice}}{\Delta t}  =  (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G} - q_{T}}{L_F} + \frac{q_{L}}{L_V} ) \cdot A_{cone}
+	\label{eqn:auto}
+\end{equation}
+
+Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
+represents the mass change rate due to freezing of the fountain water and melting of the ice. $q_{SW}$ is the
+net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
+and sensible heat fluxes; $q_{F}$ is the fountain heat flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the
+temperature heat flux and $A_{cone}$ is the area of the AIR surface. The derivation of these individual terms
+using the assumptions are discussed in the Appendix.
+
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
-automation system regulates the fountain discharge rate based on the recommended discharge rate. 
-
-However, certain termination criterias override the discharge rate recommendation to prevent water loss and
-pipeline freezing events, namely: 
+automation system regulates the fountain discharge rate based on the recommended discharge rate. The recommended
+discharge rate is equal to the ice mass change rate. However, certain termination criterias override the
+discharge rate recommendation and drain the pipeline to prevent water loss or pipeline freezing events, namely: 
 
 \begin{itemize}
 
-\item Loss of water droplets due to high wind speed are avoided by introducing a wind speed limit 
+\item High water loss is assumed if wind speed greater than critical wind speed.
 
-\item Pipeline freezing events due to very cold conditions are avoided by setting a minimum temperature limit 
+\item High risk of pipeline freezing event is assumed if temperature lower than minimum fountain temperature.
 
-\item Pipeline damage is avoided by draining the pipeline upon a pipeline freezing event detection. Pipeline freezing events are assumed if $Q_F = 0$ for at least 20 seconds.
+\item High risk of pipeline freezing event is assumed if mass change rate is lower than minimum fountain discharge rate. 
 
-\item Water loss is avoided by detection of pipeline leakage/damage. Pipeline leakage is assumed if $Q_F > Q_{leak}$. 
+\item Pipeline freezing events are assumed if $Q_F = 0$ for at least 20 seconds and the pipeline is drained as a
+  consequence.
 
-\item Pipeline freezing events are prevented by ignoring low discharge rate recommendations  
+\item Pipeline leakage is assumed if discharge rate is greater than maximum fountain discharge rate.
 
 \end{itemize}
 
@@ -469,28 +481,6 @@ fountain design on the spray radius.
 
 \section{Simplified energy balance model}
 
-We approximate the energy balance at the surface of an AIR by a one-dimensional description of energy fluxes as
-used in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. The ice volume evolution of the AIR can be
-represented as: 
-
-\begin{equation}
-  \frac{\Delta V_{ice}}{\Delta t}  =  \frac{\Delta j_{cone}}{ \Delta t} \cdot A_{cone}
-	\label{eqn:freeze}
-\end{equation}
-
-where $\frac{\Delta j_{cone}}{\Delta t}$ is the thickness change determined as follows:
-
-\begin{equation}
-  \frac{\Delta j_{cone}}{\Delta t}  = \frac{1}{\rho_{AIR}} \cdot (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G} -
-  q_{T}}{L_F} + \frac{q_{L}}{L_V} )
-	\label{eqn:freeze}
-\end{equation}
-
-Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
-represents the surface thickness change rate due to freezing of the fountain water and melting of the ice.
-$q_{SW}$ is the net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the
-turbulent latent and sensible heat fluxes; $q_{F}$ is the fountain heat flux; $q_{G}$ is the ground heat flux
-and $q_{T}$ is the temperature heat flux. However, we assume $q_{F}$, $q_{G}$ and $q_{T}$ to be negligible.
 
 The data requirement was reduced by estimating the global shortwave radiation and pressure directly using the
 location's coordinates and altitude through the solar radiation model described in
@@ -498,22 +488,23 @@ location's coordinates and altitude through the solar radiation model described 
 described in \citet{ineichenBroadbandSimplifiedVersion2008}.  
 
 The model complexity was reduced through assumptions that optimise for the ice volume objective or the water use
-efficiency objective. Assumptions are chosen based on whether they overestimate/underestimate the freezing rate.
+efficiency objective. We define the freezing rate and melting rate as the positive and negative ice mass change
+rate respectively. Assumptions are chosen based on whether they overestimate/underestimate the freezing rate.
 Ice volume objective requires freezing rate to be overestimated whereas WUE objective requires freezing rate to
 be underestimated. We describe these two kinds of assumptions applied on each of the energy balance components
 below: 
 
 \subsection{Surface Area $A_{cone}$ assumptions}
 
-Since we are only interested in determination of the surface area during the accumulation period we can assume a
-constant ice cone radius equal to the fountain spray radius. The surface area scales the freezing rate of the
-AIR. Hence, for the ICV objective we assume the maximum possible slope of 1 for the ice cone or in other words
-$h_{cone} = r_{F}$. Therefore, area is estimated as:  
+Determination of the surface area during the accumulation period is achieved by assuming a constant ice cone
+radius equal to the fountain spray radius. The surface area scales the freezing rate of the AIR. Hence, for the
+ICV objective we assume the maximum possible slope of 1 for the ice cone or in other words $h_{cone} = r_{F}$.
+Therefore, area is estimated as:  
 
 \begin{equation} A_{cone} =\pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
 
 Similarly, for the WUE objective, the area of the conical AIR is approximated to the area of its circular
-base.Therefore, area is estimated as:
+base. Therefore, area is estimated as:
 
 \begin{equation} A_{cone} =\sqrt{2} \cdot \pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
 
@@ -543,7 +534,7 @@ where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the WUE
 respectively.
 
 We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the iceV and
-WUE objective respectively. 
+WUE objective respectively.
 
 The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
 shape considered. It is computed as
@@ -553,8 +544,7 @@ shape considered. It is computed as
 			{(r_{cone})}^2/2) \cdot sin \theta_{sun} }{\pi \cdot r_{cone} \cdot ({(r_{cone})}^2+{(h_{cone})}^2)^{1/2}}\\
 \end{equation}
 
-For the ICV objective, since we assume the slope of the cone to be 1 $f_{cone}$ is determined
-as follows:
+For the ICV objective, since we assume the slope of the cone to be 1, $f_{cone}$ is determined as follows:
 
 \begin{equation}
 		f_{cone} =\frac{ cos \theta_{sun} + \pi \cdot sin \theta_{sun} }{2\sqrt{2} \cdot \pi }
@@ -584,7 +574,6 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we can estimate this parameter
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
-
 
 \noappendix 
 
