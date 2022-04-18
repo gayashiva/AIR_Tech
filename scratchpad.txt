@@ -1,4 +1,12 @@
 
+The last drone flight was used to set the dome volume for the traditional AIR. The
+dome volume for the automated AIR represented the snow volume found before the fountain was switched on. The
+remaining surveys were used for model validation.
+
+A new fountain design was used for the
+automated strategy since the traditional fountain design was unable to function in the whole range of discharge
+rates suggested by the automation system.
+
 
 Quantification of weather and fountain influences and improvement of these construction strategies, therefore,
 will allow the farmers to cultivate larger areas or to devote more time to other activities. 
