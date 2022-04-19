@@ -9,14 +9,15 @@
 \title{Fountain scheduling strategies to improve water use efficiency of artificial
 ice reservoirs (Icestupas)}
 
-\def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$,}
+\def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$, $Martin Von
+Burg^{3}\,$}
 
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
 Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
 \Author[1,2]{Suryanarayanan}{Balasubramanian}
 \Author[1]{Martin}{Hoelzle}
 \Author[3]{Roger}{Waser}
-% \Author[3]{Martin}{Von Burg}
+\Author[3]{Martin}{Von Burg}
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
 \affil[2]{Himalayan Institute of Alternatives, Ladakh, India}
 \affil[3]{University of Applied Sciences and Arts, Luzern, Switzerland}
@@ -263,16 +264,16 @@ fluxes as used in \cite{balasubramanianInfluenceMeteorologicalConditions2022} to
 AIR ice mass as follows: 
 
 \begin{equation}
-  \frac{\Delta M_{ice}}{\Delta t}  =  (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{G} - q_{T}}{L_F} + \frac{q_{L}}{L_V} ) \cdot A_{cone}
+  \frac{\Delta M_{ice}}{\Delta t}  =  (\frac{q_{SW} + q_{LW} + q_{S} + q_{F} + q_{R} + q_{G} - q_{T}}{L_F} + \frac{q_{L}}{L_V} ) \cdot A_{cone}
 	\label{eqn:auto}
 \end{equation}
 
 Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
 represents the mass change rate due to freezing of the fountain water and melting of the ice. $q_{SW}$ is the
 net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
-and sensible heat fluxes; $q_{F}$ is the fountain heat flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the
-temperature heat flux and $A_{cone}$ is the area of the AIR surface. The derivation of these individual terms
-using the assumptions are discussed in the Appendix.
+and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain discharge heat
+flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the
+AIR surface. The derivation of these individual terms using the assumptions are discussed in the Appendix.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
@@ -295,12 +296,9 @@ discharge rate recommendation and drain the pipeline to prevent water loss or pi
 
 \end{itemize}
 
-\subsection{Calibration}
+\subsection{Model updates}
 
-We retain the default values of all parameters used in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
-
-In addition, two model variables, fountain water temperature ($T_F$) and AIR density ($\rho_{AIR}$) are
+Two model variables, fountain water temperature ($T_F$) and AIR density ($\rho_{AIR}$) are
 parametrised. Both variables were assumed to be constant in the previous versions of the model. 
 
 It is inaccurate to assume AIR density to be that of ice since the CH22 AIR had a significant mass contribution
@@ -327,6 +325,22 @@ determined as follows:
 
 where $T_{F}$ is the mean measured fountain water temperature.
 
+Rain events were not considered in the previous version of the model but they occur in our experiment.
+Accordingly, the model algorithm was updated to accomodate for these events. The influence of rain events on the
+albedo and the energy balance was assumed to be similar to that of discharge events. However, the water
+temperature of a rain event was assumed to be equal to the air temperature. Accordingly, the heat flux generated
+due to a rain event was equal to:
+
+\begin{equation}
+  q_{R} = \frac{\Delta M_{F} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
+\end{equation}
+
+\subsection{Calibration}
+
+We retain the default values of all parameters used in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
+
+Precipitation temperature
 
 \subsection{Validation}
 
@@ -441,8 +455,10 @@ The fountain water heat flux is enhanced whereas the ground heat flux is dampene
 
 \subsection{Simulations of scheduled fountains}
 
-We evaluate the benefits of the automated construction strategies by comparing them with the traditional construction strategies used in the IN21 and CH21 locations presented in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
+We evaluate the benefits of the automated construction strategies by comparing them with the traditional
+construction strategies used in the IN21 and CH21 locations presented in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
+ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
 \ref{fig:wue}.
 
 \begin{figure*}[t]
@@ -452,8 +468,55 @@ strategies used}
 \label{fig:wue}
 \end{figure*}
 
+\subsection{Fountain characteristics}
+
+\subsubsection{Fountain aperture diameter}
+
+The maximum discharge rate of the scheduled fountain was reduced from 13 $l/min$ to 11 $l/min$ when the fountain
+height was raised from 3 to 4 $m$. This information can be used to find the fountain aperture diameter ($dia$).
+Inputting $Q_f$ = 13 $l/min$; $Q_i$ = 11 $l/min$; $(h_f-h_i) = 1$ in Eqn. \ref{eqn:fountain_min}, we get the estimated
+fountain aperture diameter ($dia$) to be around 5 $mm$. 
+
+\subsubsection{Critical and minimum discharge rate}
+
+Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
+fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of pipeline
+freezing events. Here we define the critical discharge rate as the discharge rate before a fountain height
+increase event reduces  
+
+We assume that pipeline freezing events occur when fountain height increase events reduce the pipeline discharge
+below the critical discharge rate ($Q_{crit}$). Assuming $Q_{crit} = 0; (h_f - h_i) = 1$ in Eqn.
+\ref{eqn:fountain} we get: 
+
+\begin{equation}
+  \label{eqn:fountain_min}
+  Q_{min} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
+\end{equation}
+
+where $Q_{min}$ is the minimum discharge rate that supports a fountain height increase event. This implies that
+the minimum discharge required to increase the fountain height by one meter of the scheduled fountain with an
+aperture diameter of 5 mm is 5 litres per minute.
+
+The unscheduled fountain was observed to produce bigger water droplets than the scheduled fountain. This implies
+that it had a higher aperture diameter and therefore a higher minimum discharge rate. In reality, the
+unscheduled fountain had a fountain freezing event almost immediately after its height was increased from 4 to 5
+$m$. This height increase event lowered its discharge rate below the minimum discharge rate of   
+
+\subsubsection{Fountain pressure loss}
+
+Discharge rate was observed to increase from 11 $l/min$ to 27 $l/min$ upon removal of the fountain. If $P_F$ is
+the pressure loss due to the fountain, then from the bernoulli equation we get:
+
+\begin{equation}
+   P_F = 1/2 \cdot \rho \cdot (Q_f/A)_f^2 - 1/2 \cdot \rho_{water} \cdot (Q_i/A)^2
+\end{equation}
+
+Inputting the corresponding values, we estimate $P_F$ to be around 0.19 $bar$. In other words, the pressure loss
+occuring due to presence of the fountain was equivalent to 2 meters of water head.
+
 
 \subsection{Recommended construction strategy}
+
 Fix fountain height, make multiple AIRs, fountain design, fountain height increase eqn.
 
 \conclusions
@@ -582,6 +645,29 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we can estimate this parameter
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
+
+\section{Fountain equation} \label{sec:fountain}
+
+Here we inspect how the choice of the fountain height ($h$) and pipeline diameter ($dia$) influence the fountain
+discharge rate ($Q$). Given the initial discharge rate ($Q_i$) of the fountain, the final discharge ($Q_f$) of
+the fountain can be determined by the Bernoulli equation as follows: 
+
+\begin{equation}
+  \rho_{water} \cdot g \cdot h_i + 1/2 \cdot \rho_{water} \cdot v_i^2 = \rho_{water} \cdot g \cdot h_f + 1/2 \cdot \rho \cdot v_f^2
+\end{equation}
+
+where the velocity $v$ can be determined from the discharge rate $Q$ through the mass conservation equation as 
+
+\begin{equation}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+Combining the above two equations we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
+
+\begin{equation}
+  \label{eqn:fountain}
+  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_f-h_i) \cdot (\pi \cdot dia^2/4)^2}
+\end{equation}
 
 \noappendix 
 
