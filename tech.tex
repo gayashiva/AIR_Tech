@@ -66,18 +66,23 @@ suffered from very high water losses due to excessive fountain discharge input.
 
 A straightforward solution to this issue is to reduce the fountain discharge input but it is challenging to
 implement it in practice. For example, in the case of the Indian AIR, the model estimates that water use
-efficiency can be increased without compromising the ice volume by just reducing the fountain discharge rate by
-half. However, in practice, this strategy would have further increased the number of pipeline freezing events
-due to much lower water velocities in the pipeline. 
+efficiency can be increased by just reducing the fountain discharge rate by half. However, in practice, this
+strategy would have further increased the number of fountain freezing events due to much lower water velocities
+in the pipeline. Moreover, the Indian AIR discharge rate was lowered temporally due to increase in fountain
+height from 5 to 9 m. Therefore, any reduction in initial discharge rate would have triggered a fountain
+freezing event before the fountain height could be increased to 9 m.
 
-An optimum construction strategy, therefore, should prevent pipeline freezing events while maintaining high
-water use efficiency. Typical solutions to prevent pipeline freezing events given pipeline dimensions and
-discharge rates are to bury or drain the pipeline. Burying the pipeline at a sufficient depth can reduce the
-influence of atmospheric conditions on the pipeline water temperature. Even though this method is ideal, it can
-quickly get expensive depending on the length of the pipeline and the frost depth. Therefore, such an effort is
-warranted only in the case of a permanent construction location. Comparatively, draining the pipeline is a much
-cheaper strategy. Moreover, it can be combined with fountain scheduling methods to achieve reduced watering
-volumes for AIR construction systems.
+An optimum construction strategy, therefore, should prevent fountain freezing events while maintaining high
+water use efficiency. Fountain freezing events can be prevented if the pipeline water temperature is maintained
+above 0 $\degree C$ and the discharge is not lowered below a critical threshold. Typical solutions to maintain
+pipeline water temperature given pipeline dimensions are to bury or drain the pipeline. Burying the pipeline at
+a sufficient depth can reduce the influence of atmospheric conditions on the pipeline water temperature. Even
+though this method is ideal, it can quickly get expensive depending on the length of the pipeline and the frost
+depth. Therefore, such an effort is warranted only in the case of a permanent construction location.
+Comparatively, draining the pipeline when the fountain is not active is a much cheaper strategy. Fountain
+discharge rate is lowered every time the fountain height increases. Therefore, a critical discharge rate needs
+to be set beyond which fountain height should not be increased. Moreover, both these strategies can be combined
+with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems. 
 
 Proper fountain scheduling requires answers to two questions: 
 (a) When should the water be turned on and off ?
@@ -229,7 +234,7 @@ The automation hardware consists of an AWS, flowmeter, control valve, drain valv
 pipeline and a logger. The logger feeds the AWS data to the automation software and informs the recommended
 discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the recommendation. However,
 the recommended discharge rate is ignored if any of the termination criterion are valid. The termination
-criterion prevent water loss and pipeline freezing events. In case a termination criteria is valid, the drain
+criterion prevent water loss and fountain freezing events. In case a termination criteria is valid, the drain
 and air valves allow the removal of water from the pipeline and entry of air in the pipeline respectively.
 
 \subsubsection{Automation software}
@@ -271,7 +276,7 @@ AIR ice mass as follows:
 Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
 represents the mass change rate due to freezing of the fountain water and melting of the ice. $q_{SW}$ is the
 net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
-and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain discharge heat
+and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat
 flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the
 AIR surface. The derivation of these individual terms using the assumptions are discussed in the Appendix.
 
@@ -279,17 +284,17 @@ Equation \ref{eqn:auto} is implemented in the automation system through a user i
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
 automation system regulates the fountain discharge rate based on the recommended discharge rate. The recommended
 discharge rate is equal to the ice mass change rate. However, certain termination criterias override the
-discharge rate recommendation and drain the pipeline to prevent water loss or pipeline freezing events, namely: 
+discharge rate recommendation and drain the pipeline to prevent water loss or fountain freezing events, namely: 
 
 \begin{itemize}
 
 \item High water loss is assumed if wind speed greater than critical wind speed.
 
-\item High risk of pipeline freezing event is assumed if temperature lower than fountain freezing temperature.
+\item High risk of fountain freezing event is assumed if temperature lower than fountain freezing temperature.
 
-\item High risk of pipeline freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
+\item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
 
-\item Pipeline freezing events are assumed if $Q_F = 0$ for at least 20 seconds and the pipeline is drained as a
+\item Fountain freezing events are assumed if $Q_F = 0$ for at least 20 seconds and the pipeline is drained as a
   consequence.
 
 \item Pipeline leakage is assumed if $Q_F$ is greater than maximum fountain discharge rate.
@@ -323,7 +328,7 @@ determined as follows:
 	\end{array} \right.
 \end{equation}
 
-where $T_{F}$ is the mean measured fountain water temperature.
+where $T_{F}$ is the fountain water temperature parameter.
 
 Rain events were not considered in the previous version of the model but they occur in our experiment.
 Accordingly, the model algorithm was updated to accomodate for these events. The influence of rain events on the
@@ -332,7 +337,7 @@ temperature of a rain event was assumed to be equal to the air temperature. Acco
 due to a rain event was equal to:
 
 \begin{equation}
-  q_{R} = \frac{\Delta M_{F} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
+  q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
 \end{equation}
 
 \subsection{Calibration}
@@ -353,6 +358,33 @@ that could be georeferenced. Root mean squared error (RMSE) served as the evalua
 
 The performance of the ICV and WUE versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of the calibrated physical model.
+
+\subsection{Fountain characteristics}
+
+The influence of the fountain characteristics namely, its aperture diameter ($dia$) and height ($h$) on the
+the discharge of the fountain ($Q$) can be determined from the Bernoulli equation :
+
+\begin{equation}
+  \label{eqn:fountain}
+  P_{i} + \rho_{water} \cdot g \cdot h_{i} + 1/2 \cdot \rho_{water} \cdot v_{i}^2 = P_{f} + \rho_{water} \cdot g
+  \cdot h_{f} + 1/2 \cdot \rho_{water} \cdot v_{f}^2
+\end{equation}
+
+where $P$ is the pressure loss caused by the fountain, $\rho_{water}$ is the density of water and $v$ is the
+velocity of the fountain water droplets. The subscripts $i$ and $f$ refer to the initial and final states of the
+system. $v$ can be determined from the discharge rate $Q$ through the mass conservation equation as 
+
+\begin{equation}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+Combining the above two equations we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
+
+\begin{equation}
+  \label{eqn:discharge}
+  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_f-h_i) \cdot (\pi \cdot dia^2/4)^2}
+\end{equation}
+
 
 \section{Results}
 
@@ -427,31 +459,86 @@ The fountain water heat flux is enhanced whereas the ground heat flux is dampene
 		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
 		\textbf{Units}                                                                                                       \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{7.3e5}   & \num{7.5e4}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.3e4}   & \num{2.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{2.3e2}   & \num{8.9e2}     & $kg$  \\ \midrule
+		                       & Fountain discharge              & $M_F$           & \num{6.8e5}   & \num{1.5e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.3e4}   & \num{1.8e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.8e2}   & \num{1.2e3}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{2.0e4} & \num{1.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{2.2e4} & \num{3.0e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{1.5e3} & \num{1.2e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{7.0e5} & \num{6.5e4}     & $kg$  \\ \midrule
+		                       & Meltwater                       & $M_{water}$     & \num{3.8e4} & \num{5.1e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.1e4} & \num{5.4e3}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{2.9e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{6.5e5} & \num{1.1e5}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
 
-                           & Shortwave radiation             &  $q_{SW}$       & $25$  & $26$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-45$  & $-43$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $4$   & $8$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-17$ & \% \\
+                           & Shortwave radiation             &  $q_{SW}$       & $33$  & $45$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-33$  & $-31$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $7$   & $7$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-15$ & \% \\
 		\multicolumn{1}{|l|}{} & Fountain water heat             &  $q_{F}$        & $9$  & $1$     & \% \\
-		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $4$     & \% \\\midrule
+		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $1$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
 		                       & Maximum Ice Volume              &                 & 47            & 67            & $m^{3}$ \\
 		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 5             & 38            & \% \\
-		\multicolumn{1}{|l|}{} & Surface Area                    &  $A_{cone}$     & $56\pm 5$  & $79 \pm 4$     &$m^{2}$ \\\midrule
+		\multicolumn{1}{|l|}{} & Surface Area                    &  $A_{cone}$     & $54\pm 7$  & $70 \pm 14$     &$m^{2}$ \\\midrule
 	\end{tabular}
 \end{table}
 
+\subsection{Estimation of fountain characteristics}
+
+\subsubsection{Aperture diameter}
+
+The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
+when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$. Inputting the corresponding values in
+Eqn. \ref{eqn:fountain_min}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
+
+\subsubsection{Critical discharge rate}
+
+Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
+fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of fountain
+freezing events. Here we define the critical discharge rate as the discharge rate beyond which fountain height
+increase triggers a fountain freezing event.
+
+We assume that fountain freezing events occur when a 1 meter fountain height increase event reduces the pipeline
+discharge to zero. Therefore, inputting $(h_f - h_i) = 1$ in Eqn. \ref{eqn:fountain} we get: 
+
+\begin{equation}
+  \label{eqn:fountain_min}
+  Q_{crit} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
+\end{equation}
+
+This implies that the critical discharge required to increase the fountain height by one meter of the scheduled
+fountain with an aperture diameter of 5 mm is 5 litres per minute.
+
+
+\subsubsection{Fountain pressure loss}
+
+Discharge rate was observed to increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$ upon removal of the fountain. Inputting
+$P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
+
+\begin{equation}
+  P_{i} = 1/2 \cdot \rho \cdot (Q_f/A)_f^2 - 1/2 \cdot \rho_{water} \cdot (Q_i/A)^2
+\end{equation}
+
+Inputting the corresponding values, we estimate $P$ to be around 0.19 $bar$. In other words, the pressure loss
+occuring due to the fountain was equivalent to 1.9 meters of water head.
+
 \section{Discussion}
+
+\subsection{Fountain freezing events}
+
+Both the scheduled and the unscheduled fountain were interrupted by a freezing event. However, the cause of the
+freezing event was different in each of the cases. For the scheduled fountain, improper drainage of water
+triggered a pipeline freezing event in one section of the pipe. For the unscheduled fountain, a fountain
+freezing event froze the whole pipe. This fountain freezing event was triggered almost immediately after the
+fountain height was increased even though the fountain discharge had attained the critical discharge rate as
+shown in Fig. \ref{fig:aws}. Therefore both the freezing events could have been prevented by ensuring proper
+drainage and avoiding fountain height increase events after attaining critical discharge rate. 
+
+\subsection{Fountain design}
+
+The unscheduled fountain was observed to produce bigger water droplets with different trajectories compared to
+the scheduled fountain. This behaviour was due to the different engineering design of the two fountains as shown
+in Fig. ?.
 
 \subsection{Simulations of scheduled fountains}
 
@@ -468,56 +555,11 @@ strategies used}
 \label{fig:wue}
 \end{figure*}
 
-\subsection{Fountain characteristics}
-
-\subsubsection{Fountain aperture diameter}
-
-The maximum discharge rate of the scheduled fountain was reduced from 13 $l/min$ to 11 $l/min$ when the fountain
-height was raised from 3 to 4 $m$. This information can be used to find the fountain aperture diameter ($dia$).
-Inputting $Q_f$ = 13 $l/min$; $Q_i$ = 11 $l/min$; $(h_f-h_i) = 1$ in Eqn. \ref{eqn:fountain_min}, we get the estimated
-fountain aperture diameter ($dia$) to be around 5 $mm$. 
-
-\subsubsection{Critical and minimum discharge rate}
-
-Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
-fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of pipeline
-freezing events. Here we define the critical discharge rate as the discharge rate before a fountain height
-increase event reduces  
-
-We assume that pipeline freezing events occur when fountain height increase events reduce the pipeline discharge
-below the critical discharge rate ($Q_{crit}$). Assuming $Q_{crit} = 0; (h_f - h_i) = 1$ in Eqn.
-\ref{eqn:fountain} we get: 
-
-\begin{equation}
-  \label{eqn:fountain_min}
-  Q_{min} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
-\end{equation}
-
-where $Q_{min}$ is the minimum discharge rate that supports a fountain height increase event. This implies that
-the minimum discharge required to increase the fountain height by one meter of the scheduled fountain with an
-aperture diameter of 5 mm is 5 litres per minute.
-
-The unscheduled fountain was observed to produce bigger water droplets than the scheduled fountain. This implies
-that it had a higher aperture diameter and therefore a higher minimum discharge rate. In reality, the
-unscheduled fountain had a fountain freezing event almost immediately after its height was increased from 4 to 5
-$m$. This height increase event lowered its discharge rate below the minimum discharge rate of   
-
-\subsubsection{Fountain pressure loss}
-
-Discharge rate was observed to increase from 11 $l/min$ to 27 $l/min$ upon removal of the fountain. If $P_F$ is
-the pressure loss due to the fountain, then from the bernoulli equation we get:
-
-\begin{equation}
-   P_F = 1/2 \cdot \rho \cdot (Q_f/A)_f^2 - 1/2 \cdot \rho_{water} \cdot (Q_i/A)^2
-\end{equation}
-
-Inputting the corresponding values, we estimate $P_F$ to be around 0.19 $bar$. In other words, the pressure loss
-occuring due to presence of the fountain was equivalent to 2 meters of water head.
 
 
 \subsection{Recommended construction strategy}
 
-Fix fountain height, make multiple AIRs, fountain design, fountain height increase eqn.
+Fix fountain height, make multiple AIRs
 
 \conclusions
 
@@ -526,7 +568,7 @@ using data collected in Guttannen, Switzerland.
 
 The main purpose of this study was to quantify the influence of different fountain scheduling strategies on the
 water use efficiency and ice volumes of AIRs exposed to identical weather conditions. We found that excessive
-fountain discharge not just increased the fountain wastewater production but also enhanced the melting rate of
+fountain discharge rate not just increased the fountain wastewater production but also enhanced the melting rate of
 AIRs mainly due to its surface albedo and surface temperature feedbacks. Therefore, the automated AIR was able
 to achieve a 20 \% higher maximum ice volume with a 8 fold increase in the water use efficiency compared to the
 traditional AIR.
@@ -534,24 +576,22 @@ traditional AIR.
 The automation system allows the easy handling of fountain scheduling implementation in any new location. The
 possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
 fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
-construction strategy reduces the occurence of pipeline freezing events as it drains the pipeline whenever
-critical weather windows are detected. Although, the automation system increases installation costs, we believe
-use of such systems is warranted when considering the reduced maintenance costs long term.
+construction strategy reduces the occurence of fountain freezing events as it drains the pipeline outside
+favourable weather windows and prevents fountain discharge rate to lower below a critical threshold. Although,
+the automation system increases installation costs, we believe use of such systems is warranted when considering
+the reduced maintenance costs long term.
 
 A simplified energy balance model compatible with the limited data availability of a new location was used to
 produce recommended discharge rate. Nevertheless, this model was able to capture more than 65 \% of the freezing
 rate variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled
 fountains show that upto a two fold increase in WUE is possible with the use of automation systems.
 
-Nevertheless, the real world application of this method is challenging. 
-
-It is clear that if improvements are to be achieved, future research must be devoted to modelling the impact of
-fountain design on the spray radius.
+Nevertheless, the real world application of this method is challenging. It is clear that if improvements are to
+be achieved, future research must be devoted to modelling the impact of fountain design on the spray radius.
 
 \appendix
 
 \section{Simplified energy balance model}
-
 
 The data requirement was reduced by estimating the global shortwave radiation and pressure directly using the
 location's coordinates and altitude through the solar radiation model described in
@@ -645,29 +685,6 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we can estimate this parameter
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
-
-\section{Fountain equation} \label{sec:fountain}
-
-Here we inspect how the choice of the fountain height ($h$) and pipeline diameter ($dia$) influence the fountain
-discharge rate ($Q$). Given the initial discharge rate ($Q_i$) of the fountain, the final discharge ($Q_f$) of
-the fountain can be determined by the Bernoulli equation as follows: 
-
-\begin{equation}
-  \rho_{water} \cdot g \cdot h_i + 1/2 \cdot \rho_{water} \cdot v_i^2 = \rho_{water} \cdot g \cdot h_f + 1/2 \cdot \rho \cdot v_f^2
-\end{equation}
-
-where the velocity $v$ can be determined from the discharge rate $Q$ through the mass conservation equation as 
-
-\begin{equation}
- v = 4 \cdot Q/(\pi \cdot dia^2)
-\end{equation}
-
-Combining the above two equations we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
-
-\begin{equation}
-  \label{eqn:fountain}
-  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_f-h_i) \cdot (\pi \cdot dia^2/4)^2}
-\end{equation}
 
 \noappendix 
 
