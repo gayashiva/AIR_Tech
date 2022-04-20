@@ -178,8 +178,11 @@ Several photogrammetric surveys were conducted on the traditional and the automa
 surveys and the methodology used to produce the corresponding outputs are explained in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. The digital elevation models (DEMs) generated from
 the obtained imagery were analysed to document the spray radius, the surface area and the volume of the ice
-structures. The number of drone surveys conducted for the traditional and the automated AIRs were 8 and 6,
-respectively (see Table). 
+structures. Even though the number of drone flights were identical for both AIRs, fewer successful volume
+observations were possible for the automated AIR as shown in Table \ref{tab:uav}. This was because the DEMs
+generated for the automated AIR could not georeference the automated AIR's snow covered surface. Since the
+traditional AIR was steeper, its surface revealed ice patches that could be georeferenced. The number of drone
+surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively (see Table). 
 
 \begin{table}
 	\centering
@@ -342,19 +345,14 @@ due to a rain event was equal to:
 
 \subsection{Calibration}
 
-We retain the default values of all parameters used in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
-
-Precipitation temperature
+Most of the the default values of all parameters used in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis except the precipitation
+temperature threshold parameter.  
 
 \subsection{Validation}
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
-squared error (RMSE) between ice volume estimates and measurements . Even though the number of drone flights
-were identical for both AIRs, fewer successful volume observations were possible for the automated AIR as shown
-in Table \ref{tab:uav}. This was because the DEMs generated for the automated AIR could not georeference the
-automated AIR's snow covered surface. Since the traditional AIR was steeper, its surface revealed ice patches
-that could be georeferenced. Root mean squared error (RMSE) served as the evaluation metric in both the cases.
+squared error (RMSE) between ice volume estimates and measurements. 
 
 The performance of the ICV and WUE versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of the calibrated physical model.
@@ -389,11 +387,12 @@ Combining the above two equations we get the final discharge $Q_f$ after a heigh
 \section{Results}
 
 \subsection{Energy balance model validation}
-The physical model achieved an RMSE of $4 \degree C$ with the AIR mean temperature measurements of the automated AIR and an RMSE of $m^3$ with the ice volume measurements of the traditional AIR. The estimated and measured AIR
-mean temperatures and ice volumes are shown in Fig. \ref{fig:validation}
+The volume estimation for the automated and traditional AIR had an RMSE of 7 $m^3$ and 5 $m^3$ with the ice
+volume observations respectively. The estimated and measured AIR ice volumes are shown in Fig.
+\ref{fig:validation}.
  
-\begin{figure*}[t] 
-  \includegraphics[width=12cm]{Figures/validation.png} 
+\begin{figure*}[t] \includegraphics[width=12cm]
+  {Figures/validation.png} 
   \caption{Ice volume validation of the scheduled and unscheduled fountain construction strategies.} 
 \label{fig:validation} 
 \end{figure*}
@@ -417,36 +416,34 @@ scheduled fountain underestimated the freezing rate 80 \% of the construction du
 \includegraphics[width=12cm]{Figures/dis_processes.png}
 \caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
 assumptions compared with the validated freezing rate of the full energy balance model.}
-\label{fig:freezing_rate}
+\label{fig:dis_processes}
 \end{figure*}
 
-Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass
-and energy balance of the respective AIR. As expected, unscheduled fountains produce an order of magnitude
-increase in the fountain discharge input and fountain wastewater output. 
+Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
+of the respective AIR. The largest difference between the mass balance of the unscheduled and scheduled
+fountains were found to be in the fountain discharge input and fountain wastewater output. This was expected
+since the unscheduled fountain's discharge duration and quantity were ? and ? times higher respectively.
 
 To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
 the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
-surface is affected in the following three ways, namely, (a) its albedo dampens to ice albedo, (b) its
-temperature warms to 0 C and (c) it absorbs the heat energy of the fountain water droplets. These three
-processes are the cause of the difference in the mass and energy balance distribution shown in Table
-\ref{tab:mb}. The temporal variation of the magnitude of all these three processes are shown in Fig. In general,
-all the three processes affect the mass and energy balance of the traditional AIR much more than the Automated
-AIR since its fountain discharge duration and quantity were ? and ? times higher respectively. 
+surface is affected in the following three ways, namely, (a) its albedo dampens to ice albedo and (b) it absorbs
+the heat energy of the fountain water droplets. These two processes are the cause of the difference in the mass
+and energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
+processes are shown in Fig. \ref{fig:dis_processes}. 
 
 To understand the overall impact of the radiation fluxes (longwave and shortwave) and the turbulent fluxes
 (sensible and latent) on the freezing and melting energies, we sum their respective energy turnover by taking
 into account the sign of their mean energy during the study period (see Table \ref{tab:mb}). A negative sign
 indicates that the corresponding energy flux increased/decreased the freezing/melting energy respectively.  The
-radiation fluxes contributed -25 \% and -17 \% to the freezing energies for the traditional and automated AIR,
-respectively.  Similarly, the turbulent fluxes contribute -13 \% and -9 \% to the freezing energies for the
-traditional and automated AIR, respectively. The fountain water and ground heat flux contribute 10 \% and 5 \%
+radiation fluxes contributed 0 \% and 14 \% to the melting energies for the traditional and automated AIR,
+respectively.  Similarly, the turbulent fluxes contribute -10 \% and -8 \% to the freezing energies for the
+traditional and automated AIR, respectively. The fountain water and ground heat flux contribute 10 \% and 2 \%
 to the melting energies for the traditional and automated AIR, respectively. 
 
-Even though the distribution of the radiation fluxes is similar, there is a considerable difference in the
-magnitude of these fluxes between the AIRs. In particular, the shortwave and longwave radiation is higher and
-lower for the traditional AIR due to the effect of processes (a) and (b) respectively. Similarly, the reduced
-contribution of sensible heat in the turbulent fluxes of the traditional AIR is a consequence of process (b).
-The fountain water heat flux is enhanced whereas the ground heat flux is dampened by process (c).
+There is a considerable difference in the contribution of the shortwave radiation and fountain discharge heat
+flux between the two AIRs. In particular, the shortwave radiation is higher for the automated AIR due to the
+effect of process (a). Similarly, the fountain discharge heat flux for the traditional AIR is enhanced due to
+process (b).
 
 
 \begin{table}
@@ -473,12 +470,12 @@ The fountain water heat flux is enhanced whereas the ground heat flux is dampene
 		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-33$  & $-31$ & \% \\
 		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $7$   & $7$ & \% \\
 		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-15$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain water heat             &  $q_{F}$        & $9$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $9$  & $1$     & \% \\
 		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $1$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum Ice Volume              &                 & 47            & 67            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 5             & 38            & \% \\
+		                       & Maximum Ice Volume              &                 & 44            & 55            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 6             & 33            & \% \\
 		\multicolumn{1}{|l|}{} & Surface Area                    &  $A_{cone}$     & $54\pm 7$  & $70 \pm 14$     &$m^{2}$ \\\midrule
 	\end{tabular}
 \end{table}
