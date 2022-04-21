@@ -306,23 +306,13 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \subsection{Model updates}
 
-Two model variables, fountain water temperature ($T_F$) and AIR density ($\rho_{AIR}$) are
-parametrised. Both variables were assumed to be constant in the previous versions of the model. 
+The model had to be made more sensitive to fountain discharge rate feedback in order to compare the volume
+evolution of the automated and the traditional AIRs. This was done by introducing better parametrisations of
+fountain water temperature and surface albedo. 
 
-It is inaccurate to assume AIR density to be that of ice since the CH22 AIR had a significant mass contribution
-in the form of snowfall. We instead parameterised AIR density $\rho_{AIR}$ as follows:
-
-\begin{equation}
-  \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
-\end{equation}
-
-where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation; $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
-\cite{cuffeyPhysicsGlaciers2010} .
-
-Also, a better fountain water temperature parameterisation is desired to accurately distinguish between the
-fountain water heat flux of different scheduling strategies. To do this, we assume that the water droplets cool
-to 0 C during their flight time under subzero conditions. Therefore, the fountain water temperature was instead
-determined as follows:
+In the previous version of the model, the fountain water temperature ($T_F$) was estimated as a constant
+parameter. However, in reality, the water droplets cool to 0 C during their flight time under subzero
+conditions. Therefore, the fountain water temperature was instead determined as follows:
 
 \begin{equation}
 	T_{F} = \left\{ \begin{array}{ll}
@@ -331,7 +321,20 @@ determined as follows:
 	\end{array} \right.
 \end{equation}
 
-where $T_{F}$ is the fountain water temperature parameter.
+In the previous version of the model, fountain discharge events reset surface albedo to that of the ice albedo.
+This assumption limits the accuracy of the model especially for the Automated AIR where there were several
+fountain discharge events of short durations. Therefore, we assumed that discharge events instead
+increase the albedo decay rate ($\tau$) by a scaling factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
+
+Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
+assume AIR density ($\rho_{AIR}$) to be a constant. We instead parameterised AIR density $\rho_{AIR}$ as follows:
+
+\begin{equation}
+  \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
+\end{equation}
+
+where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation; $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
+\cite{cuffeyPhysicsGlaciers2010} .
 
 Rain events were not considered in the previous version of the model but they occur in our experiment.
 Accordingly, the model algorithm was updated to accomodate for these events. The influence of rain events on the
@@ -346,8 +349,7 @@ due to a rain event was equal to:
 \subsection{Calibration}
 
 Most of the the default values of all parameters used in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis except the precipitation
-temperature threshold parameter.  
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
 
 \subsection{Validation}
 
