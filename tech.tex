@@ -141,7 +141,7 @@ input and several control parameters, which could be tested and controlled via a
 
 Air temperature, relative humidity, wind speed, pressure, longwave, shortwave direct and diffuse radiation are
 required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period
-starts when the fountain was first switched on and ends on the AIR melts completely. These two dates are denoted
+starts when the fountain was first switched on and ends when the AIR melts completely. These two dates are denoted
 as start and expiry dates henceforth.
 
 \begin{figure*}[t]
@@ -346,12 +346,10 @@ due to a rain event was equal to:
   q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
 \end{equation}
 
-\subsection{Calibration}
+\subsection{Calibration and Validation}
 
-Most of the the default values of all parameters used in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} for our analysis.  
-
-\subsection{Validation}
+The model parameters were calibrated to the median values of the ranges presented in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}.
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between ice volume estimates and measurements. 
@@ -389,6 +387,7 @@ Combining the above two equations we get the final discharge $Q_f$ after a heigh
 \section{Results}
 
 \subsection{Energy balance model validation}
+
 The volume estimation for the automated and traditional AIR had an RMSE of 7 $m^3$ and 5 $m^3$ with the ice
 volume observations respectively. The estimated and measured AIR ice volumes are shown in Fig.
 \ref{fig:validation}.
@@ -401,30 +400,24 @@ volume observations respectively. The estimated and measured AIR ice volumes are
 
 \subsection{Scheduled discharge rate estimation}
 
-We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a correlation higher than 0.5 and RMSE less than 1 $l/min$ for both the ICV and WUE objectives. The ICV scheduled fountain overestimated the freezing rate 90 \% of the construction duration whereas the WUE
-scheduled fountain underestimated the freezing rate 80 \% of the construction duration as shown in Fig.
-\ref{fig:freezing_rate}.
-
-% \begin{figure*}[t]
-% \includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
-% \caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
-% assumptions compared with the validated freezing rate of the full energy balance model.}
-% \label{fig:freezing_rate}
-% \end{figure*}
+We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV objectives
+respectively. The ICV scheduled fountain overestimated the freezing rate 90 \% of the construction duration
+whereas the WUE scheduled fountain underestimated the freezing rate 80 \% of the construction duration.
 
 \subsection{Comparison of AIR construction strategies}
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/dis_processes.png}
-\caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
-assumptions compared with the validated freezing rate of the full energy balance model.}
+\caption{Surface albedo (a) and fountain discharge heat flux (b) showed significant variations between the two
+  AIRS due to the differences in their discharge rate.}
 \label{fig:dis_processes}
 \end{figure*}
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR. The largest difference between the mass balance of the unscheduled and scheduled
 fountains were found to be in the fountain discharge input and fountain wastewater output. This was expected
-since the unscheduled fountain's discharge duration and quantity were ? and ? times higher respectively.
+since the unscheduled fountain's discharge duration was 2 times higher.
 
 To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
 the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
@@ -525,40 +518,57 @@ occuring due to the fountain was equivalent to 1.9 meters of water head.
 
 \subsection{Fountain freezing events}
 
-Both the scheduled and the unscheduled fountain were interrupted by a freezing event. However, the cause of the
-freezing event was different in each of the cases. For the scheduled fountain, improper drainage of water
-triggered a pipeline freezing event in one section of the pipe. For the unscheduled fountain, a fountain
-freezing event froze the whole pipe. This fountain freezing event was triggered almost immediately after the
-fountain height was increased even though the fountain discharge had attained the critical discharge rate as
-shown in Fig. \ref{fig:aws}. Therefore both the freezing events could have been prevented by ensuring proper
-drainage and avoiding fountain height increase events after attaining critical discharge rate. 
+The unscheduled fountain was interrupted by a fountain freezing event. This fountain freezing event was
+triggered almost immediately after the fountain height was increased even though the fountain discharge had
+attained the critical discharge rate as shown in Fig. \ref{fig:aws}. Therefore, the freezing event could have
+been prevented by ensuring proper drainage and avoiding fountain height increase events after attaining critical
+discharge rate. 
 
-\subsection{Fountain design}
+% \subsection{Fountain design}
 
-The unscheduled fountain was observed to produce bigger water droplets with different trajectories compared to
-the scheduled fountain. This behaviour was due to the different engineering design of the two fountains as shown
-in Fig. ?.
+% The unscheduled fountain was observed to produce bigger water droplets with different trajectories compared to
+% the scheduled fountain. This behaviour was due to the different engineering design of the two fountains as shown
+% in Fig. ?.
 
-\subsection{Simulations of scheduled fountains}
+\subsection{Benefits of scheduled fountains}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies used in the IN21 and CH21 locations presented in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. The difference in water use efficiency and maximum
-ice volumes expected between unscheduled and scheduled fountains in the three locations are presented in Fig.
-\ref{fig:wue}.
+construction strategies using the water use efficiency and maximum ice volume metrics. 
+
+The difference in water use efficiency and maximum ice volumes expected between unscheduled and scheduled
+fountains in the two locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values
+(highlighted by white circles) are shown together with five simulated values (highlighted by grey circles) . The
+ICV and WUE versions of the simplified energy balance model were used to schedule the fountains of the simulated
+AIRs. The experimental values were taken from the automated and traditional AIRs constructed in the winter of
+2021-2022 in Guttannen (CH22) and the rest of the values were of the Indian (IN21) and Swiss (CH21) AIR built in
+the winter of 2020-21 using traditional construction strategies presented in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. 
+
+The maximum ice volumes of IN21 is much higher than the CH21 and CH22 AIRs due to the meteorological differences
+between the two locations. Compared to the traditional AIR of each location, the maximum ice volume of other
+automated AIRs increases and decreases depending on whether the ICV scheduling strategy or the WUE scheduling
+strategy is used. 
+
+The water use efficiencies of all the traditional AIRs are below 20 \%. In general, the water use efficiencies
+increase more than two fold when the ICV or WUE fountain scheduling strategy is applied in both the locations.  
+
+Between the WUE and ICV strategies, 
+
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
-\caption{The maximum ice volume and water use efficiency estimated for the different locations and construction
-strategies used}
+
+\caption{The maximum ice volume and water use efficiency estimated for AIRs constructed in different locations
+(represented by colours) with different fountain scheduling strategies (represented by symbols). Experimental
+values are highlighted by white circles and simulated values are highlighted by grey circles.  }
+
 \label{fig:wue}
 \end{figure*}
 
 
+% \subsection{Recommended construction strategy}
 
-\subsection{Recommended construction strategy}
-
-Fix fountain height, make multiple AIRs
+% Fix fountain height, make multiple AIRs
 
 \conclusions
 

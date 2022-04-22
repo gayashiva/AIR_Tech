@@ -1,4 +1,11 @@
 
+% \begin{figure*}[t]
+% \includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
+% \caption{Scheduled discharge rate estimates of the simplified energy balance model with the WUE and ICV
+% assumptions compared with the validated freezing rate of the full energy balance model.}
+% \label{fig:freezing_rate}
+% \end{figure*}
+
 The last drone flight was used to set the dome volume for the traditional AIR. The
 dome volume for the automated AIR represented the snow volume found before the fountain was switched on. The
 remaining surveys were used for model validation.
