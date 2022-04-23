@@ -2,7 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{siunitx} %for SI units
+\usepackage{siunitx} 
 
 \begin{document}
 
@@ -35,17 +35,18 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \begin{abstract}
 
   Artificial Ice Reservoir (AIR), often also called - Ice Stupa - are a climate adaptation strategy developed in
-  the Indian Himalayas (Ladakh). With this technology, otherwise unused stream or lake water is stored in large
-  ice towers in winter. The surplus melt water that is then available in spring is used for satisfying
-  irrigation water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of
-  the water sprayed was lost. Therefore, fountain wastewater production have to be reduced to improve water use
+  the Indian Himalayas (Ladakh). With this technology, otherwise unused stream water is stored in large ice
+  towers in winter. The surplus melt water that is then available in spring is used for satisfying irrigation
+  water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of the water
+  sprayed was lost. Therefore, fountain wastewater production have to be reduced to improve water use
   efficiency. Improved fountain scheduling was realized using an automation system that computes recommended
   discharge rates using real-time weather inputs and location metadata. During the winter of 2021-22, a
   traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
   comparing and quantifying the benefits of fountain scheduling through automation systems. The scheduled
-  fountain produced similar ice volumes while consuming 87 \% lesser water than the unscheduled fountain.
-  Overall, these results show that scheduled fountains can increase the water use efficiency without
-  compromising on meltwater production.
+  fountain produced similar ice volumes while consuming 79 \% lesser water than the unscheduled fountain.
+  Simulations converting unscheduled fountains to scheduled fountains improved the water use efficiency of
+  several traditional AIRs more than two fold. Overall, these results show that the automated construction
+  strategy can increase the water use efficiency of AIRs without compromising their meltwater production.
 
 \end{abstract}
 
@@ -417,11 +418,11 @@ whereas the WUE scheduled fountain underestimated the freezing rate 80 \% of the
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR. The largest difference between the mass balance of the unscheduled and scheduled
 fountains were found to be in the fountain discharge input and fountain wastewater output. This was expected
-since the unscheduled fountain's discharge duration was 2 times higher.
+since the unscheduled fountain's discharge duration was 2 times higher than the scheduled fountain.
 
 To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
 the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
-surface is affected in the following three ways, namely, (a) its albedo dampens to ice albedo and (b) it absorbs
+surface is affected in the following two ways, namely, (a) its albedo dampens to ice albedo and (b) it absorbs
 the heat energy of the fountain water droplets. These two processes are the cause of the difference in the mass
 and energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
 processes are shown in Fig. \ref{fig:dis_processes}. 
@@ -430,20 +431,25 @@ To understand the overall impact of the radiation fluxes (longwave and shortwave
 (sensible and latent) on the freezing and melting energies, we sum their respective energy turnover by taking
 into account the sign of their mean energy during the study period (see Table \ref{tab:mb}). A negative sign
 indicates that the corresponding energy flux increased/decreased the freezing/melting energy respectively.  The
-radiation fluxes contributed 0 \% and 14 \% to the melting energies for the traditional and automated AIR,
-respectively.  Similarly, the turbulent fluxes contribute -10 \% and -8 \% to the freezing energies for the
-traditional and automated AIR, respectively. The fountain water and ground heat flux contribute 10 \% and 2 \%
-to the melting energies for the traditional and automated AIR, respectively. 
+radiation fluxes contributed -6 \% and 4 \% to the freezing and melting energies for the traditional and
+automated AIR, respectively.  Similarly, the turbulent fluxes contribute -10 \% and -9 \% to the freezing
+energies for the traditional and automated AIR, respectively. The fountain water and ground heat flux contribute
+11 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
 
-There is a considerable difference in the contribution of the shortwave radiation and fountain discharge heat
-flux between the two AIRs. In particular, the shortwave radiation is higher for the automated AIR due to the
-effect of process (a). Similarly, the fountain discharge heat flux for the traditional AIR is enhanced due to
-process (b).
+There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
+(a). Even though the traditional AIR was active for a much longer duration, the frequent snowfall events
+counteracted the albedo feedback of its fountain discharge. However, the albedo of the automated AIR was
+significantly impacted by late fountain spray events particularly in the month of March as shown in Fig.
+\ref{fig:dis_processes}.
+
+Similarly, the fountain discharge heat flux for the traditional AIR is enhanced due to process (b). The higher
+quantity of the unscheduled fountains and its longer duration are responsible for the 10 fold increase in its
+fountain discharge heat flux.
 
 
 \begin{table}
 	\centering
-	\caption{Summary of the mass balance and AIR characteristics estimated at the end of the respective
+	\caption{Summary of the mass balance, energy balance, fountain and AIR characteristics estimated at the end of the respective
   simulation duration for the automated and the traditional AIRs}
 	\label{tab:mb}
 	\begin{tabular}{@{}|llllll|@{}}
@@ -451,27 +457,33 @@ process (b).
 		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
 		\textbf{Units}                                                                                                       \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{6.8e5}   & \num{1.5e5}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.3e4}   & \num{1.8e4}   & $kg$  \\
+		                       & Fountain discharge              & $M_F$           & \num{6.8e5}   & \num{1.4e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
 		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.8e2}   & \num{1.2e3}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{3.8e4} & \num{5.1e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.1e4} & \num{5.4e3}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{2.9e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{6.5e5} & \num{1.1e5}     & $kg$  \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
+		                       & Meltwater                       & $M_{water}$     & \num{3.3e4} & \num{4.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.4e4} & \num{1.3e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{6.6e5} & \num{1.1e5}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
 
-                           & Shortwave radiation             &  $q_{SW}$       & $33$  & $45$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-33$  & $-31$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $7$   & $7$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-15$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $9$  & $1$     & \% \\
-		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $1$     & \% \\\midrule
+                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-35$  & $-35$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-18$  & $-17$ & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
+		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
+
+                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
+		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & Higher        & $mm$ \\
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & Lower         & $bars$ \\
+		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & Lower         & $l/min$ \\
+		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum Ice Volume              &                 & 44            & 55            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 6             & 33            & \% \\
-		\multicolumn{1}{|l|}{} & Surface Area                    &  $A_{cone}$     & $54\pm 7$  & $70 \pm 14$     &$m^{2}$ \\\midrule
+		                       & Maximum Ice Volume              &                 & 47            & 63            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 6             & 32            & \% \\\midrule
 	\end{tabular}
 \end{table}
 
@@ -504,33 +516,20 @@ fountain with an aperture diameter of 5 mm is 5 litres per minute.
 
 \subsubsection{Fountain pressure loss}
 
-Discharge rate was observed to increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$ upon removal of the fountain. Inputting
-$P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
+Discharge rate was observed to increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$ upon removal of the
+fountain. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline diameter $d_f = 19 mm$, $P_{f} = 0$
+and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
 
 \begin{equation}
-  P_{i} = 1/2 \cdot \rho \cdot (Q_f/A)_f^2 - 1/2 \cdot \rho_{water} \cdot (Q_i/A)^2
+  P_{i} = 1/2 \cdot \rho_{water} \cdot (4 \cdot Q_f/\pi \cdot d_f^2)^2 - 1/2 \cdot \rho_{water} \cdot (4 * Q_i/\pi \cdot d_i^2)^2
 \end{equation}
 
-Inputting the corresponding values, we estimate $P$ to be around 0.19 $bar$. In other words, the pressure loss
-occuring due to the fountain was equivalent to 1.9 meters of water head.
+Inputting the corresponding values, we estimate $P$ to be around 0.43 $bar$. In other words, the pressure loss
+occuring due to the fountain was equivalent to 4.3 meters of water head.
 
 \section{Discussion}
 
-\subsection{Fountain freezing events}
-
-The unscheduled fountain was interrupted by a fountain freezing event. This fountain freezing event was
-triggered almost immediately after the fountain height was increased even though the fountain discharge had
-attained the critical discharge rate as shown in Fig. \ref{fig:aws}. Therefore, the freezing event could have
-been prevented by ensuring proper drainage and avoiding fountain height increase events after attaining critical
-discharge rate. 
-
-% \subsection{Fountain design}
-
-% The unscheduled fountain was observed to produce bigger water droplets with different trajectories compared to
-% the scheduled fountain. This behaviour was due to the different engineering design of the two fountains as shown
-% in Fig. ?.
-
-\subsection{Benefits of scheduled fountains}
+\subsection{Benefits of scheduling fountains}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
 construction strategies using the water use efficiency and maximum ice volume metrics. 
@@ -546,14 +545,23 @@ the winter of 2020-21 using traditional construction strategies presented in
 
 The maximum ice volumes of IN21 is much higher than the CH21 and CH22 AIRs due to the meteorological differences
 between the two locations. Compared to the traditional AIR of each location, the maximum ice volume of other
-automated AIRs increases and decreases depending on whether the ICV scheduling strategy or the WUE scheduling
-strategy is used. 
+automated AIRs increases and decreases depending on whether the ICV or WUE scheduling strategy is used. 
 
 The water use efficiencies of all the traditional AIRs are below 20 \%. In general, the water use efficiencies
 increase more than two fold when the ICV or WUE fountain scheduling strategy is applied in both the locations.  
 
-Between the WUE and ICV strategies, 
+There is also considerable difference between the WUE and ICV strategies for each AIR. For CH21 AIR, WUE
+strategy does not yield any significant ice formation whereas ICV strategy succeeds in increasing the water use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of ICV scheduling strategy yield an
+increase in water use efficiency from 6 \% to 32 \%. However, the WUE strategy was successful in increasing the
+water use efficiency upto 60 \%. In general, for the swiss location, scheduled fountains yield much higher water
+use efficiency but do not alter the maximum ice volume obtained significantly.
 
+For the IN21 AIR, the two fountain scheduling strategies yield significantly different results when compared
+to the unscheduled fountain. The ICV scheduled fountain was able to achieve a 1.5 fold increase in the maximum
+ice volume and a 2 fold increase in the water use efficiency. Even though the WUE scheduled fountain achieved
+water use efficiency higher than the ICV fountain, its maximum ice volume was even lower than the unscheduled
+fountain.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
@@ -565,47 +573,91 @@ values are highlighted by white circles and simulated values are highlighted by 
 \label{fig:wue}
 \end{figure*}
 
+\subsection{Challenges of scheduling fountains}
 
-% \subsection{Recommended construction strategy}
+Fountain freezing events limit the minimum discharge rate possible in scheduled fountains.  We assume the
+minimum discharge rate that prevents fountain freezing events is 2 $l/min$. The model simulations revealed that
+the nonzero median scheduled fountain discharge rate at the IN21 and CH21 AIRs were 13 $l/min$ and 2 $l/min$
+respectively. Since the modelled scheduled discharge was lower than the minimum discharge rate for the Swiss
+location, the automation system was programmed to overestimate the freezing rate as shown in Fig.
+\ref{fig:simvsreal}. But model suggestions could be directly used in the case of the Indian location where
+meteorological conditions and fountain spray radius favour a higher freezing rate. 
 
-% Fix fountain height, make multiple AIRs
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/simvsreal.png}
+
+\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the ICV version
+  of the simplified model (blue line) are compared. The dashed grey line represents the minimum discharge rate
+that doesn't trigger fountain freezing events. }
+
+\label{fig:simvsreal}
+\end{figure*}
+
+Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
+the lower the gravitational pressure that drives the discharge rate. This was precisely why the unscheduled
+fountain was interrupted by a fountain freezing event. This fountain freezing event was triggered almost
+immediately after the fountain height was increased even though the fountain discharge had attained the critical
+discharge rate as shown in Fig. \ref{fig:aws}. 
+
+\subsection{Recommended fountain design}
+
+Fountain design is another area where improvement is necessary. In the case of the CH22 experiment, the
+scheduled and the unscheduled fountain produced a spray radius of 4.8 $m$ and 4.1 $m$ respectively. The
+scheduled fountain produced a higher spray radius because of its lower aperture diameter. However, we suspect
+that the lower aperture diameter also resulted in a higher pressure loss. In summary, an optimised fountain
+design needs to decrease the aperture diameter while maintaining a reasonable pressure loss so that a higher
+spray radius is achieved. 
+
+\subsection{Recommended construction strategy}
+
+We recommend three modifications to the traditional construction strategy to prevent fountain freezing events,
+obtain higher ice volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
+discharge rate. Our study used a value of 2 $l/min$. However, this is likely to vary depending on the weather
+conditions and the characteristics of the fountain and the pipeline used. It is recommended to set this value
+based on observed fountain droplet trajectories in the construction site. Secondly, restrict maximum fountain
+height based on the critical fountain discharge rate. Our study estimated the critical discharge rate to be 5
+$l/min$. We believe this is a safe value to use for most fountains since most fountain designs have an aperture
+diameter higher than aperture diameter used in our study. Once the maximum fountain height is achieved, another
+AIR can be created to continue the construction process. Such a construction strategy would yield higher ice
+volumes with lower risk of fountain freezing events. Thirdly, the maximum modelled discharge rate could be used
+to set the mean discharge rate of unscheduled fountains. This will already yield a higher water use efficiency
+without the need of sophisticated automation systems.
 
 \conclusions
 
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
 using data collected in Guttannen, Switzerland.
 
-The main purpose of this study was to quantify the influence of different fountain scheduling strategies on the
-water use efficiency and ice volumes of AIRs exposed to identical weather conditions. We found that excessive
-fountain discharge rate not just increased the fountain wastewater production but also enhanced the melting rate of
-AIRs mainly due to its surface albedo and surface temperature feedbacks. Therefore, the automated AIR was able
-to achieve a 20 \% higher maximum ice volume with a 8 fold increase in the water use efficiency compared to the
-traditional AIR.
+The main purpose of this study was to quantify the influence of different fountain designs and scheduling
+strategies on the water use efficiency and ice volumes of AIRs exposed to identical weather conditions. We found
+that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
+the melting rate of AIRs mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
+freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter which contributed to
+its higher spray radius. Therefore, the automated AIR was able to achieve a 34 \% higher maximum ice volume with
+a five fold increase in the water use efficiency compared to the traditional AIR.
 
 The automation system allows the easy handling of fountain scheduling implementation in any new location. The
 possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
 fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
 construction strategy reduces the occurence of fountain freezing events as it drains the pipeline outside
-favourable weather windows and prevents fountain discharge rate to lower below a critical threshold. Although,
+favourable weather windows and prevents fountain discharge rate to lower below a minimum threshold. Although,
 the automation system increases installation costs, we believe use of such systems is warranted when considering
 the reduced maintenance costs long term.
 
 A simplified energy balance model compatible with the limited data availability of a new location was used to
-produce recommended discharge rate. Nevertheless, this model was able to capture more than 65 \% of the freezing
-rate variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled
-fountains show that upto a two fold increase in WUE is possible with the use of automation systems.
+produce two types of discharge rates favouring higher ice volumes and better water use efficiencies
+respectively. Nevertheless, this model was able to capture more than 50 \% of the freezing rate variations
+produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains show that
+upto a two fold increase in water use efficiency is possible with the use of scheduled fountains.
 
 Nevertheless, the real world application of this method is challenging. It is clear that if improvements are to
-be achieved, future research must be devoted to modelling the impact of fountain design on the spray radius.
+be achieved, future research must be devoted to improve fountain design in order to minimize their pressure
+losses while increasing their spray radius.
 
 \appendix
 
 \section{Simplified energy balance model}
 
-The data requirement was reduced by estimating the global shortwave radiation and pressure directly using the
-location's coordinates and altitude through the solar radiation model described in
-\citet{holmgrenPvlibPythonPython2018}. The algorithm used to estimate the clear-sky global radiation is
-described in \citet{ineichenBroadbandSimplifiedVersion2008}.  
 
 The model complexity was reduced through assumptions that optimise for the ice volume objective or the water use
 efficiency objective. We define the freezing rate and melting rate as the positive and negative ice mass change
@@ -641,6 +693,11 @@ q_{SW} = (1- \alpha) \cdot ( SW_{direct} \cdot f_{cone} + SW_{diffuse})
 where $\alpha$ is the albedo value ; $SW_{direct}$ is the direct shortwave radiation; $SW_{diffuse}$ is the
 diffuse shortwave radiation and $f_{cone}$ is the solar area fraction.
 
+The data requirement was reduced by estimating the global shortwave radiation and pressure directly using the
+location's coordinates and altitude through the solar radiation model described in
+\citet{holmgrenPvlibPythonPython2018}. The algorithm used to estimate the clear-sky global radiation is
+described in \citet{ineichenBroadbandSimplifiedVersion2008}.  
+
 The diffuse and direct shortwave radiation is determined using the estimated global solar radiation as follows:
 
 \begin{equation}
@@ -650,10 +707,10 @@ The diffuse and direct shortwave radiation is determined using the estimated glo
 \end{split}
 \end{equation}
 
-where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the WUE and iceV objective
+where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the WUE and ICV objective
 respectively.
 
-We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the iceV and
+We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the ICV and
 WUE objective respectively.
 
 The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
@@ -680,7 +737,7 @@ Similarly, for the WUE objective, since we assume the slope of the cone to be ne
 
 We assume $T_{ice} = 0 \degree C$ in order to determine outgoing longwave radiation. Since it is challenging to
 contrain the minimum ice temperature, we maintain this assumption for both our objectives. However, in order to
-estimate atmospheric emissivity we again assume $cld$ to be 1 and 0 for the WUE and iceV objective respectively.
+estimate atmospheric emissivity we again assume $cld$ to be 1 and 0 for the WUE and ICV objective respectively.
 
 \subsection{Turbulent fluxes assumptions} \label{sec:Qs}
 
@@ -691,7 +748,7 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we can estimate this parameter
   \mu_{cone} =1 + s_{cone}/2
 \end{equation}
 
-Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the iceV and WUE objective respectively.  Since
+Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the ICV and WUE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
 
