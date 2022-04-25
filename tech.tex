@@ -53,11 +53,12 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \introduction
 
 In some arid mountain regions the lack of water during the irrigation season is the main constraint on
-agricultural production. Recently, an increasing need of irrigation water supply has prompted more than 30
-villages in Ladakh, India to construct artificial ice reservoirs (AIRs) or icestupas. These AIRs are
-traditionally constructed by diverting springs or glacial streams into fountain spray systems via
-embankments and pipelines. However, there is a large variability associated with this water supply due to the
-local weather influences and discharge rate of the chosen location and fountain respectively. 
+agricultural production \citep{nusserCryosphereFedIrrigationNetworks2019} . Recently, an increasing need of irrigation water supply has prompted more than 26
+villages in Ladakh, India to construct artificial ice reservoirs (AIRs) or icestupas
+\citep{wangchukIceStupaCompetition2020}. These AIRs are traditionally constructed by diverting springs or glacial
+streams into fountain spray systems via embankments and pipelines. However, there is a large variability
+associated with this water supply due to the local weather influences and discharge rate of the chosen location
+and fountain respectively. 
 
 Previous studies \citep{balasubramanianInfluenceMeteorologicalConditions2022,
 oerlemansBriefCommunicationGrowth2021} have already quantified the meteorological influences on AIR volume
@@ -81,8 +82,8 @@ a sufficient depth can reduce the influence of atmospheric conditions on the pip
 though this method is ideal, it can quickly get expensive depending on the length of the pipeline and the frost
 depth. Therefore, such an effort is warranted only in the case of a permanent construction location.
 Comparatively, draining the pipeline when the fountain is not active is a much cheaper strategy. Fountain
-discharge rate is lowered every time the fountain height increases. Therefore, a critical discharge rate needs
-to be set beyond which fountain height should not be increased. Moreover, both these strategies can be combined
+discharge rate is also lowered every time the fountain height increases. Therefore, a critical discharge rate needs
+to be set beyond which fountain height should not be increased. Both these strategies can be combined
 with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems. 
 
 Proper fountain scheduling requires answers to two questions: 
@@ -93,13 +94,13 @@ For answering these questions, knowledge of surface freezing rates is important 
 calculated by means of the full energy balance model developed in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
 weather data or real-time weather data to produce recommended discharge rates. We further approximate the model
-by including two kinds of assumptions that are considerate for the limited water availability or the favourable
+by including two kinds of assumptions that are considerate for the limited water availability and the favourable
 weather windows respectively.
 
 However, manually adjusting the fountain discharge rate is unrealistic. Firstly, constant adjustments of
 discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
-impractical. Secondly, frequent pipeline water drainage required to prevent freezing events during critical weather
-windows is unfeasible. Therefore, operation of scheduled fountains via automation systems is preferred.
+impractical. Secondly, frequent pipeline water drainage required to halt fountain operation is unfeasible.
+Therefore, operation of scheduled fountains via automation systems is preferred.
 
 The present study builds upon previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022,
 oerlemansBriefCommunicationGrowth2021}, in order to quantify the influence of different fountain scheduling
@@ -115,10 +116,10 @@ of its application to the computation of fountain scheduling strategies.
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) is situated in the Berne region, Switzerland and has an
 altitude of 1047 $m$ a.s.l. In the winter (Oct-Apr), mean daily minimum and maximum air temperatures vary
 between -13 and 15 $\degree C$. Clear skies are rare, averaging around 7 days during winter. Daily winter
-precipitation can sometimes be as high as 100 $mm$. These values are based on 30 years of hourly weather model
-simulations \citep{guttannen}. Two AIRs were constructed by the Guttannen Bewegt Association, the University of
-Fribourg and the Lucerne University of Applied Sciences and Arts during the winters of 2021-22 using a
-traditional and an automated construction strategy.
+precipitation can sometimes be as high as 100 $mm$. These values are based on 30 years of hourly historical
+weather data \citep{meteoblueClimateGuttannen}. Two AIRs were constructed by the Guttannen Bewegt Association,
+the University of Fribourg and the Lucerne University of Applied Sciences and Arts during the winters of 2021-22
+using a traditional and an automated construction strategy.
 
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{Figures/2AIRs.jpg}
@@ -136,7 +137,7 @@ cone formation process. The fountain discharge was maintained at maximum and its
 
 In the automated strategy, only the fountain pipe was placed before the water spray started. A programmed
 automation system controlled the fountain discharge rate during the whole winter season using real time weather
-input and several control parameters, which could be tested and controlled via a user interface. 
+input and several control parameters, which could be modified via a user interface. 
 
 \subsection{Meteorological data}
 
@@ -163,15 +164,15 @@ water droplets. Discharge rate represents the discharge rate of the water in the
 denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of the
 water droplets produced by the fountain.
 
-The spray radius was estimated from the mean AIR circumference measured in the drone surveys during the fountain
+The spray radius was estimated from the mean AIR circumference (TODO) measured in the drone surveys during the fountain
 runtime. The discharge rate and water temperature of the scheduled fountain was measured by the automation
 system but no such datasets were recorded for the unscheduled fountain. The unscheduled fountain was operated at
 the maximum discharge rate using the same water source. Therefore, the maximum recorded discharge rate and water
 temperature dataset of the scheduled fountain was used to estimate the corresponding variables of the
 unscheduled fountain. The discharge rate of both fountains decreased with increase in its fountain height. We
-observed a reduction in the scheduled fountain's maximum discharge rate by a factor of two whenever the height
-was increased by a meter. The same reduction in magnitude was also applied for the unscheduled fountain's
-discharge rate whenever pipeline height increase events occurred. 
+observed a reduction in the scheduled fountain's maximum discharge rate by a factor of two when its height was
+increased from 3 to 4 m in December as shown Fig. \ref{fig:data}. The same reduction in magnitude was also
+applied for the unscheduled fountain's discharge rate whenever pipeline height increase events occurred. 
 
 \subsection{Drone surveys}
 
@@ -183,7 +184,7 @@ structures. Even though the number of drone flights were identical for both AIRs
 observations were possible for the automated AIR as shown in Table \ref{tab:uav}. This was because the DEMs
 generated for the automated AIR could not georeference the automated AIR's snow covered surface. Since the
 traditional AIR was steeper, its surface revealed ice patches that could be georeferenced. The number of drone
-surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively (see Table). 
+surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively. 
 
 \begin{table}
 	\centering
@@ -282,7 +283,8 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat
 flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the
-AIR surface. The derivation of these individual terms using the assumptions are discussed in the Appendix.
+AIR surface. The derivation of these individual terms using the assumptions are discussed in the Appendix
+\ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
@@ -292,16 +294,16 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \begin{itemize}
 
-\item High water loss is assumed if wind speed greater than critical wind speed.
+\item High water loss is assumed if wind speed is greater than critical wind speed.
 
-\item High risk of fountain freezing event is assumed if temperature lower than fountain freezing temperature.
+\item High risk of fountain freezing event is assumed if temperature is lower than fountain freezing temperature.
 
 \item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
 
-\item Fountain freezing events are assumed if $Q_F = 0$ for at least 20 seconds and the pipeline is drained as a
+\item Fountain freezing events are assumed if discharge rate is zero for at least 20 seconds and the pipeline is drained as a
   consequence.
 
-\item Pipeline leakage is assumed if $Q_F$ is greater than maximum fountain discharge rate.
+\item Pipeline leakage is assumed if discharge rate is greater than maximum fountain discharge rate.
 
 \end{itemize}
 
@@ -356,11 +358,12 @@ We performed the validation of the model on the traditional and automated AIRs b
 squared error (RMSE) between ice volume estimates and measurements. 
 
 The performance of the ICV and WUE versions of the physical model was assessed by comparing correlation of its
-discharge rate estimates with the validated freezing rate of the calibrated physical model.
+discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Fountain characteristics}
 
-The influence of the fountain characteristics namely, its aperture diameter ($dia$) and height ($h$) on the
+The engineering design of the nozzle used was approximated to a simplistic nozzle design with one aperture of
+diameter $dia$ to understand the its influence on the discharge rate $Q$. Together with the fountain height $h$,
 the discharge of the fountain ($Q$) can be determined from the Bernoulli equation :
 
 \begin{equation}
@@ -374,10 +377,11 @@ velocity of the fountain water droplets. The subscripts $i$ and $f$ refer to the
 system. $v$ can be determined from the discharge rate $Q$ through the mass conservation equation as 
 
 \begin{equation}
+	\label{eqn:dis}
  v = 4 \cdot Q/(\pi \cdot dia^2)
 \end{equation}
 
-Combining the above two equations we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
+Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
 
 \begin{equation}
   \label{eqn:discharge}
@@ -389,7 +393,7 @@ Combining the above two equations we get the final discharge $Q_f$ after a heigh
 
 \subsection{Energy balance model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 7 $m^3$ and 5 $m^3$ with the ice
+The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the ice
 volume observations respectively. The estimated and measured AIR ice volumes are shown in Fig.
 \ref{fig:validation}.
  
@@ -403,14 +407,14 @@ volume observations respectively. The estimated and measured AIR ice volumes are
 
 We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
 correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV objectives
-respectively. The ICV scheduled fountain overestimated the freezing rate 90 \% of the construction duration
-whereas the WUE scheduled fountain underestimated the freezing rate 80 \% of the construction duration.
+respectively. The ICV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
+whereas the WUE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
 \subsection{Comparison of AIR construction strategies}
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/dis_processes.png}
-\caption{Surface albedo (a) and fountain discharge heat flux (b) showed significant variations between the two
+\caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
   AIRS due to the differences in their discharge rate.}
 \label{fig:dis_processes}
 \end{figure*}
@@ -442,9 +446,9 @@ counteracted the albedo feedback of its fountain discharge. However, the albedo 
 significantly impacted by late fountain spray events particularly in the month of March as shown in Fig.
 \ref{fig:dis_processes}.
 
-Similarly, the fountain discharge heat flux for the traditional AIR is enhanced due to process (b). The higher
-quantity of the unscheduled fountains and its longer duration are responsible for the 10 fold increase in its
-fountain discharge heat flux.
+Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
+discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
+increase in its fountain discharge heat flux.
 
 
 \begin{table}
@@ -476,9 +480,9 @@ fountain discharge heat flux.
 		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
 
                            & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
-		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & Higher        & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & Lower         & $bars$ \\
-		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & Lower         & $l/min$ \\
+		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & N.A.        & $mm$ \\
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & N.A.         & $bars$ \\
+		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & N.A.         & $l/min$ \\
 		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
@@ -517,15 +521,15 @@ fountain with an aperture diameter of 5 mm is 5 litres per minute.
 \subsubsection{Fountain pressure loss}
 
 Discharge rate was observed to increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$ upon removal of the
-fountain. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline diameter $d_f = 19 mm$, $P_{f} = 0$
-and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
+fountain nozzle. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline diameter $d_f = 19 mm$, $P_{f}
+= 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
 
 \begin{equation}
   P_{i} = 1/2 \cdot \rho_{water} \cdot (4 \cdot Q_f/\pi \cdot d_f^2)^2 - 1/2 \cdot \rho_{water} \cdot (4 * Q_i/\pi \cdot d_i^2)^2
 \end{equation}
 
 Inputting the corresponding values, we estimate $P$ to be around 0.43 $bar$. In other words, the pressure loss
-occuring due to the fountain was equivalent to 4.3 meters of water head.
+occuring due to the fountain nozzle was equivalent to 4.3 meters of water head.
 
 \section{Discussion}
 
@@ -656,7 +660,7 @@ losses while increasing their spray radius.
 
 \appendix
 
-\section{Simplified energy balance model}
+\section{Simplified energy balance model}\label{sec:SEB}
 
 
 The model complexity was reduced through assumptions that optimise for the ice volume objective or the water use
@@ -733,7 +737,7 @@ Similarly, for the WUE objective, since we assume the slope of the cone to be ne
 		f_{cone} =\frac{ sin \theta_{sun} }{2 }
 \end{equation}
 
-\subsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg} assumptions} \label{sec:LW}
+\subsection{Net Longwave radiation \texorpdfstring{$q_{LW}$}{Lg} assumptions} 
 
 We assume $T_{ice} = 0 \degree C$ in order to determine outgoing longwave radiation. Since it is challenging to
 contrain the minimum ice temperature, we maintain this assumption for both our objectives. However, in order to
