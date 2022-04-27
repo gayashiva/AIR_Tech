@@ -17,7 +17,7 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \Author[1,2]{Suryanarayanan}{Balasubramanian}
 \Author[1]{Martin}{Hoelzle}
 \Author[3]{Roger}{Waser}
-% \Author[3]{Martin}{Von Burg}
+\Author[3]{Martin}{Von Burg}
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
 \affil[2]{Himalayan Institute of Alternatives, Ladakh, India}
 \affil[3]{University of Applied Sciences and Arts, Luzern, Switzerland}
@@ -34,11 +34,11 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 
 \begin{abstract}
 
-  Artificial Ice Reservoir (AIR), often also called - Ice Stupa - are a climate adaptation strategy developed in
-  the Indian Himalayas (Ladakh). With this technology, otherwise unused stream water is stored in large ice
-  towers in winter. The surplus melt water that is available in spring is used for satisfying irrigation
-  water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of the water
-  sprayed was lost. Therefore, fountain wastewater production has to be reduced by improving water use
+  Artificial Ice Reservoir (AIR), often also called - Ice Stupa - are a climate change adaptation strategy
+  developed in the Indian Himalayas (Ladakh). With this technology, otherwise unused stream water is stored in
+  large ice towers in winter. The surplus melt water that is available in spring is used for satisfying
+  irrigation water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of
+  the water sprayed was lost. Therefore, fountain wastewater production has to be reduced for improving water use
   efficiency. Enhanced fountain scheduling was realized by using an automation system computing recommended
   discharge rates applying real-time weather input and location metadata. During the winter of 2021-22, a
   traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
@@ -53,23 +53,28 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \introduction
 
 Cryosphere-fed irrigation networks in arid mountain regions are completely dependent on timely availability of
-meltwater from glaciers, snow and permafrost \citep{farhanHydrologicalRegimesConjunction2015}.  The effect of
-glacier decline has made such regions prone to water scarcity in spring \citep{ipccChapterHighMountain2019}.
-This seasonal water scarcity makes it essential to provide supplementary irrigation in order to sustain
-agricultural output and take advantage of the complete growing season.
+meltwater from glaciers, snow and permafrost \citep{farhanHydrologicalRegimesConjunction2015}. With the
+accelerated decline of glaciers due to climate change \citep{nusserLocalKnowledgeGlobal2016}, these regions are
+experiencing water scarcity particularly during the spring season \citep{norphelSnowWaterHarvesting2015}. This
+seasonal water scarcity makes it essential to provide supplementary irrigation in order to sustain agricultural
+output and take advantage of the complete growing season \citep{nusserLocalKnowledgeGlobal2016,
+vincentEnergyClimateChange2009}.
 
 To cope with this recurrent water scarcity, villagers in the region of Ladakh have developed four types of
 artificial ice reservoirs (AIRs): basins, cascades, diversions and a form known locally as ice stupas. All these
 types of ice reservoirs capture water in the autumn and winter, allowing it to freeze, and hold it until spring,
 when it melts and flows down to fields \citep{vinceGlacierMan2009, clouseLadakhArtificialGlaciers2017,
-nusserSociohydrologyArtificialGlaciers2019}. In this way, they retain a previously unused portion of the annual
-flow and facilitate its use to supplement the decreased flow in the following spring. 
+nusserSociohydrologyArtificialGlaciers2019, ipccChapterHighMountain2019}. In this way, they retain a previously
+unused portion of the annual flow and facilitate its use to supplement the decreased flow in the following
+spring. 
 
-Over the past decade, the ice stupa form of AIRs has become the preferred mode of adaptation to seasonal water
-scarcity for villages in Ladakh \citep{wangchukIceStupaCompetition2020}. These AIRs are traditionally
-constructed by diverting springs or glacial streams into fountain spray systems via embankments and pipelines.
-However, there is a large variability associated with this water supply due to the local weather influences and
-discharge rate of the chosen location and fountain, respectively. 
+Over the past decade, several ice stupas have been built to supplement irrigation water supply of mountain
+villages in India \citep{wangchukIceStupaCompetition2020, palmerStoringFrozenWater2022,
+aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialGlacier2020} and Chile
+\citep{reutersConservationistsChileAim2021}. These AIRs are traditionally constructed by diverting springs or
+glacial streams into fountain spray systems via embankments and pipelines. However, there is a large variability
+associated with this water supply due to the local weather influences and discharge rate of the chosen location
+and fountain, respectively. 
 
 Previous studies \citep{balasubramanianInfluenceMeteorologicalConditions2022,
 oerlemansBriefCommunicationGrowth2021} have already quantified the meteorological influences on AIR volume
@@ -257,15 +262,16 @@ and air valves allow the removal of water from the pipeline and entry of air in 
 \subsubsection{Automation software}
 
 Any construction location can either be constrained by the available water supply or the duration of favourable
-weather windows for fountain operation. If the selected location has limited water supply then the fountain
-scheduling strategy should be optimised for high water use efficiency (WUE). However, if the location is limited by
+weather windows for fountain operation. If the respective location has limited water supply then the fountain
+scheduling strategy should be optimised for high water-use efficiency (HWE). But if the location is limited by
 the time period when the fountain can function then the scheduling strategy should be optimised for high ice
-volumes (ICV).
+volumes (HIV).
 
-Accordingly, we introduce two kinds of approximations in the automation software optimising for the ICV and the
-WUE objectives, respectively. We approximate the expected model outcomes with three parameters: (a) AIR shape using its slope parameter, (b) AIR surface properties using its surface albedo and (c) weather conditions using the cloudiness parameter. The model
-assumptions overestimate and underestimate the freezing rate for the ICV and WUE objectives, respectively. These
-assumptions are summarised in Table \ref{tab:assumptions}. 
+Accordingly, we introduce two kinds of approximations in the automation software optimising for the HIV and the
+HWE objectives, respectively. We approximate the expected model outcomes with three parameters: (a) AIR shape
+using its slope parameter, (b) AIR surface properties using its surface albedo and (c) weather conditions using
+the cloudiness parameter. The model assumptions overestimate and underestimate the freezing rate for the ICV and
+WUE objectives, respectively. These assumptions are summarised in Table \ref{tab:assumptions}. 
 
 \begin{table}[]
 \centering
@@ -273,7 +279,7 @@ assumptions are summarised in Table \ref{tab:assumptions}.
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-\textbf{Estimation of} & \textbf{Symbol} & \textbf{ICV Assumptions} & \textbf{WUE Assumptions} & \\ \midrule
+\textbf{Estimation of} & \textbf{Symbol} & \textbf{HIV Assumptions} & \textbf{HWE Assumptions} & \\ \midrule
 \multicolumn{1}{|l}{AIR slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
@@ -368,7 +374,7 @@ The model parameters were calibrated to the median values of the ranges presente
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between ice volume estimates and measurements. 
 
-The performance of the ICV and WUE versions of the physical model was assessed by comparing correlation of its
+The performance of the HIV and HWE versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Fountain characteristics}
@@ -418,8 +424,8 @@ volume observations, respectively. The estimated and measured AIR ice volumes ar
 
 We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
 correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
-respectively. The ICV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
-whereas the WUE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
+respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
+whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
 \subsection{Comparison of AIR construction strategies}
 
@@ -552,7 +558,7 @@ construction strategies using the water use efficiency and maximum ice volume me
 The difference in water use efficiency and maximum ice volumes expected between unscheduled and scheduled
 fountains in the two locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values
 (highlighted by white circles) are shown together with five simulated values (highlighted by grey circles) . The
-ICV and WUE versions of the simplified energy balance model were used to schedule the fountains of the simulated
+HIV and HWE versions of the simplified energy balance model were used to schedule the fountains of the simulated
 AIRs. The experimental values were taken from the automated and traditional AIRs constructed in the winter of
 2021-2022 in Guttannen (CH22) and the rest of the values were of the Indian (IN21) and Swiss (CH21) AIR built in
 the winter of 2020-21 using traditional construction strategies presented in
@@ -560,22 +566,22 @@ the winter of 2020-21 using traditional construction strategies presented in
 
 The maximum ice volumes of IN21 is much higher than the CH21 and CH22 AIRs due to the meteorological differences
 between the two locations. Compared to the traditional AIR of each location, the maximum ice volume of other
-automated AIRs increases and decreases depending on whether the ICV or WUE scheduling strategy is used. 
+automated AIRs increases and decreases depending on whether the HIV or HWE scheduling strategy is used. 
 
 The water use efficiencies of all the traditional AIRs are below 20 \%. In general, the water use efficiencies
-increase more than two fold when the ICV or WUE fountain scheduling strategy is applied in both the locations.  
+increase more than two fold when the HIV or HWE fountain scheduling strategy is applied in both the locations.  
 
-There is also considerable difference between the WUE and ICV strategies for each AIR. For CH21 AIR, WUE
-strategy does not yield any significant ice formation whereas ICV strategy succeeds in increasing the water use
-efficiency three fold. For CH22 AIR, both experimental and simulated values of ICV scheduling strategy yield an
-increase in water use efficiency from 6 \% to 32 \%. However, the WUE strategy was successful in increasing the
+There is also considerable difference between the HWE and HIV strategies for each AIR. For CH21 AIR, HWE
+strategy does not yield any significant ice formation whereas HIV strategy succeeds in increasing the water use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV scheduling strategy yield an
+increase in water use efficiency from 6 \% to 32 \%. However, the HWE strategy was successful in increasing the
 water use efficiency upto 60 \%. In general, for the swiss location, scheduled fountains yield much higher water
 use efficiency but do not alter the maximum ice volume obtained significantly.
 
 For the IN21 AIR, the two fountain scheduling strategies yield significantly different results when compared
-to the unscheduled fountain. The ICV scheduled fountain was able to achieve a 1.5 fold increase in the maximum
-ice volume and a 2 fold increase in the water use efficiency. Even though the WUE scheduled fountain achieved
-water use efficiency higher than the ICV fountain, its maximum ice volume was even lower than the unscheduled
+to the unscheduled fountain. The HIV scheduled fountain was able to achieve a 1.5 fold increase in the maximum
+ice volume and a 2 fold increase in the water use efficiency. Even though the HWE scheduled fountain achieved
+water use efficiency higher than the HIV fountain, its maximum ice volume was even lower than the unscheduled
 fountain.
 
 \begin{figure*}[t]
@@ -601,7 +607,7 @@ meteorological conditions and fountain spray radius favour a higher freezing rat
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/simvsreal.png}
 
-\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the ICV version
+\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the HIV version
   of the simplified model (blue line) are compared. The dashed grey line represents the minimum discharge rate
 that doesn't trigger fountain freezing events. }
 
@@ -677,7 +683,7 @@ losses while increasing their spray radius.
 The model complexity was reduced through assumptions that optimise for the ice volume objective or the water use
 efficiency objective. We define the freezing rate and melting rate as the positive and negative ice mass change
 rate respectively. Assumptions are chosen based on whether they overestimate/underestimate the freezing rate.
-Ice volume objective requires freezing rate to be overestimated whereas WUE objective requires freezing rate to
+Ice volume objective requires freezing rate to be overestimated whereas HWE objective requires freezing rate to
 be underestimated. We describe these two kinds of assumptions applied on each of the energy balance components
 below: 
 
@@ -685,12 +691,12 @@ below:
 
 Determination of the surface area during the accumulation period is achieved by assuming a constant ice cone
 radius equal to the fountain spray radius. The surface area scales the freezing rate of the AIR. Hence, for the
-ICV objective we assume the maximum possible slope of 1 for the ice cone or in other words $h_{cone} = r_{F}$.
+HIV objective we assume the maximum possible slope of 1 for the ice cone or in other words $h_{cone} = r_{F}$.
 Therefore, area is estimated as:  
 
 \begin{equation} A_{cone} =\pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
 
-Similarly, for the WUE objective, the area of the conical AIR is approximated to the area of its circular
+Similarly, for the HWE objective, the area of the conical AIR is approximated to the area of its circular
 base. Therefore, area is estimated as:
 
 \begin{equation} A_{cone} =\sqrt{2} \cdot \pi \cdot r_{F}^2 \label{eq:Area} \end{equation}
@@ -722,11 +728,11 @@ The diffuse and direct shortwave radiation is determined using the estimated glo
 \end{split}
 \end{equation}
 
-where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the WUE and ICV objective
+where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the HWE and HIV objective
 respectively.
 
-We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the ICV and
-WUE objective respectively.
+We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the HIV and
+HWE objective respectively.
 
 The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
 shape considered. It is computed as
@@ -736,13 +742,13 @@ shape considered. It is computed as
 			{(r_{cone})}^2/2) \cdot sin \theta_{sun} }{\pi \cdot r_{cone} \cdot ({(r_{cone})}^2+{(h_{cone})}^2)^{1/2}}\\
 \end{equation}
 
-For the ICV objective, since we assume the slope of the cone to be 1, $f_{cone}$ is determined as follows:
+For the HIV objective, since we assume the slope of the cone to be 1, $f_{cone}$ is determined as follows:
 
 \begin{equation}
 		f_{cone} =\frac{ cos \theta_{sun} + \pi \cdot sin \theta_{sun} }{2\sqrt{2} \cdot \pi }
 \end{equation}
 
-Similarly, for the WUE objective, since we assume the slope of the cone to be negligible, we get:
+Similarly, for the HWE objective, since we assume the slope of the cone to be negligible, we get:
 
 \begin{equation}
 		f_{cone} =\frac{ sin \theta_{sun} }{2 }
@@ -752,7 +758,7 @@ Similarly, for the WUE objective, since we assume the slope of the cone to be ne
 
 We assume $T_{ice} = 0 \degree C$ in order to determine outgoing longwave radiation. Since it is challenging to
 contrain the minimum ice temperature, we maintain this assumption for both our objectives. However, in order to
-estimate atmospheric emissivity we again assume $cld$ to be 1 and 0 for the WUE and ICV objective respectively.
+estimate atmospheric emissivity we again assume $cld$ to be 1 and 0 for the HWE and HIV objective respectively.
 
 \subsection{Turbulent fluxes assumptions} \label{sec:Qs}
 
@@ -763,7 +769,7 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we can estimate this parameter
   \mu_{cone} =1 + s_{cone}/2
 \end{equation}
 
-Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the ICV and WUE objective respectively.  Since
+Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the HIV and HWE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
 
