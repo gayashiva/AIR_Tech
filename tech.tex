@@ -134,7 +134,7 @@ using a traditional and an automated construction strategy.
 
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{Figures/2AIRs.jpg}
-\caption{Automated and traditional AIRs  at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+\caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
 \label{fig:2AIR} 
 \end{figure}
 
@@ -152,9 +152,9 @@ input and several control parameters, which could be modified via a user interfa
 
 \subsection{Meteorological data}
 
-Air temperature, relative humidity, wind speed, pressure, longwave, shortwave direct and diffuse radiation are
+Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
 required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period
-starts when the fountain was first switched on and ends when the AIR melts completely. These two dates are denoted
+starts when the fountain was first switched on and ends when the AIR melted completely. These two dates are denoted
 as start and expiry dates henceforth.
 
 \begin{figure*}[t]
@@ -164,7 +164,7 @@ as start and expiry dates henceforth.
 \end{figure*}
 
 The weather data source was an automatic weather station (AWS) located around 20 m away as shown in Fig.
-\ref{fig:2AIR}. Less than 0.4 \% of the data was found to be missing and these were filled by linear
+\ref{fig:2AIR}. Less than 0.4 \% of the data was found to be missing and the data gaps were filled by linear
 interpolation. 
 
 \subsection{Fountain observations}
@@ -193,7 +193,7 @@ surveys and the methodology used to produce the corresponding outputs are explai
 the obtained imagery were analysed to document the spray radius, the surface area and the volume of the ice
 structures. Even though the number of drone flights were identical for both AIRs, fewer successful volume
 observations were possible for the automated AIR as shown in Table \ref{tab:uav}. This was because the DEMs
-generated for the automated AIR could not georeference the automated AIR's snow covered surface. Since the
+generated for the automated AIR could not be used to georeference the snow covered surface of the automated AIR's. Since the
 traditional AIR was steeper, its surface revealed ice patches that could be georeferenced. The number of drone
 surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively. 
 
@@ -244,6 +244,7 @@ surveys conducted for the traditional and the automated AIRs were 8 and 6, respe
 
 \subsection{Automation system}
 
+
 \subsubsection{Automation hardware}
 
 The automation hardware consists of an AWS, flowmeter, control valve, drain valves, air valves, fountain,
@@ -256,20 +257,19 @@ and air valves allow the removal of water from the pipeline and entry of air in 
 \subsubsection{Automation software}
 
 Any construction location can either be constrained by the available water supply or the duration of favourable
-weather windows for fountain operation. If the respective location has limited water supply then the fountain
-scheduling strategy should be optimised for high water use efficiency (WUE). But if the location is limited by
+weather windows for fountain operation. If the selected location has limited water supply then the fountain
+scheduling strategy should be optimised for high water use efficiency (WUE). However, if the location is limited by
 the time period when the fountain can function then the scheduling strategy should be optimised for high ice
 volumes (ICV).
 
-Accordingly, we introduce two kinds of approximations in the automation software that optimise for the ICV and
-WUE objective respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface
-properties using its surface albedo and (c) weather conditions using the cloudiness parameter. The model
-assumptions overestimate and underestimate the freezing rate for the ICV and WUE objectives respectively. These
+Accordingly, we introduce two kinds of approximations in the automation software optimising for the ICV and the
+WUE objectives, respectively. We approximate the expected model outcomes with three parameters: (a) AIR shape using its slope parameter, (b) AIR surface properties using its surface albedo and (c) weather conditions using the cloudiness parameter. The model
+assumptions overestimate and underestimate the freezing rate for the ICV and WUE objectives, respectively. These
 assumptions are summarised in Table \ref{tab:assumptions}. 
 
 \begin{table}[]
 \centering
-\caption{Assumptions introduced to simplify the model.}
+\caption{Assumptions for the parametrisation introduced to simplify the model.}
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
@@ -291,7 +291,7 @@ AIR ice mass as follows:
 
 Upward and downward fluxes relative to the ice surface are positive and negative, respectively. The first term
 represents the mass change rate due to freezing of the fountain water and melting of the ice. $q_{SW}$ is the
-net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
+net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat
 flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the
 AIR surface. The derivation of these individual terms using the assumptions are discussed in the Appendix
@@ -300,7 +300,7 @@ AIR surface. The derivation of these individual terms using the assumptions are 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
 automation system regulates the fountain discharge rate based on the recommended discharge rate. The recommended
-discharge rate is equal to the ice mass change rate. However, certain termination criterias override the
+discharge rate is equal to the ice mass change rate. However, certain termination criteria override the
 discharge rate recommendation and drain the pipeline to prevent water loss or fountain freezing events, namely: 
 
 \begin{itemize}
@@ -321,7 +321,7 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 \subsection{Model updates}
 
 The model had to be made more sensitive to fountain discharge rate feedback in order to compare the volume
-evolution of the automated and the traditional AIRs. This was done by introducing better parametrisations of
+evolution of the automated and the traditional AIRs. This was done by introducing better parametrisation of
 fountain water temperature and surface albedo. 
 
 In the previous version of the model, the fountain water temperature ($T_F$) was estimated as a constant
@@ -335,10 +335,10 @@ conditions. Therefore, the fountain water temperature was instead determined as 
 	\end{array} \right.
 \end{equation}
 
-In the previous version of the model, fountain discharge events reset surface albedo to that of the ice albedo.
-This assumption limits the accuracy of the model especially for the Automated AIR where there were several
-fountain discharge events of short durations. Therefore, we assumed that discharge events instead
-increase the albedo decay rate ($\tau$) by a scaling factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
+In the previous version of the model, fountain discharge events were reset from surface albedo to ice albedo.
+However, this assumption limits the accuracy of the model, especially, for the automated AIR where several
+fountain discharge events of short durations occur. Therefore, we assumed that discharge events instead
+increase the an albedo decay rate ($\tau$) by a scaling factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
 
 Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
 assume AIR density ($\rho_{AIR}$) to be a constant. We instead parameterised AIR density $\rho_{AIR}$ as follows:
@@ -351,7 +351,7 @@ where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the c
 \cite{cuffeyPhysicsGlaciers2010} .
 
 Rain events were not considered in the previous version of the model but they occur in our experiment.
-Accordingly, the model algorithm was updated to accomodate for these events. The influence of rain events on the
+Accordingly, the model algorithm was updated to accommodate for these events. The influence of rain events on the
 albedo and the energy balance was assumed to be similar to that of discharge events. However, the water
 temperature of a rain event was assumed to be equal to the air temperature. Accordingly, the heat flux generated
 due to a rain event was equal to:
@@ -374,7 +374,7 @@ discharge rate estimates with the validated freezing rate of calibrated model.
 \subsection{Fountain characteristics}
 
 The engineering design of the nozzle used was approximated to a simplistic nozzle design with one aperture of
-diameter $dia$ to understand the its influence on the discharge rate $Q$. Together with the fountain height $h$,
+diameter $dia$ to understand its influence on the discharge rate $Q$. Together with the fountain height $h$,
 the discharge of the fountain ($Q$) can be determined from the Bernoulli equation :
 
 \begin{equation}
@@ -392,7 +392,7 @@ system. $v$ can be determined from the discharge rate $Q$ through the mass conse
  v = 4 \cdot Q/(\pi \cdot dia^2)
 \end{equation}
 
-Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be :
+Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change from $h_i$ to $h_f$ to be:
 
 \begin{equation}
   \label{eqn:discharge}
@@ -405,7 +405,7 @@ Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final disch
 \subsection{Energy balance model validation}
 
 The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the ice
-volume observations respectively. The estimated and measured AIR ice volumes are shown in Fig.
+volume observations, respectively. The estimated and measured AIR ice volumes are shown in Fig.
 \ref{fig:validation}.
  
 \begin{figure*}[t] \includegraphics[width=12cm]
@@ -417,7 +417,7 @@ volume observations respectively. The estimated and measured AIR ice volumes are
 \subsection{Scheduled discharge rate estimation}
 
 We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV objectives
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
 respectively. The ICV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
 whereas the WUE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
@@ -442,7 +442,7 @@ the heat energy of the fountain water droplets. These two processes are the caus
 and energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
 processes are shown in Fig. \ref{fig:dis_processes}. 
 
-To understand the overall impact of the radiation fluxes (longwave and shortwave) and the turbulent fluxes
+To understand the overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes
 (sensible and latent) on the freezing and melting energies, we sum their respective energy turnover by taking
 into account the sign of their mean energy during the study period (see Table \ref{tab:mb}). A negative sign
 indicates that the corresponding energy flux increased/decreased the freezing/melting energy respectively.  The
