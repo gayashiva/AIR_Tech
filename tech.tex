@@ -43,7 +43,7 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
   discharge rates applying real-time weather input and location metadata. During the winter of 2021-22, a
   traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
   comparing and quantifying the benefits of fountain scheduling through an automation system. The scheduled
-  fountain produced similar ice volumes while consuming 79 \% lesser water than the unscheduled fountain.
+  fountain produced similar volumes while consuming 79 \% lesser water than the unscheduled fountain.
   Simulations converting unscheduled fountains to scheduled fountains improved the water use efficiency of
   several traditional AIRs more than two fold. Overall, these results show that the automated construction
   strategy can increase the water use efficiency of AIRs without compromising their meltwater production.
@@ -123,7 +123,7 @@ oerlemansBriefCommunicationGrowth2021}, in order to quantify the influence of di
 strategies on the mass and energy balance of AIRs with identical meteorological conditions. The main interest in
 using model results is to simulate fountain schedules relative to constraints in favourable weather windows and
 water availability. The fountain scheduling strategies are evaluated from the relative water use efficiency and
-maximum ice volume produced during the study period. The specific objectives of this paper include the mass and
+maximum volume produced during the study period. The specific objectives of this paper include the mass and
 energy balance comparison of fountain scheduling strategies, presentation of the automation system, and examples
 of its application to the computation of fountain scheduling strategies.
 
@@ -227,7 +227,7 @@ surveys conducted for the traditional and the automated AIRs were 8 and 6, respe
 		\multicolumn{1}{|l|}{} & 8            & Apr 12, 2022  & 11 $m^{3}$     & 3.5 $m$
 		                       & 50 $m^{2}$                                                                      
 		\\\midrule
-		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Automatic}}}
+		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Automated}}}
 		                       & 1            & Dec 23, 2021  & 35 $m^{3}$      & 4.3 $m$
 		                       & 73 $m^{2}$                                                                       \\
 		\multicolumn{1}{|l|}{} & 2            & Jan 3, 2022   & 32 $m^{3}$      & 4.4 $m$
@@ -376,16 +376,15 @@ The model parameters were calibrated to the median values of the ranges presente
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}.
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
-squared error (RMSE) between ice volume estimates and measurements. 
+squared error (RMSE) between volume estimates and measurements. 
 
 The performance of the HIV and HWE versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Fountain characteristics}
 
-The engineering design of the nozzle used was approximated to a simplistic nozzle design with one aperture of
-diameter $dia$ to understand its influence on the discharge rate $Q$. Together with the fountain height $h$,
-the discharge of the fountain ($Q$) can be determined from the Bernoulli equation :
+The fountain's height ($h$), aperture diameter ($dia$) and pressure loss ($P$) were related to its discharge
+rate ($Q$) through the Bernoulli equation :
 
 \begin{equation}
   \label{eqn:fountain}
@@ -393,9 +392,9 @@ the discharge of the fountain ($Q$) can be determined from the Bernoulli equatio
   \cdot h_{f} + 1/2 \cdot \rho_{water} \cdot v_{f}^2
 \end{equation}
 
-where $P$ is the pressure loss caused by the fountain, $\rho_{water}$ is the density of water and $v$ is the
-velocity of the fountain water droplets. The subscripts $i$ and $f$ refer to the initial and final states of the
-system. $v$ can be determined from the discharge rate $Q$ through the mass conservation equation as 
+where $\rho_{water}$ is the density of water and $v$ is the velocity of the fountain water droplets. The
+subscripts $i$ and $f$ refer to the initial and final states of the system. $v$ can be determined from the
+discharge rate $Q$ through the mass conservation equation as 
 
 \begin{equation}
 	\label{eqn:dis}
@@ -409,20 +408,28 @@ Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final disch
   Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_f-h_i) \cdot (\pi \cdot dia^2/4)^2}
 \end{equation}
 
+Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
+fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of fountain
+freezing events. We assume that fountain freezing events occur when a 1 meter fountain height increase event
+reduces the pipeline discharge to zero.  Here we define the critical discharge rate ($Q_{crit}$) as the
+discharge rate beyond which fountain height increase triggers a fountain freezing event.
+
+Some events that occured during the study period enable us to estimate the fountain characteristics of the
+scheduled fountain. Particularly, influence of a fountain height increase event on the maximum discharge rate
+was used to determine the fountain aperture diameter and the critical discharge rate  . The change in discharge
+rate observed upon removal of the fountain nozzle was used to determine the fountain pressure loss.
 
 \section{Results}
 
-\subsection{Energy balance model validation}
+\subsection{Model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the ice
-volume observations, respectively. The estimated and measured AIR ice volumes are shown in Fig.
-\ref{fig:validation}.
- 
-\begin{figure*}[t] \includegraphics[width=12cm]
-  {Figures/validation.png} 
-  \caption{Ice volume validation of the scheduled and unscheduled fountain construction strategies.} 
-\label{fig:validation} 
-\end{figure*}
+The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the drone
+volume observations, respectively. This RMSE error is within 20 \% and 8 \% of the maximum volume of the
+automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
+\ref{fig:validation}.  
+
+\begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
+scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
 
 \subsection{Scheduled discharge rate estimation}
 
@@ -507,7 +514,7 @@ increase in its fountain discharge heat flux.
 		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum Ice Volume              &                 & 47            & 63            & $m^{3}$ \\
+		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
 		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 6             & 32            & \% \\\midrule
 	\end{tabular}
 \end{table}
@@ -522,13 +529,8 @@ Eqn. \ref{eqn:fountain_min}, we get the estimated fountain aperture diameter ($d
 
 \subsubsection{Critical discharge rate}
 
-Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
-fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of fountain
-freezing events. Here we define the critical discharge rate as the discharge rate beyond which fountain height
-increase triggers a fountain freezing event.
-
-We assume that fountain freezing events occur when a 1 meter fountain height increase event reduces the pipeline
-discharge to zero. Therefore, inputting $(h_f - h_i) = 1$ in Eqn. \ref{eqn:fountain} we get: 
+The critical discharge rate ($Q_{crit}$) can be estimated by setting $(h_f - h_i) = 1$ and $Q_i=0$ in Eqn.
+\ref{eqn:fountain}: 
 
 \begin{equation}
   \label{eqn:fountain_min}
@@ -538,12 +540,11 @@ discharge to zero. Therefore, inputting $(h_f - h_i) = 1$ in Eqn. \ref{eqn:fount
 This implies that the critical discharge required to increase the fountain height by one meter of the scheduled
 fountain with an aperture diameter of 5 mm is 5 litres per minute.
 
-
 \subsubsection{Fountain pressure loss}
 
-Discharge rate was observed to increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$ upon removal of the
-fountain nozzle. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline diameter $d_f = 19 mm$, $P_{f}
-= 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
+When the fountain nozzle was removed, the maximum discharge rate of the fountain was observed to increase from
+$Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline
+diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
 
 \begin{equation}
   P_{i} = 1/2 \cdot \rho_{water} \cdot (4 \cdot Q_f/\pi \cdot d_f^2)^2 - 1/2 \cdot \rho_{water} \cdot (4 * Q_i/\pi \cdot d_i^2)^2
@@ -554,12 +555,16 @@ occuring due to the fountain nozzle was equivalent to 4.3 meters of water head.
 
 \section{Discussion}
 
+\subsection{Model validation}
+The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates.
+
+
 \subsection{Benefits of scheduling fountains}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies using the water use efficiency and maximum ice volume metrics. 
+construction strategies using the water use efficiency and maximum volume metrics. 
 
-The difference in water use efficiency and maximum ice volumes expected between unscheduled and scheduled
+The difference in water use efficiency and maximum AIR volumes expected between unscheduled and scheduled
 fountains in the two locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values
 (highlighted by white circles) are shown together with five simulated values (highlighted by grey circles) . The
 HIV and HWE versions of the simplified energy balance model were used to schedule the fountains of the simulated
@@ -568,8 +573,8 @@ AIRs. The experimental values were taken from the automated and traditional AIRs
 the winter of 2020-21 using traditional construction strategies presented in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. 
 
-The maximum ice volumes of IN21 is much higher than the CH21 and CH22 AIRs due to the meteorological differences
-between the two locations. Compared to the traditional AIR of each location, the maximum ice volume of other
+The maximum volumes of IN21 is much higher than the CH21 and CH22 AIRs due to the meteorological differences
+between the two locations. Compared to the traditional AIR of each location, the maximum volume of other
 automated AIRs increases and decreases depending on whether the HIV or HWE scheduling strategy is used. 
 
 The water use efficiencies of all the traditional AIRs are below 20 \%. In general, the water use efficiencies
@@ -580,18 +585,18 @@ strategy does not yield any significant ice formation whereas HIV strategy succe
 efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV scheduling strategy yield an
 increase in water use efficiency from 6 \% to 32 \%. However, the HWE strategy was successful in increasing the
 water use efficiency upto 60 \%. In general, for the swiss location, scheduled fountains yield much higher water
-use efficiency but do not alter the maximum ice volume obtained significantly.
+use efficiency but do not alter the maximum volume obtained significantly.
 
 For the IN21 AIR, the two fountain scheduling strategies yield significantly different results when compared
 to the unscheduled fountain. The HIV scheduled fountain was able to achieve a 1.5 fold increase in the maximum
-ice volume and a 2 fold increase in the water use efficiency. Even though the HWE scheduled fountain achieved
-water use efficiency higher than the HIV fountain, its maximum ice volume was even lower than the unscheduled
+volume and a 2 fold increase in the water use efficiency. Even though the HWE scheduled fountain achieved
+water use efficiency higher than the HIV fountain, its maximum volume was even lower than the unscheduled
 fountain.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
 
-\caption{The maximum ice volume and water use efficiency estimated for AIRs constructed in different locations
+\caption{The maximum volume and water use efficiency estimated for AIRs constructed in different locations
 (represented by colours) with different fountain scheduling strategies (represented by symbols). Experimental
 values are highlighted by white circles and simulated values are highlighted by grey circles.  }
 
@@ -624,7 +629,9 @@ fountain was interrupted by a fountain freezing event. This fountain freezing ev
 immediately after the fountain height was increased even though the fountain discharge had attained the critical
 discharge rate as shown in Fig. \ref{fig:aws}. 
 
-\subsection{Recommended fountain design}
+\subsection{Recommendations}
+
+\subsubsection{Fountain design}
 
 Fountain design is another area where improvement is necessary. In the case of the CH22 experiment, the
 scheduled and the unscheduled fountain produced a spray radius of 4.8 $m$ and 4.1 $m$ respectively. The
@@ -633,10 +640,10 @@ that the lower aperture diameter also resulted in a higher pressure loss. In sum
 design needs to decrease the aperture diameter while maintaining a reasonable pressure loss so that a higher
 spray radius is achieved. 
 
-\subsection{Recommended construction strategy}
+\subsubsection{Construction strategy}
 
 We recommend three modifications to the traditional construction strategy to prevent fountain freezing events,
-obtain higher ice volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
+obtain higher volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
 discharge rate. Our study used a value of 2 $l/min$. However, this is likely to vary depending on the weather
 conditions and the characteristics of the fountain and the pipeline used. It is recommended to set this value
 based on observed fountain droplet trajectories in the construction site. Secondly, restrict maximum fountain
@@ -654,11 +661,11 @@ In this paper, an automated AIR construction strategy is presented and compared 
 using data collected in Guttannen, Switzerland.
 
 The main purpose of this study was to quantify the influence of different fountain designs and scheduling
-strategies on the water use efficiency and ice volumes of AIRs exposed to identical weather conditions. We found
+strategies on the water use efficiency and volumes of AIRs exposed to identical weather conditions. We found
 that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
 the melting rate of AIRs mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
 freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter which contributed to
-its higher spray radius. Therefore, the automated AIR was able to achieve a 34 \% higher maximum ice volume with
+its higher spray radius. Therefore, the automated AIR was able to achieve a 34 \% higher maximum volume with
 a five fold increase in the water use efficiency compared to the traditional AIR.
 
 The automation system allows the easy handling of fountain scheduling implementation in any new location. The
@@ -670,7 +677,7 @@ the automation system increases installation costs, we believe use of such syste
 the reduced maintenance costs long term.
 
 A simplified energy balance model compatible with the limited data availability of a new location was used to
-produce two types of discharge rates favouring higher ice volumes and better water use efficiencies
+produce two types of discharge rates favouring higher volumes and better water use efficiencies
 respectively. Nevertheless, this model was able to capture more than 50 \% of the freezing rate variations
 produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains show that
 upto a two fold increase in water use efficiency is possible with the use of scheduled fountains.

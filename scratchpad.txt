@@ -1,3 +1,5 @@
+The engineering design of the nozzle used was approximated to a simplistic nozzle design with an aperture of
+diameter $dia$ to understand its influence on the discharge rate $Q$.
 
 % \begin{figure*}[t]
 % \includegraphics[width=12cm]{Figures/freezing_rate_corr.png}
