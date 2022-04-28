@@ -175,19 +175,19 @@ interpolation.
 \subsection{Fountain observations}
 
 We define the fountain used through its four attributes namely, spray radius ($r_F$), discharge rate ($Q_F$),
-height ($h_F$) and water temperature ($T_F$). Spray radius denotes the maximum radius of impact of the fountain
+height ($h_F$) and water temperature ($T_F$). Spray radius denotes the observed radius of impact of the fountain
 water droplets. Discharge rate represents the discharge rate of the water in the fountain pipeline. Height
 denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of the
 water droplets produced by the fountain.
 
-The spray radius was estimated from the mean AIR circumference (TODO) measured in the drone surveys during the fountain
+The spray radius was estimated from the AIR circumference measured in the drone surveys during the fountain
 runtime. The discharge rate and water temperature of the scheduled fountain was measured by the automation
 system but no such datasets were recorded for the unscheduled fountain. The unscheduled fountain was operated at
 the maximum discharge rate using the same water source. Therefore, the maximum recorded discharge rate and water
 temperature dataset of the scheduled fountain was used to estimate the corresponding variables of the
 unscheduled fountain. The discharge rate of both fountains decreased with increase in its fountain height. We
 observed a reduction in the scheduled fountain's maximum discharge rate by a factor of two when its height was
-increased from 3 to 4 m in December as shown Fig. \ref{fig:data}. The same reduction in magnitude was also
+increased from 3 to 4 m in December as shown Fig. \ref{fig:aws}. The same reduction in magnitude was also
 applied for the unscheduled fountain's discharge rate whenever pipeline height increase events occurred. 
 
 \subsection{Drone surveys}
@@ -266,11 +266,14 @@ scheduling strategy should be optimised for high water-use efficiency (HWE). But
 the time period when the fountain can function then the scheduling strategy should be optimised for high ice
 volumes (HIV).
 
-Accordingly, we introduce two kinds of approximations in the automation software that optimise for the HIV and
-HWE objective respectively. We approximate the expected (a) AIR shape using its slope parameter, (b) AIR surface
-properties using its surface albedo and (c) weather conditions using the cloudiness parameter. The model
-assumptions overestimate and underestimate the freezing rate for the HIV and HWE objectives respectively. These
-assumptions are summarised in Table \ref{tab:assumptions}. 
+Accordingly, we introduce two kinds of assumptions corresponding to the HIV and HWE objective for the following
+three model parameters: (a) slope , (b) albedo and (c) cloudiness. The slope parameter increases the shortwave
+radiation and sensible heat impact. The albedo parameter decreases the shortwave radiation impact. The
+cloudiness parameter increases both the shortwave and the longwave radiation impact. Therefore, increase of
+slope and cloudiness parameter increases melting energy and increase of albedo parameter increases freezing
+energy. The HIV and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively.
+Correspondingly, we associate the upper and lower bounds of these parameters to the HIV and WUE assumptions as
+shown in Table \ref{tab:assumptions}.
 
 \begin{table}[]
 \centering
@@ -279,7 +282,7 @@ assumptions are summarised in Table \ref{tab:assumptions}.
 \begin{tabular}{@{}lllll@{}}
 \toprule
 \textbf{Estimation of} & \textbf{Symbol} & \textbf{HIV Assumptions} & \textbf{HWE Assumptions} & \\ \midrule
-\multicolumn{1}{|l}{AIR slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
 \end{tabular}
