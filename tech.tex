@@ -567,36 +567,37 @@ The model fails in estimating the expiry date of both AIRs due to underestimatio
 \subsection{Benefits of scheduling fountains}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies using the water-use efficiency and maximum volume metrics. 
+construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE versions
+of the simplified energy balance model were used to schedule the fountains of the simulated AIRs. These three
+kinds of fountain scheduling strategies will be referred to as unscheduled, HIV and HWE fountain henceforth. 
 
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
 locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by black
-circles) are shown together with five simulated values (highlighted by grey circles) . The HIV and HWE versions
-of the simplified energy balance model were used to schedule the fountains of the simulated AIRs. The
-experimental values were taken from the automated and traditional AIRs constructed in the winter of 2021-2022 at
-the Swiss site (Guttannen, CH22) and the rest of the values were at the Indian site (Gangles, IN21) and Swiss
-site (Guttannen, CH21) AIR built in the winter of 2020-21 using traditional construction strategies presented in
+circles) are shown together with five simulated values (highlighted by grey circles) .  The experimental values
+were taken from the automated and traditional AIRs constructed in the winter of 2021-2022 at the Swiss site
+(Guttannen, CH22) and the rest of the values were at the Indian site (Gangles, IN21) and Swiss site (Guttannen,
+CH21) AIR built in the winter of 2020-21 using traditional construction strategies presented in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. 
 
 The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
-between the two locations. Compared to the traditional AIR of each location, the maximum volume of other
-automated AIRs increases and decreases depending on whether the HIV or HWE scheduling strategy is used. 
+between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
+scheduled fountains increases and decreases depending on whether the HIV or HWE fountain is used. 
 
-The water-use efficiency of all the traditional AIRs are below 20 \%. In general, the water-use efficiency
-increases more than two fold when the HIV or HWE fountain scheduling strategy is applied in both the locations.  
+The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
+increases more than two fold when the HIV or HWE fountain is used in both the locations.  
 
-There is also considerable difference between the HWE and HIV scheduling strategies for each AIR. For CH21 AIR,
-HWE strategy does not yield any significant ice formation whereas HIV strategy succeeds in increasing the
-water-use efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV scheduling strategy
-yield an increase in water-use efficiency from 6 \% to 32 \%. However, the HWE strategy was successful in
+There is also considerable difference between the outputs of HWE and HIV fountains for each AIR. For CH21 AIR,
+HWE fountain does not yield any significant ice formation whereas HIV fountain succeeds in increasing the
+water-use efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains
+yield an increase in water-use efficiency from 6 \% to 32 \%. However, the HWE fountain was successful in
 increasing the water-use efficiency up to 60 \%. In general, for the Swiss location, scheduled fountains yield
 better water-use efficiency but do not alter the maximum volume obtained significantly.
 
-For the IN21 AIR, the two fountain scheduling strategies yield significantly different results when compared to
-the unscheduled fountain. The HIV scheduled fountain was able to achieve a 1.5 fold increase in the maximum
-volume and a 2 fold increase in the water-use efficiency. Even though the HWE scheduled fountain achieved
-water-use efficiency higher than the HIV fountain, its maximum volume was even lower than the unscheduled
-fountain.
+For the IN21 AIR, the two kinds of fountains yield significantly different results when compared to the
+unscheduled fountain. The HIV fountain was able to achieve a 1.5 fold increase in the maximum volume and a 2
+fold increase in the water-use efficiency compared to the unscheduled fountain mainly because it suffered no
+fountain freezing events. Even though the HWE fountain achieved water-use efficiency higher than the HIV
+fountain, its maximum volume was even lower than the unscheduled fountain.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/wue.png}
@@ -634,18 +635,33 @@ fountain was interrupted by a fountain freezing event. This fountain freezing ev
 immediately after the fountain height was increased even though the fountain discharge had attained the critical
 discharge rate as shown in Fig. \ref{fig:aws}. 
 
-\subsection{Recommendations}
+\section{Conclusions and recommendations}
 
-\subsubsection{Fountain design}
+In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
+using data collected in Guttannen, Switzerland.
 
-Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
-scheduled and the unscheduled fountain produced a spray radius of 4.8 $m$ and 4.1 $m$, respectively. The
-scheduled fountain produced a higher spray radius because of its lower aperture diameter. However, we suspect
-that the lower aperture diameter also resulted in a higher pressure loss. In summary, an optimised fountain
-design needs to decrease the aperture diameter while maintaining a reasonable pressure loss so that a higher
-spray radius is achieved. 
+The main purpose of this study was to quantify the influence of different fountain designs and scheduling
+strategies on the water use efficiency and volumes of AIRs exposed to identical weather conditions. We found
+that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
+the melting rate of AIRs, mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
+freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to
+its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 79 \% compared
+to the traditional AIR.
 
-\subsubsection{Construction strategy}
+The automation system allows the easy handling of fountain scheduling implementation in any new location. The
+possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
+fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
+construction strategy reduces the occurrence of fountain freezing events as it drains the pipeline outside
+favourable weather windows and prevents fountain discharge rate to be lower than a minimum user-defined
+threshold. Although, the automation system increases installation costs, we believe that a use of such systems
+is warranted when considering the reduced maintenance costs on a longer term.
+
+A simplified energy balance model compatible with the limited data availability of a new location was used to
+produce two types of discharge rates favouring higher volumes and better water use efficiencies, respectively.
+Nevertheless, this model was able to capture more than 50 \% of the freezing rate variations produced by the
+full energy balance model. Simulations comparing scheduled and unscheduled fountains show that up to a two fold
+increase in water use efficiency is possible with the use of scheduled fountains without compromising on
+meltwater production.
 
 We recommend three modifications to the traditional construction strategy to prevent fountain freezing events,
 obtain higher volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
@@ -660,35 +676,11 @@ volumes with lower risk of fountain freezing events. Thirdly, the median modelle
 to set the mean discharge rate of unscheduled fountains. This will already yield a higher water use efficiency
 without the need of sophisticated automation systems.
 
-\conclusions
+Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
+fountains used suffered a pressure loss equivalent to 4 $m$ of water head. The scheduled fountain produced a
+higher spray radius due to its lower aperture diameter. Future research must be devoted to improving fountain
+design in order to minimize their pressure losses while increasing their spray radius. 
 
-In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
-using data collected in Guttannen, Switzerland.
-
-The main purpose of this study was to quantify the influence of different fountain designs and scheduling
-strategies on the water use efficiency and volumes of AIRs exposed to identical weather conditions. We found
-that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
-the melting rate of AIRs, mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
-freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to
-its higher spray radius. Therefore, the automated AIR was able to achieve a 34 \% higher maximum volume with
-a five fold increase in the water use efficiency compared to the traditional AIR.
-
-The automation system allows the easy handling of fountain scheduling implementation in any new location. The
-possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
-fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
-construction strategy reduces the occurrence of fountain freezing events as it drains the pipeline outside
-favourable weather windows and prevents fountain discharge rate to be lower than a minimum threshold. Although,
-the automation system increases installation costs, we believe that a use of such systems is warranted when considering
-the reduced maintenance costs on a longer term.
-
-A simplified energy balance model compatible with the limited data availability of a new location was used to
-produce two types of discharge rates favouring higher volumes and better water use efficiencies,
-respectively. Nevertheless, this model was able to capture more than 50 \% of the freezing rate variations
-produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains show that
-up to a two fold increase in water use efficiency is possible with the use of scheduled fountains.
-
-Future research must be devoted to improving fountain design in order to minimize their pressure
-losses while increasing their spray radius.
 
 \appendix
 

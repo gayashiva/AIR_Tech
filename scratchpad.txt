@@ -1,3 +1,13 @@
+
+\subsubsection{Fountain design}
+
+Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
+scheduled and the unscheduled fountain produced a spray radius of 4.8 $m$ and 4.1 $m$, respectively. The
+scheduled fountain produced a higher spray radius because of its lower aperture diameter. However, we suspect
+that the lower aperture diameter also resulted in a higher pressure loss. In summary, an optimised fountain
+design needs to decrease the aperture diameter while maintaining a reasonable pressure loss so that a higher
+spray radius is achieved. 
+
 The engineering design of the nozzle used was approximated to a simplistic nozzle design with an aperture of
 diameter $dia$ to understand its influence on the discharge rate $Q$.
 
