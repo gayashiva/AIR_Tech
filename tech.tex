@@ -43,7 +43,7 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
   discharge rates using real-time weather input and location metadata. During the winter of 2021-22, a
   traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
   comparing and quantifying the benefits of fountain scheduling through an automation system. The scheduled
-  fountain produced similar volumes while consuming 79 \% less water than the unscheduled fountain.
+  fountain produced similar volumes while consuming 87 \% less water than the unscheduled fountain.
   Simulations converting unscheduled fountains to scheduled fountains improved the water use efficiency of
   several traditional AIRs more than two fold. Overall, these results show that the automated construction
   strategy can increase the water use efficiency of AIRs without compromising their meltwater production.
@@ -345,16 +345,11 @@ of the automated and the traditional AIRs. This was done by introducing better p
 temperature and surface albedo. 
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
-water temperature ($T_F$) was estimated as a constant parameter. However, in reality, the water droplets cool to
-0 C during their flight time under subzero conditions. Therefore, the fountain water temperature was instead
-determined as follows:
-
-\begin{equation}
-	T_{F} = \left\{ \begin{array}{ll}
-		0 & \textit{ if } T_{a} < 0 \\
-		T_{F} & \textit{ otherwise}
-	\end{array} \right.
-\end{equation}
+water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
+approximation. This is because the fountain water temperature and source water temperature differ due to the
+cooling of the water during its transit from the source to the fountain and from the fountain to the AIR
+surface. Therefore, we instead use measured hourly ground temperature measurements to approximate water
+temperature for both the AIRs.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
@@ -420,7 +415,7 @@ from $h_i$ to $h_f$ to be:
 
 \begin{equation}
   \label{eqn:discharge}
-  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_f-h_i) \cdot (\pi \cdot dia^2/4)^2}
+  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_i-h_f) \cdot (\pi \cdot dia^2/4)^2}
 \end{equation}
 
 Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
@@ -434,105 +429,31 @@ scheduled fountain. Particularly, influence of a fountain height increase event 
 was used to determine the fountain aperture diameter and the critical discharge rate  . The change in discharge
 rate observed upon removal of the fountain nozzle was used to determine the fountain pressure loss.
 
+\subsection{Projectile motion of fountain water droplets} \label{sec:proj}
+
+The water droplet velocity $v$ can be estimated from the fountain discharge rate $Q$ and its aperture diameter
+$dia$ as follows:
+
+\begin{equation}
+  v = 4Q/\pi \cdot dia^2
+\end{equation}
+
+Assuming that the water droplets follow projectile motion starting from a fountain height $h$ with a launch
+angle $\theta = 45 \degree$ and impacting the ground at a distance $r$, we get the following horizontal and
+vertical equations of motion respectively:
+
+\begin{equation}
+  \label{eqn:radf}
+  r = v \cdot cos \theta \cdot t
+\end{equation}
+
+\begin{equation}
+  0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
+\end{equation}
+
+Using these two equations, one can obtain the time of flight $t$ and the spray radius $r$ of the fountain.
+
 \section{Results}
-
-\subsection{Model validation}
-
-The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the drone
-volume observations, respectively. This RMSE error is within 20 \% and 8 \% of the maximum volume of the
-automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
-\ref{fig:validation}.  
-
-\begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
-scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
-
-\subsection{Scheduled discharge rate estimation}
-
-We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
-respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
-whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
-
-\subsection{Comparison of AIR construction strategies}
-
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/dis_processes.png}
-\caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
-  AIRS due to the differences in their discharge rate.}
-\label{fig:dis_processes}
-\end{figure*}
-
-Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
-of the respective AIR. The largest difference between the mass balance of the unscheduled and scheduled
-fountains were found to be in the fountain discharge input and fountain wastewater output. This was expected
-since the unscheduled fountain's discharge duration was 2 times higher than the scheduled fountain.
-
-To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
-the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
-surface is affected in the following two ways: (a) albedo dampens to ice albedo and (b) absorbing the heat
-energy of the fountain water droplets. These two processes are the cause of the difference in the mass and
-energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
-processes are shown in Fig. \ref{fig:dis_processes}. 
-
-The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
-latent) on the freezing and melting energies, their respective energy turnover is summed by taking into account
-the sign of their mean energy flux during the study period (see Table \ref{tab:mb}). A negative sign indicates
-that the corresponding energy flux increased or decreased or it exists freezing or melting energy, respectively.
-The radiation fluxes contributed -6 \% and 4 \% to the freezing and melting energies for the traditional and
-automated AIR, respectively.  Similarly, the turbulent fluxes contribute -10 \% and -9 \% to the freezing
-energies for the traditional and automated AIR, respectively. The fountain water and ground heat flux contribute
-11 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
-
-There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
-(a). Even though the traditional AIR was active for a much longer duration, the frequent snowfall events
-counteracted the albedo feedback of its fountain discharge. However, the albedo of the automated AIR was
-significantly impacted by late fountain spray events particularly in the month of March as shown in Fig.
-\ref{fig:dis_processes}.
-
-Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
-discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
-increase in its fountain discharge heat flux.
-
-
-\begin{table}
-	\centering
-	\caption{Summary of the mass balance, energy balance, fountain and AIR characteristics estimated at the end of the respective
-  simulation duration for the automated and the traditional AIRs}
-	\label{tab:mb}
-	\begin{tabular}{@{}|llllll|@{}}
-		\toprule
-		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
-		\textbf{Units}                                                                                                       \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{6.8e5}   & \num{1.4e5}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.8e2}   & \num{1.2e3}     & $kg$  \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{3.3e4} & \num{4.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.4e4} & \num{1.3e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{6.6e5} & \num{1.1e5}     & $kg$  \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
-
-                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-35$  & $-35$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-18$  & $-17$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
-		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
-		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
-
-                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
-		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & N.A.        & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & N.A.         & $bars$ \\
-		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & N.A.         & $l/min$ \\
-		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
-		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
-
-		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 6             & 32            & \% \\\midrule
-	\end{tabular}
-\end{table}
 
 \subsection{Estimation of fountain characteristics}
 
@@ -541,6 +462,7 @@ increase in its fountain discharge heat flux.
 The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
 when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$. Inputting the corresponding values in
 Eqn. \ref{eqn:fountain}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
+
 
 \subsubsection{Critical discharge rate}
 
@@ -567,6 +489,113 @@ diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountai
 Inputting the corresponding values, we estimate $P$ to be around 0.43 $bar$. In other words, the pressure loss
 occurring due to the fountain nozzle was equivalent to 4.3 meters of water head.
 
+\subsection{Unscheduled discharge rate estimation}
+
+Assuming that the unscheduled fountain has the same aperture diameter and fountain pressure loss as the
+scheduled fountain, the discharge after the 4 height increase events can be found using Eqn.
+\ref{eqn:discharge}. They are 11.6 $l/min$ (at 3.7 $m$ from 8th Dec), 10.5 $l/min$ (at 4.7 $m$ from 23rd Dec)
+and 9.2 $l/min$ (at 5.7 $m$ from 12th February).
+
+
+\subsection{Model validation}
+
+The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the drone
+volume observations, respectively. This RMSE error is within 20 \% and 15 \% of the maximum volume of the
+automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
+\ref{fig:validation}.  
+
+\begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
+scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
+
+\subsection{Scheduled discharge rate estimation}
+
+We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
+respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
+whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
+
+\subsection{Comparison of AIR construction strategies}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/dis_processes.png}
+\caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
+  AIRS due to the differences in their discharge rate.}
+\label{fig:dis_processes}
+\end{figure*}
+
+Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
+of the respective AIR. The difference between the fountain discharge input and fountain wastewater output of the
+unscheduled and scheduled fountains was more than an order of magnitude. This was expected since the unscheduled
+fountain's discharge duration was 2 times higher than the scheduled fountain.
+
+To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
+the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
+surface is affected in the following two ways: (a) albedo dampens to ice albedo and (b) absorbing the heat
+energy of the fountain water droplets. These two processes are the cause of the difference in the mass and
+energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
+processes are shown in Fig. \ref{fig:dis_processes}. 
+
+The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
+latent) on the freezing and melting energies, their respective energy turnover is summed by taking into account
+the sign of their mean energy flux during the study period (see Table \ref{tab:mb}). A negative sign indicates
+that the corresponding energy flux increased or decreased or it exists freezing or melting energy, respectively.
+The radiation fluxes contributed -5 \% and 5 \% to the freezing and melting energies for the traditional and
+automated AIR, respectively.  Similarly, the turbulent fluxes contribute -10 \% and -9 \% to the freezing
+energies for the traditional and automated AIR, respectively. The fountain water and ground heat flux contribute
+15 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
+
+There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
+(a). Even though the traditional AIR was active for a much longer duration, the frequent snowfall events
+counteracted the albedo feedback of its fountain discharge. However, the albedo of the automated AIR was
+significantly impacted by late fountain spray events particularly in the month of March as shown in Fig.
+\ref{fig:dis_processes}.
+
+Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
+discharge quantity of the unscheduled fountains and its longer duration were responsible for the 14 fold
+increase in its fountain discharge heat flux.
+
+
+\begin{table}
+	\centering
+	\caption{Summary of the mass balance, energy balance, fountain and AIR characteristics estimated at the end of the respective
+  simulation duration for the automated and the traditional AIRs}
+	\label{tab:mb}
+	\begin{tabular}{@{}|llllll|@{}}
+		\toprule
+		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
+		\textbf{Units}                                                                                                       \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
+		                       & Fountain discharge              & $M_F$           & \num{1.1e6}   & \num{1.4e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.2e2}   & \num{1.2e3}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
+		                       & Meltwater                       & $M_{water}$     & \num{3.0e4} & \num{4.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{9.4e3} & \num{1.3e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.5e3} & \num{3.0e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{1.1e6} & \num{1.1e5}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
+
+                           & Shortwave radiation             &  $q_{SW}$       & $28$  & $39$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-33$  & $-34$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $7$   & $8$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-17$ & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $14$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
+		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
+
+                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
+		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 5             & $mm$ \\
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & 0.43         & $bars$ \\
+		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & $5$          & $l/min$ \\
+		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & $2$          & $l/min$ \\\midrule
+		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
+
+		                       & Maximum AIR Volume              &                 & 40            & 63            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 3             & 31            & \% \\\midrule
+	\end{tabular}
+\end{table}
+
+
 \section{Discussion}
 
 \subsection{Model validation}
@@ -575,6 +604,16 @@ The model fails in estimating the expiry date of both AIRs due to underestimatio
 
 
 \subsection{Benefits of scheduling fountains}
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/wue.png}
+
+\caption{The maximum volumes and water-use efficiency estimated for AIRs constructed in different locations
+(represented by colours) with different fountain scheduling strategies (represented by symbols). Experimental
+values are highlighted by black circles and simulated values are highlighted by grey circles.  }
+
+\label{fig:wue}
+\end{figure*}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
 construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE versions
@@ -599,7 +638,7 @@ increases more than two fold when the HIV or HWE fountain is used in both the lo
 There is also considerable difference between the outputs of HWE and HIV fountains for each AIR. For CH21 AIR,
 HWE fountain does not yield any significant ice formation whereas HIV fountain succeeds in increasing the
 water-use efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains
-yield an increase in water-use efficiency from 6 \% to 32 \%. However, the HWE fountain was successful in
+yield an increase in water-use efficiency from 3 \% to 31 \%. However, the HWE fountain was successful in
 increasing the water-use efficiency up to 60 \%. In general, for the Swiss location, scheduled fountains yield
 better water-use efficiency but do not alter the maximum volume obtained significantly.
 
@@ -609,15 +648,6 @@ fold increase in the water-use efficiency compared to the unscheduled fountain m
 fountain freezing events. Even though the HWE fountain achieved water-use efficiency higher than the HIV
 fountain, its maximum volume was even lower than the unscheduled fountain.
 
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/wue.png}
-
-\caption{The maximum volumes and water-use efficiency estimated for AIRs constructed in different locations
-(represented by colours) with different fountain scheduling strategies (represented by symbols). Experimental
-values are highlighted by black circles and simulated values are highlighted by grey circles.  }
-
-\label{fig:wue}
-\end{figure*}
 
 \subsection{Challenges of scheduling fountains}
 
@@ -651,23 +681,18 @@ with both the height and discharge rate of the fountain. To circumvent this issu
 radius $r$ to be produced during time periods when the fountain has attained its maximum height and discharge
 rate. 
 
+Manual measurements of the fountain spray revealed a maximum spray radius of just 3 m but drone measurements
+reveal a maximum spray radius of 4.8 m for the scheduled fountain. This discrepancy could be caused by both wind
+drift of water droplets and refreezing events across the boundary of the AIR. 
 
-Spray radius estimation can be carried out in three ways: (a) by measuring the spray radius in the construction
-location; (b) by estimating spray radius from the fountain droplet projectile motion (see Appendix
-\ref{sec:radf}); (c) by using spray radius observations from drone flights. However, methods (a) and (b) are
-inaccurate since they ignore the effect of wind, snowfall, and refreezing events on the spray radius. Therefore
-both these methods are likely to underestimate the spray radius. On the other hand, method (c)  depends on when
-and how many drone flights were performed.
-
-Fig. \ref{fig:radf} illustrates the estimated and measured spray radius using the projectile motion equation and
-drone flights respectively. The maximum estimated spray radius corresponding to a fountain height of 3 $m$ and 4
-$m$ is around 12 m and 5 m  respectively. However, the spray radius obtained from both methods (a) and (b) are
-well below 6 m. This discrepancy is caused due to the increase in fountain pressure loss with discharge rate.
-Since the fountain pressure loss was measured at a height of 4 $m$
-
-different estimations of the spray radius via the three methods for the scheduled fountain with $h_{max} = 4 m$,
-$dia = 5 mm$ and critical discharge rate $Q_{crit} = 5 l/min$. 
-
+Fig. \ref{fig:radf} compares the temporal variation caused by the discharge rate with the measured spray radius
+using Eqn. \ref{eqn:radf}. The difference of the estimated and the measured maximum spray radius is caused
+mainly due to fountain wastewater production. The influence of this process can be observed during mid-december
+when spray radius reached a maximum of 12 $m$. Even through water droplets could have travelled that far, it is
+unlikely any would have frozen to form an ice sheet given that the freezing rate during the same period was less
+than 4 $l/min$ (see Fig. \ref{fig:simvsreal}). Therefore, if the spray radius estimation during December is
+ignored, the maximum spray radius of the remaining duration corresponds well with the maximum spray radius
+measured via the drone.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/radf.png}
@@ -676,7 +701,7 @@ $dia = 5 mm$ and critical discharge rate $Q_{crit} = 5 l/min$.
 projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
 }
 
-\label{fig:simvsreal}
+\label{fig:radf}
 \end{figure*}
 
 \section{Conclusions and recommendations}
@@ -689,7 +714,7 @@ strategies on the water use efficiency and volumes of AIRs exposed to identical 
 that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
 the melting rate of AIRs, mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
 freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to
-its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 79 \% compared
+its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 87 \% compared
 to the traditional AIR.
 
 The automation system allows the easy handling of fountain scheduling implementation in any new location. The
@@ -823,29 +848,6 @@ turbulent fluxes impact both the freezing and the melting rates, this assumption
 objectives for certain sites.
 
 
-\section{Projecile motion of fountain water droplets}\label{sec:proj}
-
-The water droplet velocity $v$ can be estimated from the fountain discharge rate $Q$ and its aperture diameter
-$dia$ as follows:
-
-\begin{equation}
-  v = 4Q/\pi \cdot dia^2
-\end{equation}
-
-Assuming that the water droplets follow projectile motion starting from a fountain height $h$ with a launch
-angle $\theta = 45 \degree$ and impacting the ground at a distance $r$, we get the following horizontal and
-vertical equations of motion respectively:
-
-
-\begin{equation}
-  r = v \cdot cos \theta \cdot t
-\end{equation}
-
-\begin{equation}
-  0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
-\end{equation}
-
-Using these two equations, one can obtain the time of flight $t$ and the spray radius $r$ of the fountain.
 
 \noappendix 
 

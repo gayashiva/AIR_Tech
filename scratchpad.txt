@@ -1,3 +1,31 @@
+
+the water droplets cool to
+0 C during their flight time under subzero conditions. Therefore, the fountain water temperature was instead
+determined as follows:
+
+\begin{equation}
+	T_{F} = \left\{ \begin{array}{ll}
+		0 & \textit{ if } T_{a} < 0 \\
+		T_{F} & \textit{ otherwise}
+	\end{array} \right.
+\end{equation}
+
+different estimations of the spray radius via the three methods for the scheduled fountain with $h_{max} = 4 m$,
+$dia = 5 mm$ and critical discharge rate $Q_{crit} = 5 l/min$. 
+
+Spray radius estimation can be carried out in three ways: (a) by measuring the spray radius in the construction
+location; (b) by estimating spray radius from the fountain droplet projectile motion (see Appendix
+\ref{sec:radf}); (c) by using spray radius observations from drone flights. However, methods (a) and (b) are
+inaccurate since they ignore the effect of wind, snowfall, and refreezing events on the spray radius. Therefore
+both these methods are likely to underestimate the spray radius. On the other hand, method (c)  depends on when
+and how many drone flights were performed.
+
+Fig. \ref{fig:radf} illustrates the estimated and measured spray radius using the projectile motion equation and
+drone flights respectively. The maximum estimated spray radius corresponding to a fountain height of 3 $m$ and 4
+$m$ is around 12 m and 5 m  respectively. However, the spray radius obtained from both methods (a) and (b) are
+well below 6 m. This discrepancy is caused due to the increase in fountain pressure loss with discharge rate.
+Since the fountain pressure loss was measured at a height of 4 $m$
+
 The discharge rate of the automated AIR was scheduled by the automation system based on variations in
 real-time weather parameters, height and several user-defined parameters discussed later. 
 The discharge rate and water temperature of the scheduled fountain was measured by the automation system. Fig.
