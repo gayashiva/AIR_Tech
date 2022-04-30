@@ -133,7 +133,7 @@ The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) is situated in the Berne 
 altitude of 1047 $m$ a.s.l. In the winter (Oct-Apr), mean daily minimum and maximum air temperatures vary
 between -13 and 15 $\degree C$. Clear skies are rare, averaging around 7 days during winter. Daily winter
 precipitation can sometimes be as high as 100 $mm$. These values are based on 30 years of hourly historical
-weather data measurements \citep{meteoblueClimateGuttannen}. Two AIRs were constructed by the Guttannen Bewegt Association,
+weather data measurements \citep{meteoblueClimateGuttannen2021}. Two AIRs were constructed by the Guttannen Bewegt Association,
 the University of Fribourg and the Lucerne University of Applied Sciences and Arts during the winters of 2021-22
 using a traditional and an automated construction strategy.
 
@@ -148,22 +148,22 @@ This ensured both AIRs shared the same water source and similar weather conditio
 guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, tree branches were laid covering the fountain pipe to initiate and speed up the ice
-cone formation process. The fountain discharge was maintained at maximum and its height was increased from 3 to
-6\,$m$ during the construction period.
+cone formation process. The unscheduled fountain discharge was maintained at maximum until the discharge was
+halted due to a fountain freezing event on 17th February.
 
 In the automated strategy, only the fountain pipe was placed before the water spray started. A programmed
-automation system controlled the fountain discharge rate during the whole winter season using real time weather
-input and several control parameters, which could be modified via a user interface. 
+automation system controlled the scheduled fountain discharge rate during the whole study period using real time
+weather input and several control parameters, which could be modified via a user interface. 
 
 \subsection{Meteorological data}
 
 Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
-required to calculate the surface energy balance of an AIR (see Fig. \ref{fig:aws}). The construction period
-starts when the fountain was first switched on and ends when the AIR melted completely. These two dates are denoted
-as start and expiry dates henceforth.
+required to calculate the surface energy balance of an AIR. The construction period starts when the fountain was
+first switched on and ends when the AIR melted completely. These two dates are denoted as start and expiry dates
+henceforth.
 
 \begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/data.png}
+\includegraphics[width=12cm]{Figures/disvstemp.png}
 \caption{Temperature, precipitation and discharge measurements at the Guttannen construction site}
 \label{fig:aws} 
 \end{figure*}
@@ -175,20 +175,31 @@ interpolation.
 \subsection{Fountain observations}
 
 We define the fountain used through its four attributes, namely: spray radius ($r_F$), discharge rate ($Q_F$),
-height ($h_F$) and water temperature ($T_F$). Spray radius denotes the observed radius of impact of the fountain
-water droplets. Discharge rate represents the discharge rate of the water in the fountain pipeline. Height
-denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of the
-water droplets produced by the fountain.
+height ($h_F$) and water temperature ($T_F$). Spray radius denotes the observed ice radius formed from the
+fountain water droplets. Discharge rate represents the discharge rate of the water in the fountain pipeline.
+Height denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of
+the water droplets produced by the fountain.
 
-The spray radius was estimated from the AIR circumference measured in the drone surveys during the fountain
-runtime. The discharge rate and water temperature of the scheduled fountain was measured by the automation
-system but no such datasets were recorded for the unscheduled fountain. The unscheduled fountain was operated at
-the maximum discharge rate using the same water source. Therefore, the maximum recorded discharge rate and water
-temperature dataset of the scheduled fountain was used to estimate the corresponding variables of the
-unscheduled fountain. The discharge rate of both fountains decreased with increase in its fountain height. We
-observed a reduction in the scheduled fountain's maximum discharge rate by a factor of two when its height was
-increased from 3 to 4 m in December as shown Fig. \ref{fig:aws}. The same reduction in magnitude was also
-applied for the unscheduled fountain's discharge rate whenever pipeline height increase events occurred. 
+Fig. \ref{fig:aws} shows how the automation system scheduled the discharge rate based on variations in
+temperature. The automation system caused these variations through its control valve which varied between 0 to
+100 \% depending on the recommended discharge rate. Throughout the study period, the control valve was opened
+completely (100 \%) only once corresponding to the time when the temperature attained its minimum of -13 \degree
+C on 20th December. After this event, the control valve was never opened beyond 34 \%.  
+
+Unfortunately, no discharge rate measurements were recorded for the unscheduled fountain. Therefore, this
+dataset was estimated from the discharge rate measurements and characteristics of the scheduled fountain.
+
+The automation system also measured the water temperature of the scheduled fountain. Since both the fountains
+use the same water source, this dataset was also used to estimate the water temperature of the unscheduled
+fountain.
+
+The height was also increased in steps of 1 meter for both the fountains. This caused variations in the
+corresponding discharge rate. For the scheduled fountain, the construction began with a height of 3 m and then
+this was increased one time on 23rd December. This fountain height increase reduced its maximum discharge from
+13 $l/min$ to 11 $l/min$. For the unscheduled fountain, the construction began with a height of 3.7 m and then
+this was increased two times on 23rd December and 12th February.  
+
+The spray radius was estimated from the AIR circumference measured in the drone surveys for both the fountains.  
 
 \subsection{Drone surveys}
 
@@ -529,7 +540,7 @@ increase in its fountain discharge heat flux.
 
 The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
 when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$. Inputting the corresponding values in
-Eqn. \ref{eqn:fountain_min}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
+Eqn. \ref{eqn:fountain}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
 
 \subsubsection{Critical discharge rate}
 
@@ -537,7 +548,6 @@ The critical discharge rate ($Q_{crit}$) can be estimated by setting $(h_f - h_i
 \ref{eqn:fountain}: 
 
 \begin{equation}
-  \label{eqn:fountain_min}
   Q_{crit} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
 \end{equation}
 
@@ -635,8 +645,28 @@ fountain was interrupted by a fountain freezing event. This fountain freezing ev
 immediately after the fountain height was increased even though the fountain discharge had attained the critical
 discharge rate as shown in Fig. \ref{fig:aws}. 
 
-The recommended discharge rates are sensitive to the expected spray radius of the fountain. For example, an
-increase of 0.1 m in the expected spray radius increases the median recommended discharge rate from ? to ?.
+To schedule fountains, one needs to estimate their spray radius accurately. This is because the recommended
+discharge rate are proportional to the square of the spray radius used. However, spray radius varies drastically
+with both the height and discharge rate of the fountain. To circumvent this issue, we define the fountain spray
+radius $r$ to be produced during time periods when the fountain has attained its maximum height and discharge
+rate. 
+
+
+Spray radius estimation can be carried out in three ways: (a) by measuring the spray radius in the construction
+location; (b) by estimating spray radius from the fountain droplet projectile motion (see Appendix
+\ref{sec:radf}); (c) by using spray radius observations from drone flights. However, methods (a) and (b) are
+inaccurate since they ignore the effect of wind, snowfall, and refreezing events on the spray radius. Therefore
+both these methods are likely to underestimate the spray radius. On the other hand, method (c)  depends on when
+and how many drone flights were performed.
+
+Fig. \ref{fig:radf} illustrates the estimated and measured spray radius using the projectile motion equation and
+drone flights respectively. The maximum estimated spray radius corresponding to a fountain height of 3 $m$ and 4
+$m$ is around 12 m and 5 m  respectively. However, the spray radius obtained from both methods (a) and (b) are
+well below 6 m. This discrepancy is caused due to the increase in fountain pressure loss with discharge rate.
+Since the fountain pressure loss was measured at a height of 4 $m$
+
+different estimations of the spray radius via the three methods for the scheduled fountain with $h_{max} = 4 m$,
+$dia = 5 mm$ and critical discharge rate $Q_{crit} = 5 l/min$. 
 
 
 \begin{figure*}[t]
@@ -699,7 +729,6 @@ design in order to minimize their pressure losses while increasing their spray r
 \appendix
 
 \section{Simplified energy balance model}\label{sec:SEB}
-
 
 The model complexity was reduced through assumptions that optimise for the HIV or the HWE objectives. We define the freezing rate and melting rate as the positive and negative mass change
 rate, respectively. Assumptions are chosen, based on whether they overestimate/underestimate the freezing rate.
@@ -792,6 +821,31 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we estimated this parameter as
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the HIV and HWE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
+
+
+\section{Projecile motion of fountain water droplets}\label{sec:proj}
+
+The water droplet velocity $v$ can be estimated from the fountain discharge rate $Q$ and its aperture diameter
+$dia$ as follows:
+
+\begin{equation}
+  v = 4Q/\pi \cdot dia^2
+\end{equation}
+
+Assuming that the water droplets follow projectile motion starting from a fountain height $h$ with a launch
+angle $\theta = 45 \degree$ and impacting the ground at a distance $r$, we get the following horizontal and
+vertical equations of motion respectively:
+
+
+\begin{equation}
+  r = v \cdot cos \theta \cdot t
+\end{equation}
+
+\begin{equation}
+  0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
+\end{equation}
+
+Using these two equations, one can obtain the time of flight $t$ and the spray radius $r$ of the fountain.
 
 \noappendix 
 

@@ -1,3 +1,7 @@
+The discharge rate of the automated AIR was scheduled by the automation system based on variations in
+real-time weather parameters, height and several user-defined parameters discussed later. 
+The discharge rate and water temperature of the scheduled fountain was measured by the automation system. Fig.
+\ref{fig:aws} shows the temporal variation of the discharge rate produced by the automation system
 
 \subsubsection{Fountain design}
 

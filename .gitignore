@@ -9,6 +9,7 @@
 *.aux
 *.sty
 *.synctex
+*.synctex(busy)
 .python*
 .tasks
 archive/
