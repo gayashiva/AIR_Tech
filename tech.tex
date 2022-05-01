@@ -156,14 +156,14 @@ respectively.
 In the traditional construction strategy, tree branches were laid covering the fountain pipe to initiate and
 speed up the ice cone formation process. In the automated strategy, only the fountain pipe was placed before the
 water spray started. The construction of both the AIRs began on 8th December on a snow bed of 13 cm thickness
-and ended on 12th April.
+and ended on 12th April. These two dates are denoted as start and expiry dates henceforth.
 
 \subsection{Meteorological data}
 
 Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
-required to calculate the surface energy balance of an AIR. The construction period starts when the fountain was
-first switched on and ends when the AIR melted completely. These two dates are denoted as start and expiry dates
-henceforth.
+required to calculate the surface energy balance of an AIR.  The weather data source was an automatic weather
+station (AWS) located around 20 m away as shown in Fig. \ref{fig:2AIR}. Less than 0.4 \% of the data was found
+to be missing and the data gaps were filled by linear interpolation. 
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -171,9 +171,6 @@ henceforth.
 \label{fig:aws} 
 \end{figure*}
 
-The weather data source was an automatic weather station (AWS) located around 20 m away as shown in Fig.
-\ref{fig:2AIR}. Less than 0.4 \% of the data was found to be missing and the data gaps were filled by linear
-interpolation. 
 
 \subsection{Fountain observations}
 
@@ -354,14 +351,13 @@ temperature and surface albedo.
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
 approximation. This is because the fountain water temperature and source water temperature differ due to the
-cooling of the water during its transit from the source to the fountain and from the fountain to the AIR
-surface. Therefore, we instead use measured hourly ground temperature measurements to approximate water
-temperature for both the AIRs.
+cooling of the water during its transit from the source to the  AIR surface. Therefore, we instead use measured
+hourly ground temperature measurements to approximate water temperature for both the AIRs.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
 the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
-Therefore, we assumed that discharge events instead increase the an albedo decay rate ($\tau$) by a scaling
+Therefore, we assumed that discharge events instead increase the albedo decay rate ($\tau$) by a scaling
 factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
 
 Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
@@ -376,11 +372,10 @@ $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_
 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
 \cite{cuffeyPhysicsGlaciers2010} .
 
-Rain events were not considered in the previous version of the model but they occur in our experiment.
-Accordingly, the model algorithm was updated to accommodate for these events. The influence of rain events on
-the albedo and the energy balance was assumed to be similar to that of discharge events. However, the water
-temperature of a rain event was assumed to be equal to the air temperature. Accordingly, the heat flux generated
-due to a rain event was equal to:
+Rain events were not considered in the previous version of the model but they occur in our experiment. The
+influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
+events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
+Accordingly, the heat flux generated due to a rain event was equal to:
 
 \begin{equation}
   q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
@@ -431,10 +426,6 @@ freezing events. We assume that fountain freezing events occur when a 1 meter fo
 reduces the pipeline discharge to zero.  Here we define the critical discharge rate ($Q_{crit}$) as the
 discharge rate beyond which fountain height increase triggers a fountain freezing event.
 
-Some events that occured during the study period enable us to estimate the fountain characteristics of the
-scheduled fountain. Particularly, influence of a fountain height increase event on the maximum discharge rate
-was used to determine the fountain aperture diameter and the critical discharge rate  . The change in discharge
-rate observed upon removal of the fountain nozzle was used to determine the fountain pressure loss.
 
 \subsection{Projectile motion of fountain water droplets} \label{sec:proj}
 
@@ -463,6 +454,11 @@ Using these two equations, one can obtain the time of flight $t$ and the spray r
 \section{Results}
 
 \subsection{Estimation of fountain characteristics}
+
+Some events that occured during the study period enable us to estimate the fountain characteristics of the
+scheduled fountain. Particularly, influence of a fountain height increase event on the maximum discharge rate
+was used to determine the fountain aperture diameter and the critical discharge rate  . The change in discharge
+rate observed upon removal of the fountain nozzle was used to determine the fountain pressure loss.
 
 \subsubsection{Aperture diameter}
 The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
@@ -498,16 +494,16 @@ occurring due to the fountain nozzle was equivalent to 4.3 meters of water head.
 \subsection{Unscheduled discharge rate estimation}
 
 The pressure loss of unscheduled fountain can be determined by assuming a linear relationship of pressure loss
-with aperture diameter. We know that without the fountain nozzle the diameter is 19 $mm$ and the pressure loss
-is zero. Also, we know that scheduled fountain had a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$
-and height 4 $m$. Using these two evaluations, we estimate that for a constant height the pressure decreases by
-18 $mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
+with aperture diameter. We use two observations to determine this linear relationship, namely, the fountain
+nozzle removal event described in Sec. and that the scheduled fountain had a pressure loss of 4.3 $m$ with an
+aperture diameter 5 $mm$ and height 4 $m$. We estimate that for a constant height the pressure decreases by 18
+$mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
 
-We know that the unscheduled fountain had a fountain freezing event at height 5.7 $m$. We can assume that its
-discharge rate was close to zero during this event. Therefore, given the unscheduled fountain's aperture
-diameter, its discharge rate profile has to be zero above 5.7 $m$ and it has to be related to the discharge rate
-profile of the scheduled fountain using Eqn. \ref{eqn:bernoulli} . The aperture diameter candidate that
-satisfies both these conditions is 7 $mm$ as shown in Fig. \ref{fig:fountains} (a) and (b) .
+The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge rate was
+close to zero during this event. Therefore, given the unscheduled fountain's aperture diameter, its discharge
+rate profile has to be zero above 5.7 $m$ and it has to be related to the discharge rate profile of the
+scheduled fountain using Eqn. \ref{eqn:bernoulli} . The aperture diameter candidate that satisfies both these
+conditions is 7 $mm$ as shown in Fig. \ref{fig:fountains} (a) and (b) .
 
 Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for the study period. The temporal
 variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
@@ -554,10 +550,10 @@ fountain's discharge duration was 2 times higher than the scheduled fountain.
 
 To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
 the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
-surface is affected in the following two ways: (a) albedo dampens to ice albedo and (b) absorbing the heat
-energy of the fountain water droplets. These two processes are the cause of the difference in the mass and
-energy balance distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these
-processes are shown in Fig. \ref{fig:dis_processes}. 
+surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the fountain water droplets. These
+two processes are the cause of the difference in the mass and energy balance distribution shown in Table
+\ref{tab:mb}. The temporal variation of the magnitude of these processes are shown in Fig.
+\ref{fig:dis_processes}. 
 
 The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
 latent) on the freezing and melting energies, their respective energy turnover is summed by taking into account
@@ -735,7 +731,7 @@ using data collected in Guttannen, Switzerland.
 The main purpose of this study was to quantify the influence of different fountain designs and scheduling
 strategies on the water use efficiency and volumes of AIRs exposed to identical weather conditions. We found
 that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
-the melting rate of AIRs, mainly due to its surface albedo and surface temperature feedbacks. Furthermore, the
+the melting rate of AIRs, mainly due to its surface albedo and foutain heat flux feedbacks. Furthermore, the
 freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to
 its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 87 \% compared
 to the traditional AIR.
@@ -760,18 +756,17 @@ obtain higher volumes and lower water losses. Firstly, avoid fountain operation 
 discharge rate. Our study used a value of 2 $l/min$. However, this is likely to vary depending on the weather
 conditions and the characteristics of the fountain and the pipeline used. It is recommended to set this value
 based on observed fountain droplet trajectories in the construction site. Secondly, restrict maximum fountain
-height based on the critical fountain discharge rate. Our study estimated the critical discharge rate to be 5
-$l/min$. We believe this is a safe value to use for most fountains since most fountain designs have an aperture
-diameter higher than aperture diameter used in our study. Once the maximum fountain height is achieved, another
-AIR can be created to continue the construction process. Such a construction strategy would yield higher ice
-volumes with lower risk of fountain freezing events. Thirdly, the median modelled discharge rate could be used
-to set the mean discharge rate of unscheduled fountains. This will already yield a higher water use efficiency
-without the need of sophisticated automation systems.
+height based on the critical fountain discharge rate. Our study estimated the critical discharge rate to be
+between 5-7 $l/min$. However, this value is very sensitive to the aperture diameter of the fountain used. Once
+the maximum fountain height is achieved, another AIR can be created to continue the construction process. Such a
+construction strategy would yield higher ice volumes with lower risk of fountain freezing events. Thirdly, the
+median modelled discharge rate could be used to set the mean discharge rate of unscheduled fountains. This will
+already yield a higher water use efficiency without the need of sophisticated automation systems.
 
 Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
-fountains used suffered a pressure loss equivalent to 4 $m$ of water head. The scheduled fountain produced a
-higher spray radius due to its lower aperture diameter. Future research must be devoted to improving fountain
-design in order to minimize their pressure losses while increasing their spray radius. 
+fountain pressure loss was as high as 4 $m$ of water head. The scheduled fountain produced a higher spray radius
+due to its lower aperture diameter. Future research must be devoted to improving fountain design in order to
+minimize their pressure losses while increasing their spray radius. 
 
 
 \appendix
