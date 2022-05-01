@@ -1,4 +1,28 @@
 
+
+
+
+
+
+This implies that the discharge rate was 11.6 $l/min$ (at 3.7 $m$ from 8th Dec), 10.5 $l/min$ (at 4.7 $m$ from
+23rd Dec) and 9.2 $l/min$ (at 5.7 $m$ from 12th February).
+
+Observations of the unscheduled fountain water droplets imply that its aperture diameter is likely to be larger
+than that of the scheduled fountain. So lets assume that the unscheduled fountain's aperture diameter to be $x$
+$mm$. Since we know the relationship between pressure loss and aperture diameter from \ref{sec}, we can convert
+discharge rate measurements of the scheduled fountain to that of the unscheduled fountain with a given aperture
+diameter $x$. However, we also know that this unscheduled fountain had a fountain freezing event at height 6.7
+$m$. Therefore, the aperture diameter of the unscheduled fountain has to be 6 $mm$.
+
+  \item Aperture diameter: The aperture diameter of the unscheduled fountain can now be determined using its
+    fountain freezing event which happened at a height of 5.7 $m$. We assume that the discharge rate when the
+    fountain freezing event happened was close to zero. According to Eqn. , the fountain freezing height for a
+    given aperture diameter is unique. According to Eqn. , the discharge rate  
+
+    Since the maximum discharge rates of the scheduled fountain with aperture diameter 5 $mm$ and
+    height 4 $m$ is 11.3 $l/min$, the equivalent discharge rate is expected if the aperture diameter is
+    increased by 1 $mm$ and its height is decreased by 18 $mm$ 
+
 the water droplets cool to
 0 C during their flight time under subzero conditions. Therefore, the fountain water temperature was instead
 determined as follows:

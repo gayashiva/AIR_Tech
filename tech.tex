@@ -144,16 +144,19 @@ using a traditional and an automated construction strategy.
 \end{figure}
 
 The automated and the traditional AIRs were constructed adjacent to each other as shown in Fig. \ref{fig:2AIR}.
-This ensured both AIRs shared the same water source and similar weather conditions. In addition, a webcam
+This ensured both AIRs shared the same water source and identical weather conditions. In addition, a webcam
 guaranteed a continuous survey of the automated AIR.   
 
-In the traditional strategy, tree branches were laid covering the fountain pipe to initiate and speed up the ice
-cone formation process. The unscheduled fountain discharge was maintained at maximum until the discharge was
-halted due to a fountain freezing event on 17th February.
+In the traditional strategy, the fountain was operated manually whereas in the automated strategy a programmed
+automation system controlled the fountain discharge rate during the whole study period using real time weather
+input and several control parameters, which could be modified via a user interface. Henceforth, we refer to the
+fountain used in the traditional and automated construction strategy as unscheduled and scheduled fountains
+respectively.
 
-In the automated strategy, only the fountain pipe was placed before the water spray started. A programmed
-automation system controlled the scheduled fountain discharge rate during the whole study period using real time
-weather input and several control parameters, which could be modified via a user interface. 
+In the traditional construction strategy, tree branches were laid covering the fountain pipe to initiate and
+speed up the ice cone formation process. In the automated strategy, only the fountain pipe was placed before the
+water spray started. The construction of both the AIRs began on 8th December on a snow bed of 13 cm thickness
+and ended on 12th April.
 
 \subsection{Meteorological data}
 
@@ -164,7 +167,7 @@ henceforth.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
-\caption{Temperature, precipitation and discharge measurements at the Guttannen construction site}
+\caption{Temperature and discharge measurements at the Guttannen construction site}
 \label{fig:aws} 
 \end{figure*}
 
@@ -186,20 +189,24 @@ temperature. The automation system caused these variations through its control v
 completely (100 \%) only once corresponding to the time when the temperature attained its minimum of -13 \degree
 C on 20th December. After this event, the control valve was never opened beyond 34 \%.  
 
-Unfortunately, no discharge rate measurements were recorded for the unscheduled fountain. Therefore, this
-dataset was estimated from the discharge rate measurements and characteristics of the scheduled fountain.
-
 The automation system also measured the water temperature of the scheduled fountain. Since both the fountains
 use the same water source, this dataset was also used to estimate the water temperature of the unscheduled
 fountain.
 
+The unscheduled fountain was manually operated to spray all the available discharge until a fountain freezing
+event interrupted the discharge on 17th February. Unfortunately, no discharge rate measurements were recorded
+for the unscheduled fountain. Therefore, this dataset was estimated from the discharge rate measurements and
+characteristics of the scheduled fountain.
+
 The height was also increased in steps of 1 meter for both the fountains. This caused variations in the
-corresponding discharge rate. For the scheduled fountain, the construction began with a height of 3 m and then
-this was increased one time on 23rd December. This fountain height increase reduced its maximum discharge from
-13 $l/min$ to 11 $l/min$. For the unscheduled fountain, the construction began with a height of 3.7 m and then
+corresponding discharge rate. For the scheduled fountain, the construction began with a height of 3 m with an
+increase to 4 $m$ on 23rd December. This fountain height increase reduced its maximum discharge from
+13 $l/min$ to 11 $l/min$. For the unscheduled fountain, the construction began with a height of 3.7 $m$ and then
 this was increased two times on 23rd December and 12th February.  
 
-The spray radius was estimated from the AIR circumference measured in the drone surveys for both the fountains.  
+The spray radius was estimated for both the fountains from several drone flights. Drone flights which observed
+either an increase in AIR circumference or volume were selected to determine the mean spray radius used for
+characterizing the fountain.
 
 \subsection{Drone surveys}
 
@@ -209,9 +216,9 @@ surveys and the methodology used to produce the corresponding outputs are explai
 the obtained imagery were analysed to document the spray radius, the surface area and the volume of the ice
 structures. Even though the number of drone flights were identical for both AIRs, fewer successful volume
 observations were possible for the automated AIR as shown in Table \ref{tab:uav}. This was because the DEMs
-generated for the automated AIR could not be used to georeference the snow covered surface of the automated AIR's. Since the
-traditional AIR was steeper, its surface revealed ice patches that could be georeferenced. The number of drone
-surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively. 
+generated for the automated AIR could not be used to georeference the snow covered surface of the automated
+AIR's. Since the traditional AIR was steeper, its surface revealed ice patches that could be georeferenced. The
+number of drone surveys conducted for the traditional and the automated AIRs were 8 and 6, respectively. 
 
 \begin{table}
 	\centering
@@ -396,7 +403,7 @@ The fountain's height ($h$), aperture diameter ($dia$) and pressure loss ($P$) w
 rate ($Q$) through the Bernoulli equation :
 
 \begin{equation}
-  \label{eqn:fountain}
+  \label{eqn:bernoulli}
   P_{i} + \rho_{water} \cdot g \cdot h_{i} + 1/2 \cdot \rho_{water} \cdot v_{i}^2 = P_{f} + \rho_{water} \cdot g
   \cdot h_{f} + 1/2 \cdot \rho_{water} \cdot v_{f}^2
 \end{equation}
@@ -410,7 +417,7 @@ discharge rate $Q$ through the mass conservation equation as
  v = 4 \cdot Q/(\pi \cdot dia^2)
 \end{equation}
 
-Combining the Eqns. \ref{eqn:fountain} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change
+Combining the Eqns. \ref{eqn:bernoulli} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change
 from $h_i$ to $h_f$ to be:
 
 \begin{equation}
@@ -458,29 +465,28 @@ Using these two equations, one can obtain the time of flight $t$ and the spray r
 \subsection{Estimation of fountain characteristics}
 
 \subsubsection{Aperture diameter}
-
 The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
 when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$. Inputting the corresponding values in
-Eqn. \ref{eqn:fountain}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
+Eqn. \ref{eqn:bernoulli}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
 
 
 \subsubsection{Critical discharge rate}
 
 The critical discharge rate ($Q_{crit}$) can be estimated by setting $(h_f - h_i) = 1$ and $Q_i=0$ in Eqn.
-\ref{eqn:fountain}: 
+\ref{eqn:bernoulli}: 
 
 \begin{equation}
   Q_{crit} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
 \end{equation}
 
 This implies that the critical discharge required to increase the fountain height by one meter of the scheduled
-fountain with an aperture diameter of 5 $mm$ is 5 litres per minute.
+fountain with an aperture diameter of 5 $mm$ is 5 $l/min$.
 
 \subsubsection{Fountain pressure loss}
 
 When the fountain nozzle was removed, the maximum discharge rate of the fountain was observed to increase from
 $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline
-diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:fountain} we get: 
+diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:bernoulli} we get: 
 
 \begin{equation}
   P_{i} = 1/2 \cdot \rho_{water} \cdot (4 \cdot Q_f/\pi \cdot d_f^2)^2 - 1/2 \cdot \rho_{water} \cdot (4 * Q_i/\pi \cdot d_i^2)^2
@@ -491,11 +497,36 @@ occurring due to the fountain nozzle was equivalent to 4.3 meters of water head.
 
 \subsection{Unscheduled discharge rate estimation}
 
-Assuming that the unscheduled fountain has the same aperture diameter and fountain pressure loss as the
-scheduled fountain, the discharge after the 4 height increase events can be found using Eqn.
-\ref{eqn:discharge}. They are 11.6 $l/min$ (at 3.7 $m$ from 8th Dec), 10.5 $l/min$ (at 4.7 $m$ from 23rd Dec)
-and 9.2 $l/min$ (at 5.7 $m$ from 12th February).
+The pressure loss of unscheduled fountain can be determined by assuming a linear relationship of pressure loss
+with aperture diameter. We know that without the fountain nozzle the diameter is 19 $mm$ and the pressure loss
+is zero. Also, we know that scheduled fountain had a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$
+and height 4 $m$. Using these two evaluations, we estimate that for a constant height the pressure decreases by
+18 $mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
 
+We know that the unscheduled fountain had a fountain freezing event at height 5.7 $m$. We can assume that its
+discharge rate was close to zero during this event. Therefore, given the unscheduled fountain's aperture
+diameter, its discharge rate profile has to be zero above 5.7 $m$ and it has to be related to the discharge rate
+profile of the scheduled fountain using Eqn. \ref{eqn:bernoulli} . The aperture diameter candidate that
+satisfies both these conditions is 7 $mm$ as shown in Fig. \ref{fig:fountains} (a) and (b) .
+
+Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for the study period. The temporal
+variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
+February that increased the height from 3.7 to 5.7 m respectively.
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/fountains.png}
+
+\caption{  }
+
+\label{fig:fountains}
+\end{figure*}
+
+\subsection{Scheduled discharge rate simulations}
+
+We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
+respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
+whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
 \subsection{Model validation}
 
@@ -506,13 +537,6 @@ automated and the traditional AIR respectively. The estimated and measured AIR v
 
 \begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
 scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
-
-\subsection{Scheduled discharge rate estimation}
-
-We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
-respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
-whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
 \subsection{Comparison of AIR construction strategies}
 
@@ -584,10 +608,10 @@ increase in its fountain discharge heat flux.
 		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
 
                            & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
-		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 5             & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 0.43          & 0.43         & $bars$ \\
-		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & $5$          & $l/min$ \\
-		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & $2$          & $l/min$ \\\midrule
+		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 7             & $mm$ \\
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.69          & $bars$ \\
+		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & $7.2$         & $l/min$ \\
+		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
 		                       & Maximum AIR Volume              &                 & 40            & 63            & $m^{3}$ \\
@@ -651,14 +675,6 @@ fountain, its maximum volume was even lower than the unscheduled fountain.
 
 \subsection{Challenges of scheduling fountains}
 
-Fountain freezing events limit the minimum discharge rate possible in scheduled fountains.  We assume the
-minimum discharge rate that prevents fountain freezing events is 2 $l/min$. The model simulations revealed that
-the nonzero median scheduled fountain discharge rate at the IN21 and CH21 AIRs were 13 $l/min$ and 2 $l/min$,
-respectively. Since the modelled scheduled discharge was lower than the minimum discharge rate for the Swiss
-location, the automation system was programmed to overestimate the freezing rate as shown in Fig.
-\ref{fig:simvsreal}. However, model suggestions could be directly used in the case of the Indian location where
-meteorological conditions and fountain spray radius favour a higher freezing rate. 
-
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/simvsreal.png}
 
@@ -669,23 +685,30 @@ that does not trigger fountain freezing events. }
 \label{fig:simvsreal}
 \end{figure*}
 
+Fountain freezing events limit the minimum discharge rate possible in scheduled fountains.  We assume the
+minimum discharge rate that prevents fountain freezing events is 2 $l/min$. The model simulations revealed that
+the nonzero median scheduled fountain discharge rate at the IN21 and CH21 AIRs were 13 $l/min$ and 2 $l/min$,
+respectively. Since the modelled scheduled discharge was lower than the minimum discharge rate for the Swiss
+location, the automation system was programmed to overestimate the freezing rate as shown in Fig.
+\ref{fig:simvsreal}. However, model suggestions could be directly used in the case of the Indian location where
+meteorological conditions and fountain spray radius favour a higher freezing rate. 
+
 Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
 the lower the gravitational pressure that drives the discharge rate. This was precisely why the unscheduled
 fountain was interrupted by a fountain freezing event. This fountain freezing event was triggered almost
-immediately after the fountain height was increased even though the fountain discharge had attained the critical
-discharge rate as shown in Fig. \ref{fig:aws}. 
+immediately after the fountain height was increased. 
 
 To schedule fountains, one needs to estimate their spray radius accurately. This is because the recommended
-discharge rate are proportional to the square of the spray radius used. However, spray radius varies drastically
-with both the height and discharge rate of the fountain. To circumvent this issue, we define the fountain spray
-radius $r$ to be produced during time periods when the fountain has attained its maximum height and discharge
-rate. 
+discharge rate is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
+maximum spray radius of just 3 m but drone measurements reveal a maximum spray radius of 4.8 m for the scheduled
+fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events across the
+boundary of the AIR. 
 
-Manual measurements of the fountain spray revealed a maximum spray radius of just 3 m but drone measurements
-reveal a maximum spray radius of 4.8 m for the scheduled fountain. This discrepancy could be caused by both wind
-drift of water droplets and refreezing events across the boundary of the AIR. 
+However, spray radius varies drastically with both the height and discharge rate of the fountain. To circumvent
+this issue, we define the fountain spray radius $r$ to be produced during time periods when the fountain has
+attained its maximum height and discharge rate. 
 
-Fig. \ref{fig:radf} compares the temporal variation caused by the discharge rate with the measured spray radius
+Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
 using Eqn. \ref{eqn:radf}. The difference of the estimated and the measured maximum spray radius is caused
 mainly due to fountain wastewater production. The influence of this process can be observed during mid-december
 when spray radius reached a maximum of 12 $m$. Even through water droplets could have travelled that far, it is
