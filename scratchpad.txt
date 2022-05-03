@@ -1,7 +1,11 @@
 
+Proper fountain scheduling requires answers to two main questions: 
+(a) When should the water be turned on and off ?
+(b) How much water should be sprayed ? 
 
-
-
+Moreover, the Indian AIR discharge rate was lowered temporally due to increase in fountain
+height from 5 to 9 m. Therefore, any reduction in initial discharge rate would have triggered a fountain
+freezing event before the fountain height could be increased to 9 m.
 
 
 This implies that the discharge rate was 11.6 $l/min$ (at 3.7 $m$ from 8th Dec), 10.5 $l/min$ (at 4.7 $m$ from

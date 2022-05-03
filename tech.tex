@@ -84,32 +84,35 @@ suffered from high water losses due to excessive fountain discharge.
 
 A straightforward solution to this issue is to reduce the fountain discharge input but it is challenging to
 implement it in practice. For example, in the case of the Indian AIR, the model estimates that water use
-efficiency can be increased by just reducing the fountain discharge rate by half. However, in practice, this
-strategy would have further increased the number of fountain freezing events due to much lower water velocities
-in the pipeline. 
+efficiency can be increased by just reducing the fountain discharge rate by half
+\citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
+would reduce the fountain spray radius and increase the risk of fountain freezing events.  
 
-An optimum construction strategy, therefore, should prevent fountain freezing events while maintaining high
-water use efficiency. Fountain freezing events can be prevented if the pipeline water temperature is maintained
-above 0 $\degree C$ and the discharge is not lowered below a critical threshold. Typical solutions to maintain
-pipeline water temperature given pipeline dimensions are to bury or drain the pipeline. Burying the pipeline at
-a sufficient depth can reduce the influence of atmospheric conditions on the pipeline water temperature. Even
-though this method is ideal, it can quickly get expensive depending on the length of the pipeline and the frost
-depth. Therefore, such an effort is warranted only in the case of a permanent construction location.
-Comparatively, draining the pipeline when the fountain is not active is a much cheaper strategy. Fountain
-discharge rate is also lowered every time the fountain height increases. Therefore, a critical discharge rate needs
-to be set beyond which fountain height should not be increased. Both these strategies can be combined
-with fountain scheduling methods to achieve reduced watering volumes for AIR construction systems. 
+An optimum construction strategy, therefore, should first prevent the occurence of these two events before
+reducing discharge rates. Spray radius can be maintained if the fountain aperture diameter is modified depending
+on the optimised discharge rate. Fountain freezing events can be prevented if the pipeline water temperature is
+maintained above 0 $\degree C$ and the discharge is not lowered below a minimum threshold. Typical solutions to
+maintain pipeline water temperature given pipeline dimensions are to bury or drain the pipeline. Burying the
+pipeline at a sufficient depth can reduce the influence of atmospheric conditions on the pipeline water
+temperature. Even though this method is ideal, it can quickly get expensive depending on the length of the
+pipeline and the frost depth. Therefore, such an effort is warranted only in the case of a permanent
+construction location. Comparatively, draining the pipeline when the fountain is not active is a much cheaper
+strategy. Fountain discharge rate is also lowered every time the fountain height increases. Therefore, a
+critical height needs to be set beyond which fountain height should not be increased. Both these strategies can
+be combined with fountain scheduling methods to reduce watering volumes without affecting the water use
+efficiency and maximum ice volume obtained. 
 
-Proper fountain scheduling requires answers to two main questions: 
-(a) When should the water be turned on and off ?
-(b) How much water should be sprayed ? 
-
-For answering these questions, knowledge of surface freezing rates is important. Surface freezing rates can be
+Knowledge of surface freezing rates is important to schedule fountains. Surface freezing rates can be
 calculated by means of the full energy balance model developed in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
-weather data or real-time weather data to produce recommended discharge rates. We further approximate the model
-by including two kinds of assumptions that are considerate for the limited water availability and the favourable
-weather windows, respectively.
+weather data or real-time weather data to produce recommended discharge rates.
+
+We determine the success of an AIR construction strategy using the maximum ice volume and the water use
+efficiency attained during its survival duration. Contruction sites limited by their water supply like in
+Ladakh, India would prioritize water use efficiency whereas those limited by the favourable weather windows like
+in Guttannen, Switzerland  would  prioritize for maximum ice volume. Accordingly, we use two types of model
+parameter forcings that overestimate and underestimate the surface freezing rates to attain higher ice volumes
+and higher water use efficiency respectively. 
 
 However, manually adjusting the fountain discharge rate is unrealistic. Firstly, constant adjustments of
 discharge rates in response to the significant diurnal and seasonal variations of the freezing rates is
@@ -120,20 +123,20 @@ The present study builds upon previous work \citep{balasubramanianInfluenceMeteo
 oerlemansBriefCommunicationGrowth2021}, in order to quantify the influence of different fountain scheduling
 strategies on the mass and energy balance of AIRs with identical meteorological conditions. The main interest in
 using model results is to simulate fountain schedules relative to constraints in favourable weather windows and
-water availability. The fountain scheduling strategies are evaluated from the relative water use efficiency and
-maximum volume produced during the study period. The specific objectives of this paper include the mass and
-energy balance comparison of fountain scheduling strategies, presentation of the automation system, and examples
-of its application to the computation of fountain scheduling strategies.
+water availability. The fountain scheduling strategies are evaluated using the water use efficiency and maximum
+volume produced during the study period. The specific objectives of this paper include the mass and energy
+balance comparison of fountain scheduling strategies, presentation of the automation system, and examples of its
+application to the computation of fountain scheduling strategies.
 
-\section{Study site and data}
+\section{Study sites and data}
 
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) is situated in the Berne region, Switzerland and has an
 altitude of 1047 $m$ a.s.l. In the winter (Oct-Apr), mean daily minimum and maximum air temperatures vary
 between -13 and 15 $\degree C$. Clear skies are rare, averaging around 7 days during winter. Daily winter
 precipitation can sometimes be as high as 100 $mm$. These values are based on 30 years of hourly historical
-weather data measurements \citep{meteoblueClimateGuttannen2021}. Two AIRs were constructed by the Guttannen Bewegt Association,
-the University of Fribourg and the Lucerne University of Applied Sciences and Arts during the winters of 2021-22
-using a traditional and an automated construction strategy.
+weather data measurements \citep{meteoblueClimateGuttannen2021}. Two AIRs were constructed by the Guttannen
+Bewegt Association, the University of Fribourg and the Lucerne University of Applied Sciences and Arts during
+the winters of 2021-22 using a traditional and an automated construction strategy.
 
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{Figures/2AIRs.jpg}
@@ -280,10 +283,10 @@ scheduling strategy should be optimised for high water-use efficiency (HWE). But
 the time period when the fountain can function then the scheduling strategy should be optimised for high ice
 volumes (HIV).
 
-Accordingly, we introduce two kinds of assumptions corresponding to the HIV and HWE objective for the following
-three model parameters: (a) slope , (b) albedo and (c) cloudiness. The slope parameter increases the shortwave
-radiation and sensible heat impact. The albedo parameter decreases the shortwave radiation impact. The
-cloudiness parameter increases both the shortwave and the longwave radiation impact. Therefore, increase of
+Accordingly, we introduce two kinds of model parameter forcing corresponding to the HIV and HWE objective for
+the following three model parameters: (a) slope , (b) albedo and (c) cloudiness. The slope parameter increases
+the shortwave radiation and sensible heat impact. The albedo parameter decreases the shortwave radiation impact.
+The cloudiness parameter increases both the shortwave and the longwave radiation impact. Therefore, increase of
 slope and cloudiness parameter increases melting energy and increase of albedo parameter increases freezing
 energy. The HIV and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively.
 Correspondingly, we associate the upper and lower bounds of these parameters to the HIV and WUE assumptions as
@@ -422,7 +425,8 @@ Traditional AIR construction is often interrupted after fountain height increase
 fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of fountain
 freezing events. We assume that fountain freezing events occur when a 1 meter fountain height increase event
 reduces the pipeline discharge to zero.  Here we define the critical discharge rate ($Q_{crit}$) as the
-discharge rate beyond which fountain height increase triggers a fountain freezing event.
+discharge rate beyond which fountain height increase triggers a fountain freezing event. We refer to this height
+as the fountain freezing height henceforth.
 
 
 \subsection{Projectile motion of fountain water droplets} \label{sec:proj}
@@ -622,8 +626,11 @@ increase in its fountain discharge heat flux.
 
 \subsection{Model validation}
 
-The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates.
-
+The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates. This
+could be a consequence of our conical shape assumptions. In reality, AIR shape deviates from a cone especially
+during the ablation period when the south face of the AIR melts much faster than the north face. Another cause
+for the model error could be the deterioration of the albedo that is accelerated as the AIR nears its expiry
+date due to accumulation of impurities on the surface.
 
 \subsection{Benefits of scheduling fountains}
 
@@ -670,7 +677,6 @@ fold increase in the water-use efficiency compared to the unscheduled fountain m
 fountain freezing events. Even though the HWE fountain achieved water-use efficiency higher than the HIV
 fountain, its maximum volume was even lower than the unscheduled fountain.
 
-
 \subsection{Challenges of scheduling fountains}
 
 \begin{figure*}[t]
@@ -698,27 +704,29 @@ immediately after the fountain height was increased.
 
 To schedule fountains, one needs to estimate their spray radius accurately. This is because the recommended
 discharge rate is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
-maximum spray radius of just 3 m but drone measurements reveal a maximum spray radius of 4.8 m for the scheduled
+maximum spray radius of just 3 m but drone measurements reveal a mean spray radius of 4.8 m for the scheduled
 fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events across the
 boundary of the AIR. 
 
-However, spray radius varies drastically with both the height and discharge rate of the fountain. To circumvent
-this issue, we define the fountain spray radius $r$ to be produced during time periods when the fountain has
-attained its maximum height and discharge rate. 
+However, spray radius varies drastically with the characteristics of the fountain used. To circumvent this
+issue, we define the fountain spray radius to be produced during time periods when the fountain has attained its
+maximum height and discharge rate. 
 
 Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
-using Eqn. \ref{eqn:radf}. The difference of the estimated and the measured maximum spray radius is caused
-mainly due to fountain wastewater production. The influence of this process can be observed during mid-december
-when spray radius reached a maximum of 12 $m$. Even through water droplets could have travelled that far, it is
-unlikely any would have frozen to form an ice sheet given that the freezing rate during the same period was less
-than 4 $l/min$ (see Fig. \ref{fig:simvsreal}). Therefore, if the spray radius estimation during December is
-ignored, the maximum spray radius of the remaining duration corresponds well with the maximum spray radius
-measured via the drone.
+using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
+throughout the study period. All the measured spray radius values lie between these two spray radius states of
+the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
+estimated and the measured maximum spray radius is caused mainly due to fountain wastewater production. The
+influence of this process can be observed during mid-december when spray radius reached a maximum of 12 $m$.
+Even through water droplets could have travelled that far, it is unlikely any would have frozen to form an ice
+sheet given that the freezing rate during the same period was less than 4 $l/min$ (see Fig.
+\ref{fig:simvsreal}). Therefore, if the spray radius estimation during December is ignored, the maximum spray
+radius of the remaining duration corresponds well with the maximum spray radius measured via the drone.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/radf.png}
 
-\caption{ Spray radius of the scheduled fountain estimated from its discharge rate measurements using the
+\caption{Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
 projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
 }
 
@@ -758,12 +766,12 @@ obtain higher volumes and lower water losses. Firstly, avoid fountain operation 
 discharge rate. Our study used a value of 2 $l/min$. However, this is likely to vary depending on the weather
 conditions and the characteristics of the fountain and the pipeline used. It is recommended to set this value
 based on observed fountain droplet trajectories in the construction site. Secondly, restrict maximum fountain
-height based on the critical fountain discharge rate. Our study estimated the critical discharge rate to be
-between 5-7 $l/min$. However, this value is very sensitive to the aperture diameter of the fountain used. Once
-the maximum fountain height is achieved, another AIR can be created to continue the construction process. Such a
-construction strategy would yield higher ice volumes with lower risk of fountain freezing events. Thirdly, the
-median modelled discharge rate could be used to set the mean discharge rate of unscheduled fountains. This will
-already yield a higher water use efficiency without the need of sophisticated automation systems.
+height based on the fountain characteristics. Our study showed that an increase in the fountain aperture
+diameter by 2 $mm$ can reduce the fountain freezing height from 9 to 5 $m$ . Once the fountain freezing height
+is achieved, another AIR can be created to continue the construction process. Such a construction strategy would
+yield higher ice volumes with lower risk of fountain freezing events. Thirdly, the median modelled discharge
+rate could be used to set the mean discharge rate of unscheduled fountains. This will already yield a higher
+water use efficiency without the need of sophisticated automation systems.
 
 Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
 fountain pressure loss was as high as 4 $m$ of water head. The scheduled fountain produced a higher spray radius
@@ -866,8 +874,6 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we estimated this parameter as
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the HIV and HWE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
-
-
 
 \noappendix 
 
