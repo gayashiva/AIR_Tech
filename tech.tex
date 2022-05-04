@@ -293,7 +293,7 @@ the shortwave radiation and sensible heat impact. The albedo parameter decreases
 The cloudiness parameter increases both the shortwave and the longwave radiation impact. Therefore, increase of
 slope and cloudiness parameter increases melting energy and increase of albedo parameter increases freezing
 energy. The HIV and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively.
-Correspondingly, we associate the upper and lower bounds of these parameters to the HIV and WUE assumptions as
+Correspondingly, we associate the upper and lower bounds of these parameters to the HIV and HWE assumptions as
 shown in Table \ref{tab:assumptions}.
 
 \begin{table}[]
@@ -366,7 +366,7 @@ Therefore, we assumed that discharge events instead increase the albedo decay ra
 factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
 
 Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
-assume AIR density ($\rho_{AIR}$) to be a constant. We instead parameterised AIR density $\rho_{AIR}$ as follows:
+assume AIR density ($\rho_{AIR}$) to be equal to ice density. We instead parameterised AIR density $\rho_{AIR}$ as follows:
 
 \begin{equation}
   \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
@@ -435,16 +435,9 @@ as the fountain freezing height henceforth.
 
 \subsection{Projectile motion of fountain water droplets} \label{sec:proj}
 
-The water droplet velocity $v$ can be estimated from the fountain discharge rate $Q$ and its aperture diameter
-$dia$ as follows:
-
-\begin{equation}
-  v = 4Q/\pi \cdot dia^2
-\end{equation}
-
-Assuming that the water droplets follow projectile motion starting from a fountain height $h$ with a launch
-angle $\theta = 45 \degree$ and impacting the ground at a distance $r$, we get the following horizontal and
-vertical equations of motion respectively:
+Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
+motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$ and impacting the ground at
+a distance $r$, we get the following horizontal and vertical equations of motion respectively:
 
 \begin{equation}
   \label{eqn:radf}
@@ -466,50 +459,31 @@ scheduled fountain. Particularly, influence of a fountain height increase event 
 was used to determine the fountain aperture diameter and the critical discharge rate  . The change in discharge
 rate observed upon removal of the fountain nozzle was used to determine the fountain pressure loss.
 
-\subsubsection{Aperture diameter}
 The maximum discharge rate of the scheduled fountain was reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$
 when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$. Inputting the corresponding values in
 Eqn. \ref{eqn:bernoulli}, we get the estimated fountain aperture diameter ($dia$) to be around 5 $mm$. 
 
-
-\subsubsection{Critical discharge rate}
-
-The critical discharge rate ($Q_{crit}$) can be estimated by setting $(h_f - h_i) = 1$ and $Q_i=0$ in Eqn.
-\ref{eqn:bernoulli}: 
-
-\begin{equation}
-  Q_{crit} = \sqrt{2 \cdot g } \cdot \pi \cdot dia^2/4
-\end{equation}
-
-This implies that the critical discharge required to increase the fountain height by one meter of the scheduled
-fountain with an aperture diameter of 5 $mm$ is 5 $l/min$.
-
-\subsubsection{Fountain pressure loss}
+The critical discharge required to increase the fountain height by one meter of the scheduled fountain with an
+aperture diameter of 5 $mm$ was estimated from Eqn. \ref{eqn:bernoulli} as 5 $l/min$.
 
 When the fountain nozzle was removed, the maximum discharge rate of the fountain was observed to increase from
 $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$. Using the fountain aperture diameter $d_i = 5 mm$, the pipeline
-diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:bernoulli} we get: 
-
-\begin{equation}
-  P_{i} = 1/2 \cdot \rho_{water} \cdot (4 \cdot Q_f/\pi \cdot d_f^2)^2 - 1/2 \cdot \rho_{water} \cdot (4 * Q_i/\pi \cdot d_i^2)^2
-\end{equation}
-
-Inputting the corresponding values, we estimate $P$ to be around 0.43 $bar$. In other words, the pressure loss
-occurring due to the fountain nozzle was equivalent to 4.3 meters of water head.
+diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:bernoulli} we estimate the pressure
+loss occurring due to the fountain nozzle to be equivalent to 4.3 meters of water head.
 
 \subsection{Unscheduled discharge rate estimation}
 
 The pressure loss of unscheduled fountain can be determined by assuming a linear relationship of pressure loss
-with aperture diameter. We use two observations to determine this linear relationship, namely, the fountain
-nozzle removal event described in Sec. and that the scheduled fountain had a pressure loss of 4.3 $m$ with an
-aperture diameter 5 $mm$ and height 4 $m$. We estimate that for a constant height the pressure decreases by 18
-$mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
+with aperture diameter. We use two observations to determine this linear relationship, namely, that the pressure
+loss of the fountain was zero with a diameter of 19 $mm$ (fountain removal event) and that the scheduled
+fountain had a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$. We estimate that for a constant height
+the pressure decreases by 18 $mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains}
+(a)).
 
 The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge rate was
-close to zero during this event. Therefore, given the unscheduled fountain's aperture diameter, its discharge
-rate profile has to be zero above 5.7 $m$ and it has to be related to the discharge rate profile of the
-scheduled fountain using Eqn. \ref{eqn:bernoulli} . The aperture diameter candidate that satisfies both these
-conditions is 7 $mm$ as shown in Fig. \ref{fig:fountains} (a) and (b) .
+close to zero during this event.  The aperture diameter with the fountain freezing height closest to 5.7 $m$ is
+7 $mm$ according to Eqn. \ref{eqn:bernoulli} as shown in Fig. \ref{fig:fountains} (b) . The corresponding
+pressure loss of a fountain with 7 $mm$ diameter is 3.7 $m$ as shown in Fig. \ref{fig:fountains} (a).
 
 Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for the study period. The temporal
 variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
@@ -530,14 +504,14 @@ fountain (blue curve) during the study period.}
 \subsection{Scheduled discharge rate simulations}
 
 We found that the simplified energy balance model estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the WUE and ICV,
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ for the HWE and ICV,
 respectively. The HIV scheduled fountain overestimated the freezing rate 44 \% of the construction duration
 whereas the HWE scheduled fountain underestimated the freezing rate 67 \% of the construction duration.
 
 \subsection{Model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 6 $m^3$ with the drone
-volume observations, respectively. This RMSE error is within 20 \% and 15 \% of the maximum volume of the
+The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 5 $m^3$ with the drone
+volume observations, respectively. This RMSE error is within 20 \% and 11 \% of the maximum volume of the
 automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
 \ref{fig:validation}.  
 
@@ -568,11 +542,11 @@ two processes are the cause of the difference in the mass and energy balance dis
 The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
 latent) on the freezing and melting energies, their respective energy turnover is summed by taking into account
 the sign of their mean energy flux during the study period (see Table \ref{tab:mb}). A negative sign indicates
-that the corresponding energy flux increased or decreased or it exists freezing or melting energy, respectively.
-The radiation fluxes contributed -5 \% and 5 \% to the freezing and melting energies for the traditional and
-automated AIR, respectively.  Similarly, the turbulent fluxes contribute -10 \% and -9 \% to the freezing
+that the corresponding energy flux increased or decreased freezing or melting energy, respectively.
+The radiation fluxes contributed -6 \% and 5 \% to the freezing and melting energies for the traditional and
+automated AIR, respectively.  Similarly, the turbulent fluxes contribute -9 \% and -9 \% to the freezing
 energies for the traditional and automated AIR, respectively. The fountain water and ground heat flux contribute
-15 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
+11 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
 
 There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
 (a). Even though the traditional AIR was active for a much longer duration, the frequent snowfall events
@@ -581,7 +555,7 @@ significantly impacted by late fountain spray events particularly in the month o
 \ref{fig:dis_processes}.
 
 Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
-discharge quantity of the unscheduled fountains and its longer duration were responsible for the 14 fold
+discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
 increase in its fountain discharge heat flux.
 
 
@@ -595,33 +569,33 @@ increase in its fountain discharge heat flux.
 		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
 		\textbf{Units}                                                                                                       \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{1.1e6}   & \num{1.4e5}     & $kg$  \\
+		                       & Fountain discharge              & $M_F$           & \num{8.2e5}   & \num{1.4e5}     & $kg$  \\
 		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.2e2}   & \num{1.2e3}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{9.4e2}   & \num{1.2e3}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{3.0e4} & \num{4.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{9.4e3} & \num{1.3e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.5e3} & \num{3.0e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{1.1e6} & \num{1.1e5}     & $kg$  \\ \midrule
+		                       & Meltwater                       & $M_{water}$     & \num{2.9e4} & \num{4.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.3e4} & \num{1.3e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{8.0e5} & \num{1.1e5}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Balance}}}
 
-                           & Shortwave radiation             &  $q_{SW}$       & $28$  & $39$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $-33$  & $-34$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $7$   & $8$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $-17$  & $-17$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $14$  & $1$     & \% \\
+                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $35$  & $34$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
 		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
 
                            & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
 		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 7             & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.69          & $bars$ \\
-		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & $5$           & $7.2$         & $l/min$ \\
-		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & $2$           & N.A.          & $l/min$ \\\midrule
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.7           & $m$ \\
+		\multicolumn{1}{|l|}{} & Critical discharge rate         &  $Q_{crit}$     & 5             & 7.2           & $l/min$ \\
+		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & 2           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum AIR Volume              &                 & 40            & 63            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 3             & 31            & \% \\\midrule
+		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 4             & 31            & \% \\\midrule
 	\end{tabular}
 \end{table}
 
@@ -635,6 +609,8 @@ could be a consequence of our conical shape assumptions. In reality, AIR shape d
 during the ablation period when the south face of the AIR melts much faster than the north face. Another cause
 for the model error could be the deterioration of the albedo that is accelerated as the AIR nears its expiry
 date due to accumulation of impurities on the surface.
+
+\subsection{Operation of automation system}
 
 \subsection{Benefits of scheduling fountains}
 
@@ -672,14 +648,14 @@ There is also considerable difference between the outputs of HWE and HIV fountai
 HWE fountain does not yield any significant ice formation whereas HIV fountain succeeds in increasing the
 water-use efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains
 yield an increase in water-use efficiency from 3 \% to 31 \%. However, the HWE fountain was successful in
-increasing the water-use efficiency up to 60 \%. In general, for the Swiss location, scheduled fountains yield
-better water-use efficiency but do not alter the maximum volume obtained significantly.
+increasing the water-use efficiency up to 60 \%. 
 
-For the IN21 AIR, the two kinds of fountains yield significantly different results when compared to the
-unscheduled fountain. The HIV fountain was able to achieve a 1.5 fold increase in the maximum volume and a 2
-fold increase in the water-use efficiency compared to the unscheduled fountain mainly because it suffered no
-fountain freezing events. Even though the HWE fountain achieved water-use efficiency higher than the HIV
-fountain, its maximum volume was even lower than the unscheduled fountain.
+For the Swiss location, scheduled fountains yield better water-use efficiency but do not alter the maximum
+volume obtained significantly. For the Indian location, the two kinds of fountains yield significantly different
+results when compared to the unscheduled fountain. The HIV fountain was able to achieve a 1.5 fold increase in
+the maximum volume and a 2 fold increase in the water-use efficiency compared to the unscheduled fountain mainly
+because it suffered no fountain freezing events. Even though the HWE fountain achieved water-use efficiency
+higher than the HIV fountain, its maximum volume was even lower than the unscheduled fountain.
 
 \subsection{Challenges of scheduling fountains}
 
