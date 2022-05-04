@@ -1,4 +1,12 @@
 
+From Eqn. \ref{eqn:discharge}, we get the fountain freezing height $h_{crit}$ to be proportional to both
+the aperture diameter and the discharge rate as follows:
+
+\begin{equation}
+  \label{eqn:discharge}
+  h_{crit} \propto \frac{Q_i^2}{dia^4}
+\end{equation}
+
 However, there is a large variability associated with this water supply due to the local weather influences and
 discharge rate of the chosen location and fountain, respectively. 
 

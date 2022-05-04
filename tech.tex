@@ -432,21 +432,18 @@ reduces the pipeline discharge to zero.  Here we define the critical discharge r
 discharge rate beyond which fountain height increase triggers a fountain freezing event. We refer to this height
 as the fountain freezing height henceforth.
 
-
-\subsection{Projectile motion of fountain water droplets} \label{sec:proj}
-
 Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
 motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$ and impacting the ground at
 a distance $r$, we get the following horizontal and vertical equations of motion respectively:
 
 \begin{equation}
   \label{eqn:radf}
-  r = v \cdot cos \theta \cdot t
+  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
 \end{equation}
 
-\begin{equation}
-  0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
-\end{equation}
+% \begin{equation}
+%   0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
+% \end{equation}
 
 Using these two equations, one can obtain the time of flight $t$ and the spray radius $r$ of the fountain.
 
@@ -611,6 +608,22 @@ for the model error could be the deterioration of the albedo that is accelerated
 date due to accumulation of impurities on the surface.
 
 \subsection{Operation of automation system}
+
+
+\subsection{AIR shape variation with fountain characteristics}
+
+Fig. (a) shows the estimated height of the traditional and automated AIR. The heights of both the AIR arre
+underestimated since the model assumes a constant fountain spray radius estimated from the drone observations.
+The observed spray radius represents the median discharge rate of the fountain used as shown in Fig. (b).
+Therefore, the traditional AIR had a higher radius and height primarily because of its higher discharge rate
+compared to the automated AIR.
+
+This was expected since the fountain's spray radius and freezing height are both proportional to the discharge
+rate according to Eqn. \ref{eqn:discharge}. This was also one reason why Swiss AIRs are much smaller than Indian
+AIRs. However, in practice, indefinite increase in discharge does not produce indefinite increase in spray
+radius since droplet accumulation around the fountain follows a normal distribution. Moreover, the fountain
+pressure loss is expected to increase exponentially as discharge increases further decreasing the expected spray
+radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
 
 \subsection{Benefits of scheduling fountains}
 
