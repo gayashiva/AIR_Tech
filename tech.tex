@@ -38,15 +38,15 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
   developed in the Indian Himalayas (Ladakh). With this technology, otherwise unused stream water is stored in
   large ice towers in winter. The surplus melt water that is available in spring is used for satisfying
   irrigation water demands. Recent studies have shown that during construction of traditional AIRs over 75 \% of
-  the water sprayed was lost. Therefore, fountain wastewater production has to be reduced for improving water use
-  efficiency. Enhanced fountain scheduling was realized through an automation system computing recommended
-  discharge rates using real-time weather input and location metadata. During the winter of 2021-22, a
-  traditional and an automated AIR were built in Guttannen, Canton of Berne, Switzerland with the main aim of
-  comparing and quantifying the benefits of fountain scheduling through an automation system. The scheduled
-  fountain produced similar volumes while consuming 87 \% less water than the unscheduled fountain.
-  Simulations converting unscheduled fountains to scheduled fountains improved the water use efficiency of
-  several traditional AIRs more than two fold. Overall, these results show that the automated construction
-  strategy can increase the water use efficiency of AIRs without compromising their meltwater production.
+  the water sprayed was lost. Therefore, fountain wastewater production has to be reduced for improving water
+  use efficiency.  During the winter of 2021-22, a traditional and an automated AIR were built in Guttannen,
+  Canton of Berne, Switzerland with the main aim of comparing and quantifying the benefits of fountain
+  scheduling. Fountain scheduling was realized through an automation system computing recommended discharge
+  rates using real-time weather input and location metadata. The scheduled fountain produced similar volumes
+  while consuming 87 \% less water than the unscheduled fountain. Simulations converting unscheduled fountains
+  to scheduled fountains improved the water use efficiency of several traditional AIRs more than two fold.
+  Overall, these results show that the automated construction strategy can increase the water use efficiency of
+  AIRs without compromising their meltwater production.
 
 \end{abstract}
 
@@ -75,15 +75,15 @@ aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialG
 glacial streams into fountain spray systems via embankments and pipelines. 
 
 The success of any AIR construction strategy can be determined using the maximum ice volume and the water use
-efficiency attained during its survival duration. Previous studies
-\citep{balasubramanianInfluenceMeteorologicalConditions2022} show that for any given location improvement of
+efficiency attained during its survival duration. Previous work
+\citep{balasubramanianInfluenceMeteorologicalConditions2022} shows that for any given location improvement of
 both these evaluation metrics is possible through modifications of the fountain characteristics. In particular,
-these studies recommend to reduce the fountain discharge rate to improve the poor water use efficiency of
-traditional AIRs. However, this recommendation is challenging to implement it in practice. For example, in the
-case of the Indian AIR, the model estimates that water use efficiency can be doubled by just reducing the
-fountain discharge rate by half \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in
-practice, reduction of discharge rate would compromise the maximum ice volume obtained due to reduction in the
-fountain spray radius and could increase the maintenance cost due to higher risk of fountain freezing events.  
+it recommends to reduce the fountain discharge rate to improve the poor water use efficiency of traditional
+AIRs. However, this recommendation is challenging to implement in practice. For example, in the case of the
+Indian AIR, the model estimates that water use efficiency can be doubled by just reducing the fountain discharge
+rate by half \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of
+discharge rate would compromise the maximum ice volume obtained due to reduction in the fountain spray radius
+and could increase the maintenance cost due to higher risk of fountain freezing events.  
 
 An optimum construction strategy, therefore, should first prevent the occurence of these two events before
 reducing discharge rates. Spray radius can be maintained if the fountain aperture diameter is lowered with the
@@ -104,10 +104,10 @@ by means of the full energy balance model developed in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
 weather data or real-time weather data to produce recommended discharge rates.
 
-The recommended discharge rate also needs to be sensitive to constraints on the water supply or weather of the
-construction site. Locations limited by their water supply like in Ladakh, India would prioritize water use
-efficiency whereas those limited by the favourable weather windows like in Guttannen, Switzerland  would
-prioritize for maximum ice volume. Accordingly, we use two types of model parameter forcings that overestimate
+Locations limited by their water supply like in Ladakh, India would prioritize water use efficiency whereas
+those limited by the favourable weather windows like in Guttannen, Switzerland  would prioritize for maximum ice
+volume. Therefore, recommended discharge rate also needs to be sensitive to constraints on the water supply or
+weather of the construction site. Accordingly, we use two types of model parameter forcings that overestimate
 and underestimate the surface freezing rates to attain higher ice volumes and higher water use efficiency
 respectively. 
 
@@ -126,6 +126,13 @@ fountain scheduling strategies, presentation of the automation system, and examp
 computation of fountain scheduling strategies.
 
 \section{Study sites and data}
+
+In this study, we use some datasets presented in our previous work
+\citep{balasubramanianInfluenceMeteorologicalConditions2022} along with new datasets. These old datasets record
+the meteorological conditions and fountain characteristics of AIRs built in Gangles, India (IN21) and Guttannen,
+Switzerland (CH21) during the winter of 2020-21. Details about these old datsets can be found in our previous
+work. In this section, we focus on describing the AIR datasets collected in Guttannen, Switzerland during the
+winter of 2021-22 (CH22).
 
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) is situated in the Berne region, Switzerland and has an
 altitude of 1047 $m$ a.s.l. In the winter (Oct-Apr), mean daily minimum and maximum air temperatures vary
