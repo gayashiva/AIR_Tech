@@ -168,7 +168,8 @@ and ended on 12th April. These two dates are denoted as start and expiry dates h
 Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
 required to calculate the surface energy balance of an AIR.  The weather data source was an automatic weather
 station (AWS) located around 20 m away as shown in Fig. \ref{fig:2AIR}. Less than 0.4 \% of the data was found
-to be missing and the data gaps were filled by linear interpolation. 
+to be missing and the data gaps were filled by linear interpolation. Hourly ground temperature measurements were
+also recoreded by the AWS to approximate the fountain's water temperature. 
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -179,11 +180,12 @@ to be missing and the data gaps were filled by linear interpolation.
 
 \subsection{Fountain observations}
 
-We define the fountain used through its four attributes, namely: spray radius ($r_F$), discharge rate ($Q_F$),
-height ($h_F$) and water temperature ($T_F$). Spray radius denotes the observed ice radius formed from the
-fountain water droplets. Discharge rate represents the discharge rate of the water in the fountain pipeline.
-Height denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of
-the water droplets produced by the fountain.
+We define the fountain used through its five attributes, namely: spray radius ($r$), discharge rate ($Q$),
+height ($h$), pressure loss ($P$), and water temperature ($T_F$). Spray radius denotes the observed ice radius
+formed from the fountain water droplets. Discharge rate represents the discharge rate of the water in the
+fountain pipeline. Height denotes the height of the fountain pipeline installed. Pressure loss denotes the loss
+of water head caused due to the fountain nozzle . Fountain water temperature is the temperature of the water
+droplets produced by the fountain.
 
 Fig. \ref{fig:aws} shows how the automation system scheduled the discharge rate based on variations in
 temperature. The automation system caused these variations through its control valve which varied between 0 to
@@ -208,7 +210,7 @@ this was increased two times on 23rd December and 12th February.
 
 The spray radius was estimated for both the fountains from several drone flights. Drone flights which observed
 either an increase in AIR circumference or volume were selected to determine the mean spray radius used for
-characterizing the fountain.
+determining the fountain's spray radius.
 
 \subsection{Drone surveys}
 
@@ -425,27 +427,18 @@ from $h_i$ to $h_f$ to be:
   Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_i-h_f) \cdot (\pi \cdot dia^2/4)^2}
 \end{equation}
 
-Traditional AIR construction is often interrupted after fountain height increase events. These events reduce
-fountain discharge below the critical discharge rate ($Q_{crit}$) and thereby increase the risk of fountain
-freezing events. We assume that fountain freezing events occur when a 1 meter fountain height increase event
-reduces the pipeline discharge to zero.  Here we define the critical discharge rate ($Q_{crit}$) as the
-discharge rate beyond which fountain height increase triggers a fountain freezing event. We refer to this height
-as the fountain freezing height henceforth.
+Traditional AIR construction often involves regular increase in fountain height in steps of 1 $m$. These events
+can trigger fountain freezing events by reducing the pipeline discharge to zero.  Here we define the critical
+discharge rate ($Q_{crit}$) as the discharge rate beyond which fountain height increase triggers a fountain
+freezing event. We refer to this height as the fountain freezing height henceforth.
 
 Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
-motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$ and impacting the ground at
-a distance $r$, we get the following horizontal and vertical equations of motion respectively:
+motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following equation for the spray radius $r$:
 
 \begin{equation}
   \label{eqn:radf}
   r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
 \end{equation}
-
-% \begin{equation}
-%   0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
-% \end{equation}
-
-Using these two equations, one can obtain the time of flight $t$ and the spray radius $r$ of the fountain.
 
 \section{Results}
 
@@ -489,11 +482,12 @@ February that increased the height from 3.7 to 5.7 m respectively.
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/fountains.png}
 
-\caption{ (a) Pressure loss as a linear function of aperture diameter for a constant fountain height of 4 $m$.
-The corresponding values for the scheduled and unscheduled fountains are highlighted as red and blue dots
-respectively. (b) Discharge as a function of height for the scheduled (red curve) and the unscheduled (blue
-curve) fountain. (c) Discharge measured for the scheduled fountain (red curve) and estimated for the unscheduled
-fountain (blue curve) during the study period.}
+\caption{ (a) Pressure loss as a linear function of aperture diameter for a constant fountain height and
+  discharge rate. The corresponding values for the scheduled and unscheduled fountains are highlighted as red
+  and blue dots respectively. (b) Discharge as a function of height for the scheduled (red curve) and the
+  unscheduled (blue curve) fountain for a constant aperture diameter and pressure loss. (c) Discharge measured
+  for the scheduled fountain (red curve) and estimated for the unscheduled fountain (blue curve) during the
+study period.}
 
 \label{fig:fountains}
 \end{figure*}
@@ -581,6 +575,7 @@ increase in its fountain discharge heat flux.
 		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
 		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
 		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $10$  & $1$     & \% \\
 		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
 
@@ -607,23 +602,24 @@ during the ablation period when the south face of the AIR melts much faster than
 for the model error could be the deterioration of the albedo that is accelerated as the AIR nears its expiry
 date due to accumulation of impurities on the surface.
 
-\subsection{Operation of automation system}
+\subsection{Operation of the automation system}
 
+Incorrect setup of the automation software parameters led to deviations between the discharge rate recommended
+by the automation system and the HIV model. This led to overestimation of the recommended freezing rate before
+21st December. Beyond this date, the automation system never opened its control valve beyond 34 \% and was
+successful in recommending appropriate discharge rates as shown in Fig. \ref{fig:simvsreal}. The automation
+software also approximated the global solar radiation impact based on diurnal variation in February. This caused
+the recommended discharge rate to be overestimated especially in the month of April.
 
-\subsection{AIR shape variation with fountain characteristics}
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/simvsreal.png}
 
-Fig. (a) shows the estimated height of the traditional and automated AIR. The heights of both the AIR arre
-underestimated since the model assumes a constant fountain spray radius estimated from the drone observations.
-The observed spray radius represents the median discharge rate of the fountain used as shown in Fig. (b).
-Therefore, the traditional AIR had a higher radius and height primarily because of its higher discharge rate
-compared to the automated AIR.
+\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the HIV version
+  of the simplified model (blue line) are compared. The dashed grey line represents the minimum discharge rate
+that does not trigger fountain freezing events. }
 
-This was expected since the fountain's spray radius and freezing height are both proportional to the discharge
-rate according to Eqn. \ref{eqn:discharge}. This was also one reason why Swiss AIRs are much smaller than Indian
-AIRs. However, in practice, indefinite increase in discharge does not produce indefinite increase in spray
-radius since droplet accumulation around the fountain follows a normal distribution. Moreover, the fountain
-pressure loss is expected to increase exponentially as discharge increases further decreasing the expected spray
-radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
+\label{fig:simvsreal}
+\end{figure*}
 
 \subsection{Benefits of scheduling fountains}
 
@@ -672,23 +668,10 @@ higher than the HIV fountain, its maximum volume was even lower than the unsched
 
 \subsection{Challenges of scheduling fountains}
 
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/simvsreal.png}
-
-\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the HIV version
-  of the simplified model (blue line) are compared. The dashed grey line represents the minimum discharge rate
-that does not trigger fountain freezing events. }
-
-\label{fig:simvsreal}
-\end{figure*}
-
 Fountain freezing events limit the minimum discharge rate possible in scheduled fountains.  We assume the
 minimum discharge rate that prevents fountain freezing events is 2 $l/min$. The model simulations revealed that
 the nonzero median scheduled fountain discharge rate at the IN21 and CH21 AIRs were 13 $l/min$ and 2 $l/min$,
-respectively. Since the modelled scheduled discharge was lower than the minimum discharge rate for the Swiss
-location, the automation system was programmed to overestimate the freezing rate as shown in Fig.
-\ref{fig:simvsreal}. However, model suggestions could be directly used in the case of the Indian location where
-meteorological conditions and fountain spray radius favour a higher freezing rate. 
+respectively.
 
 Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
 the lower the gravitational pressure that drives the discharge rate. This was precisely why the unscheduled
@@ -705,26 +688,41 @@ However, spray radius varies drastically with the characteristics of the fountai
 issue, we define the fountain spray radius to be produced during time periods when the fountain has attained its
 maximum height and discharge rate. 
 
-Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
-using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
+Fig. \ref{fig:radf} (a) compares the temporal variation of the estimated spray radius with the measured spray
+radius using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
 throughout the study period. All the measured spray radius values lie between these two spray radius states of
 the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
-estimated and the measured maximum spray radius is caused mainly due to fountain wastewater production. The
-influence of this process can be observed during mid-december when spray radius reached a maximum of 12 $m$.
-Even through water droplets could have travelled that far, it is unlikely any would have frozen to form an ice
-sheet given that the freezing rate during the same period was less than 4 $l/min$ (see Fig.
-\ref{fig:simvsreal}). Therefore, if the spray radius estimation during December is ignored, the maximum spray
-radius of the remaining duration corresponds well with the maximum spray radius measured via the drone.
+estimated and the measured maximum spray radius is caused mainly due to overestimation of the spray radius, for
+example, during mid-december when spray radius reached a maximum of 12 $m$. The overestimation of the spray
+radius is due to underestimation of the pressure loss since both these parameters increase as discharge rate
+increases. Therefore, if the spray radius estimation during December is ignored, the maximum spray radius of the
+remaining duration corresponds well with the observed spray radius.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/radf.png}
 
-\caption{Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
+\caption{(a) Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
 projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
+(b) The estimated heights of traditional (blue) and automated (red) AIRs.
 }
 
 \label{fig:radf}
 \end{figure*}
+
+\subsection{Controlling AIR shape through fountain characteristics}
+
+Fig. \ref{fig:radf} (b) shows the estimated height of the traditional and automated AIR. The heights of both the
+AIR are underestimated since the model ignores spray radius variations caused by the discharge rate. The
+observed spray radius represents the median discharge rate of the fountain used as shown in Fig. \ref{fig:radf}
+(a). Therefore, the traditional AIR had a higher radius and height primarily because of its higher discharge
+rate compared to the automated AIR.
+
+This was expected since the fountain's spray radius and freezing height are both proportional to the discharge
+rate according to Eqn. \ref{eqn:discharge}. This was also one reason why Swiss AIRs are much smaller than Indian
+AIRs. However, in practice, indefinite increase in discharge does not produce indefinite increase in spray
+radius since droplet accumulation around the fountain follows a normal distribution. Moreover, the fountain
+pressure loss is expected to increase exponentially as discharge increases further decreasing the expected spray
+radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
 
 \section{Conclusions and recommendations}
 
