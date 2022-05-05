@@ -520,7 +520,7 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR. The difference between the fountain discharge input and fountain wastewater output of the
-unscheduled and scheduled fountains was more than an order of magnitude. This was expected since the unscheduled
+unscheduled and scheduled fountains was around an order of magnitude. This was expected since the unscheduled
 fountain's discharge duration was 2 times higher than the scheduled fountain.
 
 To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
@@ -533,11 +533,11 @@ two processes are the cause of the difference in the mass and energy balance dis
 The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
 latent) on the freezing and melting energies, their respective energy turnover is summed by taking into account
 the sign of their mean energy flux during the study period (see Table \ref{tab:mb}). A negative sign indicates
-that the corresponding energy flux increased or decreased freezing or melting energy, respectively.
-The radiation fluxes contributed -6 \% and 5 \% to the freezing and melting energies for the traditional and
-automated AIR, respectively.  Similarly, the turbulent fluxes contribute -9 \% and -9 \% to the freezing
-energies for the traditional and automated AIR, respectively. The fountain water and ground heat flux contribute
-11 \% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
+that the corresponding energy flux increased or decreased freezing or melting energy, respectively. The
+radiation fluxes contributed -6 \% and 5 \% to the freezing and melting energies for the traditional and
+automated AIR, respectively.  Similarly, the turbulent fluxes for both the AIRs contribute -9 \% to the freezing
+energies. The fountain discharge, rainwater and ground heat flux contribute 11 \% and 3 \% to the melting
+energies for the traditional and automated AIR, respectively. 
 
 There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
 (a). Even though the traditional AIR was active for a much longer duration, the frequent snowfall events
@@ -575,7 +575,7 @@ increase in its fountain discharge heat flux.
 		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
 		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
 		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
-		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $10$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $0$  & $0$     & \% \\
 		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{5}{*}{\rotatebox[origin=c]{90}{Fountain}}}
 
@@ -599,8 +599,8 @@ increase in its fountain discharge heat flux.
 The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates. This
 could be a consequence of our conical shape assumptions. In reality, AIR shape deviates from a cone especially
 during the ablation period when the south face of the AIR melts much faster than the north face. Another cause
-for the model error could be the deterioration of the albedo that is accelerated as the AIR nears its expiry
-date due to accumulation of impurities on the surface.
+for the model error could be the deterioration of the albedo that is accelerated due to accumulation of
+impurities on the surface as the AIR nears its expiry date .
 
 \subsection{Operation of the automation system}
 
@@ -641,10 +641,8 @@ kinds of fountain scheduling strategies will be referred to as unscheduled, HIV 
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
 locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by black
 circles) are shown together with five simulated values (highlighted by grey circles) .  The experimental values
-were taken from the automated and traditional AIRs constructed in the winter of 2021-2022 at the Swiss site
-(Guttannen, CH22) and the rest of the values were at the Indian site (Gangles, IN21) and Swiss site (Guttannen,
-CH21) AIR built in the winter of 2020-21 using traditional construction strategies presented in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. 
+were taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022}
+and the CH22 AIR presented in this paper. 
 
 The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
 between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
@@ -654,10 +652,10 @@ The water-use efficiency of all the unscheduled fountains are below 20 \%. In ge
 increases more than two fold when the HIV or HWE fountain is used in both the locations.  
 
 There is also considerable difference between the outputs of HWE and HIV fountains for each AIR. For CH21 AIR,
-HWE fountain does not yield any significant ice formation whereas HIV fountain succeeds in increasing the
-water-use efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains
-yield an increase in water-use efficiency from 3 \% to 31 \%. However, the HWE fountain was successful in
-increasing the water-use efficiency up to 60 \%. 
+HWE fountain does not yield any ice formation whereas HIV fountain succeeds in increasing the water-use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains yield an increase
+in water-use efficiency from 4 \% to 31 \%. However, the HWE fountain was successful in increasing the water-use
+efficiency up to 60 \%. 
 
 For the Swiss location, scheduled fountains yield better water-use efficiency but do not alter the maximum
 volume obtained significantly. For the Indian location, the two kinds of fountains yield significantly different
@@ -680,13 +678,9 @@ immediately after the fountain height was increased.
 
 To schedule fountains, one needs to estimate their spray radius accurately. This is because the recommended
 discharge rate is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
-maximum spray radius of just 3 m but drone measurements reveal a mean spray radius of 4.8 m for the scheduled
-fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events across the
-boundary of the AIR. 
-
-However, spray radius varies drastically with the characteristics of the fountain used. To circumvent this
-issue, we define the fountain spray radius to be produced during time periods when the fountain has attained its
-maximum height and discharge rate. 
+maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
+scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
+across the boundary of the AIR. 
 
 Fig. \ref{fig:radf} (a) compares the temporal variation of the estimated spray radius with the measured spray
 radius using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
@@ -712,8 +706,8 @@ projectile motion of water droplets. The dots represent the observed spray radiu
 \subsection{Controlling AIR shape through fountain characteristics}
 
 Fig. \ref{fig:radf} (b) shows the estimated height of the traditional and automated AIR. The heights of both the
-AIR are underestimated since the model ignores spray radius variations caused by the discharge rate. The
-observed spray radius represents the median discharge rate of the fountain used as shown in Fig. \ref{fig:radf}
+AIRs are underestimated since the model assumes a constant fountain spray radius for the whole study period.
+This spray radius corresponds to the maximum discharge rate of the fountain used as shown in Fig. \ref{fig:radf}
 (a). Therefore, the traditional AIR had a higher radius and height primarily because of its higher discharge
 rate compared to the automated AIR.
 
@@ -721,8 +715,8 @@ This was expected since the fountain's spray radius and freezing height are both
 rate according to Eqn. \ref{eqn:discharge}. This was also one reason why Swiss AIRs are much smaller than Indian
 AIRs. However, in practice, indefinite increase in discharge does not produce indefinite increase in spray
 radius since droplet accumulation around the fountain follows a normal distribution. Moreover, the fountain
-pressure loss is expected to increase exponentially as discharge increases further decreasing the expected spray
-radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
+pressure loss is expected to increase exponentially as discharge increases, further decreasing the expected
+spray radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
 
 \section{Conclusions and recommendations}
 
@@ -734,23 +728,23 @@ strategies on the water use efficiency and volumes of AIRs exposed to identical 
 that excessive fountain discharge rate not just increased the fountain wastewater production but also enhanced
 the melting rate of AIRs, mainly due to its surface albedo and foutain heat flux feedbacks. Furthermore, the
 freezing rate of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to
-its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 87 \% compared
-to the traditional AIR.
-
-The automation system allows the easy handling of fountain scheduling implementation in any new location. The
-possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
-fountain discharge rate according to the location's water supply and weather conditions. Furthermore, this
-construction strategy reduces the occurrence of fountain freezing events as it drains the pipeline outside
-favourable weather windows and prevents fountain discharge rate to be lower than a minimum user-defined
-threshold. Although, the automation system increases installation costs, we believe that a use of such systems
-is warranted when considering the reduced maintenance costs on a longer term.
+its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 87 \% and
+increase its maximum volume by 34\% compared to the traditional AIR.
 
 A simplified energy balance model compatible with the limited data availability of a new location was used to
 produce two types of discharge rates favouring higher volumes and better water use efficiencies, respectively.
-Nevertheless, this model was able to capture more than 50 \% of the freezing rate variations produced by the
+Nevertheless, this model was able to capture more than 44 \% of the freezing rate variations produced by the
 full energy balance model. Simulations comparing scheduled and unscheduled fountains show that up to a two fold
 increase in water use efficiency is possible with the use of scheduled fountains without compromising on
 meltwater production.
+
+The automation system allows the easy handling of fountain scheduling implementation in any new location. The
+possibility for changing the location and fountain metadata directly in the user interface allows tailoring the
+fountain discharge rate according to the location's water supply and weather conditions. Our results suggest
+that the automation system was successful in operating fountains within favourable weather windows while
+preventing the occurrence of any fountain freezing events. Although, the automation system increases
+installation costs, we believe that a use of such systems is warranted when considering the reduced maintenance
+costs on a longer term.
 
 We recommend three modifications to the traditional construction strategy to prevent fountain freezing events,
 obtain higher volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
@@ -760,15 +754,16 @@ based on observed fountain droplet trajectories in the construction site. Second
 height based on the fountain characteristics. Our study showed that an increase in the fountain aperture
 diameter by 2 $mm$ can reduce the fountain freezing height from 9 to 5 $m$ . Once the fountain freezing height
 is achieved, another AIR can be created to continue the construction process. Such a construction strategy would
-yield higher ice volumes with lower risk of fountain freezing events. Thirdly, the median modelled discharge
-rate could be used to set the mean discharge rate of unscheduled fountains. This will already yield a higher
-water use efficiency without the need of sophisticated automation systems.
+yield higher ice volumes with lower risk of fountain freezing events. Alternatively, fountain with reduced
+aperture diameter could be used if higher AIRs are desired. However, this comes at the cost of a higher pressure
+loss. Thirdly, the median modelled discharge rate could be used to set the mean discharge rate of unscheduled
+fountains. This will already yield a higher water use efficiency without the need of sophisticated automation
+systems.
 
 Fountain design is an important area where improvement is necessary. In the case of the CH22 experiment, the
-fountain pressure loss was as high as 4 $m$ of water head. The scheduled fountain produced a higher spray radius
-due to its lower aperture diameter. Future research must be devoted to improving fountain design in order to
-minimize their pressure losses while increasing their spray radius. 
-
+fountain pressure loss was as high as 4 $m$ of water head. Future research must be devoted to improving fountain
+design through their aperture diameter parameter in order to minimize their pressure losses while increasing
+their spray radius. 
 
 \appendix
 
