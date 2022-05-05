@@ -1,4 +1,8 @@
 
+% \begin{equation}
+%   0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
+% \end{equation}
+
 From Eqn. \ref{eqn:discharge}, we get the fountain freezing height $h_{crit}$ to be proportional to both
 the aperture diameter and the discharge rate as follows:
 
