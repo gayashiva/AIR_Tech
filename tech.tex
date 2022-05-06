@@ -380,8 +380,7 @@ Accordingly, the heat flux generated due to a rain event was equal to:
 
 \subsection{Calibration and Validation}
 
-The model parameters were calibrated to the median values of the ranges presented in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}.
+The model parameters were calibrated to the median values of the ranges presented in \ref{tab:parameters}.
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between volume estimates and measurements. 
@@ -850,6 +849,51 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we estimated this parameter as
 Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the HIV and HWE objective respectively.  Since
 turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
 objectives for certain sites.
+
+\appendixtables   %% needs to be added in front of appendix tables
+
+\begin{table}
+  \caption{Free parameters in the model categorised as constant, model hyperparameters and weather 
+  parameters with their respective values/ranges.}
+
+	\label{tab:parameters}
+	\begin{tabular}{lllll}
+		\toprule
+
+		\textbf{Constant Parameters}                       & \textbf{Symbol} & \textbf{Value} &
+    \textbf{Unit} & \textbf{References} \\
+    Van Karman constant & $\kappa$      & 0.4        &dimensionless & \citet{cuffeyPhysicsGlaciers2010}              \\
+    Stefan Boltzmann constant & $\sigma$ & $\num{5.67 e-8} $& $W\, m^{-2}\, K^{-4}$ & \citet{cuffeyPhysicsGlaciers2010}\\
+    Air pressure at sea level & $p_{0,a}$ & 1013 & $hPa$  & \citet{molgAblationAssociatedEnergy2004}\\
+    Density of water & $\rho_{w}$ & 1000 & $kg\, m^{-3}$    & \citet{cuffeyPhysicsGlaciers2010}\\
+    Density of ice & $\rho_{ice}$ & 917 & $kg\, m^{-3}$ & \citet{cuffeyPhysicsGlaciers2010}\\
+    Density of air & $\rho_{a}$ &  1.29 & $kg\, m^{-3}$   & \citet{molgAblationAssociatedEnergy2004}\\
+    Specific heat of water & $c_{w}$ & 4186 & $J\, kg^{-1}\,\degree C^{-1}$  & \citet{cuffeyPhysicsGlaciers2010}\\
+    Specific heat of ice & $c_{ice}$ & 2097 & $J\, kg^{-1}\,\degree C^{-1}$ & \citet{cuffeyPhysicsGlaciers2010}\\
+    Specific heat of air & $c_{a}$ & 1010 & $J\, kg^{-1}\,\degree C^{-1}$ & \citet{molgAblationAssociatedEnergy2004}\\
+    Thermal conductivity of ice & $k_{ice}$ & 2.123  & $W\, m^{-1}\, K^{-1}$ & \citet{bonalesThermalConductivityIce2017} \\
+    Latent Heat of Sublimation & $L_{s}$ & \num{2.848e6}  & $J\, kg^{-1}$ &   \citet{cuffeyPhysicsGlaciers2010}\\
+    Latent Heat of Fusion & $L_{f}$ & \num{3.34e5} & $J\, kg^{-1}$ & \citet{cuffeyPhysicsGlaciers2010}\\
+    Gravitational acceleration & $g$ & 9.81 & $m\, s^{-2}$ &\citet{cuffeyPhysicsGlaciers2010}\\
+    Weather station height & $h_{AWS}$ & 2 & $m$ & assumed \\
+    Model timestep                            & $\Delta t$            & $3600$           & $s$ & assumed \\\midrule
+
+		\textbf{Model Hyperparameters} & \textbf{Symbol} & \textbf{Range} & \textbf{Unit} & \textbf{References} \\
+    Surface layer thickness             & $\Delta x$            & $[\num{1e-2},\num{1e-1}]$           & $m$ & assumed
+    \\\midrule
+		\textbf{Weather Parameters} & \textbf{Symbol} & \textbf{Range} & \textbf{Unit} & \textbf{References} \\
+    Ice Emissivity                      & $\epsilon_{ice}$      & $[0.95,0.99]$         & dimensionless & \citet{horiInsituMeasuredSpectral2006}             \\
+    Surface Roughness                   & $z_0$                 & $[\num{1e-3},\num{5e-3}]$            & $m$  & \citet{brockMeasurementParameterizationAerodynamic2006}       \\
+    Ice Albedo                          & $\alpha_{ice}$        & $[0.15,0.35]$         & dimensionless  &
+    \citet{steinerModellingIcecliffBackwasting2015};            \\
+    & &    &  & \citet{zollesRobustUncertaintyAssessment2019}      \\
+    Snow Albedo                         & $\alpha_{snow}$       & $[0.8,0.9]$        & dimensionless  & \citet{zollesRobustUncertaintyAssessment2019}              \\
+    Precipitation Temperature threshold & $T_{ppt}$             & $[0,2]$            & $\degree C$& \citet{shichangResponseZhadangGlacier2010}  \\
+    Albedo Decay Rate                   & $\tau$                & $[10,22]$           & $days$ &
+    \citet{schmidtImportanceAccurateGlacier2017};      \\
+    & &    &  & \citet{oerlemansYearRecordGlobal1998}      \\\midrule
+	\end{tabular}
+\end{table}
 
 \noappendix 
 
