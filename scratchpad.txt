@@ -1,4 +1,29 @@
 
+Fig. \ref{fig:radf} (b) shows the estimated height of the traditional and automated AIR. The heights of both the
+AIRs are underestimated since the model assumes a constant fountain spray radius for the whole study period.
+This spray radius corresponds to the aperture diameter of the fountain whereas the height corresponds to  used as shown in Fig. \ref{fig:radf}
+(a). 
+
+Therefore, the traditional AIR had a lower spray radius and a higher height primarily because of its higher
+fountain aperture diameter compared to the automated AIR.
+
+This was expected since the fountain's spray radius and freezing height are both proportional to the discharge
+rate according to Eqn. \ref{eqn:discharge}. This was also one reason why Swiss AIRs are much smaller than Indian
+AIRs. However, in practice, indefinite increase in discharge does not produce indefinite increase in spray
+radius since droplet accumulation around the fountain follows a normal distribution. Moreover, the fountain
+pressure loss is expected to increase exponentially as discharge increases, further decreasing the expected
+spray radius. Therefore, only limited control of height and radius of the AIR is possible using this strategy.
+
+Both these strategies can be combined with fountain scheduling methods
+to reduce watering volumes without affecting the water use efficiency and maximum ice volume obtained.
+
+Typical solutions to maintain pipeline
+water temperature given pipeline dimensions are to bury or drain the pipeline. Burying the pipeline at a
+sufficient depth can reduce the influence of atmospheric conditions on the pipeline water temperature. Even
+though this method is ideal, it can quickly get expensive depending on the length of the pipeline and the frost
+depth. Therefore, such an effort is warranted only in the case of a permanent construction location.
+Comparatively, draining the pipeline when the fountain is not active is a much cheaper strategy.
+
 % \begin{equation}
 %   0 = h + v \cdot sin \theta \cdot t - g\cdot t^2/2
 % \end{equation}
