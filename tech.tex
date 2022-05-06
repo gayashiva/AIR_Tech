@@ -283,10 +283,11 @@ Accordingly, we introduce two kinds of forcing corresponding to the HIV and HWE 
 three model variables: (a) slope , (b) albedo and (c) cloudiness. The slope variable increases the shortwave
 radiation and sensible heat impact. The albedo variable decreases the shortwave radiation impact. The cloudiness
 variable increases both the shortwave and the longwave radiation impact. Therefore, increase of slope and
-cloudiness variable increases melting energy and increase of albedo variable increases freezing energy. The
-HIV and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively.
-Correspondingly, we associate the upper and lower bounds of these variables to the HIV and HWE assumptions as
-shown in Table \ref{tab:assumptions}.
+cloudiness variable increases melting energy and increase of albedo variable increases freezing energy. The HIV
+and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively. Correspondingly,
+we associate the upper and lower bounds of these variables to the HIV and HWE assumptions as shown in Table
+\ref{tab:assumptions}. These two kinds of models will be referred to as HIV forced and HWE forced model
+henceforth.
 
 \begin{table}[]
 \centering
@@ -294,7 +295,7 @@ shown in Table \ref{tab:assumptions}.
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-\textbf{Estimation of} & \textbf{Symbol} & \textbf{HIV Assumptions} & \textbf{HWE Assumptions} & \\ \midrule
+\textbf{Estimation of} & \textbf{Symbol} & \textbf{HIV forced model} & \textbf{HWE forced model} & \\ \midrule
 \multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
@@ -315,7 +316,7 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat flux;
 $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the AIR
-surface. The derivation of these individual terms for the HIV and HWE model forcings are discussed in the
+surface. The derivation of these individual terms for the HIV and HWE forced model are discussed in the
 Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
@@ -493,9 +494,9 @@ study period.}
 
 \subsection{Scheduled discharge rate simulations}
 
-We found that the HWE and HIV models estimated the freezing rate of the unscheduled fountain with a correlation
-around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The HIV scheduled fountain
-overestimated the freezing rate 44 \% of the construction duration whereas the HWE scheduled fountain
+We found that the HWE and HIV forced models estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The HIV scheduled
+fountain overestimated the freezing rate 44 \% of the construction duration whereas the HWE scheduled fountain
 underestimated the freezing rate 67 \% of the construction duration. Therefore, the HIV and HWE model forcings
 were successful in prioritizing the maximum ice volume and water use efficiency metrics respectively.
 
@@ -611,9 +612,9 @@ leading to unnecessary discharge events.
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/simvsreal.png}
 
-\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the HIV version
-  of the simplified model (blue line) are compared. The dashed grey line represents the minimum discharge rate
-that does not trigger fountain freezing events. }
+\caption{ The discharge rate measured by the automation system (red line) and the modelled discharge rate of the
+HIV forced model (blue line) are compared. The dashed grey line represents the minimum discharge rate that does
+not trigger fountain freezing events. }
 
 \label{fig:simvsreal}
 \end{figure*}
@@ -631,9 +632,9 @@ values are highlighted by black circles and simulated values are highlighted by 
 \end{figure*}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE versions
-of the simplified energy balance model were used to schedule the fountains of the simulated AIRs. These three
-kinds of fountain scheduling strategies will be referred to as unscheduled, HIV and HWE fountain henceforth. 
+construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE forced models
+were used to schedule the fountains of the simulated AIRs. These three kinds of fountain scheduling
+strategies will be referred to as unscheduled, HIV and HWE fountain henceforth. 
 
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
 locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by black
@@ -721,8 +722,8 @@ freezing rate of the scheduled fountain was also enhanced by its lower aperture 
 its higher spray radius. Therefore, the automated AIR was able to reduce its water consumption by 87 \% and
 increase its maximum volume by 34\% compared to the traditional AIR.
 
-Two different model forcings compatible with the limited data availability and requirements of a new location
-were used to produce two types of recommended discharge rates favouring higher volumes and better water use
+Two different model forcings sensitive to the limited weather windows or water supply of a new location were
+used to produce two types of recommended discharge rates favouring higher volumes and better water use
 efficiencies, respectively. Nevertheless, these models was able to capture more than 44 \% of the freezing rate
 variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains
 show that up to a two fold increase in water use efficiency is possible with the use of scheduled fountains
@@ -756,13 +757,14 @@ aperture diameter parameter in order to minimize their pressure losses while inc
 
 \appendix
 
-\section{Simplified energy balance model}\label{sec:SEB}
+\section{Applications of model forcings}\label{sec:SEB}
 
-The model complexity was reduced through assumptions that optimise for the HIV or the HWE objectives. We define the freezing rate and melting rate as the positive and negative mass change
-rate, respectively. Assumptions are chosen, based on whether they overestimate/underestimate the freezing rate.
-HIV objective requires freezing rate to be overestimated whereas HWE objective requires freezing rate to
-be underestimated. We describe these two kinds of assumptions applied on each of the energy balance components
-below: 
+The model complexity and data requirement \citep{balasubramanianInfluenceMeteorologicalConditions2022} were
+reduced through assumptions that optimise for the HIV or the HWE objectives. We define the freezing rate and
+melting rate as the positive and negative mass change rate, respectively. Assumptions are chosen, based on
+whether they overestimate/underestimate the freezing rate. HIV objective requires freezing rate to be
+overestimated whereas HWE objective requires freezing rate to be underestimated. We describe these two kinds of
+assumptions applied on each of the energy balance components below: 
 
 \subsection{Surface Area $A_{cone}$ assumptions}
 
