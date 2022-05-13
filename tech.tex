@@ -355,14 +355,14 @@ hourly ground temperature measurements to approximate water temperature for both
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
 the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
-Therefore, we assumed that discharge events instead increase the albedo decay rate ($\tau$) by a scaling
-factor equal to $\frac{\alpha_{snow}}{\alpha_{ice}}$.
+Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
+factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
 
 Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
-assume AIR density ($\rho_{AIR}$) to be equal to ice density. We instead parameterised AIR density $\rho_{AIR}$ as follows:
+assume AIR density ($\rho_{cone}$) to be equal to ice density. We instead parameterised AIR density $\rho_{cone}$ as follows:
 
 \begin{equation}
-  \rho_{AIR} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
+  \rho_{cone} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
 \end{equation}
 
 where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
