@@ -1,4 +1,12 @@
 
+
+Scheduling fountains manually is also challenging due to the diurnal variations in scheduled discharge rate.
+This is highlighted by Fig. \ref{fig:wue} (b) where both the scheduling strategies require the fountain to be
+switched on and off regularly. Moreover, fountain freezing events further complicate fountain scheduling. This
+
+The model simulations revealed that the nonzero median scheduled fountain discharge rate at the IN21 and CH21
+AIRs were 13 $l/min$ and 2 $l/min$, respectively.
+
 Fig. \ref{fig:radf} (b) shows the estimated height of the traditional and automated AIR. The heights of both the
 AIRs are underestimated since the model assumes a constant fountain spray radius for the whole study period.
 This spray radius corresponds to the aperture diameter of the fountain whereas the height corresponds to  used as shown in Fig. \ref{fig:radf}

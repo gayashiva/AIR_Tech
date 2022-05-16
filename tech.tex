@@ -137,7 +137,7 @@ the winters of 2021-22 using a traditional and an automated construction strateg
 \begin{figure}[t]
 \includegraphics[width=8.3cm]{Figures/2AIRs.jpg}
 \caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
-\label{fig:2AIR} 
+\label{fig:2AIR}
 \end{figure}
 
 The automated and the traditional AIRs were constructed adjacent to each other as shown in Fig. \ref{fig:2AIR}.
@@ -625,7 +625,7 @@ forced model. }
 \caption{(a) The maximum volumes and water-use efficiency estimated for AIRs constructed in different locations
 (represented by colours) with different fountain scheduling strategies (represented by symbols). Experimental
 values are highlighted by circles and simulated values are highlighted by squares. (b) Comparison of
-the unscheduled and HIV scheduled fountain's discharge rates at the IN21 location.}
+the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 
 \label{fig:wue}
 \end{figure*}
@@ -658,29 +658,50 @@ For the Swiss location, scheduled fountains yield better water-use efficiency bu
 volume obtained significantly. 
 
 For the Indian location, the two kinds of scheduled fountains yield significantly different results when
-compared to the unscheduled fountain. The HIV fountain was able to achieve a 1.5 fold increase in the maximum
-volume and a 2 fold increase in the water-use efficiency compared to the unscheduled fountain because its
-discharge rate was much lower and its discharge duration was much longer as shown in Fig. \ref{fig:wue} (b). The
-discharge duration of both the HIV and HWE fountains were higher than the unscheduled fountain since they were
-not interrupted and limited by fountain freezing events. Even though the HWE fountain achieved water-use
-efficiency higher than the HIV fountain, its maximum volume was even lower than the unscheduled fountain.
+compared to the unscheduled fountain. The HIV fountain achieved a 1.5 fold increase in the maximum volume and a
+2 fold increase in the water-use efficiency. The HWE fountain had a water-use efficiency of 73 \% but its
+maximum ice volume was lower than the unscheduled fountain. 
+
+The discharge duration and the max discharge rate of these three fountains were responsible for these different
+results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice
+that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
+interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration
+of the unscheduled fountain was much lower resulting in lower ice volumes. The HWE fountain underestimated the
+freezing rate during the construction period and therefore produced much lower ice volumes compared to the
+scheduled HIV fountain.
+
+\subsubsection{Traditional vs Automated strategy}
+
+Fig. \ref{fig:wue} (b) illustrates the significant maintenance required for the unscheduled IN21 fountain.
+Manual maintenance of the fountain pipeline was required each time a fountain freezing event forced the
+discharge rate to zero. This maintenace requirement could have been completely avoided if an automated
+construction strategy was used instead. 
 
 \subsection{Challenges of scheduling fountains}
 
-Fountain freezing events limit the minimum discharge rate possible in scheduled fountains.  We assume that
-discharge rate above 2 $l/min$ prevents fountain freezing events. The model simulations revealed that the
-nonzero median scheduled fountain discharge rate at the IN21 and CH21 AIRs were 13 $l/min$ and 2 $l/min$,
-respectively.
+\subsubsection{Preventing fountain freezing events}
+
+Fountain freezing events occur when discharge rate lowers below a minimum threshold. For the CH22 experiments,
+this mimimum threshold was assumed to be 2 $l/min$. However, this value is site-specific since it depends on the
+pipeline material used, water supply available and the temperature variations of the location.  Moreover,
+favourable weather windows available for fountain spray are further reduced since the fountain pipelines need to
+be operated above this minimum threshold.
 
 Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
 the lower the gravitational pressure that drives the discharge rate. This was why the fountain freezing event of
-the unscheduled fountain was observed to occur almost immediately after the fountain height was increased. 
+the unscheduled fountain was observed to occur almost immediately after the fountain height was increased.  
+
+Therefore, setting this minimum discharge rate and fountain freezing height is crucial in order to prevent
+fountain freezing events. The methodology described here could be used to determine the fountain freezing
+height. However, minimum discharge rate has to be determined based on fountain spray observations.
 
 To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
 is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
 maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
 scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
 across the boundary of the AIR. 
+
+\subsubsection{Determination of fountain spray radius}
 
 Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
 using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
@@ -701,6 +722,7 @@ projectile motion of water droplets. The dots represent the observed spray radiu
 \label{fig:radf}
 \end{figure*}
 
+
 \subsection{Controlling AIR shape through fountain characteristics}
 
 CH22 experiment shows that two fountains with different aperture diameter but with the same water source produce
@@ -709,8 +731,6 @@ automated one due to the higher aperture diameter of the unscheduled fountain.  
 how the higher aperture diameter of the unscheduled fountain resulted in a lower spray radius.  Therefore, under
 identical weather conditions and with similar water source, fountains with higher aperture diameter produce ice
 cones with higher slopes.
-
-% Given the slope of an AIR, the surface area by volume ratio becomes:
 
 \section{Conclusions and recommendations}
 
