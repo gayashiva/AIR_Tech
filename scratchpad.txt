@@ -1,5 +1,18 @@
 
 
+
+Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
+the lower the gravitational pressure that drives the discharge rate. This was why the fountain freezing event of
+the unscheduled fountain was observed to occur almost immediately after the fountain height was increased.  
+
+Fountain freezing events occur when discharge rate lowers below a minimum threshold. For the CH22 experiments,
+this mimimum threshold was assumed to be 2 $l/min$. However, this value is site-specific since it depends on the
+pipeline material used, water supply available and the temperature variations of the location.  Moreover,
+favourable weather windows available for fountain spray are further reduced since the fountain pipelines need to
+be operated above this minimum threshold.
+
+However, minimum discharge rate has to be determined based on fountain spray observations.
+
 Scheduling fountains manually is also challenging due to the diurnal variations in scheduled discharge rate.
 This is highlighted by Fig. \ref{fig:wue} (b) where both the scheduling strategies require the fountain to be
 switched on and off regularly. Moreover, fountain freezing events further complicate fountain scheduling. This
