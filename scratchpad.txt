@@ -1,4 +1,6 @@
 
+Since the
+automation system does not consume significant energy, it can be deployed in remote locations with solar panels.
 
 
 Fountain height increase events also trigger fountain freezing events. This is because the higher the fountain
