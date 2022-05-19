@@ -1,4 +1,19 @@
 
+
+The influence of the fountain height increase event on the maximum discharge rate was used to determine the
+fountain aperture diameter and the critical discharge rate. The maximum discharge rate of the scheduled fountain
+reduced from $Q_i$ =  13 $l/min$ to $Q_f$ = 11 $l/min$ when the fountain height was raised from  $h_i$ = 3 $m$
+to $h_f$ = 4 $m$. Inputting the corresponding values in Eqn. \ref{eqn:bernoulli}, we get the estimated fountain
+aperture diameter ($dia$) to be around 5 $mm$. The critical discharge required to increase the fountain height by one meter for the scheduled fountain with an
+aperture diameter of 5 $mm$ was estimated from Eqn. \ref{eqn:bernoulli} as 5 $l/min$.
+
+We define the fountain used through its five attributes, namely: spray radius ($r$), discharge rate ($Q$),
+height ($h$), pressure loss ($P$), and water temperature ($T_F$). Spray radius denotes the observed ice radius
+formed from the fountain water droplets. Discharge rate represents the discharge rate of the water in the
+fountain pipeline. Height denotes the height of the fountain pipeline installed. Pressure loss denotes the loss
+of water head caused due to the fountain nozzle . Fountain water temperature is the temperature of the water
+droplets produced by the fountain.
+
 Since the
 automation system does not consume significant energy, it can be deployed in remote locations with solar panels.
 

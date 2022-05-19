@@ -30,7 +30,7 @@
  {\CopernicusWarningNoLine{No section #1; proceeding without it}}
 \newcommand\NoSectionError[2]
  {\CopernicusError{You forgot the section: #1}{Add #2 to your document!}}
-\RequirePackage{fixltx2e}[2006/03/24]
+% \RequirePackage{fixltx2e}[2006/03/24]
 \renewcommand*\and{\@centercr}
 \AtEndOfClass{%
   \DeclareRobustCommand*{\vec}[1]
