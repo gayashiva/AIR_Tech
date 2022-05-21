@@ -92,9 +92,7 @@ increase the maintenance cost due to higher risk of fountain freezing events.
 An optimum construction strategy, therefore, should first prevent the occurence of these two events before
 reducing discharge rates. Spray radius can be maintained if the fountain aperture diameter is lowered with the
 discharge rate. Fountain freezing events can be prevented if the pipeline water temperature is maintained above
-0 $\degree C$ and the discharge is not lowered below a minimum threshold. Fountain discharge rate is also
-lowered every time the fountain height increases. Therefore, a critical height needs to be set beyond which
-fountain height should not be increased.
+0 $\degree C$ and the discharge is not lowered below a minimum threshold. 
 
 Knowledge of surface freezing rates is important to reduce water losses. Surface freezing rates can be
 calculated by means of the full energy balance model developed in
@@ -110,17 +108,13 @@ respectively.
 
 However, manually adjusting the fountain discharge rate is not practical due to two reasons. Firstly, this would
 involve constant adjustments of discharge rates in response to the significant diurnal and seasonal variations
-of the freezing rates. Secondly, frequent pipeline water drainage is required to halt fountain operation and
-avoid water losses. Therefore, operation of scheduled fountains via automation systems is preferred to reduce
-the maintenance cost long-term.
+of the freezing rates. Secondly, frequent pipeline water drainage is required to avoid water losses. Therefore,
+operation of scheduled fountains via automation systems is preferred to reduce the maintenance cost long-term.
 
-The present study builds upon previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022,
-oerlemansBriefCommunicationGrowth2021}, in order to quantify the influence of different fountain scheduling
-strategies on the mass and energy balance of AIRs with identical meteorological conditions. The main interest in
-using model results is to simulate fountain schedules relative to constraints in favourable weather windows and
-water availability.  The specific objectives of this paper include the mass and energy balance comparison of
-fountain scheduling strategies, presentation of the automation system, and examples of its application to the
-computation of fountain scheduling strategies.
+The present study was performed to compare two AIRs produced using different fountain scheduling strategies but
+exposed to identical meteorological conditions. The specific objectives of this paper include the water-use
+efficiency and maximum ice volume comparison of different fountain scheduling strategies, presentation of the
+automation system, and examples of its application to the computation of fountain scheduling strategies.
 
 \section{Study sites and data}
 
@@ -176,7 +170,6 @@ also recorded by the AWS to approximate the fountain's water temperature.
 
 \subsection{Fountain observations}
 
-
 The fountain consists of a pipeline and a nozzle. The pipeline has three attributes, namely : discharge rate
 ($Q$), height ($h$) and water temperature ($T_F$). Discharge rate represents the discharge rate of the water in
 the fountain pipeline. Height denotes the height of the fountain pipeline installed. Fountain water temperature
@@ -187,11 +180,11 @@ and pressure loss ($P$) .The fountain nozzle is assumed to have only one apertur
 water is sprayed. Spray radius denotes the observed ice radius formed from the fountain water droplets.
 Pressure loss denotes the loss of water head caused due to the fountain nozzle.
 
-Fig. \ref{fig:aws} shows how the automation system scheduled the discharge rate based on variations in
-temperature. The automation system caused these variations through its control valve which varied between 0 to
-100 \% depending on the recommended discharge rate. Throughout the study period, the control valve was opened
-completely (100 \%) only once corresponding to the time when the temperature attained its minimum of -13 \degree
-C on 20th December. After this event, the control valve was never opened beyond 34 \%.  
+Fig. \ref{fig:aws} shows how the automation system scheduled the discharge rate based on real-time
+meteorological conditions. The automation system caused these variations through its control valve which varied
+between 0 to 100 \% depending on the recommended discharge rate. Throughout the study period, the control valve
+was opened completely (100 \%) only once corresponding to the time when the temperature attained its minimum of
+-13 \degree C on 20th December. After this event, the control valve was never opened beyond 34 \%.  
 
 The unscheduled fountain was manually operated to spray all the available discharge until a fountain freezing
 event interrupted the discharge on 17th February. Unfortunately, no discharge rate measurements were recorded
@@ -337,8 +330,6 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \item High water loss is assumed if wind speed is greater than critical wind speed.
 
-\item High risk of fountain freezing event is assumed if temperature is lower than fountain freezing temperature.
-
 \item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
 
 \item Fountain freezing events are assumed if discharge rate is zero for at least 20 seconds and the pipeline is drained as a
@@ -357,7 +348,7 @@ temperature and surface albedo.
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
 approximation. This is because the fountain water temperature and source water temperature differ due to the
-cooling of the water during its transit from the source to the  AIR surface. Therefore, we instead use measured
+temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
 hourly ground temperature measurements to approximate water temperature for both the AIRs.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
@@ -436,12 +427,11 @@ from $h_i$ to $h_f$ to be:
 \end{equation}
 
 Traditional AIR construction often involves regular increase in fountain height in steps of 1 $m$. These events
-can trigger fountain freezing events by reducing the pipeline discharge to zero.  Here we define the critical
-discharge rate ($Q_{crit}$) as the discharge rate beyond which fountain height increase triggers a fountain
-freezing event. We refer to this height as the fountain freezing height henceforth.
+can trigger fountain freezing events by reducing the pipeline discharge to zero.
 
 Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
-motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following equation for the spray radius $r$:
+motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following
+equation for the spray radius $r$:
 
 \begin{equation}
   \label{eqn:radf}
@@ -452,8 +442,11 @@ motion starting from a fountain height $h$ with a launch angle $\theta = 45 \deg
 
 \subsection{Estimation of fountain characteristics}
 
-A fountain height increase event and fountain nozzle removal event that occured during the study period enable
-us to estimate the characteristics of the scheduled fountain. 
+The influence of the fountain height increase event on the maximum discharge rate was used to determine the
+fountain nozzle's aperture diameter. The maximum discharge rate of the scheduled fountain reduced from $Q_i$ =
+13 $l/min$ to $Q_f$ = 11 $l/min$ when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$.
+Inputting the corresponding values in Eqn. \ref{eqn:bernoulli}, we get the estimated fountain aperture diameter
+($dia$) to be around 5 $mm$. 
 
 The change in discharge rate observed upon removal of the fountain nozzle was used to determine the fountain
 pressure loss. When the fountain nozzle was removed, the maximum discharge rate of the fountain was observed to
@@ -469,10 +462,12 @@ of the fountain was zero with a diameter of 19 $mm$ (fountain removal event) and
 a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$. We estimate that for a constant height the pressure
 decreases by 18 $mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
 
-The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge rate was
-close to zero during this event.  The aperture diameter with the fountain freezing height closest to 5.7 $m$ is
-7 $mm$ according to Eqn. \ref{eqn:bernoulli} as shown in Fig. \ref{fig:fountains} (b) . The corresponding
-pressure loss of a fountain with 7 $mm$ diameter is 3.7 $m$ as shown in Fig. \ref{fig:fountains} (a).
+The fountain freezing event observation was used to determine the unscheduled fountain nozzle's aperture
+diameter. The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge
+rate was close to zero during this event.  The aperture diameter with the fountain freezing height closest to
+5.7 $m$ is 7 $mm$ according to Eqn. \ref{eqn:bernoulli} as shown in Fig. \ref{fig:fountains} (b) . The
+corresponding pressure loss of a fountain with 7 $mm$ diameter is 3.7 $m$ as shown in Fig. \ref{fig:fountains}
+(a).
 
 Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for the study period. The temporal
 variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
@@ -625,7 +620,7 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \label{fig:wue}
 \end{figure*}
 
-\subsubsection{Higher water-use efficiency or ice volumes}
+\subsubsection{Higher water-use efficiency}
 
 We evaluate the benefits of the automated construction strategies by comparing them with the traditional
 construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE forced models
@@ -675,8 +670,11 @@ scheduled HIV fountain.
 
 Fig. \ref{fig:wue} (b) illustrates how the unscheduled IN21 fountain was interrupted several times by fountain
 freezing events. Manual maintenance was required each time a fountain freezing event forced the discharge rate
-to zero. This maintenance requirement could have been completely avoided if an automated construction strategy
-was used instead. 
+to zero.
+
+The automation system prevents fountain freezing events by avoiding discharge rates to lower below a minimum
+threshold. As a consequence, additional maintenance due to fountain freezing events can be avoided in the
+automated construction strategy.
 
 \subsubsection{Controlling AIR shape through fountain characteristics}
 
@@ -687,10 +685,6 @@ how the higher aperture diameter of the unscheduled fountain resulted in a lower
 identical weather conditions and with similar water source, fountains with higher aperture diameter produce ice
 cones with higher slopes.
 
-\subsubsection{Prevention of fountain freezing events}
-
-The automation system prevented fountain freezing events by avoiding discharge rates to lower below a minimum
-threshold. As a consequence, fountain freezing events were avoided successfully.
 
 \subsection{Challenges of scheduling fountains}
 
