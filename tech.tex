@@ -348,44 +348,6 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \end{itemize}
 
-\subsection{Model updates}
-
-The model was made more sensitive to fountain discharge rate feedback in order to compare the volume evolution
-of the automated and the traditional AIRs. This was done by introducing better parametrisation of fountain water
-temperature and surface albedo. 
-
-In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
-water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
-approximation. This is because the fountain water temperature and source water temperature differ due to the
-temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
-hourly ground temperature measurements to approximate water temperature for both the AIRs.
-
-In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
-discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
-the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
-Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
-factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
-
-Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
-assume AIR density ($\rho_{cone}$) to be equal to ice density. We instead parameterised AIR density $\rho_{cone}$ as follows:
-
-\begin{equation}
-  \rho_{cone} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
-\end{equation}
-
-where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
-$M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917
-$kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
-\cite{cuffeyPhysicsGlaciers2010} .
-
-Rain events were not considered in the previous version of the model but they occur in our experiment. The
-influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
-events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
-Accordingly, the heat flux generated due to a rain event was equal to:
-
-\begin{equation}
-  q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
-\end{equation}
 
 \subsection{Calibration and Validation}
 
@@ -598,15 +560,6 @@ increase in its fountain discharge heat flux.
 
 \section{Discussion}
 
-\subsection{Model validation}
-
-The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates. This
-could be a consequence of our conical shape assumptions. In reality, AIR shape deviates from a cone especially
-during the ablation period when the south face of the AIR melts much faster than the north face. Another cause
-for the model error could be the deterioration of the albedo that is accelerated due to accumulation of
-impurities on the surface as the AIR nears its expiry date.
-
-
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal2.png}
 
@@ -618,24 +571,11 @@ model. }
 
 \subsection{Benefits of scheduling fountains}
 
-We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies using the water-use efficiency and maximum volume metrics. The MIV and MWE models
-were used to schedule the fountains of the simulated AIRs. These three kinds of fountain scheduling strategies
-will be referred to as unscheduled, MIV and MWE fountain henceforth. 
-
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
 locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by
 circles) are shown together with five simulated values (highlighted by squares).  The experimental values were
 taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022} and
 the CH22 AIR presented in this paper. 
-
-Both simulation and experimental results are available only for the CH22 MIV scheduled fountain. The simulated
-value overestimated the maximum volume but was relatively successful in estimating the water-use efficiency of
-the experiment.
-
-The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
-between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
-scheduled fountains increases and decreases depending on whether the MIV or MWE fountain is used. 
 
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{Figures/wue.png}
@@ -648,7 +588,7 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \label{fig:wue}
 \end{figure*}
 
-\subsubsection{Higher water-use efficiency and maximum volume}
+% \subsubsection{Higher water-use efficiency and maximum volume}
 
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
 increases more than two fold when the MIV or MWE fountain is used in both the locations.  
@@ -675,110 +615,6 @@ of the unscheduled fountain was much lower resulting in lower ice volumes. The M
 freezing rate during the construction period and therefore produced much lower ice volumes compared to the
 MIV fountain.
 
-\subsubsection{Reduction in maintenance costs}
-
-Fig. \ref{fig:wue} (b) illustrates how the unscheduled IN21 fountain was interrupted several times by fountain
-freezing events. Manual maintenance was required each time a fountain freezing event forced the discharge rate
-to zero.
-
-The automation system prevents fountain freezing events by avoiding discharge rates to lower below a minimum
-threshold. As a consequence, additional maintenance due to fountain freezing events can be avoided in the
-automated construction strategy.
-
-\subsubsection{Controlling AIR shape through fountain characteristics}
-
-CH22 experiment shows that two fountains with different aperture diameter but with the same water source produce
-AIRs with different slopes. The average slope of the traditional AIR was higher than that of the automated one
-due to the higher aperture diameter of the unscheduled fountain.  Fig. \ref{fig:radf} illustrates how the higher
-aperture diameter of the unscheduled fountain resulted in a lower spray radius.  Therefore, under identical
-weather conditions and with similar water source, fountains with higher aperture diameter produce ice cones with
-higher slopes.
-
-
-\subsection{Challenges of scheduling fountains}
-
-\subsubsection{Operation of the automation system}
-
-The automation software approximates the global solar radiation impact based on diurnal variation in February.
-This caused the recommended discharge rate to be overestimated especially in the month of March and April
-leading to discharge events that resulted in increased water loss.
-
-\subsubsection{Determination of minimum discharge rate}
-
-The value of minimum discharge rate determines the duration of the favourable weather windows and the risk of
-fountain freezing events. Therefore, its accurate quatification is critical. However, this value is
-site-specific since it depends on the pipeline material used, water supply available and the temperature
-variations of the location. In the CH22 experiments, this value was a subjective choice based on fountain spray
-observations.
-
-\subsubsection{Determination of fountain spray radius}
-
-To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
-is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
-maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
-scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
-across the boundary of the AIR. 
-
-
-Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
-using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
-throughout the study period. All the measured spray radius values lie between these two spray radius states of
-the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
-estimated and the measured maximum spray radius is caused mainly due to underestimation of the pressure loss
-since it increases as discharge rate increases, for example, during mid-december when spray radius reached a
-maximum of 12 $m$. Therefore, if the spray radius estimation error during December is ignored, the maximum spray
-radius of the remaining duration corresponds well with the observed spray radius.
-
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/radf.png}
-
-\caption{ Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
-projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
-}
-
-\label{fig:radf}
-\end{figure*}
-
-% \subsection{Suitable locations for traditional or automated construction strategy}
-
-% \subsubsection{Optimization of fountain design}
-
-\subsection{Applications of automated AIR technology}
-
-The choice between using the traditional or the automated constructed strategy eventually comes down to the cost
-involved. For both the construction strategy, pipeline length causes significant variations in the cost.
-However, for the automated construction strategy, the additional cost of the automation hardware needs to be
-considered.
-
-The cost of the automation system excluding the pipelines was around 4500 USD for the CH22 experiment. This
-included the cost of the weather station, logger box, flowmeter, control valves and air valves. This additional
-cost is unaffordable for most AIR construction sites in operation now. However, in some cases, the benefits of
-the automated construction strategy can justify this increased expenditure. Below we highlight some of these
-cases.
-
-\subsubsection{Ice reservoir irrigation networks}
-
-The automation system can be integrated with drip irrigation networks in order to additionally reduce
-distribution losses while irrigating plantations. This can be achieved by redirecting daily AIR meltwater into a
-tank and connecting this with the drip irrigation pipeline and the automation system. In this way, the
-automation system can be used for building ice reservoirs in winter and irrigating plantations in summer
-efficiently.
-
-\subsubsection{Sustaining AIRs perpetually}
-
-Several constructions sites have been found where the weather conditions are conducive enough for AIRs to last
-beyond a summer melt season. In such locations, automations systems can be a great resource for maintaining
-these perpetual AIRs and provide supplementary water supply to the village throughout the year.
-
-\subsubsection{Improvement of horizontal AIRs}
-
-Even though we focus on just icestupas or vertical form of AIRs here, we believe the performance of horizontal
-AIRs can also be increased by orders of magnitude with automation systems. Horizontal AIRs like basins, cascades
-and diversions are still being used in Ladakh, India and show upto a 30 times increase in water storage capacity
-compared to vertical AIRs \citep{nusserSociohydrologyArtificialGlaciers2019}. However, the construction,
-maintenance and location requirements of horizontal AIRs are prohibitive compared to vertical AIRs. But, through
-integration of automation systems, horizontal AIRs can be scaled in volume and efficiency sufficiently in order
-to justify these costs.
 
 \section{Conclusions and recommendations}
 
@@ -808,26 +644,54 @@ windows while preventing the occurrence of any fountain freezing events. Althoug
 increases installation costs, we believe that use of such systems is warranted when considering the reduced
 maintenance costs on a longer term.
 
-We recommend three modifications to the traditional construction strategy to prevent fountain freezing events,
-obtain higher volumes and lower water losses. Firstly, avoid fountain operation below the minimum fountain
-discharge rate. Our study used a value of 2 $l/min$. However, this is likely to vary depending on the weather
-conditions and the characteristics of the fountain and the pipeline used. It is recommended to set this value
-based on observed fountain droplet trajectories in the construction site. Secondly, restrict maximum fountain
-height based on the fountain characteristics. Our study showed that an increase in the fountain aperture
-diameter by 2 $mm$ can reduce the fountain freezing height from 9 to 5 $m$ . Once the fountain freezing height
-is achieved, another AIR can be created to continue the construction process. Thirdly, the nonzero median
-modelled discharge rate could be used to set the mean discharge rate of unscheduled fountains. This will already
-yield a higher water use efficiency without the need of sophisticated automation systems.
-
 Fountain design is an important area where improvement is necessary since it can be used to increase AIR ice
-volumes and control their shape. If the scheduled fountain of the CH22 experiment was replaced with a fountain
-with a lower pressure loss but with the same aperture diameter, the automated AIR would have produced more
-meltwater. Fountains with increased aperture diameter were found to create higher AIRs with similar ice volumes.
-Future research must be devoted to engineer such fountains that create larger AIRs with user-desired shapes.
+volumes. If the scheduled fountain of the CH22 experiment was replaced with a fountain with a lower pressure
+loss but with the same aperture diameter, the automated AIR would have produced more meltwater. Future research
+must be devoted to engineer such fountains that create larger AIRs with user-desired shapes.
 
 \appendix
 
-\section{Model forcing based on location objectives}\label{sec:SEB}
+
+\section{Model updates} \label{sec:Mod_updates}
+
+The model was made more sensitive to fountain discharge rate feedback in order to compare the volume evolution
+of the automated and the traditional AIRs. This was done by introducing better parametrisation of fountain water
+temperature and surface albedo. 
+
+In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
+water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
+approximation. This is because the fountain water temperature and source water temperature differ due to the
+temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
+hourly ground temperature measurements to approximate water temperature for both the AIRs.
+
+In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
+discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
+the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
+Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
+factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
+
+Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
+assume AIR density ($\rho_{cone}$) to be equal to ice density. We instead parameterised AIR density $\rho_{cone}$ as follows:
+
+\begin{equation}
+  \rho_{cone} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
+\end{equation}
+
+where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
+$M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917
+$kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
+\cite{cuffeyPhysicsGlaciers2010} .
+
+Rain events were not considered in the previous version of the model but they occur in our experiment. The
+influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
+events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
+Accordingly, the heat flux generated due to a rain event was equal to:
+
+\begin{equation}
+  q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
+\end{equation}
+
+\section{Model forcing based on location objectives} \label{sec:SEB}
 
 The model complexity and data requirement \citep{balasubramanianInfluenceMeteorologicalConditions2022} were
 reduced through assumptions that optimise for the ice volume or the water-use efficiency objectives. We define
@@ -967,6 +831,47 @@ may not favor the corresponding objectives for certain sites.
     & &    &  & \citet{oerlemansYearRecordGlobal1998}      \\\midrule
 	\end{tabular}
 \end{table}
+\clearpage
+
+\section{Challenges of scheduling fountains}
+
+\subsection{Determination of minimum discharge rate}
+
+The value of minimum discharge rate determines the duration of the favourable weather windows and the risk of
+fountain freezing events. Therefore, its accurate quatification is critical. The risk of a fountain freezing
+event is inversely proporational to the spray radius the discharge rate produces. Therefore, minimum discharge
+rate can be determined based on the minimum fountain spray radius desired. In the case of the CH22 experiment,
+the minimum discharge rate of 2 $l/min$ corresponded to a spray radius of around 1 $m$.
+
+\subsection{Determination of fountain spray radius}
+
+To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
+is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
+maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
+scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
+across the boundary of the AIR. 
+
+Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
+using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
+throughout the study period. All the measured spray radius values lie between these two spray radius states of
+the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
+estimated and the measured maximum spray radius is caused mainly due to underestimation of the pressure loss
+since it increases as discharge rate increases, for example, during mid-december when spray radius reached a
+maximum of 12 $m$. Therefore, if the spray radius estimation error during December is ignored, the maximum spray
+radius of the remaining duration corresponds well with the observed spray radius.
+
+\appendixfigures   %% needs to be added in front of appendix tables
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/radf.png}
+
+\caption{ Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
+projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
+}
+
+\label{fig:radf}
+\end{figure*}
+\clearpage
 
 \noappendix 
 

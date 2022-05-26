@@ -1,3 +1,117 @@
+
+
+Both simulation and experimental results are available only for the CH22 MIV scheduled fountain. The simulated
+value overestimated the maximum volume but was relatively successful in estimating the water-use efficiency of
+the experiment.
+
+Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
+using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
+throughout the study period. All the measured spray radius values lie between these two spray radius states of
+the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
+estimated and the measured maximum spray radius is caused mainly due to underestimation of the pressure loss
+since it increases as discharge rate increases, for example, during mid-december when spray radius reached a
+maximum of 12 $m$. Therefore, if the spray radius estimation error during December is ignored, the maximum spray
+radius of the remaining duration corresponds well with the observed spray radius.
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/radf.png}
+
+\caption{ Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
+projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
+}
+
+\label{fig:radf}
+\end{figure*}
+
+We evaluate the benefits of the automated construction strategies by comparing them with the traditional
+construction strategies using the water-use efficiency and maximum volume metrics. The MIV and MWE models
+were used to schedule the fountains of the simulated AIRs. These three kinds of fountain scheduling strategies
+will be referred to as unscheduled, MIV and MWE fountain henceforth. 
+
+
+\subsection{Applications of automated AIR technology}
+
+The choice between using the traditional or the automated constructed strategy eventually comes down to the cost
+involved. For both the construction strategy, pipeline length causes significant variations in the cost.
+However, for the automated construction strategy, the additional cost of the automation hardware needs to be
+considered.
+
+The cost of the automation system excluding the pipelines was around 4500 USD for the CH22 experiment. This
+included the cost of the weather station, logger box, flowmeter, control valves and air valves. This additional
+cost is unaffordable for most AIR construction sites in operation now. However, in some cases, the benefits of
+the automated construction strategy can justify this increased expenditure. Below we highlight some of these
+cases.
+
+\subsubsection{Ice reservoir irrigation networks}
+
+The automation system can be integrated with drip irrigation networks in order to additionally reduce
+distribution losses while irrigating plantations. This can be achieved by redirecting daily AIR meltwater into a
+tank and connecting this with the drip irrigation pipeline and the automation system. In this way, the
+automation system can be used for building ice reservoirs in winter and irrigating plantations in summer
+efficiently.
+
+\subsubsection{Sustaining AIRs perpetually}
+
+Several constructions sites have been found where the weather conditions are conducive enough for AIRs to last
+beyond a summer melt season. In such locations, automations systems can be a great resource for maintaining
+these perpetual AIRs and provide supplementary water supply to the village throughout the year.
+
+\subsubsection{Improvement of horizontal AIRs}
+
+Even though we focus on just icestupas or vertical form of AIRs here, we believe the performance of horizontal
+AIRs can also be increased by orders of magnitude with automation systems. Horizontal AIRs like basins, cascades
+and diversions are still being used in Ladakh, India and show upto a 30 times increase in water storage capacity
+compared to vertical AIRs \citep{nusserSociohydrologyArtificialGlaciers2019}. However, the construction,
+maintenance and location requirements of horizontal AIRs are prohibitive compared to vertical AIRs. But, through
+integration of automation systems, horizontal AIRs can be scaled in volume and efficiency sufficiently in order
+to justify these costs.
+
+\subsubsection{Ice reservoir irrigation networks}
+
+The automation system can be integrated with drip irrigation networks in order to additionally reduce
+distribution losses while irrigating plantations. This can be achieved by redirecting daily AIR meltwater into a
+tank and connecting this with the drip irrigation pipeline and the automation system. In this way, the
+automation system can be used for building ice reservoirs in winter and irrigating plantations in summer
+efficiently.
+
+The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
+between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
+scheduled fountains increases and decreases depending on whether the MIV or MWE fountain is used. 
+
+\subsubsection{Reduction in maintenance costs}
+
+Fig. \ref{fig:wue} (b) illustrates how the unscheduled IN21 fountain was interrupted several times by fountain
+freezing events. Manual maintenance was required each time a fountain freezing event forced the discharge rate
+to zero.
+
+The automation system prevents fountain freezing events by avoiding discharge rates to lower below a minimum
+threshold. As a consequence, additional maintenance due to fountain freezing events can be avoided in the
+automated construction strategy.
+
+\subsubsection{Operation of the automation system}
+
+The automation software approximates the global solar radiation impact based on diurnal variation in February.
+This caused the recommended discharge rate to be overestimated especially in the month of March and April
+leading to discharge events that resulted in increased water loss.
+
+\subsection{Model validation}
+
+The model fails in estimating the expiry date of both AIRs due to underestimation of their melting rates. This
+could be a consequence of our conical shape assumptions. In reality, AIR shape deviates from a cone especially
+during the ablation period when the south face of the AIR melts much faster than the north face. Another cause
+for the model error could be the deterioration of the albedo that is accelerated due to accumulation of
+impurities on the surface as the AIR nears its expiry date.
+
+\subsubsection{Controlling AIR shape through fountain characteristics}
+
+CH22 experiment shows that two fountains with different aperture diameter but with the same water source produce
+AIRs with different slopes. The average slope of the traditional AIR was higher than that of the automated one
+due to the higher aperture diameter of the unscheduled fountain.  Fig. \ref{fig:radf} illustrates how the higher
+aperture diameter of the unscheduled fountain resulted in a lower spray radius.  Therefore, under identical
+weather conditions and with similar water source, fountains with higher aperture diameter produce ice cones with
+higher slopes.
+
+
 Here we define the critical
 discharge rate ($Q_{crit}$) as the discharge rate beyond which fountain height increase triggers a fountain
 freezing event. We refer to this height as the fountain freezing height henceforth.
