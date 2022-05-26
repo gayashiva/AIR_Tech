@@ -286,19 +286,19 @@ and air valves allow the removal of water from the pipeline and entry of air in 
 
 Any construction location can either be constrained by the available water supply or the duration of favourable
 weather windows for fountain operation. If the respective location has limited water supply then the fountain
-scheduling strategy should be optimised for high water-use efficiency (HWE). But if the location is limited by
-the time period when the fountain can function then the scheduling strategy should be optimised for high ice
-volumes (HIV).
+scheduling strategy should be optimised for water-use efficiency . But if the location is limited by the time
+period when the fountain can function then the scheduling strategy should be optimised for ice volumes.
 
-Accordingly, we introduce two kinds of forcing corresponding to the HIV and HWE objective for the following
-three model variables: (a) slope , (b) albedo and (c) cloudiness. The slope variable increases the shortwave
-radiation and sensible heat impact. The albedo variable decreases the shortwave radiation impact. The cloudiness
-variable increases both the shortwave and the longwave radiation impact. Therefore, increase of slope and
-cloudiness variable increases melting energy and increase of albedo variable increases freezing energy. The HIV
-and HWE assumptions overestimate and underestimate the freezing rate of the AIR respectively. Correspondingly,
-we associate the upper and lower bounds of these variables to the HIV and HWE assumptions as shown in Table
-\ref{tab:assumptions}. These two kinds of models will be referred to as HIV forced and HWE forced model
-henceforth.
+Accordingly, we introduce two kinds of model forcing assumptions corresponding to the ice volume and water-use
+efficiency objective for the following three model variables: (a) slope , (b) albedo and (c) cloudiness.   The
+slope variable increases the shortwave radiation and sensible heat impact. The albedo variable decreases the
+shortwave radiation impact. The cloudiness variable increases both the shortwave and the longwave radiation
+impact. Therefore, increase of slope and cloudiness variable increases melting energy and increase of albedo
+variable increases freezing energy. Assumptions used for the ice volume and water-use efficiency objectives
+overestimate and underestimate the freezing rate of the AIR respectively. Correspondingly, we associate the
+upper and lower bounds of these variables as shown in Table \ref{tab:assumptions}. These two kinds of models
+will be referred to as model optimised for ice volume (MIV) and model optimised for water-use efficiency (MWE)
+respectively. 
 
 \begin{table}[]
 \centering
@@ -306,7 +306,7 @@ henceforth.
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-\textbf{Estimation of} & \textbf{Symbol} & \textbf{HIV forced model} & \textbf{HWE forced model} & \\ \midrule
+\textbf{Estimation of} & \textbf{Symbol} & \textbf{MIV} & \textbf{MWE} & \\ \midrule
 \multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
@@ -327,7 +327,7 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat flux;
 $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the AIR
-surface. The derivation of these individual terms for the HIV and HWE forced model are discussed in the
+surface. The derivation of these individual terms for the MIV and MWE model versions are discussed in the
 Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
@@ -395,7 +395,7 @@ The model parameters were calibrated to the median values of the ranges presente
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between volume estimates and measurements. 
 
-The performance of the HIV and HWE versions of the physical model was assessed by comparing correlation of its
+The performance of the MIV and MWE versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Fountain characteristics}
@@ -498,10 +498,10 @@ study period.}
 
 \subsection{Scheduled discharge rate simulations}
 
-We found that the HWE and HIV forced models estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The HIV scheduled
-fountain overestimated the freezing rate 44 \% of the construction duration whereas the HWE scheduled fountain
-underestimated the freezing rate 67 \% of the construction duration. Therefore, the HIV and HWE model forcings
+We found that the MWE and MIV model versions estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The MIV scheduled
+fountain overestimated the freezing rate 44 \% of the construction duration whereas the MWE scheduled fountain
+underestimated the freezing rate 67 \% of the construction duration. Therefore, the MIV and MWE model forcings
 were successful in prioritizing the maximum ice volume and water use efficiency metrics respectively.
 
 \subsection{Model validation}
@@ -611,13 +611,32 @@ impurities on the surface as the AIR nears its expiry date.
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal2.png}
 
-\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the HIV
-forced model. }
+\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the MIV
+model. }
 
 \label{fig:simvsreal}
 \end{figure*}
 
 \subsection{Benefits of scheduling fountains}
+
+We evaluate the benefits of the automated construction strategies by comparing them with the traditional
+construction strategies using the water-use efficiency and maximum volume metrics. The MIV and MWE models
+were used to schedule the fountains of the simulated AIRs. These three kinds of fountain scheduling strategies
+will be referred to as unscheduled, MIV and MWE fountain henceforth. 
+
+The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
+locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by
+circles) are shown together with five simulated values (highlighted by squares).  The experimental values were
+taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022} and
+the CH22 AIR presented in this paper. 
+
+Both simulation and experimental results are available only for the CH22 MIV scheduled fountain. The simulated
+value overestimated the maximum volume but was relatively successful in estimating the water-use efficiency of
+the experiment.
+
+The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
+between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
+scheduled fountains increases and decreases depending on whether the MIV or MWE fountain is used. 
 
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{Figures/wue.png}
@@ -630,51 +649,32 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \label{fig:wue}
 \end{figure*}
 
-\subsubsection{Higher water-use efficiency}
-
-We evaluate the benefits of the automated construction strategies by comparing them with the traditional
-construction strategies using the water-use efficiency and maximum volume metrics. The HIV and HWE forced models
-were used to schedule the fountains of the simulated AIRs. These three kinds of fountain scheduling
-strategies will be referred to as unscheduled, HIV and HWE fountain henceforth. 
-
-The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
-locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by
-circles) are shown together with five simulated values (highlighted by squares).  The experimental values were
-taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022} and
-the CH22 AIR presented in this paper. 
-
-Both simulation and experimental results are available only for the CH22 HIV scheduled fountain. The simulated
-value overestimated the maximum ice volume but was relatively successful in estimating the water use efficiency
-of the experiment.
-
-The maximum volume of IN21 is much higher than at the CH21 and CH22 AIRs due to the meteorological differences
-between the two locations. Compared to the unscheduled fountains of each location, the maximum volume of 
-scheduled fountains increases and decreases depending on whether the HIV or HWE fountain is used. 
+\subsubsection{Higher water-use efficiency and maximum volume}
 
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
-increases more than two fold when the HIV or HWE fountain is used in both the locations.  
+increases more than two fold when the MIV or MWE fountain is used in both the locations.  
 
-There is also considerable difference between the outputs of HWE and HIV fountains for each AIR. For CH21 AIR,
-HWE fountain does not yield any ice formation whereas HIV fountain succeeds in increasing the water-use
-efficiency three fold. For CH22 AIR, both experimental and simulated values of HIV fountains yield an increase
-in water-use efficiency from 4 \% to around 31 \%. The HWE fountain succeeded in increasing the water-use
-efficiency upto 2 times higher than the HIV fountain.
+There is also considerable difference between the outputs of MWE and MIV fountains for each AIR. For CH21 AIR,
+MWE fountain does not yield any ice formation whereas MIV fountain succeeds in increasing the water-use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of MIV fountains yield an increase
+in water-use efficiency from 4 \% to around 31 \%. The MWE fountain succeeded in increasing the water-use
+efficiency upto 2 times higher than the MIV fountain.
 
 For the Swiss location, scheduled fountains yield better water-use efficiency but do not alter the maximum
 volume obtained significantly. 
 
 For the Indian location, the two kinds of scheduled fountains yield significantly different results when
-compared to the unscheduled fountain. The HIV fountain achieved a 1.5 fold increase in the maximum volume and a
-2 fold increase in the water-use efficiency. The HWE fountain had a water-use efficiency of 73 \% but its
-maximum ice volume was lower than the unscheduled fountain. 
+compared to the unscheduled fountain. The MIV fountain achieved a 1.5 fold increase in the maximum volume and a
+2 fold increase in the water-use efficiency. The MWE fountain had a water-use efficiency of 73 \% but its
+maximum volume was lower than the unscheduled fountain. 
 
 The discharge duration and the max discharge rate of these three fountains were responsible for these different
 results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice
 that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
 interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration
-of the unscheduled fountain was much lower resulting in lower ice volumes. The HWE fountain underestimated the
+of the unscheduled fountain was much lower resulting in lower ice volumes. The MWE fountain underestimated the
 freezing rate during the construction period and therefore produced much lower ice volumes compared to the
-scheduled HIV fountain.
+MIV fountain.
 
 \subsubsection{Reduction in maintenance costs}
 
@@ -832,11 +832,11 @@ Future research must be devoted to engineer such fountains that create larger AI
 \section{Model forcing based on location objectives}\label{sec:SEB}
 
 The model complexity and data requirement \citep{balasubramanianInfluenceMeteorologicalConditions2022} were
-reduced through assumptions that optimise for the HIV or the HWE objectives. We define the freezing rate and
-melting rate as the positive and negative mass change rate, respectively. Assumptions are chosen, based on
-whether they overestimate/underestimate the freezing rate. HIV objective requires freezing rate to be
-overestimated whereas HWE objective requires freezing rate to be underestimated. We describe these two kinds of
-assumptions applied on each of the energy balance components below: 
+reduced through assumptions that optimise for the ice volume or the water-use efficiency objectives. We define
+the freezing rate and melting rate as the positive and negative mass change rate, respectively. Assumptions are
+chosen, based on whether they overestimate/underestimate the freezing rate. HIV objective requires freezing rate
+to be overestimated whereas water-use efficiency objective requires freezing rate to be underestimated. We
+describe these two kinds of assumptions applied on each of the energy balance components below: 
 
 \subsection{Surface Area $A_{cone}$ assumptions}
 
@@ -847,8 +847,8 @@ Therefore, area is estimated as:
 
 \begin{equation} A_{cone} =\sqrt{2} \cdot \pi \cdot r_{F}^2  \end{equation}
 
-Similarly, for the HWE objective, the area of the conical AIR is approximated to the area of its circular
-base. Therefore, area is estimated as:
+Similarly, for the water-use efficiency objective, the area of the conical AIR is approximated to the area of
+its circular base. Therefore, area is estimated as:
 
 \begin{equation} A_{cone} =\pi \cdot r_{F}^2  \end{equation}
 
@@ -879,11 +879,11 @@ The diffuse and direct shortwave radiation is determined using the estimated glo
 \end{split}
 \end{equation}
 
-where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the HWE and HIV objective
-respectively.
+where $cld$ is the cloudiness factor. $cld$ is assumed to be 1 and 0 for the water-use efficiency and ice volume
+objective respectively.
 
-We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the HIV and
-HWE objective, respectively.
+We ignore the variations in the albedo and assume it to be equal to snow albedo and ice albedo for the  ice
+volume and water-use efficiency objective, respectively.
 
 The solar area fraction $f_{cone}$ of the ice structure exposed to the direct shortwave radiation depends on the
 shape considered. It is computed as
@@ -893,13 +893,13 @@ shape considered. It is computed as
 			{(r_{cone})}^2/2) \cdot sin \theta_{sun} }{\pi \cdot r_{cone} \cdot ({(r_{cone})}^2+{(h_{cone})}^2)^{1/2}}\\
 \end{equation}
 
-For the HIV objective, since we assume the slope of the cone to be 1, $f_{cone}$ is determined as follows:
+For the ice volume objective, since we assume the slope of the cone to be 1, $f_{cone}$ is determined as follows:
 
 \begin{equation}
 		f_{cone} =\frac{ cos \theta_{sun} + \pi \cdot sin \theta_{sun} }{2\sqrt{2} \cdot \pi }
 \end{equation}
 
-Similarly, for the HWE objective, since we assume the slope of the cone to be negligible, we get:
+Similarly, for the water-use efficiency objective, since we assume the slope of the cone to be negligible, we get:
 
 \begin{equation}
 		f_{cone} =\frac{ sin \theta_{sun} }{2 }
@@ -909,7 +909,8 @@ Similarly, for the HWE objective, since we assume the slope of the cone to be ne
 
 We assume $T_{ice} = 0 \degree C$ in order to determine outgoing longwave radiation. Since it is challenging to
 constrain the minimum ice temperature, we maintain this assumption for both our objectives. However, in order to
-estimate atmospheric emissivity, we again assume $cld$ to be 1 and 0 for the HWE and HIV objective respectively.
+estimate atmospheric emissivity, we again assume $cld$ to be 1 and 0 for the water-use efficiency and ice volume
+objective respectively.
 
 \subsection{Turbulent fluxes assumptions} \label{sec:Qs}
 
@@ -920,9 +921,9 @@ by \citet{oerlemansBriefCommunicationGrowth2021}, we estimated this parameter as
   \mu_{cone} =1 + s_{cone}/2
 \end{equation}
 
-Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the HIV and HWE objective respectively.  Since
-turbulent fluxes impact both the freezing and the melting rates, this assumption may not favor the corresponding
-objectives for certain sites.
+Hence, the $\mu_{cone}$ parameter takes values of 1.5 and 1 for the ice volume and water-use efficiency
+objective respectively.  Since turbulent fluxes impact both the freezing and the melting rates, this assumption
+may not favor the corresponding objectives for certain sites.
 
 \appendixtables   %% needs to be added in front of appendix tables
 
