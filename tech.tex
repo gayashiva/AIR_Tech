@@ -6,18 +6,17 @@
 
 \begin{document}
 
-\title{Fountain scheduling strategies to improve water use efficiency of artificial
-ice reservoirs (Icestupas)}
+\title{Improving water-use efficiency of artificial ice reservoirs (Icestupas) through weather-sensitive fountain scheduling
+strategies}
 
-\def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$, $Martin Von
-Burg^{3}\,$}
+\def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$}
 
 \def\Address{$^{1}$University of Fribourg, Department of Geosciences, Fribourg, Switzerland $^{2}$University of
 Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan Balasubramanian}
 \Author[1,2]{Suryanarayanan}{Balasubramanian}
 \Author[1]{Martin}{Hoelzle}
 \Author[3]{Roger}{Waser}
-\Author[3]{Martin}{Von Burg}
+% \Author[3]{Martin}{Von Burg}
 \affil[1]{University of Fribourg, Department of Geosciences, Fribourg, Switzerland}
 \affil[2]{Himalayan Institute of Alternatives, Ladakh, India}
 \affil[3]{University of Applied Sciences and Arts, Luzern, Switzerland}
@@ -61,12 +60,12 @@ supplementary irrigation in order to sustain agricultural output and take advant
 season \citep{nusserLocalKnowledgeGlobal2016, vincentEnergyClimateChange2009}.
 
 To cope with this recurrent water scarcity, villagers in the region of Ladakh have developed two types of
-artificial ice reservoirs (AIRs): horizontal and vertical (see Fig. \ref{fig:AIRforms}). The vertical form is known locally as ice stupas. All
-these types of ice reservoirs capture water in the autumn and winter, allowing it to freeze, and hold it until
-spring, when it melts and flows down to fields \citep{ipccChapterHighMountain2019, vinceGlacierMan2009,
+artificial ice reservoirs (AIRs): horizontal and vertical (see Fig. \ref{fig:AIRforms}).  All these types of ice
+reservoirs capture water in the autumn and winter, allowing it to freeze, and hold it until spring, when it
+melts and flows down to fields \citep{ipccChapterHighMountain2019, vinceGlacierMan2009,
 clouseLadakhArtificialGlaciers2017, nusserSociohydrologyArtificialGlaciers2019}. In this way, they retain a
 previously unused portion of the annual flow and facilitate its use to supplement the decreased flow in the
-following spring. 
+following spring. This study focuses on the vertical form of AIRs locally called as ice stupas.
 
 \begin{figure}[t]
 \includegraphics[width=12cm]{Figures/AIR_forms.jpg}
@@ -91,35 +90,35 @@ practice wastes water. However, overwatering can cause accelerated ice melt if d
 Likewise, starting fountain spray too late or not running the system for a long enough period of time is
 considered under watering and can cause reduced ice volumes.
 
-Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} recommends to reduce the fountain
-discharge rate to reduce the water loss of traditional AIRs. However, this recommendation is challenging to
-implement in practice. For example, in the case of the Indian AIR, the model estimates that water use efficiency
-can be doubled by just reducing the fountain discharge rate by half
+Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
+construction systems tend to suffer from overwatering. Knowledge of surface freezing rates is important to
+avoid overwatering. Surface freezing rates can be calculated by means of the full energy balance model
+developed in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either
+historical weather data or real-time weather data to produce recommended discharge rates.
+
+However, there are several issues that need to be addressed before operating such weather-sensitive fountains.
+For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since they were
+always two times higher than the modelled freezing rate
 \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
 would compromise the maximum ice volume obtained due to reduction in the fountain spray radius and could
 increase the maintenance cost due to higher risk of fountain freezing events.  
 
 An optimum construction strategy, therefore, should first prevent the occurence of these two events before
 reducing discharge rates. Spray radius can be maintained if the fountain aperture diameter is lowered with the
-discharge rate. Fountain freezing events can be prevented if the pipeline water temperature is maintained above
-0 $\degree C$ and the discharge is not lowered below a minimum threshold. 
-
-Knowledge of surface freezing rates is important to reduce water losses. Surface freezing rates can be
-calculated by means of the full energy balance model developed in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
-weather data or real-time weather data to produce recommended discharge rates.
+discharge rate. Fountain freezing events can be prevented if the discharge is not lowered below a minimum
+threshold. 
 
 Recommended discharge rate needs to be sensitive to constraints on the water supply or weather of the
 construction site. Locations limited by their water supply like in Ladakh, India would prioritize water use
 efficiency whereas those limited by the favourable weather windows like in Guttannen, Switzerland  would
-prioritize for maximum ice volume.  Accordingly, we use two types of model parameter forcings that overestimate
-and underestimate the surface freezing rates to attain higher ice volumes and higher water use efficiency
-respectively. 
+prioritize for maximum ice volume.  Accordingly, we use two types of model parameter forcings that prevent
+underwatering and overwatering to attain higher ice volumes and higher water use efficiency respectively. 
 
 However, manually adjusting the fountain discharge rate is not practical due to two reasons. Firstly, this would
 involve constant adjustments of discharge rates in response to the significant diurnal and seasonal variations
 of the freezing rates. Secondly, frequent pipeline water drainage is required to avoid water losses. Therefore,
-operation of scheduled fountains via automation systems is preferred to reduce the maintenance cost long-term.
+operation of weather-sensitive fountains via automation systems is preferred to reduce the maintenance cost
+long-term.
 
 The present study was performed to compare two AIRs produced using different fountain scheduling strategies but
 exposed to identical meteorological conditions. The specific objectives of this paper include the water-use
@@ -342,10 +341,10 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
 
-\item Fountain freezing events are assumed if discharge rate is zero for at least 20 seconds and the pipeline is drained as a
+\item Fountain freezing events are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
   consequence.
 
-\item Pipeline leakage is assumed if discharge rate is greater than maximum fountain discharge rate.
+\item Pipeline leakage is assumed if measured discharge rate is greater than maximum fountain discharge rate.
 
 \end{itemize}
 
@@ -689,11 +688,11 @@ automated construction strategy.
 \subsubsection{Controlling AIR shape through fountain characteristics}
 
 CH22 experiment shows that two fountains with different aperture diameter but with the same water source produce
-AIRs with different slopes. The average slope of the traditional AIR was ? times higher than that of the
-automated one due to the higher aperture diameter of the unscheduled fountain.  Fig. \ref{fig:radf} illustrates
-how the higher aperture diameter of the unscheduled fountain resulted in a lower spray radius.  Therefore, under
-identical weather conditions and with similar water source, fountains with higher aperture diameter produce ice
-cones with higher slopes.
+AIRs with different slopes. The average slope of the traditional AIR was higher than that of the automated one
+due to the higher aperture diameter of the unscheduled fountain.  Fig. \ref{fig:radf} illustrates how the higher
+aperture diameter of the unscheduled fountain resulted in a lower spray radius.  Therefore, under identical
+weather conditions and with similar water source, fountains with higher aperture diameter produce ice cones with
+higher slopes.
 
 
 \subsection{Challenges of scheduling fountains}
@@ -765,7 +764,7 @@ tank and connecting this with the drip irrigation pipeline and the automation sy
 automation system can be used for building ice reservoirs in winter and irrigating plantations in summer
 efficiently.
 
-\subsubsection{Sustaining AIRs perpetually}
+\subsubsection{Sustaining AIRs perpetually using glacial lakes}
 
 Several constructions sites have been found where the weather conditions are conducive enough for AIRs to last
 beyond a summer melt season. In such locations, automations systems can be a great resource for maintaining
