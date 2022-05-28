@@ -1,4 +1,56 @@
 
+Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
+using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
+throughout the study period. All the measured spray radius values lie between these two spray radius states of
+the fountain. For the scheduled fountain, estimated spray radius shows high variations. The difference of the
+estimated and the measured maximum spray radius is caused mainly due to underestimation of the pressure loss
+since it increases as discharge rate increases, for example, during mid-december when spray radius reached a
+maximum of 12 $m$. Therefore, if the spray radius estimation error during December is ignored, the maximum spray
+radius of the remaining duration corresponds well with the observed spray radius.
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/radf.png}
+
+\caption{ Spray radius of the scheduled and the unscheduled fountain estimated from its discharge rate measurements using the
+projectile motion of water droplets. The dots represent the observed spray radius using the drone measurements.
+}
+
+\label{fig:radf}
+\end{figure*}
+
+
+\subsubsection{Automation hardware}
+
+The automation hardware consists of an AWS, flowmeter, control valve, drain valves, air valves, fountain,
+pipeline and a logger. The logger feeds the AWS data to the automation software and informs the recommended
+discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the recommendation.
+
+\subsubsection{Automation software}
+
+However, the recommended discharge rate is ignored if any of the termination criterion are valid. The
+termination criterion prevent water loss and fountain freezing events. In case a termination criteria is valid,
+the drain and air valves allow the removal of water from the pipeline and entry of air in the pipeline
+respectively.
+
+Even though the number of drone flights were identical for both AIRs, fewer successful volume
+observations were possible for the automated AIR as shown in Table \ref{tab:uav}. This was because the DEMs
+generated for the automated AIR could not be used to georeference the snow covered surface of the automated
+AIR. Since the traditional AIR was steeper, its surface revealed ice patches that could be georeferenced.
+
+The automation system allows the easy handling of weather-sensitive fountain scheduling implementation in any
+new location. The possibility for changing the location and fountain metadata directly in the user interface
+allows tailoring the fountain discharge rate according to the location's water supply and weather conditions.
+Our results suggest that the automation system was successful in operating fountains within favourable weather
+windows while preventing the occurrence of any fountain freezing events. Although, the automation system
+increases installation costs, we believe that use of such systems is warranted when considering the reduced
+maintenance costs on a longer term.
+
+We associate each energy turover with a sign equivalent to the sign of their mean energy flux during the study
+period. A negative sign indicates that the corresponding energy flux increased or decreased freezing or melting
+energy, respectively. Accordingly, the radiation fluxes contributed -6 \% and 5 \% to the freezing and melting
+energies for the traditional and automated AIR, respectively.  Similarly, the turbulent fluxes for both the AIRs
+contribute -9 \% to the freezing energies. The fountain discharge, rainwater and ground heat flux contribute 11
+\% and 3 \% to the melting energies for the traditional and automated AIR, respectively. 
 
 Both simulation and experimental results are available only for the CH22 MIV scheduled fountain. The simulated
 value overestimated the maximum volume but was relatively successful in estimating the water-use efficiency of
