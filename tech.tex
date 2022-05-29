@@ -322,14 +322,14 @@ discharge rate recommendation and drain the pipeline to prevent water loss or fo
 
 \begin{itemize}
 
-\item High water loss is assumed if wind speed is greater than critical wind speed.
+\item High water loss is assumed if wind speed is greater than the user-defined critical wind speed.
 
-\item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than minimum fountain discharge rate. 
+\item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than the user-defined minimum fountain discharge rate. 
 
 \item Fountain freezing events are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
   consequence.
 
-\item Pipeline leakage is assumed if measured discharge rate is greater than maximum fountain discharge rate.
+\item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
 
 \end{itemize}
 
@@ -474,15 +474,12 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR. The difference between the fountain discharge input and fountain wastewater output of the
-unscheduled and scheduled fountains was around an order of magnitude. This was expected since the unscheduled
-fountain's discharge duration was 2 times higher than the scheduled fountain.
+unscheduled and scheduled fountains was around an order of magnitude. 
 
-To understand how the different scheduling strategies influence the rest of the mass balance output, we discuss
-the influence of fountain discharge on the surface mass and energy balance. During fountain spray, the AIR
-surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the fountain water droplets. These
-two processes are the cause of the difference in the mass and energy balance distribution shown in Table
-\ref{tab:mb}. The temporal variation of the magnitude of these processes are shown in Fig.
-\ref{fig:dis_processes}. 
+During fountain spray, the AIR surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the
+fountain water droplets. These two processes are the cause of the difference in the mass and energy balance
+distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these processes are shown
+in Fig. \ref{fig:dis_processes}. 
 
 The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
 latent) on the freezing and melting energies is determined from their respective energy turnover. The energy
@@ -589,13 +586,13 @@ compared to the unscheduled fountain. The MIV fountain achieved a 1.5 fold incre
 2 fold increase in the water-use efficiency. The MWE fountain had a water-use efficiency of 73 \% but its
 maximum volume was lower than the unscheduled fountain. 
 
-The discharge duration and the max discharge rate of these three fountains were responsible for these different
-results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice
-that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
+The discharge duration and the max discharge rate of the three IN21 fountains were responsible for these
+different results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than
+twice that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
 interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration
 of the unscheduled fountain was much lower resulting in lower ice volumes. The MWE fountain underestimated the
-freezing rate during the construction period and therefore produced much lower ice volumes compared to the
-MIV fountain.
+freezing rate during the construction period and therefore produced much lower ice volumes compared to the MIV
+fountain.
 
 \subsection{Challenges of scheduling fountains}
 
@@ -603,9 +600,9 @@ MIV fountain.
 
 The value of minimum discharge rate determines the duration of the favourable weather windows and the risk of
 fountain freezing events. Therefore, its accurate quatification is critical. The risk of a fountain freezing
-event is inversely proporational to the spray radius the discharge rate produces. Therefore, minimum discharge
-rate can be determined based on the minimum fountain spray radius desired. In the case of the CH22 experiment,
-the minimum discharge rate of 2 $l/min$ corresponded to a spray radius of around 1 $m$.
+event is inversely proportional to the spray radius . Therefore, minimum discharge rate can be determined based
+on the minimum fountain spray radius desired. In the case of the CH22 experiment, the minimum discharge rate of
+2 $l/min$ corresponded to a spray radius of around 1 $m$.
 
 \subsubsection{Determination of fountain spray radius}
 
@@ -638,7 +635,7 @@ production.
 Fountain design is an important area where improvement is necessary since it can be used to increase AIR ice
 volumes. If the scheduled fountain of the CH22 experiment was replaced with a fountain with a lower pressure
 loss but with the same aperture diameter, the automated AIR would have produced more meltwater. Future research
-must be devoted to engineer such fountains that create larger AIRs with user-desired shapes.
+must be devoted to engineer such fountains that create larger AIRs effortlessly and efficiently.
 
 \appendix
 
