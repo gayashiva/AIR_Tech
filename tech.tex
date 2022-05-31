@@ -265,12 +265,13 @@ respectively (see Table \ref{tab:uav}).
 
 \section{Methods}
 
-\subsection{Automation system}
+\subsection{Determination of recommended discharge rate}
 
-Any construction location can either be constrained by the available water supply or the duration of favourable
-weather windows for fountain operation. If the respective location has limited water supply then the fountain
-scheduling strategy should be optimised for water-use efficiency . But if the location is limited by the time
-period when the fountain can function then the scheduling strategy should be optimised for ice volumes.
+Recommended discharge rate of the automation system depend upon whether the construction location is 
+constrained by the available water supply or the duration of favourable weather windows for fountain operation.
+If the respective location has limited water supply then the fountain scheduling strategy should be optimised
+for water-use efficiency . But if the location is limited by the time period when the fountain can function then
+the scheduling strategy should be optimised for ice volumes.
 
 Accordingly, we introduce two kinds of model forcing assumptions corresponding to the ice volume and water-use
 efficiency objective for the following three model variables: (a) slope , (b) albedo and (c) cloudiness.   The
@@ -280,7 +281,7 @@ impact. Therefore, increase of slope and cloudiness variable increases melting e
 variable increases freezing energy. Assumptions used for the ice volume and water-use efficiency objectives
 overestimate and underestimate the freezing rate of the AIR respectively. Correspondingly, we associate the
 upper and lower bounds of these variables as shown in Table \ref{tab:assumptions}. These two kinds of models
-will be referred to as model optimised for ice volume (MIV) and model optimised for water-use efficiency (MWE)
+will be referred to as ice volume optimised model  (IVOM) and water-use efficiency optimised model (WEOM)
 respectively. 
 
 \begin{table}[]
@@ -289,7 +290,7 @@ respectively.
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
-\textbf{Estimation of} & \textbf{Symbol} & \textbf{MIV} & \textbf{MWE} & \\ \midrule
+\textbf{Estimation of} & \textbf{Symbol} & \textbf{IVOM} & \textbf{WEOM} & \\ \midrule
 \multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
@@ -310,7 +311,7 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat flux;
 $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the AIR
-surface. The derivation of these individual terms for the MIV and MWE model versions are discussed in the
+surface. The derivation of these individual terms for the IVOM and WEOM model versions are discussed in the
 Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
@@ -343,7 +344,7 @@ The model parameters were calibrated to the median values of the ranges presente
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between volume estimates and measurements. 
 
-The performance of the MIV and MWE versions of the physical model was assessed by comparing correlation of its
+The performance of the IVOM and WEOM versions of the physical model was assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Fountain characteristics}
@@ -446,10 +447,10 @@ study period.}
 
 \subsection{Scheduled discharge rate simulations}
 
-We found that the MWE and MIV model versions estimated the freezing rate of the unscheduled fountain with a
-correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The MIV scheduled
-fountain overestimated the freezing rate 44 \% of the construction duration whereas the MWE scheduled fountain
-underestimated the freezing rate 67 \% of the construction duration. Therefore, the MIV and MWE model forcings
+We found that the WEOM and IVOM model versions estimated the freezing rate of the unscheduled fountain with a
+correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The IVOM scheduled
+fountain overestimated the freezing rate 44 \% of the construction duration whereas the WEOM scheduled fountain
+underestimated the freezing rate 67 \% of the construction duration. Therefore, the IVOM and WEOM model forcings
 were successful in prioritizing the maximum ice volume and water use efficiency metrics respectively.
 
 \subsection{Model validation}
@@ -541,7 +542,7 @@ increase in its fountain discharge heat flux.
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal2.png}
 
-\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the MIV
+\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the IVOM
 model. }
 
 \label{fig:simvsreal}
@@ -566,31 +567,29 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \label{fig:wue}
 \end{figure*}
 
-% \subsubsection{Higher water-use efficiency and maximum volume}
-
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
-increases more than two fold when the MIV or MWE fountain is used in both the locations.  
+increases more than two fold when the IVOM or WEOM fountain is used in both the locations.  
 
-There is also a considerable difference between the outputs of MWE and MIV fountains for each AIR. For CH21 AIR,
-MWE fountain does not yield any ice formation whereas MIV fountain succeeds in increasing the water-use
-efficiency three fold. For CH22 AIR, both experimental and simulated values of MIV fountains yield an increase
-in water-use efficiency from 4 \% to around 31 \%. The MWE fountain succeeded in increasing the water-use
-efficiency up to 2 times higher than the MIV fountain.
+There is also a considerable difference between the outputs of WEOM and IVOM fountains for each AIR. For CH21 AIR,
+WEOM fountain does not yield any ice formation whereas IVOM fountain succeeds in increasing the water-use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of IVOM fountains yield an increase
+in water-use efficiency from 4 \% to around 31 \%. The WEOM fountain succeeded in increasing the water-use
+efficiency up to 2 times higher than the IVOM fountain.
 
 For the Swiss location, scheduled fountains yield better water-use efficiency but do not alter the maximum
 volume obtained significantly. 
 
 For the Indian location, the two kinds of scheduled fountains yield significantly different results when
-compared to the unscheduled fountain. The MIV fountain achieved a 1.5 fold increase in the maximum volume and a
-2 fold increase in the water-use efficiency. The MWE fountain had a water-use efficiency of 73 \% but its
+compared to the unscheduled fountain. The IVOM fountain achieved a 1.5 fold increase in the maximum volume and a
+2 fold increase in the water-use efficiency. The WEOM fountain had a water-use efficiency of 73 \% but its
 maximum volume was lower than the unscheduled fountain. 
 
 The discharge duration and the max discharge rate of the three IN21 fountains were responsible for these
 different results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than
 twice that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
 interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration
-of the unscheduled fountain was much lower resulting in lower ice volumes. The MWE fountain underestimated the
-freezing rate during the construction period and therefore produced much lower ice volumes compared to the MIV
+of the unscheduled fountain was much lower resulting in lower ice volumes. The WEOM fountain underestimated the
+freezing rate during the construction period and therefore produced much lower ice volumes compared to the IVOM
 fountain.
 
 \subsection{Challenges of scheduling fountains}
