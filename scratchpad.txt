@@ -1,4 +1,7 @@
 
+Traditional AIR construction often involves regular increase in fountain height in steps of 1 $m$. These events
+can trigger fountain freezing events by reducing the pipeline discharge to zero.
+
 Fig. \ref{fig:radf} compares the temporal variation of the estimated spray radius with the measured spray radius
 using Eqn. \ref{eqn:radf}. For the unscheduled fountain, estimated spray radius only assumes two values
 throughout the study period. All the measured spray radius values lie between these two spray radius states of
