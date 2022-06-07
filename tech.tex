@@ -117,12 +117,12 @@ underwatering and overwatering to attain higher ice volumes and higher water use
 However, manually adjusting the fountain discharge rate is not practical due to two reasons. Firstly, this would
 involve constant adjustments of discharge rates in response to the significant diurnal and seasonal variations
 of the freezing rates. Secondly, frequent pipeline water drainage is required to avoid water losses. Therefore,
-operation of weather-sensitive fountains via automation systems is preferred to reduce the maintenance long-term costs.
+operation of weather-sensitive fountains via automation systems is preferred to reduce the long-term maintenance
+costs.
 
 The present study was performed to compare two AIRs produced using different fountain scheduling strategies but
-exposed to identical meteorological conditions. The specific objectives of this study is to include the water-use
-efficiency and maximum ice volume comparison of different fountain scheduling strategies, presentation of the
-automation system, and examples of its application to the computation of fountain scheduling strategies.
+exposed to identical meteorological conditions. The specific objectives of this study is to compare the
+water-use efficiency and maximum ice volume comparison of different fountain scheduling strategies.
 
 \section{Study sites and data}
 
@@ -142,7 +142,7 @@ the winters of 2021-22 using a traditional and an automated construction strateg
 
 \begin{figure}[t]
 \includegraphics[width=12cm]{Figures/AIR_fountains.jpg}
-\caption{Automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
+\caption{Unscheduled and scheduled fountains used for construction of automated and traditional AIRs at Guttannen on February 6, 2022. Picture credits: Daniel Bürki}
 \label{fig:2AIR}
 \end{figure}
 
@@ -407,8 +407,7 @@ pressure loss occurring due to the fountain nozzle to be equivalent to 4.3 meter
 The pressure loss of unscheduled fountain was determined by assuming a linear relationship of pressure loss with
 aperture diameter. We use two observations to determine this linear relationship, namely, that the pressure loss
 of the fountain was zero with a diameter of 19 $mm$ (fountain removal event) and that the scheduled fountain had
-a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$. We estimate that for a constant height the pressure
-decreases by 18 $mm$ for every 1 $mm$ increase in aperture diameter (see Fig. \ref{fig:fountains} (a)).
+a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$ (see Fig. \ref{fig:fountains} (a)).
 
 The fountain freezing event observation was used to determine the unscheduled fountain nozzle's aperture
 diameter. The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge
@@ -468,62 +467,9 @@ unscheduled and scheduled fountains was around an order of magnitude.
 During fountain spray, the AIR surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the
 fountain water droplets. These two processes are the cause of the difference in the mass and energy balance
 distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these processes are shown
-in Fig. \ref{fig:dis_processes}. 
+in Fig. \ref{fig:dis_processes}. Further information regarding how these two processes affected the mass and
+energy balance of the respective AIR is provided in Appendix \ref{sec:MBEB} . 
 
-The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
-latent) on the freezing and melting energies is determined from their respective energy turnover. The energy
-turnover is calculated as the sum of energy fluxes in absolute values (see Table \ref{tab:mb}). 
-
-There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
-(a). Even though the unscheduled fountain was active for a much longer duration, the frequent snowfall events
-counteracted the albedo feedback of its fountain discharge. However, the albedo of the automated AIR was
-significantly impacted by late fountain spray events particularly in the month of March and April as shown in
-Fig. \ref{fig:dis_processes}.
-
-Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
-discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
-increase in its fountain discharge heat flux.
-
-
-\begin{table}
-	\centering
-	\caption{Summary of the mass balance, energy balance, fountain and AIR characteristics estimated at the end of the respective
-  simulation duration for the automated and the traditional AIRs}
-	\label{tab:mb}
-	\begin{tabular}{@{}|llllll|@{}}
-		\toprule
-		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
-		\textbf{Units}                                                                                                       \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{8.2e5}   & \num{1.4e5}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{9.4e2}   & \num{1.2e3}     & $kg$  \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{2.9e4} & \num{4.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.3e4} & \num{1.3e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{8.0e5} & \num{1.1e5}     & $kg$  \\ \midrule
-		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Flux}}}
-
-                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $35$  & $34$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
-		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $0$  & $0$     & \% \\
-		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
-		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Fountain}}}
-
-                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
-		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 7             & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.7           & $m$ \\
-		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & 2           & N.A.          & $l/min$ \\\midrule
-		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
-
-		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 4             & 31            & \% \\\midrule
-	\end{tabular}
-\end{table}
 
 
 \section{Discussion}
@@ -606,14 +552,14 @@ using data collected in Guttannen, Switzerland and Gangles, India.
 
 The main purpose of this study was to quantify the influence of different fountain designs and weather-sensitive
 scheduling strategies on the water use efficiency and volumes of AIRs exposed to identical weather conditions.
-We found that overwatering not just increased the fountain wastewater production but also enhanced the melting
-rate of AIRs, mainly due to its surface albedo and fountain heat flux feedbacks. Furthermore, the freezing rate
-of the scheduled fountain was also enhanced by its lower aperture diameter, which contributed to its higher
-spray radius. As a consequence, the automated AIR was able to reduce its water consumption by 87 \% and increase
-its maximum volume by 34\% compared to the traditional AIR.
+We found that overwatering by unscheduled fountains not just increased the fountain wastewater production but
+also enhanced the melting rate of AIRs, mainly due to its surface albedo and fountain heat flux feedbacks.
+Scheduled fountains, in contrast, consumed only 13 \% of the unscheduled fountain's water supply.  Furthermore,
+the lower aperture diameter of the scheduled fountain enhanced the surface freezing rate. As a consequence, the
+automated AIR was able to increase its maximum volume by 34\% compared to the traditional AIR.
 
 Two different model forcings sensitive to the limited weather windows or water supply of a new location were
-used to produce two types of recommended discharge rates favouring higher volumes and better water use
+used to produce two types of weather-sensitive discharge rates favouring higher volumes and better water use
 efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing rate
 variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains
 show that up to a two fold increase in water use efficiency is possible without compromising on meltwater
@@ -825,6 +771,65 @@ may not favor the corresponding objectives for certain sites.
     Albedo Decay Rate                   & $\tau$                & $[10,22]$           & $days$ &
     \citet{schmidtImportanceAccurateGlacier2017};      \\
     & &    &  & \citet{oerlemansYearRecordGlobal1998}      \\\midrule
+	\end{tabular}
+\end{table}
+\clearpage
+
+\section{Comparison of AIR construction strategies} \label{sec:MBEB}
+
+The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
+latent) on the freezing and melting energies is determined from their respective energy turnover. The energy
+turnover is calculated as the sum of energy fluxes in absolute values (see Table \ref{tab:mb}). 
+
+There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
+(a). Even though the unscheduled fountain was active for a much longer duration, the frequent snowfall events
+counteracted the albedo feedback of its fountain discharge. However, the albedo of the automated AIR was
+significantly impacted by late fountain spray events particularly in the month of March and April as shown in
+Fig. \ref{fig:dis_processes}.
+
+Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
+discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
+increase in its fountain discharge heat flux.
+
+
+\appendixtables   %% needs to be added in front of appendix tables
+\begin{table}
+	\centering
+	\caption{Summary of the mass balance, energy balance, fountain and AIR characteristics estimated at the end of the respective
+  simulation duration for the automated and the traditional AIRs}
+	\label{tab:mb}
+	\begin{tabular}{@{}|llllll|@{}}
+		\toprule
+		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
+		\textbf{Units}                                                                                                       \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
+		                       & Fountain discharge              & $M_F$           & \num{8.2e5}   & \num{1.4e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{9.4e2}   & \num{1.2e3}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
+		                       & Meltwater                       & $M_{water}$     & \num{2.9e4} & \num{4.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.3e4} & \num{1.3e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{8.0e5} & \num{1.1e5}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{6}{*}{\rotatebox[origin=c]{90}{Energy Flux}}}
+
+                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $35$  & $34$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
+		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $0$  & $0$     & \% \\
+		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
+		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Fountain}}}
+
+                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
+		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 7             & $mm$ \\
+		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.7           & $m$ \\
+		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & 2           & N.A.          & $l/min$ \\\midrule
+		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
+
+		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 4             & 31            & \% \\\midrule
 	\end{tabular}
 \end{table}
 \clearpage

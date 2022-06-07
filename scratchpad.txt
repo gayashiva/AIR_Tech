@@ -595,12 +595,14 @@ increased water needs. However, their water use efficiency is very poor.
 %\usepackage{rotating}
 
 
-%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
-%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
-%% They will be correctly named automatically.
+%% Regarding figures and tables in appendices, the following two options are possible depending on your general
+handling of figures and tables in the manuscript environment: %% Option 1: If you sorted all figures and tables
+into the sections of the text, please also sort the appendix figures and appendix tables into the respective
+appendix sections. %% They will be correctly named automatically.
 
-%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
-%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
+%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after
+the normal tables and figures. %% To rename them correctly to A1, A2, etc., please add the following commands in
+front of them:
 
 \appendixfigures  %% needs to be added in front of appendix figures
 
