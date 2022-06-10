@@ -1,4 +1,14 @@
 
+The IVOM fountain achieved a 1.5 fold increase in the maximum volume and a
+2 fold increase in the water-use efficiency. The WEOM fountain had a water-use efficiency of 73 \% but its
+maximum volume was lower than the unscheduled fountain.
+
+There is also a considerable difference between the outputs of WEOM and IVOM fountains for each AIR. For CH21 AIR,
+WEOM fountain does not yield any ice formation whereas IVOM fountain succeeds in increasing the water-use
+efficiency three fold. For CH22 AIR, both experimental and simulated values of IVOM fountains yield an increase
+in water-use efficiency from 4 \% to around 31 \%. The WEOM fountain succeeded in increasing the water-use
+efficiency up to 2 times higher than the IVOM fountain.
+
 Traditional AIR construction often involves regular increase in fountain height in steps of 1 $m$. These events
 can trigger fountain freezing events by reducing the pipeline discharge to zero.
 

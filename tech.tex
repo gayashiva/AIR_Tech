@@ -129,7 +129,7 @@ water-use efficiency and maximum ice volume comparison of different fountain sch
 In this study, we use some datasets presented in our previous work
 \citep{balasubramanianInfluenceMeteorologicalConditions2022} along with new datasets. These old datasets record
 the meteorological conditions and fountain characteristics of AIRs built in Gangles, India (IN21) and Guttannen,
-Switzerland (CH21) during the winter of 2020-21. In this section, we focus on describing the AIR datasets
+Switzerland (CH21) during the winter of 2020-21. In this section, we focus on describing the new AIR datasets
 collected in Guttannen, Switzerland during the winter of 2021-22 (CH22).
 
 The Guttannen site (46.66 $\degree$N, 8.29 $\degree$E) is situated in the Berne region, Switzerland and has an
@@ -146,9 +146,9 @@ the winters of 2021-22 using a traditional and an automated construction strateg
 \label{fig:2AIR}
 \end{figure}
 
-The automated and the traditional AIRs were constructed adjacent to each other as shown in Fig. \ref{fig:2AIR}.
-This ensured both AIRs shared the same water source and identical weather conditions. In addition, a webcam
-guaranteed a continuous survey of the automated AIR.   
+The automated and the traditional AIRs were constructed adjacent to each other but with different fountain
+characteristics as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source and
+identical weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, the fountain was operated manually whereas in the automated strategy a programmed
 automation system controlled the fountain discharge rate during the whole study period using real time weather
@@ -165,9 +165,9 @@ and ended on 12th April. These two dates are denoted as start and expiry dates h
 
 Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
 required to calculate the surface energy balance of an AIR.  The weather data source was an automatic weather
-station (AWS) located around 20 m away as shown in Fig. \ref{fig:2AIR}. Less than 0.4 \% of the data was found
-to be missing and the data gaps were filled by linear interpolation. Hourly ground temperature measurements were
-also recorded by the AWS to approximate the fountain's water temperature. 
+station (AWS) located around 20 m away. Less than 0.4 \% of the data was found to be missing and the data gaps
+were filled by linear interpolation. Hourly ground temperature measurements were also recorded by the AWS to
+approximate the fountain's water temperature. 
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -274,15 +274,13 @@ for water-use efficiency . But if the location is limited by the time period whe
 the scheduling strategy should be optimised for ice volumes.
 
 Accordingly, we introduce two kinds of model forcing assumptions corresponding to the ice volume and water-use
-efficiency objective for the following three model variables: (a) slope , (b) albedo and (c) cloudiness.   The
-slope variable increases the shortwave radiation and sensible heat impact. The albedo variable decreases the
-shortwave radiation impact. The cloudiness variable increases both the shortwave and the longwave radiation
-impact. Therefore, increase of slope and cloudiness variable increases melting energy and increase of albedo
-variable increases freezing energy. Assumptions used for the ice volume and water-use efficiency objectives
-overestimate and underestimate the freezing rate of the AIR respectively. Correspondingly, we associate the
-upper and lower bounds of these variables as shown in Table \ref{tab:assumptions}. These two kinds of models
-will be referred to as ice volume optimised model (IVOM) and water-use efficiency optimised model (WEOM)
-respectively. 
+efficiency objective for the following three model variables: (a) slope , (b) albedo and (c) cloudiness. These
+two kinds of models will be referred to as ice volume optimised model (IVOM) and water-use efficiency optimised
+model (WEOM) respectively. The slope variable increases the shortwave radiation and sensible heat impact. The
+albedo variable decreases the shortwave radiation impact. The cloudiness variable increases both the shortwave
+and the longwave radiation impact. We associate the upper and lower bounds of these variables with the IVOM and
+WEOM versions depending on whether they overestimate and underestimate the freezing rate of the AIR as shown in
+Table \ref{tab:assumptions}. 
 
 \begin{table}[]
 \centering
@@ -337,9 +335,10 @@ discharge rate estimates with the validated freezing rate of calibrated model.
 \subsection{Fountain characteristics}
 
 The aperture configuration of the scheduled and unscheduled fountains were far too complex to enable a direct
-comparison (see Fig. ). To circumvent this, both the fountain designs were approximated to a simple fountain
-design with just one aperture (see Fig. ). Then the corresponding aperture diameter ($dia$) of this simple
-fountain was chosen so that it validates the observations recorded for the different fountains.  
+comparison (see Fig. \ref{fig:2AIR} ). To circumvent this, both the fountain designs were approximated to a
+simple fountain design with just one aperture (see Fig. \ref{fig:fchar}). Then the corresponding aperture
+diameter ($dia$) of this simple fountain was chosen so that it validates the observations recorded for the
+different fountains.  
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/Fountain characteristics.jpeg}
@@ -402,6 +401,19 @@ increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$. Using the fountain a
 the pipeline diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:bernoulli} we estimate the
 pressure loss occurring due to the fountain nozzle to be equivalent to 4.3 meters of water head.
 
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/fountains.png}
+
+\caption{ (a) Pressure loss as a linear function of aperture diameter for a constant fountain height and
+  discharge rate. The corresponding values for the scheduled and unscheduled fountains are highlighted as red
+  and blue dots respectively. (b) Discharge as a function of height for the scheduled (red curve) and the
+  unscheduled (blue curve) fountain for a constant aperture diameter and pressure loss. (c) Discharge measured
+  for the scheduled fountain (red curve) and estimated for the unscheduled fountain (blue curve) during the
+study period.}
+
+\label{fig:fountains}
+\end{figure*}
+
 \subsection{Unscheduled discharge rate estimation}
 
 The pressure loss of unscheduled fountain was determined by assuming a linear relationship of pressure loss with
@@ -420,18 +432,6 @@ Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for 
 variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
 February that increased the height from 3.7 to 5.7 m respectively.
 
-\begin{figure*}[t]
-\includegraphics[width=12cm]{Figures/fountains.png}
-
-\caption{ (a) Pressure loss as a linear function of aperture diameter for a constant fountain height and
-  discharge rate. The corresponding values for the scheduled and unscheduled fountains are highlighted as red
-  and blue dots respectively. (b) Discharge as a function of height for the scheduled (red curve) and the
-  unscheduled (blue curve) fountain for a constant aperture diameter and pressure loss. (c) Discharge measured
-  for the scheduled fountain (red curve) and estimated for the unscheduled fountain (blue curve) during the
-study period.}
-
-\label{fig:fountains}
-\end{figure*}
 
 \subsection{Scheduled discharge rate simulations}
 
@@ -440,6 +440,15 @@ correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respect
 fountain overestimated the freezing rate 44 \% of the construction duration whereas the WEOM scheduled fountain
 underestimated the freezing rate 67 \% of the construction duration. Therefore, the IVOM and WEOM model forcings
 were successful in prioritizing the maximum ice volume and water use efficiency metrics respectively.
+
+\begin{figure*}[t]
+\includegraphics[width=8cm]{Figures/simvsreal2.png}
+
+\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the IVOM
+model. }
+
+\label{fig:simvsreal}
+\end{figure*}
 
 \subsection{Model validation}
 
@@ -451,14 +460,15 @@ automated and the traditional AIR respectively. The estimated and measured AIR v
 \begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
 scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
 
-\subsection{Comparison of AIR construction strategies}
-
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/dis_processes.png}
 \caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
   AIRS due to the differences in their discharge rates.}
 \label{fig:dis_processes}
 \end{figure*}
+
+\subsection{Comparison of AIR construction strategies}
+
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR. The difference between the fountain discharge input and fountain wastewater output of the
@@ -474,19 +484,11 @@ energy balance of the respective AIR is provided in Appendix \ref{sec:MBEB} .
 
 \section{Discussion}
 
-\begin{figure*}[t]
-\includegraphics[width=8cm]{Figures/simvsreal2.png}
-
-\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the IVOM
-model. }
-
-\label{fig:simvsreal}
-\end{figure*}
 
 \subsection{Benefits of scheduling fountains}
 
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
-locations across two winters are presented in Fig. \ref{fig:wue}. Four experimental values (highlighted by
+locations across two winters are presented in Fig. \ref{fig:wue} (a). Four experimental values (highlighted by
 circles) are shown together with five simulated values (highlighted by squares).  The experimental values were
 taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022} and
 the CH22 AIR presented in this study. 
@@ -505,27 +507,17 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
 increases more than two fold when the IVOM or WEOM fountain is used in both the locations.  
 
-There is also a considerable difference between the outputs of WEOM and IVOM fountains for each AIR. For CH21 AIR,
-WEOM fountain does not yield any ice formation whereas IVOM fountain succeeds in increasing the water-use
-efficiency three fold. For CH22 AIR, both experimental and simulated values of IVOM fountains yield an increase
-in water-use efficiency from 4 \% to around 31 \%. The WEOM fountain succeeded in increasing the water-use
-efficiency up to 2 times higher than the IVOM fountain.
-
-For the Swiss location, scheduled fountains yield better water-use efficiency but do not alter the maximum
-volume obtained significantly. 
-
-For the Indian location, the two kinds of scheduled fountains yield significantly different results when
-compared to the unscheduled fountain. The IVOM fountain achieved a 1.5 fold increase in the maximum volume and a
-2 fold increase in the water-use efficiency. The WEOM fountain had a water-use efficiency of 73 \% but its
-maximum volume was lower than the unscheduled fountain. 
-
-The discharge duration and the max discharge rate of the three IN21 fountains were responsible for these
-different results (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than
-twice that of scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent
-interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration
-of the unscheduled fountain was much lower resulting in lower ice volumes. The WEOM fountain underestimated the
+For the Indian location, the three kinds of fountains yield significantly different results.  The discharge
+duration and the max discharge rate of the three IN21 fountains were responsible for these different results
+(see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice that of
+scheduled fountains resulting in a high water loss.  Fountain freezing events caused frequent interruptions in
+the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). Therefore, the discharge duration of the
+unscheduled fountain was much lower resulting in lower ice volumes. The WEOM fountain underestimated the
 freezing rate during the construction period and therefore produced much lower ice volumes compared to the IVOM
 fountain.
+
+For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
+volume obtained significantly. 
 
 \subsection{Challenges of scheduling fountains}
 
@@ -555,20 +547,22 @@ scheduling strategies on the water use efficiency and volumes of AIRs exposed to
 We found that overwatering by unscheduled fountains not just increased the fountain wastewater production but
 also enhanced the melting rate of AIRs, mainly due to its surface albedo and fountain heat flux feedbacks.
 Scheduled fountains, in contrast, consumed only 13 \% of the unscheduled fountain's water supply.  Furthermore,
-the lower aperture diameter of the scheduled fountain enhanced the surface freezing rate. As a consequence, the
-automated AIR was able to increase its maximum volume by 34\% compared to the traditional AIR.
+the lower aperture diameter of the scheduled fountain enhanced the surface freezing rate due to its higher spray
+radius. As a consequence, the automated AIR was able to increase its maximum volume by 34\% compared to the
+traditional AIR.
 
-Two different model forcings sensitive to the limited weather windows or water supply of a new location were
-used to produce two types of weather-sensitive discharge rates favouring higher volumes and better water use
-efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing rate
-variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled fountains
-show that up to a two fold increase in water use efficiency is possible without compromising on meltwater
-production.
+Two different model forcings sensitive to the construction location's limited weather windows or water supply
+were used to recommend two types of weather-sensitive discharge rates favouring higher volumes and better water
+use efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing
+rate variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled
+fountains show that up to a two fold increase in water use efficiency is possible without compromising on
+meltwater production.
 
 Fountain design is an important area where improvement is necessary since it can be used to increase AIR ice
 volumes. If the scheduled fountain of the CH22 experiment was replaced with a fountain with a lower pressure
 loss but with the same aperture diameter, the automated AIR would have produced more meltwater. Future research
-must be devoted to engineer such fountains that create larger AIRs effortlessly and efficiently.
+must be devoted to engineer such fountain automation systems that create larger AIRs effortlessly and
+efficiently.
 
 \appendix
 
