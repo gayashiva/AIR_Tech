@@ -1,4 +1,12 @@
 
+Fountain design is an important area where improvement is necessary since it can be used to increase AIR ice
+volumes.  Future research must be devoted to engineer such fountain automation systems that create larger AIRs
+effortlessly and efficiently.
+
+The fountain nozzle has three characteristics, namely : the aperture diameter ($dia$), the spray radius ($r$)
+and pressure loss ($P$) .The fountain nozzle is assumed to have only one aperture with diameter $dia$ from where
+water is sprayed. Spray radius denotes the observed ice radius formed from the fountain water droplets.
+Pressure loss denotes the loss of water head caused due to the fountain nozzle.
 
 If the scheduled fountain of the CH22 experiment was replaced with a fountain with a lower pressure
 loss but with the same aperture diameter, the automated AIR would have produced more meltwater.
