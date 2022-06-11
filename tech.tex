@@ -309,8 +309,42 @@ about how the automation system functions can be found in Appendix \ref{sec:auto
 
 
 \subsection{Model updates}
+
 The model was made more sensitive to fountain discharge rate feedback for comparing the volume evolution of the
-automated and traditional AIRs. These updates are explained in detail in Appendix \ref{sec:Mod_updates}.
+automated and traditional AIRs. 
+
+In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
+water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
+approximation. This is because the fountain water temperature and source water temperature differ due to the
+temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
+hourly ground temperature measurements to approximate water temperature for both the AIRs.
+
+In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
+discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
+the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
+Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
+factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
+
+Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
+assume AIR density ($\rho_{cone}$) to be equal to ice density. We instead parameterised AIR density $\rho_{cone}$ as follows:
+
+\begin{equation}
+  \rho_{cone} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
+\end{equation}
+
+where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
+$M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917
+$kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
+\cite{cuffeyPhysicsGlaciers2010} .
+
+Rain events were not considered in the previous version of the model but they occur in our experiment. The
+influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
+events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
+Accordingly, the heat flux generated due to a rain event was equal to:
+
+\begin{equation}
+  q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
+\end{equation}
 
 \subsection{Calibration and Validation}
 
@@ -327,26 +361,27 @@ discharge rate estimates with the validated freezing rate of calibrated model.
 
 \subsection{Scheduled discharge rate simulations}
 
-We found that the water-sensitive and weather-sensitive fountains estimated the freezing rate of the unscheduled
-fountain with a correlation around 0.6 and a RMSE less than 0.6 $l/min$ and 1.6  $l/min$ respectively. The
-weather-sensitive fountain overestimated the freezing rate 44 \% of the construction duration whereas the
-water-sensitive fountain underestimated the freezing rate 67 \% of the construction duration. Therefore, the
-IVOM and WEOM model forcings were successful in prioritizing the maximum ice volume and water use efficiency
-metrics respectively.
+The water-sensitive and weather-sensitive fountains estimated the freezing rate of the unscheduled fountain with
+a correlation around 0.5 and a RMSE less than 0.7 $l/min$ and 1.7  $l/min$ respectively. The weather-sensitive
+fountain overestimated the freezing rate 74 \% of the construction duration whereas the water-sensitive fountain
+overestimated the freezing rate 60 \% of the construction duration as illustrated by Fig. \ref{fig:simvsreal}.
+Therefore, the IVOM model forcing was successful in prioritizing the maximum ice volume but the WEOM model
+forcing could not optimize for water use efficiency. However, this large overestimation could be due to the
+depression of the unscheduled fountain's freezing rate caused by its excess discharge rate. 
 
 \begin{figure*}[t]
-\includegraphics[width=8cm]{Figures/simvsreal2.png}
+\includegraphics[width=8cm]{Figures/simvsreal.jpg}
 
-\caption{ Comparison of the discharge rate measured by the automation system and the discharge rate simulated by the weather-sensitive
-model. }
+\caption{ Comparison of the freezing rate estimated for the unscheduled fountain and the discharge rate of the
+scheduled fountains. }
 
 \label{fig:simvsreal}
 \end{figure*}
 
 \subsection{Model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 5 $m^3$ with the drone
-volume observations, respectively. This RMSE error is within 20 \% and 11 \% of the maximum volume of the
+The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 7 $m^3$ with the drone
+volume observations, respectively. This RMSE error is within 20 \% and 19 \% of the maximum volume of the
 automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
 \ref{fig:validation}.  
 
@@ -370,15 +405,15 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
 		\textbf{Units}                                                                                                       \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{8.2e5}   & \num{1.4e5}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.1e4}   & \num{1.5e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{9.4e2}   & \num{1.2e3}     & $kg$  \\ \midrule
+		                       & Fountain discharge              & $M_F$           & \num{1.2e6}   & \num{1.4e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.0e4}   & \num{1.5e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.0e2}   & \num{1.2e3}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{2.9e4} & \num{4.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{1.3e4} & \num{1.3e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.6e3} & \num{3.0e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{8.0e5} & \num{1.1e5}     & $kg$  \\ \midrule
-    croncli
+		                       & Meltwater                       & $M_{water}$     & \num{3.0e4} & \num{4.2e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{7.6e3} & \num{1.3e4}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.3e3} & \num{3.0e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{1.19e6} & \num{1.1e5}     & $kg$  \\ \midrule
+		\multicolumn{1}{|l|}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Energy Flux}}}
                            & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
 		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $35$  & $34$ & \% \\
 		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
@@ -386,16 +421,10 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
 		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $0$  & $0$     & \% \\
 		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
-		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Fountain}}}
-
-                           & Spray Radius                    &  $r$            & 4.8           & 4.1           & $m$ \\
-		\multicolumn{1}{|l|}{} & Aperture Diameter               &  $dia$          & 5             & 7             & $mm$ \\
-		\multicolumn{1}{|l|}{} & Pressure Loss                   &  $P$            & 4.3           & 3.7           & $m$ \\
-		\multicolumn{1}{|l|}{} & Minimum discharge rate          &  $Q_{min}$      & 2           & N.A.          & $l/min$ \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum AIR Volume              &                 & 47            & 63            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 4             & 31            & \% \\\midrule
+		                       & Maximum AIR Volume              &                 & 36            & 63            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 3             & 31            & \% \\\midrule
 	\end{tabular}
 \end{table}
 
@@ -533,41 +562,6 @@ events, namely:
 \item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
 
 \end{itemize}
-
-\section{Model updates} \label{sec:Mod_updates}
-
-In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
-water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
-approximation. This is because the fountain water temperature and source water temperature differ due to the
-temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
-hourly ground temperature measurements to approximate water temperature for both the AIRs.
-
-In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
-discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
-the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
-Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
-factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
-
-Additionally, both the AIRs experienced many precipitation events. Therefore, it was no longer accurate to
-assume AIR density ($\rho_{cone}$) to be equal to ice density. We instead parameterised AIR density $\rho_{cone}$ as follows:
-
-\begin{equation}
-  \rho_{cone} = \frac{M_{F} + M_{dep} + M_{ppt}}{(M_{F} + M_{dep})/\rho_{ice} + M_{ppt}/\rho_{snow}}
-\end{equation}
-
-where $M_F$ is the cumulative mass of the fountain discharge; $M_{ppt}$ is the cumulative precipitation;
-$M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_{ice}$ is the ice density (917
-$kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
-\cite{cuffeyPhysicsGlaciers2010} .
-
-Rain events were not considered in the previous version of the model but they occur in our experiment. The
-influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
-events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
-Accordingly, the heat flux generated due to a rain event was equal to:
-
-\begin{equation}
-  q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
-\end{equation}
 
 \section{Model forcing based on water-use efficiency and maximum volume objectives} \label{sec:SEB}
 
