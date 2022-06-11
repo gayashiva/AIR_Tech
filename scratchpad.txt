@@ -1,4 +1,106 @@
 
+
+If the scheduled fountain of the CH22 experiment was replaced with a fountain with a lower pressure
+loss but with the same aperture diameter, the automated AIR would have produced more meltwater.
+
+\subsection{Estimation of fountain characteristics}
+
+The influence of the fountain height increase event on the maximum discharge rate was used to determine the
+fountain nozzle's aperture diameter. The maximum discharge rate of the scheduled fountain reduced from $Q_i$ =
+13 $l/min$ to $Q_f$ = 11 $l/min$ when the fountain height was raised from  $h_i$ = 3 $m$ to $h_f$ = 4 $m$.
+Inputting the corresponding values in Eqn. \ref{eqn:bernoulli}, we get the estimated fountain aperture diameter
+($dia$) to be around 5 $mm$. 
+
+The change in discharge rate observed upon removal of the fountain nozzle was used to determine the fountain
+pressure loss. When the fountain nozzle was removed, the maximum discharge rate of the fountain was observed to
+increase from $Q_{i}$ = 11 $l/min$ to $Q_{f}$ = 27 $l/min$. Using the fountain aperture diameter $d_i = 5 mm$,
+the pipeline diameter $d_f = 19 mm$, $P_{f} = 0$ and $h_{i} = h_{f}$ in Eqn. \ref{eqn:bernoulli} we estimate the
+pressure loss occurring due to the fountain nozzle to be equivalent to 4.3 meters of water head.
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/fountains.png}
+
+\caption{ (a) Pressure loss as a linear function of aperture diameter for a constant fountain height and
+  discharge rate. The corresponding values for the scheduled and unscheduled fountains are highlighted as red
+  and blue dots respectively. (b) Discharge as a function of height for the scheduled (red curve) and the
+  unscheduled (blue curve) fountain for a constant aperture diameter and pressure loss. (c) Discharge measured
+  for the scheduled fountain (red curve) and estimated for the unscheduled fountain (blue curve) during the
+study period.}
+
+\label{fig:fountains}
+\end{figure*}
+
+\subsection{Unscheduled discharge rate estimation}
+
+The pressure loss of unscheduled fountain was determined by assuming a linear relationship of pressure loss with
+aperture diameter. We use two observations to determine this linear relationship, namely, that the pressure loss
+of the fountain was zero with a diameter of 19 $mm$ (fountain removal event) and that the scheduled fountain had
+a pressure loss of 4.3 $m$ with an aperture diameter 5 $mm$ (see Fig. \ref{fig:fountains} (a)).
+
+The fountain freezing event observation was used to determine the unscheduled fountain nozzle's aperture
+diameter. The unscheduled fountain had a fountain freezing event at height 5.7 $m$. We assume that its discharge
+rate was close to zero during this event.  The aperture diameter with the fountain freezing height closest to
+5.7 $m$ is 7 $mm$ according to Eqn. \ref{eqn:bernoulli} as shown in Fig. \ref{fig:fountains} (b) . The
+corresponding pressure loss of a fountain with 7 $mm$ diameter is 3.7 $m$ as shown in Fig. \ref{fig:fountains}
+(a).
+
+Fig. \ref{fig:fountains} (c) shows the unscheduled discharge rate estimated for the study period. The temporal
+variation in the discharge rate is caused due to the the two height increase events on 23rd Dec and 12th
+February that increased the height from 3.7 to 5.7 m respectively.
+
+\subsection{Fountain characteristics}
+
+The aperture configuration of the scheduled and unscheduled fountains were far too complex to enable a direct
+comparison (see Fig. \ref{fig:2AIR} ). To circumvent this, both the fountain designs were approximated to a
+simple fountain design with just one aperture (see Fig. \ref{fig:fchar}). Then the corresponding aperture
+diameter ($dia$) of this simple fountain was chosen so that it validates the observations recorded for the
+different fountains.  
+
+\begin{figure*}[t]
+\includegraphics[width=12cm]{Figures/Fountain characteristics.jpeg}
+
+\caption{Shape variables and fountain characteristics of the AIR. $r_{cone}$ is the radius, $h_{cone}$ is the
+height and $s_{cone}$ is the slope of the AIR ice cone. $r$ is the spray radius, $dia$ is the aperture diameter
+and $h$ is the fountain height}
+
+\label{fig:fchar}
+\end{figure*}
+
+The fountain's height ($h$), aperture diameter ($dia$) and pressure loss ($P$) were related to its discharge
+rate ($Q$) through the Bernoulli equation :
+
+\begin{equation}
+  \label{eqn:bernoulli}
+  P_{i} + \rho_{water} \cdot g \cdot h_{i} + 1/2 \cdot \rho_{water} \cdot v_{i}^2 = P_{f} + \rho_{water} \cdot g
+  \cdot h_{f} + 1/2 \cdot \rho_{water} \cdot v_{f}^2
+\end{equation}
+
+where $\rho_{water}$ is the density of water and $v$ is the velocity of the fountain water droplets. The
+subscripts $i$ and $f$ refer to the initial and final states of the system. $v$ can be determined from the
+discharge rate $Q$ through the mass conservation equation as 
+
+\begin{equation}
+	\label{eqn:dis}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+Combining the Eqns. \ref{eqn:bernoulli} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change
+from $h_i$ to $h_f$ to be:
+
+\begin{equation}
+  \label{eqn:discharge}
+  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_i-h_f) \cdot (\pi \cdot dia^2/4)^2}
+\end{equation}
+
+Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
+motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following
+equation for the spray radius $r$:
+
+\begin{equation}
+  \label{eqn:radf}
+  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
+\end{equation}
+
 The IVOM fountain achieved a 1.5 fold increase in the maximum volume and a
 2 fold increase in the water-use efficiency. The WEOM fountain had a water-use efficiency of 73 \% but its
 maximum volume was lower than the unscheduled fountain.
