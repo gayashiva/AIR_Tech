@@ -159,11 +159,14 @@ and ended on 12th April. These two dates are denoted as start and expiry dates h
 
 \subsection{Meteorological data}
 
-Air temperature, relative humidity, wind speed, pressure, long-wave, short-wave direct and diffuse radiation are
-required to calculate the surface energy balance of an AIR.  The weather data source was an automatic weather
-station (AWS) located around 20 m away. Less than 0.4 \% of the data was found to be missing and the data gaps
-were filled by linear interpolation. Hourly ground temperature measurements were also recorded by the AWS to
-approximate the fountain's water temperature. 
+Air temperature, relative humidity, wind speed, pressure, long-wave, precipitation, global short-wave radiation
+and cloudiness index are required to calculate the surface energy balance of an AIR. The primary weather data
+source was an automatic weather station (AWS) located around 20 m away. Hourly ground temperature measurements
+were also recorded by the AWS to approximate the fountain's water temperature. Less than 0.4 \% of the data was
+found to be missing and the data gaps were filled by linear interpolation. However, two additional datasets were
+required to obtain all the necessary input variables, namely, cloudiness index and precipitation. These two
+datasets were obtained from ERA5 reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a meteoswiss AWS
+located 184 m away (Station ID: 0-0756-0-GTT) respectively.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -315,9 +318,11 @@ automated and traditional AIRs.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
-approximation. This is because the fountain water temperature and source water temperature differ due to the
-temperature change caused by transit from the source to the  AIR surface. Therefore, we instead use measured
-hourly ground temperature measurements to approximate water temperature for both the AIRs.
+approximation since it doesn't account for two processes , namely, (a) temperature fluctuations during transit
+from the source to the fountain nozzle; (b) temperature fluctuations during the flight time of the water
+droplets after they leave the fountain nozzle. Therefore, we instead use measured hourly ground temperature
+measurements to approximate process (a) and assume water temperature cools down to 0 $\degree\,C$ during subzero
+air temperature conditions to approximate process (b).
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
@@ -349,25 +354,27 @@ Accordingly, the heat flux generated due to a rain event was equal to:
 \subsection{Calibration and Validation}
 
 The model parameters were calibrated to the median values of the ranges presented in Appendix Table
-\ref{tab:parameters}.
+\ref{tab:parameters}. However, the surface layer thickness parameter was calibrated to a value of 9 $cm$ for the
+automated AIR instead of the default value of 5 $cm$. This calibration was necessary to prevent hourly surface
+temperature fluctuations to assume unphysical values above 40 $\degree\,C$.
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between volume estimates and measurements. 
 
 The performance of the IVOM and WEOM versions of the physical model was assessed by comparing correlation of its
-discharge rate estimates with the validated freezing rate of calibrated model.
+discharge rate estimates with the validated freezing rate of the traditional AIR.
 
 \section{Results}
 
 \subsection{Scheduled discharge rate simulations}
 
 The water-sensitive and weather-sensitive fountains estimated the freezing rate of the unscheduled fountain with
-a correlation around 0.5 and a RMSE less than 0.7 $l/min$ and 1.7  $l/min$ respectively. The weather-sensitive
-fountain overestimated the freezing rate 74 \% of the construction duration whereas the water-sensitive fountain
-overestimated the freezing rate 60 \% of the construction duration as illustrated by Fig. \ref{fig:simvsreal}.
-Therefore, the IVOM model forcing was successful in prioritizing the maximum ice volume but the WEOM model
-forcing could not optimize for water use efficiency. However, this large overestimation could be due to the
-depression of the unscheduled fountain's freezing rate caused by its excess discharge rate. 
+a correlation around 0.4 and a RMSE less than 0.8 $l/min$ and 1.8  $l/min$ respectively. The weather-sensitive
+fountain overestimated the freezing rate 93 \% of the construction duration whereas the water-sensitive fountain
+overestimated the freezing rate 70 \% of the unscheduled fountain spray duration as illustrated by Fig.
+\ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in prioritizing the maximum ice volume but
+the WEOM model forcing could not optimize for water use efficiency. However, this large overestimation could be
+due to the depression of the unscheduled fountain's freezing rate caused by its excess discharge rate. 
 
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal.jpg}
@@ -380,8 +387,8 @@ scheduled fountains. }
 
 \subsection{Model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 13 $m^3$ and 7 $m^3$ with the drone
-volume observations, respectively. This RMSE error is within 20 \% and 19 \% of the maximum volume of the
+The volume estimation for the automated and traditional AIR had an RMSE of 8 $m^3$ and 6 $m^3$ with the drone
+volume observations, respectively. This RMSE error is within 13 \% and 11 \% of the maximum volume of the
 automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
 \ref{fig:validation}.  
 
@@ -405,26 +412,26 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 		\textbf{}              & \textbf{Name}                   & \textbf{Symbol} & \textbf{Traditional} & \textbf{Automated} &
 		\textbf{Units}                                                                                                       \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{3}{*}{\rotatebox[origin=c]{90}{Input}}}
-		                       & Fountain discharge              & $M_F$           & \num{1.2e6}   & \num{1.4e5}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{1.0e4}   & \num{1.5e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{8.0e2}   & \num{1.2e3}     & $kg$  \\ \midrule
+		                       & Fountain discharge              & $M_F$           & \num{1.1e6}   & \num{1.5e5}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Snowfall                        & $M_{ppt}$       & \num{9.2e3}   & \num{1.4e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Deposition                      & $M_{dep}$       & \num{4.0e2}   & \num{4.5e2}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{4}{*}{\rotatebox[origin=c]{90}{Output}}}
-		                       & Meltwater                       & $M_{water}$     & \num{3.0e4} & \num{4.2e4}   & $kg$  \\
-		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{7.6e3} & \num{1.3e4}    & $kg$  \\
-		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{2.3e3} & \num{3.0e3}     & $kg$  \\
-		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{1.19e6} & \num{1.1e5}     & $kg$  \\ \midrule
+		                       & Meltwater                       & $M_{water}$     & \num{4.5e4} & \num{5.4e4}   & $kg$  \\
+		\multicolumn{1}{|l|}{} & Ice                             & $M_{ice}$       & \num{7.4e3} & \num{6.1e3}    & $kg$  \\
+		\multicolumn{1}{|l|}{} & Sublimation                     & $M_{sub}$       & \num{3.7e3} & \num{4.5e3}     & $kg$  \\
+		\multicolumn{1}{|l|}{} & Fountain wastewater             & $M_{waste}$     & \num{1.07e6} & \num{1.0e5}     & $kg$  \\ \midrule
 		\multicolumn{1}{|l|}{\multirow{7}{*}{\rotatebox[origin=c]{90}{Energy Flux}}}
-                           & Shortwave radiation             &  $q_{SW}$       & $29$  & $39$ & \% \\
-		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $35$  & $34$ & \% \\
-		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $8$   & $8$ & \% \\
-		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $17$  & $17$ & \% \\
-		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $10$  & $1$     & \% \\
+                           & Shortwave radiation             &  $q_{SW}$       & $14$  & $21$ & \% \\
+		\multicolumn{1}{|l|}{} & Longwave radiation              &  $q_{LW}$       & $25$  & $25$ & \% \\
+		\multicolumn{1}{|l|}{} & Sensible heat                   &  $q_{S}$        & $38$   & $33$ & \% \\
+		\multicolumn{1}{|l|}{} & Latent heat                     &  $q_{L}$        & $19$  & $19$ & \% \\
+		\multicolumn{1}{|l|}{} & Fountain discharge heat         &  $q_{F}$        & $4$  & $0$     & \% \\
 		\multicolumn{1}{|l|}{} & Rain heat                       &  $q_{R}$        & $0$  & $0$     & \% \\
-		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $2$     & \% \\\midrule
+		\multicolumn{1}{|l|}{} & Ground heat                     &  $q_{G}$        & $1$   & $1$     & \% \\\midrule
 		\multicolumn{1}{|l|}{\multirow{2}{*}{\rotatebox[origin=c]{90}{AIR}}}
 
-		                       & Maximum AIR Volume              &                 & 36            & 63            & $m^{3}$ \\
-		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 3             & 31            & \% \\\midrule
+		                       & Maximum AIR Volume              &                 & 53            & 61            & $m^{3}$ \\
+		\multicolumn{1}{|l|}{} & Water Use Efficiency            &                 & 4             & 35            & \% \\\midrule
 	\end{tabular}
 \end{table}
 
@@ -450,8 +457,8 @@ significantly impacted by late fountain spray events particularly in the month o
 Fig. \ref{fig:dis_processes}.
 
 Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
-discharge quantity of the unscheduled fountains and its longer duration were responsible for the 10 fold
-increase in its fountain discharge heat flux.
+discharge quantity of the unscheduled fountains and its longer duration were responsible for the significant
+contribution of fountain discharge heat flux in the overall energy turnover.
 
 \section{Discussion}
 
@@ -506,9 +513,6 @@ is proportional to the square of the spray radius used.  Manual measurements of 
 maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
 scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
 across the boundary of the AIR. 
-
-
-\subsubsection{Fountain droplet size}
 
 \conclusions
 
