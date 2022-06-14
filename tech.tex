@@ -464,6 +464,7 @@ contribution of fountain discharge heat flux in the overall energy turnover.
 
 \section{Discussion}
 
+
 \subsection{Benefits of scheduling fountains}
 
 The difference in water-use efficiency and maximum volume between unscheduled and scheduled fountains in the two
@@ -508,17 +509,44 @@ event is inversely proportional to the spray radius. Therefore, minimum discharg
 on the minimum fountain spray radius desired. In the case of the CH22 experiment, the minimum discharge rate of
 2 $l/min$ corresponded to a spray radius of around 1 $m$.
 
-\subsubsection{Determination of fountain spray radius}
+% \subsubsection{Determination of fountain spray radius}
 
-To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
-is proportional to the square of the spray radius used. However, fountain spray radius can be influenced by both
-the meteorological conditions of the site and the engineering design of the fountain used. The scheduled and the
-unscheduled fountains had completely different engineering designs (see Fig. \ref{fig:2AIR}) but produced AIRs
-with spray radius within a meter of each other. In contrast, the unscheduled fountain of the CH21 experiment had
-a spray radius more than 2 $m$ higher than the CH22 experiment. This indicates that meteorological conditions
-are a major driver of the fountain spray radius. Manual measurements of the fountain spray revealed a
-maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
-scheduled fountain. This discrepancy could be caused by wind drift of water droplets. 
+% To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
+% is proportional to the square of the spray radius used. However, fountain spray radius can be influenced by both
+% the meteorological conditions of the site and the engineering design of the fountain used. The scheduled and the
+% unscheduled fountains had completely different engineering designs (see Fig. \ref{fig:2AIR}) but produced AIRs
+% with spray radius within a meter of each other. In contrast, the unscheduled fountain of the CH21 experiment had
+% a spray radius more than 2 $m$ higher than the CH22 experiment. This indicates that meteorological conditions
+% are a major driver of the fountain spray radius. Manual measurements of the fountain spray revealed a
+% maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
+% scheduled fountain. This discrepancy could be caused by wind drift of water droplets. 
+
+% To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
+% values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
+% explained in Appendix \ref{sec:wind}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
+% two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
+% temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
+% values is much higher than when using CH21 wind values. Therefore, estimation of fountain spray radius is
+% possible only if the expected temporal variation in wind speed during the construction period can be quantified.   
+
+% \begin{figure*}[t]
+% \includegraphics[width=12 cm]{Figures/radf.png}
+% \caption{Modelled spray radius using wind values from CH22 and CH21 experiments. Measured spray radius are
+% indicated as dots.}
+% \label{fig:wind}
+% \end{figure*}
+
+\subsection{CH22 vs CH21 AIRs}
+
+The maximum volume of CH21 AIR was more than twice that of traditional CH22 AIR. Since both AIRs used the same
+water source and fountain, they are expected to have the same fountain characteristics. However, the measured
+spray radius of the CH22 fountain is smaller than the CH21 fountain by more than 2 $m$. If they were the same,
+the maximum volume of both the AIRs correspond well. This implies that there are other factors besides the
+enginnering design of the fountain used that determine its spray radius.
+
+Manual measurements of the fountain spray revealed a maximum spray radius of just 3 m but drone measurements
+reveal a fountain spray radius of 4.8 m for the scheduled fountain. This discrepancy could be caused by wind
+drift of water droplets.
 
 To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
@@ -554,9 +582,13 @@ rate variations produced by the full energy balance model. Simulations comparing
 fountains show that up to a two fold increase in water use efficiency is possible without compromising on
 meltwater production.
 
-The relationship of the maximum ice volume and water use efficiency to the size of the fountain water droplets
-needs further examination. On one hand smaller droplets increase freezing rates due to their higher surface area
-whereas on the other hand they also increase water losses since they are more prone to wind drift.
+The relationship of fountain spray radius to the wind speed and the engineering design of fountains needs
+further examination. We show that lower wind speeds produced smaller AIRs in Guttannen when compared to last
+winter. 
+
+AIRs produced in Guttannen this winter were only half the volume of AIRs produced last winter. We hypothesize
+that this was mainly due to the lower wind speed during the construction period. However, further examination is
+required to quantify the role of wind in achieving a higher fountain spray radius for the CH21 AIR.
 
 \appendix
 
