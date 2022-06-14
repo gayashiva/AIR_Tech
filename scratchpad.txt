@@ -1,4 +1,9 @@
 
+modelled the spray radius of scheduled fountain water droplets using its
+discharge rate, aperture diameter. The aperture diameter of the scheduled fountain (see Fig. \ref{fig:2AIR})
+was measured to be 10 $mm$. We model the trajectory of the water droplets using the projectile motion equation
+and assuming no air friction. Wind speed values were taken from CH21 and CH22 experiments to  
+
 Fountain design is an important area where improvement is necessary since it can be used to increase AIR ice
 volumes.  Future research must be devoted to engineer such fountain automation systems that create larger AIRs
 effortlessly and efficiently.

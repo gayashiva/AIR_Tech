@@ -511,12 +511,29 @@ on the minimum fountain spray radius desired. In the case of the CH22 experiment
 \subsubsection{Determination of fountain spray radius}
 
 To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
-is proportional to the square of the spray radius used.  Manual measurements of the fountain spray revealed a
+is proportional to the square of the spray radius used. However, fountain spray radius can be influenced by both
+the meteorological conditions of the site and the engineering design of the fountain used. The scheduled and the
+unscheduled fountains had completely different engineering designs (see Fig. \ref{fig:2AIR}) but produced AIRs
+with spray radius within a meter of each other. In contrast, the unscheduled fountain of the CH21 experiment had
+a spray radius more than 2 $m$ higher than the CH22 experiment. This indicates that meteorological conditions
+are a major driver of the fountain spray radius. Manual measurements of the fountain spray revealed a
 maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
-scheduled fountain. This discrepancy could be caused by both wind drift of water droplets and refreezing events
-across the boundary of the AIR. 
+scheduled fountain. This discrepancy could be caused by wind drift of water droplets. 
 
-\subsubsection{Influence of fountain water droplet size}
+To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
+values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
+explained in Appendix \ref{sec:wind}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
+two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
+temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
+values is much higher than when using CH21 wind values. Therefore, estimation of fountain spray radius is
+possible only if the expected temporal variation in wind speed during the construction period can be quantified.   
+
+\begin{figure*}[t]
+\includegraphics[width=12 cm]{Figures/radf.png}
+\caption{Modelled spray radius using wind values from CH22 and CH21 experiments. Measured spray radius are
+indicated as dots.}
+\label{fig:wind}
+\end{figure*}
 
 \conclusions
 
