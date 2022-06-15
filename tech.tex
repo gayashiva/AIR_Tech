@@ -6,8 +6,7 @@
 
 \begin{document}
 
-\title{Improving water-use efficiency of artificial ice reservoirs (Icestupas) through fountain scheduling
-strategies}
+\title{Fountain scheduling strategies for improving water-use efficiency of artificial ice reservoirs (Icestupas)}
 
 \def\Authors{Suryanarayanan Balasubramanian\,$^{1,2}$, Martin Hoelzle\,$^{1}$Roger Waser\,$^{3}$}
 
@@ -530,7 +529,7 @@ AIRs built with different fountain designs.
 
 To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
-explained in Appendix \ref{sec:wind}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
+explained in Appendix \ref{sec:r_F}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
 two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
 temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
 values is much higher than when using CH21 wind values. Therefore, estimation of fountain spray radius is
@@ -709,6 +708,30 @@ may not favor the corresponding objectives for certain sites.
 	\end{tabular}
 \end{table}
 \clearpage
+
+\section{Modelling fountain spray radius} \label{sec:r_F}
+
+The fountain spray radius is defined as the largest horizontal distance covered by fountain water droplets. This
+can be determined by modelling the trajectory of these droplets using the projectile motion equation. This
+projectile motion starts at the fountain nozzle and ends at the AIR surface.  To obtain the droplet speeds, we
+use the the measured aperture diameter ($dia = 10 mm$) and discharge rate of the scheduled fountain  through the
+following equation:
+
+\begin{equation}
+	\label{eqn:dis}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+To obtain the spray radius, we use the optimum launch angle $\theta = 45 \degree$ in the projectile motion
+equation to get:
+
+\begin{equation}
+  \label{eqn:radf}
+  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
+\end{equation}
+
+The influence of wind is included in the spray radius by multiplying the wind speed with the time of flight of
+the water droplets.
 
 \noappendix 
 

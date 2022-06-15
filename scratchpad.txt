@@ -1,4 +1,30 @@
 
+Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
+motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following
+equation for the spray radius $r$:
+
+\begin{equation}
+  \label{eqn:radf}
+  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
+\end{equation}
+
+where $\rho_{water}$ is the density of water and $v$ is the velocity of the fountain water droplets. The
+subscripts $i$ and $f$ refer to the initial and final states of the system. $v$ can be determined from the
+discharge rate $Q$ through the mass conservation equation as
+
+\begin{equation}
+	\label{eqn:dis}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+Combining the Eqns. \ref{eqn:bernoulli} and \ref{eqn:dis}, we get the final discharge $Q_f$ after a height change
+from $h_i$ to $h_f$ to be:
+
+\begin{equation}
+  \label{eqn:discharge}
+  Q_f = \sqrt{Q_i^2 + 2 \cdot g \cdot (h_i-h_f) \cdot (\pi \cdot dia^2/4)^2}
+\end{equation}
+
 \subsubsection{Determination of fountain spray radius}
 
 To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
@@ -10,6 +36,7 @@ a spray radius more than 2 $m$ higher than the CH22 experiment. This indicates t
 are a major driver of the fountain spray radius. Manual measurements of the fountain spray revealed a
 maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
 scheduled fountain. This discrepancy could be caused by wind drift of water droplets.
+
 
 To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
