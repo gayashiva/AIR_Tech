@@ -82,13 +82,12 @@ aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialG
 \citep{reutersConservationistsChileAim2021}. These AIRs are traditionally constructed by diverting springs or
 glacial streams into fountain spray systems via embankments and pipelines. 
 
-One of the most common problems with AIR construction systems has to do with fountain scheduling. Fountain
-scheduling is simply answering the questions of “When do we spray?”, “How much do we spray?” and “How long do we
-spray?”. Starting fountain spray too early or spraying too much water or running a fountain spray too long is
-considered overwatering. At the very least this practice wastes water. However, overwatering can cause
-accelerated ice melt if done on a prolonged basis. Likewise, starting fountain spray too late or spraying too
-little water or not running the system for a long enough period of time is considered under watering and can
-cause reduced ice volumes.
+One of the common problems with AIR construction systems has to do with fountain scheduling. Fountain scheduling
+is simply answering the questions of “When do we spray?”, “How much do we spray?” and “How long do we spray?”.
+Starting fountain spray too early or spraying too much water or running a fountain spray too long is considered
+overwatering. At the very least this practice wastes water.  Likewise, starting fountain spray too late or
+spraying too little water or not running the system for a long enough period of time is considered under
+watering and can cause reduced ice volumes.
 
 Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
 construction systems suffer from overwatering. Knowledge of surface freezing rates is important to
@@ -96,8 +95,8 @@ avoid overwatering. Surface freezing rates can be calculated by means of the ful
 developed in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either
 historical weather data or real-time weather data to produce recommended discharge rates.
 
-However, there are several issues that need to be addressed before operating such weather-sensitive fountains.
-For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since they were
+However, there are several issues that need to be addressed before operating such scheduled fountains. For
+example, in the case of the Indian AIR, the fountain discharge rate could have been halved since they were
 always two times higher than the modelled freezing rate
 \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
 would increase the maintenance cost due to higher risk of fountain freezing events.
@@ -142,8 +141,8 @@ the winters of 2021-22 using a traditional and an automated construction strateg
 \end{figure}
 
 The automated and the traditional AIRs were constructed adjacent to each other but with different fountain
-characteristics as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source and
-identical weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
+designs as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source and identical
+weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
 
 In the traditional strategy, the fountain was operated manually whereas in the automated strategy a programmed
 automation system controlled the fountain discharge rate during the whole study period using real time weather
@@ -183,8 +182,7 @@ water droplets produced by the fountain.
 The height was increased in steps of 1 meter for both the fountains. For the scheduled fountain, the
 construction began with a height of 3 m with an increase to 4 $m$ on 23rd December. For the unscheduled
 fountain, the construction began with a height of 3.7 $m$ and then this was increased two times on 23rd December
-and 12th February. The variation in the discharge rate due to these height increase events can b observed in
-Fig. \ref{fig:aws}. 
+and 12th February.
 
 Fig. \ref{fig:aws} shows how the automation system operated the scheduled fountain based on real-time
 meteorological conditions. The automation system caused these variations through its control valve which varied
@@ -265,10 +263,10 @@ strategies. These two kinds of scheduled fountains will be referred to as water-
 weather-sensitive fountain henceforth.
 
 Water-sensitive fountains are expected to produce higher water use effiency whereas weather-sensitive fountains
-are expected to produced higher ice volumes. Accordingly, we create two sets of model forcing assumptions to
-produce the discharge rate recommendations for these two kinds of fountains for the following three model
-variables: (a) slope , (b) albedo and (c) cloudiness.  These two kinds of models will be referred to as ice
-volume optimised model (IVOM) and water-use efficiency optimised model (WEOM) respectively. The slope variable
+are expected to produce higher ice volumes. Accordingly, we produce the discharge rate recommendations for these
+two kinds of fountains through two sets of model forcing assumptions for the following three model variables:
+(a) slope , (b) albedo and (c) cloudiness.  These two kinds of models will be referred to as ice volume
+optimised model (IVOM) and water-use efficiency optimised model (WEOM) respectively. The slope variable
 increases the shortwave radiation and sensible heat impact. The albedo variable decreases the shortwave
 radiation impact. The cloudiness variable increases both the shortwave and the longwave radiation impact. We
 associate the upper and lower bounds of these variables with the IVOM and WEOM versions depending on whether
@@ -301,14 +299,35 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat flux;
 $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the AIR
-surface. The derivation of these individual terms for the IVOM and WEOM model versions are discussed in the
+surface. The derivation of these individual terms for the IVOM and WEOM model versions are discussed in 
 Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation system through a user interface that enables input of
 the spray radius, altitude, latitude and longitude of the construction location. Once switched on, the
-automation system regulates the fountain discharge rate based on the recommended discharge rate. Further details
-about how the automation system functions can be found in Appendix \ref{sec:auto_system}. 
+automation system regulates the fountain discharge rate based on the recommended discharge rate.
 
+The automation hardware consists of an AWS, flowmeter, control valve, drain valves, air valves, fountain,
+pipeline and a logger. The logger feeds the AWS data to the automation software and informs the recommended
+discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the recommendation. In case a
+termination criteria is valid, the drain and air valves allow the removal of water from the pipeline and entry
+of air in the pipeline respectively.
+
+The recommended discharge rate is equal to the ice mass change rate. However, certain termination criteria
+override the discharge rate recommendation and drain the pipeline to prevent water loss or fountain freezing
+events, namely: 
+
+\begin{itemize}
+
+\item High water loss is assumed if wind speed is greater than the user-defined critical wind speed.
+
+\item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than the user-defined minimum fountain discharge rate. 
+
+\item Fountain freezing events are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
+  consequence.
+
+\item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
+
+\end{itemize}
 
 \subsection{Model updates}
 
@@ -369,7 +388,7 @@ discharge rate estimates with the validated freezing rate of the traditional AIR
 
 The water-sensitive and weather-sensitive fountains estimated the freezing rate of the unscheduled fountain with
 a correlation around 0.4 and a RMSE less than 0.8 $l/min$ and 1.8  $l/min$ respectively. The weather-sensitive
-fountain overestimated the freezing rate 93 \% of the construction duration whereas the water-sensitive fountain
+fountain overestimated the freezing rate 93 \% of the fountain spray duration whereas the water-sensitive fountain
 overestimated the freezing rate 70 \% of the unscheduled fountain spray duration as illustrated by Fig.
 \ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in prioritizing the maximum ice volume but
 the WEOM model forcing could not optimize for water use efficiency. However, this large overestimation could be
@@ -437,13 +456,13 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 \subsection{Comparison of AIR construction strategies}
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
-of the respective AIR. The difference between the fountain discharge input and fountain wastewater output of the
-unscheduled and scheduled fountains was around an order of magnitude. 
+of the respective AIR. Fountain scheduling reduced the fountain discharge input and fountain wastewater output
+by an order of magnitude compared to the unscheduled fountain. 
 
-During fountain spray, the AIR surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the
-fountain water droplets. These two processes are the cause of the difference in the mass and energy balance
-distribution shown in Table \ref{tab:mb}. The temporal variation of the magnitude of these processes are shown
-in Fig. \ref{fig:dis_processes}.
+This higher magnitude and duration of fountain spray also had impact on the surface energy balance. During
+fountain spray, the AIR surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the fountain
+water droplets.  The temporal variation of the magnitude of these processes are shown in Fig.
+\ref{fig:dis_processes}.
 
 The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
 latent) on the freezing and melting energies is determined from their respective energy turnover. The energy
@@ -497,56 +516,17 @@ the freezing rate during the construction period and therefore produced much low
 weather-sensitive fountain.
 
 For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
-volume obtained significantly. 
+volume obtained significantly. However, the maximum volumes of all the Swiss AIRs built during 2021-22 winter
+(CH22) is only half that of AIRs from the previous winter (CH21). The primary cause of this difference was the
+difference in measured spray radius between the two winters. 
 
-\subsection{Challenges of scheduling fountains}
-
-\subsubsection{Determination of minimum discharge rate}
-
-The value of minimum discharge rate determines the duration of the favourable weather windows and the risk of
-fountain freezing events. Therefore, its accurate quantification is critical. The risk of a fountain freezing
-event is inversely proportional to the spray radius. Therefore, minimum discharge rate can be determined based
-on the minimum fountain spray radius desired. In the case of the CH22 experiment, the minimum discharge rate of
-2 $l/min$ corresponded to a spray radius of around 1 $m$.
-
-% \subsubsection{Determination of fountain spray radius}
-
-% To schedule fountains, one needs to estimate their spray radius accurately since the recommended discharge rate
-% is proportional to the square of the spray radius used. However, fountain spray radius can be influenced by both
-% the meteorological conditions of the site and the engineering design of the fountain used. The scheduled and the
-% unscheduled fountains had completely different engineering designs (see Fig. \ref{fig:2AIR}) but produced AIRs
-% with spray radius within a meter of each other. In contrast, the unscheduled fountain of the CH21 experiment had
-% a spray radius more than 2 $m$ higher than the CH22 experiment. This indicates that meteorological conditions
-% are a major driver of the fountain spray radius. Manual measurements of the fountain spray revealed a
-% maximum spray radius of just 3 m but drone measurements reveal a fountain spray radius of 4.8 m for the
-% scheduled fountain. This discrepancy could be caused by wind drift of water droplets. 
-
-% To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
-% values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
-% explained in Appendix \ref{sec:wind}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
-% two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
-% temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
-% values is much higher than when using CH21 wind values. Therefore, estimation of fountain spray radius is
-% possible only if the expected temporal variation in wind speed during the construction period can be quantified.   
-
-% \begin{figure*}[t]
-% \includegraphics[width=12 cm]{Figures/radf.png}
-% \caption{Modelled spray radius using wind values from CH22 and CH21 experiments. Measured spray radius are
-% indicated as dots.}
-% \label{fig:wind}
-% \end{figure*}
-
-\subsection{CH22 vs CH21 AIRs}
-
-The maximum volume of CH21 AIR was more than twice that of traditional CH22 AIR. Since both AIRs used the same
-water source and fountain, they are expected to have the same fountain characteristics. However, the measured
-spray radius of the CH22 fountain is smaller than the CH21 fountain by more than 2 $m$. If they were the same,
-the maximum volume of both the AIRs correspond well. This implies that there are other factors besides the
-enginnering design of the fountain used that determine its spray radius.
-
-Manual measurements of the fountain spray revealed a maximum spray radius of just 3 m but drone measurements
-reveal a fountain spray radius of 4.8 m for the scheduled fountain. This discrepancy could be caused by wind
-drift of water droplets.
+However, this observation contradicts our expectation that AIRs using the same water source and fountain designs
+have similar spray radius. Moreover, manual measurements of the fountain spray radius were observed to be lesser
+than the drone observations of the ice radius. These two observations imply that meteorological conditions also
+affect ice radius besides the engineering design of the fountain. Particularly, wind drift of water droplets
+could play a major role in temporal fluctuations of the ice radius since the spray radius difference of AIRs
+built during different winters is more than 2 times larger than the corresponding difference observed between
+AIRs built with different fountain designs.
 
 To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
@@ -576,47 +556,17 @@ consumed only 13 \% of the unscheduled fountain's water supply. However, the vol
 showed no significant variations. 
 
 Two different model forcings sensitive to the construction location's limited weather windows or water supply
-were used to recommend two types of weather-sensitive discharge rates favouring higher volumes and better water
-use efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing
-rate variations produced by the full energy balance model. Simulations comparing scheduled and unscheduled
-fountains show that up to a two fold increase in water use efficiency is possible without compromising on
-meltwater production.
+were used to recommend two types of scheduled discharge rates favouring higher volumes and better water use
+efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing rate
+variations of the traditional AIR. Simulations comparing scheduled and unscheduled fountains show that up to a
+two fold increase in water use efficiency is possible without compromising on meltwater production.
 
-The relationship of fountain spray radius to the wind speed and the engineering design of fountains needs
-further examination. We show that lower wind speeds produced smaller AIRs in Guttannen when compared to last
-winter. 
-
-AIRs produced in Guttannen this winter were only half the volume of AIRs produced last winter. This was due to
-the lower wind speed during the construction period. However, further examination is required to quantify the
-dependence of fountain spray radius on wind speed. 
+AIRs produced in Guttannen were only half the volume of AIRs produced last winter. This was due to the lower
+wind speed during the construction period. However, further examination is required to quantify the complex
+dependence of AIR ice radius on wind speed and fountain engineering design. 
 
 \appendix
 
-
-\section{Automation system} \label{sec:auto_system}
-
-The automation hardware consists of an AWS, flowmeter, control valve, drain valves, air valves, fountain,
-pipeline and a logger. The logger feeds the AWS data to the automation software and informs the recommended
-discharge rate to the flowmeter. The flowmeter adjusts the control valve to match the recommendation. In case a
-termination criteria is valid, the drain and air valves allow the removal of water from the pipeline and entry
-of air in the pipeline respectively.
-
-The recommended discharge rate is equal to the ice mass change rate. However, certain termination criteria
-override the discharge rate recommendation and drain the pipeline to prevent water loss or fountain freezing
-events, namely: 
-
-\begin{itemize}
-
-\item High water loss is assumed if wind speed is greater than the user-defined critical wind speed.
-
-\item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than the user-defined minimum fountain discharge rate. 
-
-\item Fountain freezing events are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
-  consequence.
-
-\item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
-
-\end{itemize}
 
 \section{Model forcing based on water-use efficiency and maximum volume objectives} \label{sec:SEB}
 
