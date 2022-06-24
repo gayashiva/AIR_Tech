@@ -330,8 +330,12 @@ events, namely:
 
 \subsection{Model updates}
 
-The model was made more sensitive to fountain discharge rate feedback for comparing the volume evolution of the
-automated and traditional AIRs. 
+In this article, we refrain from a more general model description and focus in the following only on the
+description of the integration of fountain scheduling processes. For details on the model internals, the
+distribution of meteorological variables, and the calculation of surface processes we refer to the respective
+literature references. 
+% The model was made more sensitive to fountain discharge rate feedback for comparing the volume evolution of the
+% automated and traditional AIRs. 
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
@@ -544,6 +548,13 @@ indicated as dots.}
 \label{fig:wind}
 \end{figure*}
 
+\subsection{Additional water losses}
+
+In practice, parts of the water volumes exiting the fountains do not reach the ground due to both thermodynamic
+(evaporation and sublimation) and mechanical (wind-driven redistribution) effects. While these water losses can
+be significant \citep{hanzerSimulationSnowManagement2020}, simulating them using physical formulations is
+challenging since it is very sensitive to the diameter of water droplets produced by the fountain.
+
 \conclusions
 
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
@@ -737,11 +748,14 @@ the water droplets.
 
 \noappendix 
 
-\authorcontribution{SB: Conceptualization, Methodology, Investigation, Data curation, Visualization, Software,
-Writing- Original draft preparation;  MH: Conceptualization, Supervision,   Writing- Reviewing and Editing; RW :
-Resources- Automation system, Writing- Reviewing and Editing.} %% this section is mandatory
+\authorcontribution{
+  Suryanarayanan Balasubramanian: Conceptualization, Methodology, Investigation, Data curation, Visualization, Software,
+Writing- Original draft preparation  
+  Martin Hoelzle: Conceptualization, Supervision,   Writing- Reviewing and Editing 
+  Roger Waser: Resources- Automation system, Writing- Reviewing and Editing.} %% this section is mandatory
 
-\competinginterests{TEXT} %% this section is mandatory even if you declare that no competing interests are present
+\competinginterests{The authors declare that they have no known competing financial interests or personal
+relationships that could have appeared to influence the work reported in this paper.} %% this section is mandatory even if you declare that no competing interests are present
 
 \begin{acknowledgements}
 TEXT
