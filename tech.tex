@@ -555,6 +555,40 @@ In practice, parts of the water volumes exiting the fountains do not reach the g
 be significant \citep{hanzerSimulationSnowManagement2020}, simulating them using physical formulations is
 challenging since it is very sensitive to the diameter of water droplets produced by the fountain.
 
+\subsection{Pressure losses}
+
+The fountain pipeline system delivering water to the ice stupa suffers from several pressure losses. These
+losses limit the maximum height that the fountain can achieve. There are three kinds of losses namely, (a)
+altitudinal ($P_{alt}$), (b) frictional ($P_{friction}$) and (c) nozzle ($P_{nozzle}$). The altitudinal losses
+depend on the altitude difference between the source and the fountain. The frictional losses are proportional to
+the length of the pipeline and inversely proportional to their diameter. The spray losses depend on the
+engineering design of the fountain nozzle. Energy conservation equation of all these terms can be written as:  
+
+\begin{equation}
+  \label{eqn:pressure}
+  P_{source} = P_{alt} + P_{friction} + P_{nozzle} + \frac{\rho \cdot v^2}{2}
+\end{equation}
+
+where $P_{source}$ is the source water pressure.
+
+In the CH22 experiment, the automated icestupa had a pipeline length of 66 $m$, a diameter of 16 $mm$, an
+altitudinal difference of 11 m and a source pressure of 6 bar. This pipeline configuration resulted in a
+altitudinal pressure loss of 11 $m$ or 1.1 bar. The frictional loss of this pipeline can be determined from the
+following equation taken from \ref{}:  
+
+\begin{equation}
+  \label{eqn:friction}
+  P_{friction} = [4 \cdot 10 ^{-5} \cdot Q + 0.0002 \cdot Q] \cdot L
+\end{equation}
+
+where $L$ is the total length of the pipeline and Q is the discharge rate. Maximum frictional loss occurs during
+maximum discharge which was measured to be 11 $l/min$. Substituing the corresponding values in Eqn.
+\ref{eqn:friction}, we get $P_{friction}$ to be 0.5 $bar$. The velocity $v$ can be determined from our discharge
+rate observation from Eqn. \ref{eqn:radf}. From Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.4 $bar$.
+Therefore, around 70 \% of the source pressure was used by the fountain nozzle to convert the water stream into
+water droplets. The rest of the water losses were comparatively negligible.
+
+
 \conclusions
 
 In this paper, an automated AIR construction strategy is presented and compared with a traditional strategy
@@ -746,12 +780,29 @@ equation to get:
 The influence of wind is included in the spray radius by multiplying the wind speed with the time of flight of
 the water droplets.
 
+\section{Estimating pressure losses} \label{sec:p_loss}
+
+The frictional pressure losses ($P_{friction}$) can be determined using the bernoulli equation as follows:
+
+\begin{equation}
+  P_{source} = P_{friction} + P_{altitude} + P_{nozzle} + \frac{\rho \cdot v^2}{2}
+\end{equation}
+
+where $P_{source}$ is the source pressure of 6 $bar$, $P_{nozzle}$ is the pressure loss due to the fountain
+nozzle and $P_{altitude}$ is pressure loss due to the altitudinal difference between the pipeline input and
+fountain output. The velocity $v$ can be determined from our max discharge rate observation of 11 $l/min$ from
+Eqn. \ref{eqn:radf}. $P_{nozzle}$ was determined by the pressure-discharge relationship of the fountain nozzle
+shown in Fig. . $P_{nozzle}$ for a discharge rate of 11 $l/min$ is 3.5 $bar$. $P_{altitude}$ is equivalent to 11
+$m$ or 1.1 $bar$ for the CH22 Automated Ice stupa.
+
 \noappendix 
 
 \authorcontribution{
   Suryanarayanan Balasubramanian: Conceptualization, Methodology, Investigation, Data curation, Visualization, Software,
-Writing- Original draft preparation  
-  Martin Hoelzle: Conceptualization, Supervision,   Writing- Reviewing and Editing 
+Writing- Original draft preparation
+
+  Martin Hoelzle: Conceptualization, Supervision, Investigation, Writing- Reviewing and Editing 
+
   Roger Waser: Resources- Automation system, Writing- Reviewing and Editing.} %% this section is mandatory
 
 \competinginterests{The authors declare that they have no known competing financial interests or personal
