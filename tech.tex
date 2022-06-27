@@ -547,7 +547,8 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \end{figure*}
 
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
-increases more than two fold when the weather-sensitive or water-sensitive fountain is used in both the locations.  
+increases more than three fold when the weather-sensitive or water-sensitive fountain is used in both the
+locations.  
 
 For the Indian location, the three kinds of fountains yield significantly different results.  The discharge
 duration and the max discharge rate of the three IN21 fountains were responsible for these different results
@@ -611,16 +612,17 @@ showed no significant variations.
 Two different model forcings sensitive to the construction location's limited weather windows or water supply
 were used to recommend two types of scheduled discharge rates favouring higher volumes and better water use
 efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing rate
-variations of the traditional AIR. Simulations comparing scheduled and unscheduled fountains show that up to a
-two fold increase in water use efficiency is possible without compromising on meltwater production.
+variations of the traditional AIR. Simulations converting several unscheduled fountains to scheduled ones show
+that atleast a three fold increase in water use efficiency is possible without compromising on meltwater
+production.
 
 AIRs produced in Guttannen were only half the volume of AIRs produced last winter. This was due to the lower
 wind speed during the construction period. However, further examination is required to quantify the complex
 dependence of AIR ice radius on wind speed and fountain engineering design. 
 
 Most of the input water pressure is lost during the process of generating fountain water droplets by the
-fountain nozzle. Future research must be devoted to engineer fountain nozzles that create water droplets
-efficiently.
+fountain nozzle. Future research, therefore, must be devoted to engineer fountain nozzles that create water
+droplets efficiently.
 
 \appendix
 
@@ -628,17 +630,18 @@ efficiently.
 \section{Model forcing based on water-use efficiency and maximum volume objectives} \label{sec:SEB}
 
 The model complexity and data requirement \citep{balasubramanianInfluenceMeteorologicalConditions2022} were
-reduced through assumptions that optimise for the ice volume or the water-use efficiency objectives. We define
-the freezing rate and melting rate as the positive and negative mass change rate, respectively. Assumptions are
-chosen, based on whether they overestimate/underestimate the freezing rate. HIV objective requires freezing rate
-to be overestimated whereas water-use efficiency objective requires freezing rate to be underestimated. We
-describe these two kinds of assumptions applied on each of the energy balance components below: 
+reduced through assumptions that optimise for the ice volume or the water-use efficiency objectives. The
+corresponding model assumptions are called IVOM and WEOM respectively. We define the freezing rate and melting
+rate as the positive and negative mass change rate, respectively. Assumptions are chosen, based on whether they
+overestimate/underestimate the freezing rate. IVOM assumptions overestimates freezing rate whereas WEOM
+assumptions underestimates freezing rate. We describe these two kinds of assumptions applied on each of the
+energy balance components below: 
 
 \subsection{Surface Area $A_{cone}$ assumptions}
 
 Determination of the surface area during the accumulation period is achieved by assuming a constant ice cone
 radius equal to the fountain spray radius. The surface area scales the freezing rate of the AIR. Hence, for the
-HIV objective, we assume the maximum possible slope of 1 for the ice cone or in other words $h_{cone} = r_{F}$.
+IVOM version, we assume the maximum possible slope of 1 for the ice cone or in other words $h_{cone} = r_{F}$.
 Therefore, area is estimated as:  
 
 \begin{equation} A_{cone} =\sqrt{2} \cdot \pi \cdot r_{F}^2  \end{equation}
