@@ -173,10 +173,11 @@ located 184 m away (Station ID: 0-0756-0-GTT) respectively.
 
 \subsection{Fountain observations}
 
-The scheduled and unscheduled fountains have three attributes, namely: discharge rate ($Q$), height ($h$) and
-water temperature ($T_F$). Discharge rate represents the discharge rate of the water in the fountain pipeline.
-Height denotes the height of the fountain pipeline installed. Fountain water temperature is the temperature of
-water droplets produced by the fountain.
+The scheduled and unscheduled fountains have four attributes, namely: discharge rate ($Q$), height ($h$), water
+temperature ($T_F$) and nozzle pressure loss ($P_{nozzle}$). Discharge rate represents the discharge rate of the
+water in the fountain pipeline. Height denotes the height of the fountain pipeline installed. Fountain water
+temperature is the temperature of water droplets produced by the fountain. $P_{nozzle}$ denotes the loss of
+pressure during the formation of water droplets.
 
 The height was increased in steps of 1 meter for both the fountains. For the scheduled fountain, the
 construction began with a height of 3 m with an increase to 4 $m$ on 23rd December. For the unscheduled
@@ -361,11 +362,8 @@ where $L$ is the total length of the pipeline and $Q$ is the discharge rate in $
 \subsection{Model updates}
 
 In this article, we refrain from a more general model description and focus in the following only on the
-description of the integration of fountain scheduling processes. For details on the model internals, the
-distribution of meteorological variables, and the calculation of surface processes we refer to the respective
-literature references. 
-% The model was made more sensitive to fountain discharge rate feedback for comparing the volume evolution of the
-% automated and traditional AIRs. 
+description of the integration of fountain scheduling processes. For details on the model internals, and the
+calculation of surface processes we refer to the respective literature references. 
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
@@ -594,7 +592,7 @@ indicated as dots.}
 In practice, parts of the water volumes exiting the fountains do not reach the ground due to both thermodynamic
 (evaporation and sublimation) and mechanical (wind-driven redistribution) effects. While these water losses can
 be significant \citep{hanzerSimulationSnowManagement2020}, simulating them using physical formulations is
-challenging since it is very sensitive to the diameter of water droplets produced by the fountain.
+challenging since it is sensitive to the diameter of water droplets produced by the fountain.
 
 
 \conclusions
@@ -616,13 +614,18 @@ variations of the traditional AIR. Simulations converting several unscheduled fo
 that atleast a three fold increase in water use efficiency is possible without compromising on meltwater
 production.
 
-AIRs produced in Guttannen were only half the volume of AIRs produced last winter. This was due to the lower
-wind speed during the construction period. However, further examination is required to quantify the complex
-dependence of AIR ice radius on wind speed and fountain engineering design. 
+AIRs produced in Guttannen were only half the volume of AIRs produced last winter. This difference was caused by
+lower wind speeds resulting in a smaller spray radius. In contrast, higher wind speeds can also cause water
+losses if water droplets are distributed beyond the spray radius. Therefore, a critical wind speed needs to be
+determined in order to force wind-driven redistribution to increase the spray radius rather than the water
+losses. However, determination of this critical value requires modelling the complex distribution of water
+droplet sizes produced by the fountain nozzle.
 
-Most of the input water pressure is lost during the process of generating fountain water droplets by the
-fountain nozzle. Future research, therefore, must be devoted to engineer fountain nozzles that create water
-droplets efficiently.
+Fountain nozzles play an important role in the construction process. First, they consume most of the input water
+pressure to form water droplets. Second, their engineering design determines the droplet size distribution and
+spray radius. Future research, therefore, must be devoted to engineer fountain nozzles that create water
+droplets with a size distribution that requires lesser energy consumption and a trajectory that increases their
+spray radius.
 
 \appendix
 
