@@ -93,11 +93,11 @@ construction systems suffer from overwatering. In order to avoid this issue, it 
 developed in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either
 historical weather data or real-time weather data to produce recommended discharge rates.
 
-However, there are several issues that need to be addressed before operating such scheduled fountains. For
-example, in the case of the Indian AIR, the fountain discharge rate could have been halved since they were
-always two times higher than the modelled freezing rate
+However, there are some practical issues that need to be addressed before dealing with the fountain scheduling
+processes. For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since
+they were always two times higher than the modelled freezing rate
 \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
-would increase the maintenance cost due to higher risk of fountain freezing events.
+would increase the maintenance cost due to higher risk of freezing events in the fountain pipeline.
 
 An optimum construction strategy, therefore, should first prevent the occurrence of this event. These fountain
 freezing events can be prevented by setting a minimum threshold for the recommended discharge rate.
@@ -274,7 +274,8 @@ they overestimate and underestimate the freezing rate of the AIR as shown in Tab
 
 \begin{table}[]
 \centering
-\caption{Assumptions for the parametrisation introduced to simplify the model.}
+\caption{Assumptions for the parametrisation introduced to simplify the ice volume optimised model (IVOM) and
+water-use efficiency optimised model (WEOM).}
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
@@ -322,7 +323,7 @@ events, namely:
 
 \item High risk of fountain freezing event is assumed if $\frac{\Delta M_{ice}}{\Delta t}$ is lower than the user-defined minimum fountain discharge rate. 
 
-\item Fountain freezing events are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
+\item Freezing events in the fountain pipeline are assumed if measured discharge rate is zero for at least 20 seconds and the pipeline is drained as a
   consequence.
 
 \item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
@@ -551,10 +552,10 @@ locations.
 For the Indian location, the three kinds of fountains yield significantly different results.  The discharge
 duration and the max discharge rate of the three IN21 fountains were responsible for these different results
 (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice that of
-scheduled fountains resulting in a high water loss. Fountain freezing events caused frequent interruptions in
+scheduled fountains resulting in a high water loss. Freezing events in the fountain pipeline caused frequent interruptions in
 the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). In contrast, the mean freezing rates of the other
 two fountains during these events were above their median values. This was because too cold temperatures freezes
-water inside rather than outside the fountain system instigating these fountain freezing events. Therefore, both
+water inside rather than outside the fountain system instigating these freezing events in the fountain pipeline. Therefore, both
 the discharge duration and the mean freezing rate of the unscheduled fountain was much lower resulting in lower
 ice volumes. The water-sensitive fountain underestimated the freezing rate during the construction period and
 therefore produced much lower ice volumes compared to the weather-sensitive fountain.
