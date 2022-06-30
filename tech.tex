@@ -89,8 +89,7 @@ spraying too little water or not running the system for a long enough period of 
 watering and can cause reduced ice volumes.
 
 Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
-construction systems suffer from overwatering. Knowledge of surface freezing rates is important to
-avoid overwatering. Surface freezing rates can be calculated by means of the full energy balance model
+construction systems suffer from overwatering. In order to avoid this issue, it is important to understand surface freezing rates, which can be calculated by means of the full energy balance model
 developed in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either
 historical weather data or real-time weather data to produce recommended discharge rates.
 
@@ -114,12 +113,12 @@ of the freezing rates. Secondly, frequent pipeline water drainage is required to
 operation of scheduled fountains via automation systems is preferred to reduce the long-term maintenance costs.
 
 The present study was performed to compare two AIRs produced using different fountain scheduling strategies but
-exposed to identical meteorological conditions. The specific objectives of this study is to compare the
+exposed to identical meteorological conditions. The specific objectives of this study are to compare the
 water-use efficiency, maximum ice volume and maintenance effort between the different fountain scheduling strategies.
 
 \section{Study sites and data}
 
-In this study, we use some datasets presented in our previous work
+In this study, we use datasets presented in our previous work
 \citep{balasubramanianInfluenceMeteorologicalConditions2022} along with new datasets. These old datasets record
 the meteorological conditions and fountain characteristics of AIRs built in Gangles, India (IN21) and Guttannen,
 Switzerland (CH21) during the winter of 2020-21. In this section, we focus on describing the new AIR datasets
@@ -146,7 +145,7 @@ weather conditions. In addition, a webcam guaranteed a continuous survey of the 
 In the traditional strategy, the fountain was operated manually whereas in the automated strategy a programmed
 automation system controlled the fountain discharge rate during the whole study period using real time weather
 input and several control parameters, which could be modified via a user interface. Henceforth, we refer to the
-fountain used in the traditional and automated construction strategy as unscheduled and scheduled fountains
+fountain used in the traditional and automated construction strategy as unscheduled and scheduled fountains,
 respectively.
 
 In the traditional construction strategy, tree branches were laid covering the fountain pipe to initiate and
@@ -339,7 +338,7 @@ losses depend on the altitude difference between the source and the fountain. Th
 proportional to the length of the pipeline and inversely proportional to their diameter. The nozzle losses
 depend on the engineering design of the fountain nozzle.
 
-The pressure losses can be determined using the bernoulli equation as follows:
+The pressure losses can be determined using the Bernoulli equation as follows:
 
 \begin{equation}
   \label{eqn:pressure}
@@ -350,7 +349,7 @@ where $P_{source}$ is the source pressure , $P_{nozzle}$ is the pressure loss du
 $P_{alt}$ is pressure loss due to the altitudinal difference between the pipeline input and fountain
 output. The velocity $v$ can be determined from discharge rate observations using Eqn. \ref{eqn:dis}. 
 
-The frictional loss of this pipeline can be determined from the following equation taken from \ref{}:  
+The frictional loss of the pipeline can be determined from the following equation taken from \ref{}:  
 
 \begin{equation}
   \label{eqn:friction}
@@ -362,7 +361,7 @@ where $L$ is the total length of the pipeline and $Q$ is the discharge rate in $
 
 \subsection{Model updates}
 
-In this article, we refrain from a more general model description and focus in the following only on the
+In this article, we refrain from a more general model description and focus only on the
 description of the integration of fountain scheduling processes. For details on the model internals, and the
 calculation of surface processes we refer to the respective literature references. 
 
@@ -392,7 +391,7 @@ $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_
 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
 \cite{cuffeyPhysicsGlaciers2010} .
 
-Rain events were not considered in the previous version of the model but they occur in our experiment. The
+Rain events were not considered in the previous version of the model but they occured in our experiment. The
 influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
 events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
 Accordingly, the heat flux generated due to a rain event was equal to:
