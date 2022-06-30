@@ -174,10 +174,11 @@ located 184 m away (Station ID: 0-0756-0-GTT) respectively.
 \subsection{Fountain observations}
 
 The scheduled and unscheduled fountains have four attributes, namely: discharge rate ($Q$), height ($h$), water
-temperature ($T_F$) and nozzle pressure loss ($P_{nozzle}$). Discharge rate represents the discharge rate of the
-water in the fountain pipeline. Height denotes the height of the fountain pipeline installed. Fountain water
-temperature is the temperature of water droplets produced by the fountain. $P_{nozzle}$ denotes the loss of
-pressure during the formation of water droplets.
+temperature ($T_F$), nozzle pressure loss ($P_{nozzle}$), and the spray radius ($r$). Discharge rate represents
+the discharge rate of the water in the fountain pipeline. Height denotes the height of the fountain pipeline
+installed. Fountain water temperature is the temperature of water droplets produced by the fountain.
+$P_{nozzle}$ denotes the loss of pressure during the formation of water droplets. Spray radius denotes the
+observed ice radius formed from the fountain water droplets.
 
 The height was increased in steps of 1 meter for both the fountains. For the scheduled fountain, the
 construction began with a height of 3 m with an increase to 4 $m$ on 23rd December. For the unscheduled
@@ -567,7 +568,7 @@ difference in measured spray radius between the two winters.
 However, this observation contradicts our expectation that AIRs using the same water source and fountain designs
 have similar spray radius. Moreover, manual measurements of the fountain spray radius were observed to be lesser
 than the drone observations of the ice radius. These two observations imply that meteorological conditions also
-affect ice radius besides the engineering design of the fountain. Particularly, wind drift of water droplets
+affect ice radius besides the engineering design of the fountain nozzle. Particularly, wind drift of water droplets
 could play a major role in temporal fluctuations of the ice radius since the spray radius difference of AIRs
 built during different winters is more than 2 times larger than the corresponding difference observed between
 AIRs built with different fountain designs.
@@ -577,8 +578,10 @@ values taken from CH22 and CH21 experiments respectively. The details about the 
 explained in Appendix \ref{sec:r_F}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
 two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
 temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
-values is much higher than when using CH21 wind values. Therefore, estimation of fountain spray radius is
-possible only if the expected temporal variation in wind speed during the construction period can be quantified.   
+values is much higher than when using CH21 wind values. Therefore, the determination of the fountain spray
+radius cannot be performed using the characteristics of the fountain nozzle alone since it is significantly
+influenced due to the temporal variation of the wind speed.
+
 
 \begin{figure*}[t]
 \includegraphics[width=12 cm]{Figures/radf.png}
