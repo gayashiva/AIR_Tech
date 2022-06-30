@@ -418,13 +418,14 @@ discharge rate estimates with the validated freezing rate of the traditional AIR
 
 \subsection{Scheduled discharge rate simulations}
 
-The water-sensitive and weather-sensitive fountains estimated the freezing rate of the unscheduled fountain with
-a correlation around 0.4 and a RMSE less than 0.8 $l/min$ and 1.8  $l/min$ respectively. The weather-sensitive
-fountain overestimated the freezing rate 93 \% of the fountain spray duration whereas the water-sensitive fountain
-overestimated the freezing rate 70 \% of the unscheduled fountain spray duration as illustrated by Fig.
-\ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in prioritizing the maximum ice volume but
-the WEOM model forcing could not optimize for water use efficiency. However, this large overestimation could be
-due to the depression of the unscheduled fountain's freezing rate caused by its excess discharge rate. 
+The water-sensitive and weather-sensitive fountains scheduled by the WEOM and IVOM model versions estimated the
+freezing rate of the unscheduled fountain with a correlation around 0.4 and a RMSE less than 0.8 $l/min$ and 1.8
+$l/min$ respectively. The weather-sensitive fountain overestimated the freezing rate 93 \% of the fountain spray
+duration whereas the water-sensitive fountain overestimated the freezing rate 70 \% of the unscheduled fountain
+spray duration as illustrated by Fig. \ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in
+prioritizing the maximum ice volume but the WEOM model forcing could not optimize for water use efficiency.
+However, this large overestimation could be due to the depression of the unscheduled fountain's freezing rate
+caused by its excess discharge rate. 
 
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal.jpg}
@@ -488,30 +489,29 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 \subsection{Comparison of AIR construction strategies}
 
 Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
-of the respective AIR. Fountain scheduling reduced the fountain discharge input and fountain wastewater output
-by an order of magnitude compared to the unscheduled fountain. 
+of the respective AIR.  The overall impact of the radiation fluxes (long-wave and short-wave) and the
+turbulent fluxes (sensible and latent) on the freezing and melting energies is determined from their respective
+energy turnover. The energy turnover is calculated as the sum of energy fluxes in absolute values (see Table
+\ref{tab:mb}). 
 
-This higher magnitude and duration of fountain spray also had impact on the surface energy balance. During
-fountain spray, the AIR surface (a) albedo dampens to ice albedo and (b) absorbs the heat energy of the fountain
-water droplets.  The temporal variation of the magnitude of these processes are shown in Fig.
+Fountain scheduling reduced the fountain discharge input and fountain wastewater output by an order of
+magnitude. However, this does not result in an appreciable difference in the volume evolution of the automated
+and traditional AIRs as shown in Fig. \ref{fig:simvsreal}. This is due to two counteracting surface processes
+during fountain spray, namely, (a) dampening of albedo to ice albedo and (b) absorption of the heat energy of
+the fountain water droplets. The temporal variation of the magnitude of these processes are shown in Fig.
 \ref{fig:dis_processes}.
-
-The overall impact of the radiation fluxes (long-wave and short-wave) and the turbulent fluxes (sensible and
-latent) on the freezing and melting energies is determined from their respective energy turnover. The energy
-turnover is calculated as the sum of energy fluxes in absolute values (see Table \ref{tab:mb}). 
 
 There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
 (a). Even though the unscheduled fountain was active for a much longer duration, the frequent snowfall events
 counteracted the albedo feedback of its fountain discharge. In contrast, the albedo of the automated AIR was
-significantly impacted by late fountain spray events particularly in the month of March and April as shown in
-Fig. \ref{fig:dis_processes}. These poorly timed fountain spray events occurred because the global solar
-radiation diurnal variation of the automation system is calibrated based on values for the month of February.
-Therefore, poor calibration of the automation system resulted in an increased impact of shortwave radiation on
-the automated AIR.
-
-Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process (b). The higher
-discharge quantity of the unscheduled fountains and its longer duration were responsible for the significant
-contribution of fountain discharge heat flux in the overall energy turnover.
+reduced by late fountain spray events particularly in the month of March and April as shown in Fig.
+\ref{fig:dis_processes}. These poorly timed fountain spray events occurred because the global solar radiation
+diurnal variation of the automation system is calibrated based on values for the month of February. Therefore,
+poor calibration of the automation system resulted in an increased impact of shortwave radiation on the
+automated AIR. Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to process
+(b). The higher discharge quantity of the unscheduled fountains and its longer duration were responsible for the
+higher contribution of fountain discharge heat flux in the overall energy turnover. Therefore, higher melt of
+the automated AIR due to process (a) counteracted the higher melt of the traditional AIR due to process (b).
 
 \subsection{Pressure losses}
 
