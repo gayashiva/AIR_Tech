@@ -552,26 +552,43 @@ locations.
 For the Indian location, the three kinds of fountains yield significantly different results.  The discharge
 duration and the max discharge rate of the three IN21 fountains were responsible for these different results
 (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice that of
-scheduled fountains resulting in a high water loss. Freezing events in the fountain pipeline caused frequent interruptions in
-the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). In contrast, the mean freezing rates of the other
-two fountains during these events were above their median values. This was because too cold temperatures freezes
-water inside rather than outside the fountain system instigating these freezing events in the fountain pipeline. Therefore, both
-the discharge duration and the mean freezing rate of the unscheduled fountain was much lower resulting in lower
-ice volumes. The water-sensitive fountain underestimated the freezing rate during the construction period and
-therefore produced much lower ice volumes compared to the weather-sensitive fountain.
+scheduled fountains resulting in a high water loss. Freezing events in the fountain pipeline caused frequent
+interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). In contrast, the mean freezing
+rates of the other two fountains during these events were above their median values. This was because too cold
+temperatures freezes water inside rather than outside the fountain system instigating these freezing events in
+the fountain pipeline. Therefore, both the discharge duration and the mean freezing rate of the unscheduled
+fountain was much lower resulting in lower ice volumes. The water-sensitive fountain underestimated the freezing
+rate during the construction period and therefore produced much lower ice volumes compared to the
+weather-sensitive fountain. 
 
 For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
-volume obtained significantly. However, the maximum volumes of all the Swiss AIRs built during 2021-22 winter
-(CH22) is only half that of AIRs from the previous winter (CH21). The primary cause of this difference was the
-difference in measured spray radius between the two winters. 
+volume obtained significantly. 
 
-However, this observation contradicts our expectation that AIRs using the same water source and fountain designs
-have similar spray radius. Moreover, manual measurements of the fountain spray radius were observed to be lesser
-than the drone observations of the ice radius. These two observations imply that meteorological conditions also
-affect ice radius besides the engineering design of the fountain nozzle. Particularly, wind drift of water droplets
-could play a major role in temporal fluctuations of the ice radius since the spray radius difference of AIRs
-built during different winters is more than 2 times larger than the corresponding difference observed between
-AIRs built with different fountain designs.
+\subsection{Meteorological drivers of volume evolution across winters}
+
+The maximum volumes of the Swiss AIRs built during 2021-22 winter (CH22) is only half that of AIRs from the
+previous winter (CH21). One would expect this difference is due to warmer temperatures during the CH22 winter.
+But the median january temperature of CH22 winter was colder than the CH21 winter (see Fig. \ref{fig:CH_diffs}
+(a)). Moreover, the volume growth of CH20 AIR is 6 fold that of CH22 AIR despite CH20 winter being 3 $\degree C$
+warmer.
+
+We suspect the primary driver of volume difference across different winters is instead the spray radius (see
+Fig. \ref{fig:CH_diffs} (b)). However, this observation contradicts our expectation that AIRs using the same
+water source and fountain designs have similar spray radius. Moreover, manual measurements of the fountain spray
+radius were observed to be lesser than the drone observations of the ice radius. These two observations imply
+that meteorological conditions also affect ice radius besides the engineering design of the fountain nozzle.
+Particularly, wind drift of water droplets could play a major role in temporal fluctuations of the ice radius
+since the spray radius difference of AIRs built during different winters is more than 2 times larger than the
+corresponding difference observed between AIRs built with different fountain designs.
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{Figures/CH_diffs.jpg}
+
+\caption{(a) Estimated volume change and median temperature and (b) Observed spray radius and median wind speed
+during january for AIRs built across three winters. } 
+
+\label{fig:CH_diffs} 
+\end{figure*}
 
 To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments respectively. The details about the methodology used to do this is
