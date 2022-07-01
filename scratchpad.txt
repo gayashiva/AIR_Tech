@@ -1,4 +1,13 @@
 
+AIRs produced in Guttannen during consecutive winters exhibit upto a two fold decay in maximum volume in spite
+of experiencing colder temperatures. The process of wind-driven redistribution increasing the spray radius was
+found to be more important than the higher freezing rates generated due to colder temperatures. 
+
+In contrast, higher wind speeds can also cause water losses if water droplets are distributed beyond the spray
+radius. Therefore, a critical wind speed needs to be determined in order to force wind-driven redistribution to
+increase the spray radius rather than the water losses. However, determination of this critical value requires
+modelling the complex distribution of water droplet sizes produced by the fountain nozzle.
+
 Assuming that the water droplets have diameter equal to the fountain apertutre diameter and follow projectile
 motion starting from a fountain height $h$ with a launch angle $\theta = 45 \degree$, we get the following
 equation for the spray radius $r$:
