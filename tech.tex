@@ -96,22 +96,29 @@ and can cause reduced ice volumes.
 Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
 construction systems suffer from overwatering. In order to avoid this issue, it is important to understand
 surface freezing rates, which can be calculated by means of the full energy balance model developed in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
-weather data or real-time weather data to produce recommended discharge rates.
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model requires an accurate estimation of
+fountain spray radius to produce recommended discharge rates. In theory, such an estimation is possible by
+modelling the projectile motion of water droplets using fountain characteristics like aperture diameter and
+discharge rate. However, in practice, accuracy of this estimation also depends on the relative importance of
+wind-driven redistribution effects in determining the fountain spray radius. Therefore, estimating the fountain
+spray radius requires a better understanding of the relative contribution of these processes in determining the
+trajectory of the fountain water droplets.
 
 However, there are some practical issues that need to be addressed before dealing with the fountain scheduling
 processes. For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since
 they were always two times higher than the modelled freezing rate
 \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
-would increase the maintenance cost due to higher risk of freezing events in the fountain pipeline.
+could increase the maintenance cost due to higher risk of freezing events in the fountain pipeline.
 
-An optimum construction strategy, therefore, should first prevent the occurrence of this event. These fountain
-freezing events can be prevented by setting a minimum threshold for the recommended discharge rate.
-Additionally, recommended discharge rate needs to be sensitive to constraints on the water supply or weather of
-the construction site. Locations limited by their water supply like in Ladakh, India would prioritize water use
-efficiency whereas those limited by the favourable weather windows like in Guttannen, Switzerland  would
-prioritize for maximum ice volume.  Accordingly, we use two types of model parameter optimizations that prevent
-underwatering and overwatering to attain higher ice volumes and higher water use efficiency respectively.
+An optimum construction strategy, therefore, should first prevent the occurrence of freezing events in the
+fountain pipeline. These events can be prevented by setting a minimum threshold for the recommended discharge
+rate. Additionally, recommended discharge rate needs to be sensitive to constraints on the water supply or
+weather of the construction site. Locations limited by their water supply like in Ladakh, India would prioritize
+water use efficiency whereas those limited by the favourable weather windows like in Guttannen, Switzerland
+would prioritize for maximum ice volume. Accordingly, we use two types of model parameter optimizations that
+prevent underwatering and overwatering to attain higher ice volumes and higher water use efficiency
+respectively.
+
 
 However, manually adjusting the fountain discharge rate is not practical due to two reasons. Firstly, this would
 involve constant adjustments of discharge rates in response to the significant diurnal and seasonal variations
@@ -267,12 +274,11 @@ traditional and the automated AIRs were 8 $m$ and 6 $m$, respectively (see Table
 \subsection{Discharge scheduling software}
 
 The software used for fountain scheduling was obtained by extending the AIR model developed in
-\citep{balasubramanianInfluenceMeteorologicalConditions2022}. This software recommended two types of fountain
-scheduling strategies based on the requirements of the construction location. The software recommended
-water-sensitive fountain scheduling strategies if the location had limited quantity of water whereas
-weather-sensitive fountain scheduling strategies if the location had limited duration of favourable weather
-windows. These two kinds of scheduled fountains will be referred to as water-sensitive fountain and
-weather-sensitive fountain henceforth.
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This software recommended two types of fountain
+scheduling strategies namely, water-sensitive fountain scheduling strategies if the location had limited
+quantity of water or weather-sensitive fountain scheduling strategies if the location had limited duration of
+favourable weather windows. These two kinds of scheduled fountains will be referred to as water-sensitive
+fountain and weather-sensitive fountain henceforth.
 
 Water-sensitive fountains are expected to produce higher water use efficiency whereas weather-sensitive fountains
 are expected to produce higher ice volumes. Accordingly, we produce the discharge rate recommendations for these
@@ -341,6 +347,30 @@ events, namely:
 \item Pipeline leakage is assumed if measured discharge rate is greater than the user-defined maximum fountain discharge rate.
 
 \end{itemize}
+
+\section{Modelling fountain spray radius} \label{sec:r_F}
+
+The fountain spray radius is defined as the largest horizontal distance covered by fountain water droplets. This
+can be determined by modelling the trajectory of these droplets using the projectile motion equation. This
+projectile motion starts at the fountain nozzle and ends at the AIR surface.  To obtain the droplet speeds, we
+use the the measured aperture diameter ($dia = 10 mm$) and discharge rate of the scheduled fountain  through the
+following equation:
+
+\begin{equation}
+	\label{eqn:dis}
+ v = 4 \cdot Q/(\pi \cdot dia^2)
+\end{equation}
+
+To obtain the spray radius, we use the optimum launch angle $\theta = 45 \degree$ in the projectile motion
+equation to get:
+
+\begin{equation}
+  \label{eqn:radf}
+  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
+\end{equation}
+
+The influence of wind-driven redistribution can be included in the spray radius by multiplying the wind speed
+with the time of flight of the water droplets.
 
 \section{Determination of pressure losses} \label{sec:p_loss}
 
@@ -538,6 +568,44 @@ discharge rate observation from Eqn. \ref{eqn:radf}. Measured source water press
 Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.4 $bar$. Therefore, fountain nozzle consumed more than 70
 \% of the source pressure to generate the water droplets. 
 
+\subsection{Influence of wind driven redistribution on fountain spray radius}
+
+The estimated volume changes over the month of January of the Swiss AIRs built this winter (CH22) is less than
+half that of AIRs from the previous winter (CH21). One would expect this difference is due to warmer
+temperatures during the CH22 winter. However, the median January temperature of CH22 winter was colder than the
+CH21 winter (see Fig. \ref{fig:CH_diffs} (a)). Moreover, the volume growth of CH20 AIR is 6 fold that of CH22
+AIR despite CH20 winter being 3 $\degree C$ warmer.
+
+We suspect the primary driver of volume difference across different winters is instead the spray radius (see
+Fig. \ref{fig:CH_diffs} (b)). However, this observation contradicts our expectation that AIRs using the same
+water source and fountain designs have similar spray radius. Moreover, manual measurements of the fountain spray
+radius were observed to be lesser than the drone observations of the ice radius. These two observations imply
+that wind drift of water droplets could play a major role in temporal fluctuations of the ice radius.
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth]{Figures/CH_diffs.jpg}
+
+\caption{(a) Estimated volume change and median temperature and (b) Observed spray radius and median wind speed
+during January for AIRs built across three winters. } 
+
+\label{fig:CH_diffs} 
+\end{figure*}
+
+To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
+values taken from CH22 and CH21 experiments, respectively. Fig. \ref{fig:wind} shows the modelled spray radius
+produced using these two wind datasets and compares them with the measured spray radius values. As illustrated,
+wind speed drives the temporal variation in the spray radius. Moreover, the spray radius of the scheduled
+fountain with CH22 wind values is much higher than when using CH21 wind values. Therefore, the determination of
+the fountain spray radius cannot be performed using the characteristics of the fountain nozzle alone since it is
+significantly influenced due to the temporal variation of the wind speed.
+
+\begin{figure*}[t]
+\includegraphics[width=12 cm]{Figures/radf.png}
+\caption{Modelled spray radius using wind values from CH22 and CH21 experiments. Measured spray radius are
+indicated as dots.}
+\label{fig:wind}
+\end{figure*}
+
 \section{Discussion}
 
 \subsection{Benefits of scheduling fountains}
@@ -578,45 +646,6 @@ weather-sensitive fountain.
 For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
 volume obtained significantly. 
 
-\subsection{Meteorological drivers of interannual volume variability}
-
-The maximum volumes of the Swiss AIRs built during 2021-22 winter (CH22) is only half that of AIRs from the
-previous winter (CH21). One would expect this difference is due to warmer temperatures during the CH22 winter.
-However, the median January temperature of CH22 winter was colder than the CH21 winter (see Fig. \ref{fig:CH_diffs}
-(a)). Moreover, the volume growth of CH20 AIR is 6 fold that of CH22 AIR despite CH20 winter being 3 $\degree C$
-warmer.
-
-We suspect the primary driver of volume difference across different winters is instead the spray radius (see
-Fig. \ref{fig:CH_diffs} (b)). However, this observation contradicts our expectation that AIRs using the same
-water source and fountain designs have similar spray radius. Moreover, manual measurements of the fountain spray
-radius were observed to be lesser than the drone observations of the ice radius. These two observations imply
-that meteorological conditions also affect ice radius besides the engineering design of the fountain nozzle.
-Particularly, wind drift of water droplets could play a major role in temporal fluctuations of the ice radius.
-
-\begin{figure*}[t]
-\includegraphics[width=\textwidth]{Figures/CH_diffs.jpg}
-
-\caption{(a) Estimated volume change and median temperature and (b) Observed spray radius and median wind speed
-during January for AIRs built across three winters. } 
-
-\label{fig:CH_diffs} 
-\end{figure*}
-
-To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
-values taken from CH22 and CH21 experiments, respectively. The details about the methodology used to do this is
-explained in Appendix \ref{sec:r_F}. Fig. \ref{fig:wind} shows the modelled spray radius produced using these
-two wind datasets and compares them with the measured spray radius values. As illustrated, wind speed drives the
-temporal variation in the spray radius. Moreover, the spray radius of the scheduled fountain with CH22 wind
-values is much higher than when using CH21 wind values. Therefore, the determination of the fountain spray
-radius cannot be performed using the characteristics of the fountain nozzle alone since it is significantly
-influenced due to the temporal variation of the wind speed.
-
-\begin{figure*}[t]
-\includegraphics[width=12 cm]{Figures/radf.png}
-\caption{Modelled spray radius using wind values from CH22 and CH21 experiments. Measured spray radius are
-indicated as dots.}
-\label{fig:wind}
-\end{figure*}
 
 \subsection{Additional water losses}
 
@@ -805,29 +834,6 @@ may not favor the corresponding objectives for certain sites.
 \end{table}
 \clearpage
 
-\section{Modelling fountain spray radius} \label{sec:r_F}
-
-The fountain spray radius is defined as the largest horizontal distance covered by fountain water droplets. This
-can be determined by modelling the trajectory of these droplets using the projectile motion equation. This
-projectile motion starts at the fountain nozzle and ends at the AIR surface.  To obtain the droplet speeds, we
-use the the measured aperture diameter ($dia = 10 mm$) and discharge rate of the scheduled fountain  through the
-following equation:
-
-\begin{equation}
-	\label{eqn:dis}
- v = 4 \cdot Q/(\pi \cdot dia^2)
-\end{equation}
-
-To obtain the spray radius, we use the optimum launch angle $\theta = 45 \degree$ in the projectile motion
-equation to get:
-
-\begin{equation}
-  \label{eqn:radf}
-  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
-\end{equation}
-
-The influence of wind is included in the spray radius by multiplying the wind speed with the time of flight of
-the water droplets.
 
 \noappendix 
 
