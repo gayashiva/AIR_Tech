@@ -50,11 +50,14 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \introduction
 
 Cryosphere-fed irrigation networks in arid mountain regions are completely dependent on timely availability of
-meltwater from snow, glaciers and permafrost \citep{immerzeelImportanceVulnerabilityWorld2020, farhanHydrologicalRegimesConjunction2015,
-tveitenGlacierGrowingLocal2007}. With the accelerated decline of glaciers due to climate change
-\citep{nusserLocalKnowledgeGlobal2016}, cold arid mountain regions and their corresponding drainage system in the lowlands are experiencing water scarcity at certain places in the spring season like in Ladakh \citep{norphelSnowWaterHarvesting2015} or at other places in summer and early autumns seasons . This seasonal water scarcity makes it essential to provide
-supplementary irrigation in order to sustain agricultural output and take advantage of the complete growing
-season \citep{nusserLocalKnowledgeGlobal2016, vincentEnergyClimateChange2009}.
+meltwater from snow, glaciers and permafrost \citep{immerzeelImportanceVulnerabilityWorld2020,
+farhanHydrologicalRegimesConjunction2015, tveitenGlacierGrowingLocal2007}. With the accelerated decline of
+glaciers due to climate change \citep{nusserLocalKnowledgeGlobal2016}, cold arid mountain regions and their
+corresponding drainage system in the lowlands are experiencing water scarcity at certain places in the spring
+season like in Ladakh \citep{norphelSnowWaterHarvesting2015} or at other places in summer and early autumns
+seasons . This seasonal water scarcity makes it essential to provide supplementary irrigation in order to
+sustain agricultural output and take advantage of the complete growing season
+\citep{nusserLocalKnowledgeGlobal2016, vincentEnergyClimateChange2009}.
 
 To cope with this recurrent water scarcity, villagers in the region of Ladakh have developed two types of
 artificial ice reservoirs (AIRs): ice terraces and ice stupas (see Fig. \ref{fig:AIRforms}).  All these types of
@@ -84,12 +87,14 @@ One of the common problems with AIR construction systems is related to fountain 
 is simply answering the questions of “When do we spray?”, “How much do we spray?” and “How long do we spray?”.
 Starting fountain spray too early or spraying too much water or running a fountain spray too long is considered
 overwatering. At the very least this practice wastes water.  Likewise, starting fountain spray too late or
-spraying too little water or not running the system for a long enough period of time is considered underwatering and can cause reduced ice volumes.
+spraying too little water or not running the system for a long enough period of time is considered underwatering
+and can cause reduced ice volumes.
 
 Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
-construction systems suffer from overwatering. In order to avoid this issue, it is important to understand surface freezing rates, which can be calculated by means of the full energy balance model
-developed in \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either
-historical weather data or real-time weather data to produce recommended discharge rates.
+construction systems suffer from overwatering. In order to avoid this issue, it is important to understand
+surface freezing rates, which can be calculated by means of the full energy balance model developed in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model can be forced with either historical
+weather data or real-time weather data to produce recommended discharge rates.
 
 However, there are some practical issues that need to be addressed before dealing with the fountain scheduling
 processes. For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since
@@ -347,21 +352,23 @@ The pressure losses can be determined using the Bernoulli equation as follows:
 
 \begin{equation}
   \label{eqn:pressure}
-  P_{source} = P_{alt} + P_{friction} + P_{nozzle} + \frac{\rho \cdot v^2}{2}
+  P_{source} = P_{alt} + P_{friction} + P_{nozzle} + \frac{\rho \cdot v^2}{2} \cdot 10 ^{-5}
 \end{equation}
 
 where $P_{source}$ is the source pressure , $P_{nozzle}$ is the pressure loss due to the fountain nozzle and
-$P_{alt}$ is pressure loss due to the altitudinal difference between the pipeline input and fountain
-output. The velocity $v$ can be determined from discharge rate observations using Eqn. \ref{eqn:dis}. 
+$P_{alt}$ is pressure loss due to the altitudinal difference between the pipeline input and fountain output. All
+these pressure variable share the units of bars.  The velocity $v$ can be determined from discharge rate
+observations using Eqn. \ref{eqn:dis}. 
 
-The frictional loss of the pipeline can be determined from the following equation taken from \ref{}:  
+The frictional loss of the pipeline used in the experiment can be determined from the following equation based
+on \cite{schmitzDruckverlustOnline2022}:  
 
 \begin{equation}
   \label{eqn:friction}
   P_{friction} = [4 \cdot 10 ^{-5} \cdot Q + 0.0002 \cdot Q] \cdot L
 \end{equation}
 
-where $L$ is the total length of the pipeline in $m$ and $Q$ is the discharge rate in $l/min$.
+where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $Q$ is the discharge rate in $l/min$.
 
 
 \subsection{Model updates}
@@ -519,13 +526,14 @@ the automated AIR due to process (a) counteracted the higher melt of the traditi
 
 \subsection{Pressure losses}
 
-The automated icestupa had a pipeline length of 66 $m$, a diameter of 16 $mm$, an altitudinal difference of 11 m
-and a source pressure of 6 bar. This pipeline configuration resulted in a $P_{alt}$ of 1.1 $bar$. Maximum
-frictional loss occurs during maximum discharge which was measured to be 11 $l/min$. Substituting the
-corresponding values in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.5 $bar$. The velocity $v$ can be
-determined from our discharge rate observation from Eqn. \ref{eqn:radf}. Measured source water pressure was 6
-$bar$. Therefore, from Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.4 $bar$. Therefore, fountain nozzle
-consumed more than 70 \% of the source pressure to generate the water droplets. 
+The pressure consumption across the fountain pipeline provide insight into how the fountain pipeline
+configuration can be better optimised. The automated icestupa fountain pipeline configuration had a length of 66
+$m$, a diameter of 16 $mm$, an altitudinal difference of 11 m and a source pressure of 6 bar. Maximum frictional
+loss occurs during maximum discharge which was measured to be 11 $l/min$. Substituting the corresponding values
+in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.5 $bar$. The velocity $v$ can be determined from our
+discharge rate observation from Eqn. \ref{eqn:radf}. Measured source water pressure was 6 $bar$. Therefore, from
+Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.4 $bar$. Therefore, fountain nozzle consumed more than 70
+\% of the source pressure to generate the water droplets. 
 
 \section{Discussion}
 
