@@ -50,10 +50,9 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
 \introduction
 
 Cryosphere-fed irrigation networks in arid mountain regions are completely dependent on timely availability of
-meltwater from glaciers, snow and permafrost \citep{immerzeelImportanceVulnerabilityWorld2020, farhanHydrologicalRegimesConjunction2015,
+meltwater from snow, glaciers and permafrost \citep{immerzeelImportanceVulnerabilityWorld2020, farhanHydrologicalRegimesConjunction2015,
 tveitenGlacierGrowingLocal2007}. With the accelerated decline of glaciers due to climate change
-\citep{nusserLocalKnowledgeGlobal2016}, these regions are experiencing water scarcity particularly during the
-spring season \citep{norphelSnowWaterHarvesting2015}. This seasonal water scarcity makes it essential to provide
+\citep{nusserLocalKnowledgeGlobal2016}, cold arid mountain regions and their corresponding drainage system in the lowlands are experiencing water scarcity at certain places in the spring season like in Ladakh \citep{norphelSnowWaterHarvesting2015} or at other places in summer and early autumns seasons . This seasonal water scarcity makes it essential to provide
 supplementary irrigation in order to sustain agricultural output and take advantage of the complete growing
 season \citep{nusserLocalKnowledgeGlobal2016, vincentEnergyClimateChange2009}.
 
@@ -81,12 +80,11 @@ aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialG
 \citep{reutersConservationistsChileAim2021}. These AIRs are traditionally constructed by diverting springs or
 glacial streams into fountain spray systems via embankments and pipelines. 
 
-One of the common problems with AIR construction systems has to do with fountain scheduling. Fountain scheduling
+One of the common problems with AIR construction systems is related to fountain scheduling. Fountain scheduling
 is simply answering the questions of “When do we spray?”, “How much do we spray?” and “How long do we spray?”.
 Starting fountain spray too early or spraying too much water or running a fountain spray too long is considered
 overwatering. At the very least this practice wastes water.  Likewise, starting fountain spray too late or
-spraying too little water or not running the system for a long enough period of time is considered under
-watering and can cause reduced ice volumes.
+spraying too little water or not running the system for a long enough period of time is considered underwatering and can cause reduced ice volumes.
 
 Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that traditional
 construction systems suffer from overwatering. In order to avoid this issue, it is important to understand surface freezing rates, which can be calculated by means of the full energy balance model
@@ -155,13 +153,13 @@ and ended on 12th April. These two dates are denoted as start and expiry dates h
 
 \subsection{Meteorological data}
 
-Air temperature, relative humidity, wind speed, pressure, long-wave, precipitation, global short-wave radiation
+Air temperature, relative humidity, wind speed, pressure, precipitation, incoming long-wave radiation, short-wave radiation
 and cloudiness index are required to calculate the surface energy balance of an AIR. The primary weather data
 source was an automatic weather station (AWS) located around 20 m away. Hourly ground temperature measurements
 were also recorded by the AWS to approximate the fountain's water temperature. Less than 0.4 \% of the data was
 found to be missing and the data gaps were filled by linear interpolation. However, two additional datasets were
 required to obtain all the necessary input variables, namely, cloudiness index and precipitation. These two
-datasets were obtained from ERA5 reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a meteoswiss AWS
+datasets were obtained from ERA5 reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS
 located 184 m away (Station ID: 0-0756-0-GTT) respectively.
 
 \begin{figure*}[t]
@@ -176,12 +174,12 @@ The scheduled and unscheduled fountains have four attributes, namely: discharge 
 temperature ($T_F$), nozzle pressure loss ($P_{nozzle}$), and the spray radius ($r$). Discharge rate represents
 the discharge rate of the water in the fountain pipeline. Height denotes the height of the fountain pipeline
 installed. Fountain water temperature is the temperature of water droplets produced by the fountain.
-$P_{nozzle}$ denotes the loss of pressure during the formation of water droplets. Spray radius denotes the
+The nozzle pressure loss denotes the deficiency during the formation of water droplets. Spray radius denotes the
 observed ice radius formed from the fountain water droplets.
 
-The height was increased in steps of 1 meter for both the fountains. For the scheduled fountain, the
-construction began with a height of 3 m with an increase to 4 $m$ on 23rd December. For the unscheduled
-fountain, the construction began with a height of 3.7 $m$ and then this was increased two times on 23rd December
+The height was increased in steps of 1 meter for both fountains. For the scheduled fountain, the
+construction began with a height of 3 $m$ with an increase to 4 $m$ on 23rd December. For the unscheduled
+fountain, the construction began with a height of 3.7 $m$ and was increased two times on 23rd December
 and 12th February.
 
 Fig. \ref{fig:aws} shows how the automation system operated the scheduled fountain based on real-time
@@ -208,7 +206,7 @@ surveys and the methodology used to produce the corresponding outputs are explai
 the obtained imagery were analysed to document the ice radius, the surface area and the volume of the ice
 structures. Ice radius measurements of drone flights which observed either an increase in AIR circumference or
 volume were averaged to determine the fountain's spray radius. The number of drone surveys conducted for the
-traditional and the automated AIRs were 8 and 6, respectively (see Table \ref{tab:uav}). 
+traditional and the automated AIRs were 8 $m$ and 6 $m$, respectively (see Table \ref{tab:uav}). 
 
 \begin{table}
 	\centering
@@ -262,11 +260,11 @@ those constrained by the duration of favourable weather windows require weather-
 strategies. These two kinds of scheduled fountains will be referred to as water-sensitive fountain and
 weather-sensitive fountain henceforth.
 
-Water-sensitive fountains are expected to produce higher water use effiency whereas weather-sensitive fountains
+Water-sensitive fountains are expected to produce higher water use efficiency whereas weather-sensitive fountains
 are expected to produce higher ice volumes. Accordingly, we produce the discharge rate recommendations for these
 two kinds of fountains through two sets of model forcing assumptions for the following three model variables:
 (a) slope , (b) albedo and (c) cloudiness.  These two kinds of models will be referred to as ice volume
-optimised model (IVOM) and water-use efficiency optimised model (WEOM) respectively. The slope variable
+optimised model (IVOM) and water-use efficiency optimised model (WEOM), respectively. The slope variable
 increases the shortwave radiation and sensible heat impact. The albedo variable decreases the shortwave
 radiation impact. The cloudiness variable increases both the shortwave and the longwave radiation impact. We
 associate the upper and lower bounds of these variables with the IVOM and WEOM versions depending on whether
@@ -357,7 +355,7 @@ The frictional loss of the pipeline can be determined from the following equatio
   P_{friction} = [4 \cdot 10 ^{-5} \cdot Q + 0.0002 \cdot Q] \cdot L
 \end{equation}
 
-where $L$ is the total length of the pipeline and $Q$ is the discharge rate in $l/min$.
+where $L$ is the total length of the pipeline in $m$ and $Q$ is the discharge rate in $l/min$.
 
 
 \subsection{Model updates}
@@ -368,15 +366,15 @@ calculation of surface processes we refer to the respective literature reference
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
 water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
-approximation since it doesn't account for two processes , namely, (a) temperature fluctuations during transit
+approximation as it is not accounting for two processes, namely, (a) temperature fluctuations during transit
 from the source to the fountain nozzle; (b) temperature fluctuations during the flight time of the water
-droplets after they leave the fountain nozzle. Therefore, we instead use measured hourly ground temperature
+droplets after leaving the fountain nozzle. Therefore, we instead use measured hourly ground temperature
 measurements to approximate process (a) and assume water temperature cools down to 0 $\degree\,C$ during subzero
 air temperature conditions to approximate process (b).
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
-the model, especially, for the automated AIR where several fountain discharge events of short durations occur.
+the model, especially, for the automated AIR, where several fountain discharge events of short duration occur.
 Therefore, we assumed that discharge events instead reduce the albedo decay rate ($\tau$) by a 
 factor of $\frac{\alpha_{ice}}{\alpha_{snow}}$.
 
@@ -392,8 +390,8 @@ $M_{dep}$ is the cumulative accumulation through water vapour deposition; $\rho_
 $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) taken from
 \cite{cuffeyPhysicsGlaciers2010} .
 
-Rain events were not considered in the previous version of the model but they occured in our experiment. The
-influence of rain events on the albedo and the energy balance was assumed to be similar to that of discharge
+Rain events were not considered in the previous version of the model but they occurred in our experiment. The
+influence of rain events on the albedo and the energy balance was assumed to be similar to discharge
 events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
 Accordingly, the heat flux generated due to a rain event was equal to:
 
@@ -404,8 +402,8 @@ Accordingly, the heat flux generated due to a rain event was equal to:
 \subsection{Calibration and Validation}
 
 The model parameters were calibrated to the median values of the ranges presented in Appendix Table
-\ref{tab:parameters}. However, the surface layer thickness parameter was calibrated to a value of 9 $cm$ for the
-automated AIR instead of the default value of 5 $cm$. This calibration was necessary to prevent hourly surface
+\ref{tab:parameters}. However, the surface layer thickness parameter was calibrated to a value of 0.09 $m$ for the
+automated AIR instead of the default value of 0.05 $m$. This calibration was necessary to prevent hourly surface
 temperature fluctuations to assume unphysical values above 40 $\degree\,C$.
 
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
@@ -419,8 +417,8 @@ discharge rate estimates with the validated freezing rate of the traditional AIR
 \subsection{Scheduled discharge rate simulations}
 
 The water-sensitive and weather-sensitive fountains scheduled by the WEOM and IVOM model versions estimated the
-freezing rate of the unscheduled fountain with a correlation around 0.4 and a RMSE less than 0.8 $l/min$ and 1.8
-$l/min$ respectively. The weather-sensitive fountain overestimated the freezing rate 93 \% of the fountain spray
+freezing rate of the unscheduled fountain with a correlation of 0.4 and a RMSE less than 0.8 $l/min$ and 1.8
+$l/min$, respectively. The weather-sensitive fountain overestimated the freezing rate 93 \% of the fountain spray
 duration whereas the water-sensitive fountain overestimated the freezing rate 70 \% of the unscheduled fountain
 spray duration as illustrated by Fig. \ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in
 prioritizing the maximum ice volume but the WEOM model forcing could not optimize for water use efficiency.
