@@ -153,14 +153,15 @@ and ended on 12th April. These two dates are denoted as start and expiry dates h
 
 \subsection{Meteorological data}
 
-Air temperature, relative humidity, wind speed, pressure, precipitation, incoming long-wave radiation, short-wave radiation
-and cloudiness index are required to calculate the surface energy balance of an AIR. The primary weather data
-source was an automatic weather station (AWS) located around 20 m away. Hourly ground temperature measurements
-were also recorded by the AWS to approximate the fountain's water temperature. Less than 0.4 \% of the data was
-found to be missing and the data gaps were filled by linear interpolation. However, two additional datasets were
-required to obtain all the necessary input variables, namely, cloudiness index and precipitation. These two
-datasets were obtained from ERA5 reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS
-located 184 m away (Station ID: 0-0756-0-GTT) respectively.
+Air temperature, relative humidity, wind speed, pressure, precipitation, incoming long-wave radiation,
+short-wave radiation and cloudiness index are required to calculate the surface energy balance of an AIR. The
+primary weather data source was an automatic weather station (AWS) located around 20 m away. Hourly ground
+temperature measurements were also recorded by the AWS to approximate the fountain's water temperature. Less
+than 0.4 \% of the data was found to be missing and the data gaps were filled by linear interpolation. However,
+two additional datasets were required to obtain all the necessary input variables, namely, cloudiness index and
+precipitation. These two datasets were obtained from ERA5 reanalysis dataset
+\citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS located 184 m away (Station ID: 0-0756-0-GTT)
+respectively.
 
 \begin{figure*}[t]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -173,8 +174,8 @@ located 184 m away (Station ID: 0-0756-0-GTT) respectively.
 The scheduled and unscheduled fountains have four attributes, namely: discharge rate ($Q$), height ($h$), water
 temperature ($T_F$), nozzle pressure loss ($P_{nozzle}$), and the spray radius ($r$). Discharge rate represents
 the discharge rate of the water in the fountain pipeline. Height denotes the height of the fountain pipeline
-installed. Fountain water temperature is the temperature of water droplets produced by the fountain.
-The nozzle pressure loss denotes the deficiency during the formation of water droplets. Spray radius denotes the
+installed. Fountain water temperature is the temperature of water droplets produced by the fountain. The nozzle
+pressure loss denotes the preesure consumed during the formation of water droplets. Spray radius denotes the
 observed ice radius formed from the fountain water droplets.
 
 The height was increased in steps of 1 meter for both fountains. For the scheduled fountain, the
@@ -183,10 +184,11 @@ fountain, the construction began with a height of 3.7 $m$ and was increased two 
 and 12th February.
 
 Fig. \ref{fig:aws} shows how the automation system operated the scheduled fountain based on real-time
-meteorological conditions. The automation system caused these variations through its control valve which varied
-between 0 to 100 \% depending on the recommended discharge rate. Throughout the study period, the control valve
-was opened completely (100 \%) only once corresponding to the time when the temperature attained its minimum of
--13 \degree C on 20th December. After this event, the control valve was never opened beyond 34 \%.  
+meteorological conditions. The automation system caused these variations through its control valve which used
+the recommended discharge rate to regulate the pipeline crosssectional area between 0 to 100 \% . Throughout the
+study period, the control valve was opened completely (100 \%) only once corresponding to the time when the
+temperature attained its minimum of -13 $\degree/,C$ on 20th December. After this event, the control valve was
+never opened beyond 34 \% of the pipeline crosssectional area.  
 
 The unscheduled fountain was manually operated to spray all the available discharge until a fountain freezing
 event interrupted the discharge on 17th February. Unfortunately, no discharge rate measurements were recorded
@@ -196,7 +198,8 @@ conservatively assume the discharge rate of the unscheduled fountain to be equal
 of the scheduled fountain which was observed to be 13 $l/min$ at a fountain height of 3 $m$ and 11 $l/min$ at a
 fountain height of 4 $m$ respectively.
 
-The water temperature of both the fountains were estimated from the AWS ground temperature dataset.
+The water temperature of both the fountains were estimated from the AWS ground temperature dataset. This dataset
+was acquired through a thermistor located 0.3 $m$ below the base of the fountain.
 
 \subsection{Drone surveys}
 
@@ -210,7 +213,7 @@ traditional and the automated AIRs were 8 $m$ and 6 $m$, respectively (see Table
 
 \begin{table}
 	\centering
-	\caption{ Summary of the drone surveys}
+	\caption{Summary of the drone surveys}
 	\label{tab:uav}
 	\begin{tabular}{@{}|llllll|@{}}
 		\toprule
@@ -253,11 +256,14 @@ traditional and the automated AIRs were 8 $m$ and 6 $m$, respectively (see Table
 
 \section{Methods}
 
-\subsection{Determination of recommended discharge rate}
+\subsection{Discharge scheduling software}
 
-Locations constrained by their available water supply require water-sensitive fountain scheduling strategies and
-those constrained by the duration of favourable weather windows require weather-sensitive fountain scheduling
-strategies. These two kinds of scheduled fountains will be referred to as water-sensitive fountain and
+The software used for fountain scheduling was obtained by extending the AIR model developed in
+\citep{balasubramanianInfluenceMeteorologicalConditions2022}. This software recommended two types of fountain
+scheduling strategies based on the requirements of the construction location. The software recommended
+water-sensitive fountain scheduling strategies if the location had limited quantity of water whereas
+weather-sensitive fountain scheduling strategies if the location had limited duration of favourable weather
+windows. These two kinds of scheduled fountains will be referred to as water-sensitive fountain and
 weather-sensitive fountain henceforth.
 
 Water-sensitive fountains are expected to produce higher water use efficiency whereas weather-sensitive fountains
@@ -561,7 +567,7 @@ weather-sensitive fountain.
 For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
 volume obtained significantly. 
 
-\subsection{Meteorological drivers of volume evolution across winters}
+\subsection{Meteorological drivers of interannual volume variability}
 
 The maximum volumes of the Swiss AIRs built during 2021-22 winter (CH22) is only half that of AIRs from the
 previous winter (CH21). One would expect this difference is due to warmer temperatures during the CH22 winter.
