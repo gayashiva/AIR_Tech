@@ -394,14 +394,15 @@ these pressure variable share the units of bars.  The velocity $v$ can be determ
 observations using Eqn. \ref{eqn:dis}. 
 
 The frictional loss of the pipeline used in the experiment can be determined from the following equation based
-on \cite{schmitzDruckverlustOnline2022}:  
+on \cite{poiseuilleExperimentalInvestigationsFlow1847}:  
 
 \begin{equation}
   \label{eqn:friction}
-  P_{friction} = [4 \cdot 10 ^{-5} \cdot Q + 0.0002 \cdot Q] \cdot L
+  P_{friction} = \frac{3.2 \cdot \mu \cdot v \cdot L}{\rho \cdot g \cdot dia^2}
 \end{equation}
 
-where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $Q$ is the discharge rate in $l/min$.
+where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $v$ is the 
+water velocity in $m/s$.
 
 
 \subsection{Model updates}
@@ -563,9 +564,9 @@ The pressure consumption across the fountain pipeline provide insight into how t
 configuration can be better optimised. The automated icestupa fountain pipeline configuration had a length of 66
 $m$, a diameter of 16 $mm$, an altitudinal difference of 11 $m$ and a source pressure of 6 $bar$. Maximum frictional
 loss occurs during maximum discharge which was measured to be 11 $l/min$. Substituting the corresponding values
-in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.5 $bar$. The velocity $v$ can be determined from our
+in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3 $bar$. The velocity $v$ can be determined from our
 discharge rate observation from Eqn. \ref{eqn:radf}. Measured source water pressure was 6 $bar$. Therefore, from
-Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.4 $bar$. Therefore, fountain nozzle consumed more than 70
+Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$. Therefore, fountain nozzle consumed more than 75
 \% of the source pressure to generate the water droplets. 
 
 \subsection{Influence of wind driven redistribution on fountain spray radius}
