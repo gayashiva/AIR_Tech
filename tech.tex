@@ -393,16 +393,16 @@ $P_{alt}$ is pressure loss due to the altitudinal difference between the pipelin
 these pressure variable share the units of bars.  The velocity $v$ can be determined from discharge rate
 observations using Eqn. \ref{eqn:dis}. 
 
-The frictional loss of the pipeline used in the experiment can be determined from the following equation based
-on \cite{poiseuilleExperimentalInvestigationsFlow1847}:  
+The frictional loss of the pipeline used in the experiment can be determined from the well known
+Hagen–Poiseuille equation \cite{poiseuilleExperimentalInvestigationsFlow1847}:  
 
 \begin{equation}
   \label{eqn:friction}
   P_{friction} = \frac{3.2 \cdot \mu \cdot v \cdot L}{\rho \cdot g \cdot dia^2}
 \end{equation}
 
-where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $v$ is the 
-water velocity in $m/s$.
+where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $v$ is the water velocity in
+$m/s$. Note that the above equation only applies for laminar flow which is the situation in our case.
 
 
 \subsection{Model updates}
@@ -560,14 +560,29 @@ the automated AIR due to process (a) counteracted the higher melt of the traditi
 
 \subsection{Pressure losses}
 
+
+\begin{table}[]
+\centering
+\caption{The pipeline configuration of the automated icestupa.}
+\label{tab:pipe}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Name} & \textbf{Symbol} & \textbf{Value} & \\ \midrule
+\multicolumn{1}{|l}{Pipeline diameter}      & $dia$ & 16 $mm$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Pipeline length}        & $L$ & 66 $m$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Source water pressure} & $P_{source}$ & 6 $bar$  & \multicolumn{1}{l|}{} \\\midrule 
+\multicolumn{1}{|l}{Altitudinal pressure head}  & $P_{alt}$ & 1.1 $bar$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Water viscosity}  & $\mu$ & 0.00152 $Pa\,s$ & \multicolumn{1}{l|}{} \\ \bottomrule
+\end{tabular}
+\end{table}
+
 The pressure consumption across the fountain pipeline provide insight into how the fountain pipeline
-configuration can be better optimised. The automated icestupa fountain pipeline configuration had a length of 66
-$m$, a diameter of 16 $mm$, an altitudinal difference of 11 $m$ and a source pressure of 6 $bar$. Maximum frictional
-loss occurs during maximum discharge which was measured to be 11 $l/min$. Substituting the corresponding values
-in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3 $bar$. The velocity $v$ can be determined from our
-discharge rate observation from Eqn. \ref{eqn:radf}. Measured source water pressure was 6 $bar$. Therefore, from
-Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$. Therefore, fountain nozzle consumed more than 75
-\% of the source pressure to generate the water droplets. 
+configuration can be better optimised. The pipeline configuration of the automated icestupa fountain is listed
+in Table \ref{tab:pipe}. Maximum frictional loss occurs during maximum discharge which was measured to be 11
+$l/min$. Substituting the corresponding values in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3
+$bar$. The velocity $v$ can be determined from our discharge rate observation from Eqn. \ref{eqn:radf}.
+Therefore, from Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$. Therefore, fountain nozzle
+consumed more than 75 \% of the source pressure to generate the water droplets. 
 
 \subsection{Influence of wind driven redistribution on fountain spray radius}
 
