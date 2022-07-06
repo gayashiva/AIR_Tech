@@ -37,11 +37,12 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
   irrigation water demands. Recent studies have shown that during construction of AIRs over 75\% of the water
   sprayed was lost. During the winter of 2021-22, two AIRs were constructed to quantify the water loss reduction
   of fountain scheduling construction strategies. Fountain scheduling was realized through an automation system
-  computing recommended discharge rates using real-time weather input and location metadata. The scheduled
-  fountain produced similar volumes while consuming one-tenth of the water the unscheduled fountain used.
-  Simulations converting unscheduled fountains to scheduled fountains improved the water use efficiency of
-  several traditional AIRs more than three fold. Overall, these results show that the automated construction
-  strategy can increase the water use efficiency of AIRs without compromising their meltwater production.
+  computing recommended discharge rates using real-time weather input and location metadata. Fountain operation
+  using scheduling strategies produced similar ice volumes while consuming one-tenth of the water the
+  unscheduled fountain used. Simulations converting unscheduled fountains to scheduled fountains improved the
+  water use efficiency of several AIRs more than three fold. Overall, these results show that the automated
+  fountain water supply management can increase the water use efficiency of AIRs and reduce their maintenance
+  without compromising on their meltwater production.
 
 \end{abstract}
 
@@ -104,40 +105,39 @@ construction systems suffer from overwatering. In order to avoid this issue, it 
 surface freezing rates, which can be calculated by means of the full energy balance model developed in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022}. This model requires an accurate estimation of
 fountain spray radius to produce recommended discharge rates. In theory, such an estimation is possible by
-modelling the projectile motion of water droplets using fountain characteristics like aperture diameter and
-discharge rate. However, in practice, accuracy of this estimation also depends on the relative importance of
-wind-driven redistribution effects in determining the fountain spray radius. Therefore, estimating the fountain
-spray radius requires a better understanding of the relative contribution of these processes in determining the
-trajectory of the fountain water droplets.
+modelling the projectile motion of water droplets using fountain characteristics like aperture diameter, and
+discharge rate. However, in practice, this estimation also depends on the relative importance of wind-driven
+redistribution effects in determining the fountain spray radius. Therefore, estimating the fountain spray radius
+requires a better understanding of the relative contribution of these two processes.
 
-However, there are some practical issues that need to be addressed before dealing with the fountain scheduling
-processes. For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since
-they were always two times higher than the modelled freezing rate
+There are some practical issues that need to be addressed before dealing with the fountain scheduling processes.
+For example, in the case of the Indian AIR, the fountain discharge rate could have been halved since they were
+always two times higher than the modelled freezing rate
 \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, reduction of discharge rate
 could increase the maintenance cost due to higher risk of freezing events in the fountain pipeline.
 
 An optimum construction strategy, therefore, should first prevent the occurrence of freezing events in the
 fountain pipeline. These events can be prevented by setting a minimum threshold for the recommended discharge
 rate. Additionally, recommended discharge rate needs to be sensitive to constraints on the water supply or
-weather of the construction site. Locations limited by their water supply like in Ladakh, India would prioritize
-water use efficiency whereas those limited by the favourable weather windows like in Guttannen, Switzerland
-would prioritize for maximum ice volume. Accordingly, we use two types of model parameter optimizations that
-prevent underwatering and overwatering to attain higher ice volumes and higher water use efficiency
-respectively.
+weather of the construction site. For example, locations limited by their water supply like Ladakh, India
+would prioritize water use efficiency whereas those limited by the duration of their favourable weather windows
+like Guttannen, Switzerland would prioritize maximum ice volume. Accordingly, we use two types of model
+parameter optimizations that prevent underwatering and overwatering to attain higher ice volumes and higher
+water use efficiency respectively.
 
-
-However, manually adjusting the fountain discharge rate is not practical due to two reasons. Firstly, this would
+However, manually adjusting the fountain discharge rate is not practical due to two reasons- Firstly, this would
 involve constant adjustments of discharge rates in response to the significant diurnal and seasonal variations
 of the freezing rates. Secondly, frequent pipeline water drainage is required to avoid water losses. Therefore,
 operation of scheduled fountains via automation systems is preferred to reduce the long-term maintenance costs.
 
-The present study was performed to compare two AIRs produced using different fountain scheduling strategies but
+The presented study was performed between two AIRs produced using different fountain scheduling strategies but
 exposed to identical meteorological conditions. The specific objectives of this study are to compare the
-water-use efficiency, maximum ice volume and maintenance effort between the different fountain scheduling strategies.
+water-use efficiency, maximum ice volume and maintenance effort between the different fountain scheduling
+strategies.
 
 \section{Study sites and data}
 
-In this study, we use datasets presented in our previous work
+In this study, we used datasets presented in our previous work
 \citep{balasubramanianInfluenceMeteorologicalConditions2022} along with new datasets. These old datasets record
 the meteorological conditions and fountain characteristics of AIRs built in Gangles, India (IN21) and Guttannen,
 Switzerland (CH21) during the winter of 2020-21. In this section, we focus on describing the new AIR datasets
@@ -153,24 +153,24 @@ the winters of 2021-22 using a traditional and an automated construction strateg
 
 \begin{figure}[t]
 \includegraphics[width=12cm]{Figures/AIR_fountains.jpg}
-\caption{Unscheduled and scheduled fountains used for construction of traditional an automated AIRs at Guttannen. Picture credits: Daniel Bürki}
+\caption{Unscheduled and scheduled fountains used for construction of traditional and automated AIRs at Guttannen. Picture credits: Daniel Bürki}
 \label{fig:2AIR}
 \end{figure}
 
 The automated and the traditional AIRs were constructed adjacent to each other but with different fountain
 designs as shown in Fig. \ref{fig:2AIR}. This ensured both AIRs shared the same water source and identical
-weather conditions. In addition, a webcam guaranteed a continuous survey of the automated AIR.   
-
-In the traditional strategy, the fountain was operated manually whereas in the automated strategy a programmed
-automation system controlled the fountain discharge rate during the whole study period using real time weather
-input and several control parameters, which could be modified via a user interface. Henceforth, we refer to the
-fountain used in the traditional and automated construction strategy as unscheduled and scheduled fountains,
-respectively.
+weather conditions. In addition, a webcam guaranteed a continuous surveillance of the automated AIR.   
 
 In the traditional construction strategy, tree branches were laid covering the fountain pipe to initiate and
 speed up the ice cone formation process. In the automated strategy, only the fountain pipe was placed before the
-water spray started. The construction of both the AIRs began on 8th December on a snow bed of 13 cm thickness
-and ended on 12th April. These two dates are denoted as start and expiry dates henceforth.
+water spray started. The construction of both the AIRs began on 8th December 2021 on a snow bed of 13 cm thickness
+and ended on 12th April 2022. These two dates are referred as start and expiry dates henceforth.
+
+In the traditional strategy, the fountain was operated manually whereas in the automated strategy the fountain
+discharge rate was controlled using real time weather input and several control parameters which could be
+modified via a user interface. Henceforth, we refer to the fountain used in the traditional and automated
+construction strategy as unscheduled and scheduled fountains, respectively.
+
 
 \subsection{Meteorological data}
 
