@@ -35,14 +35,15 @@ Applied Sciences and Arts, Luzern, Switzerland} \def\corrAuthor{Suryanarayanan B
   developed in the Indian Himalayas (Ladakh). With this technology, otherwise unused stream water is stored in
   large ice towers in winter. The surplus melt water that is generated in spring is used for satisfying
   irrigation water demands. Recent studies have shown that during construction of AIRs over 75\% of the water
-  sprayed was lost. During the winter of 2021-22, two AIRs were constructed to quantify the water loss reduction
-  of fountain scheduling construction strategies. Fountain scheduling was realized through an automation system
-  computing recommended discharge rates using real-time weather input and location metadata. Fountain operation
-  using scheduling strategies produced similar ice volumes while consuming one-tenth of the water the
-  unscheduled fountain used. Simulations converting unscheduled fountains to scheduled fountains improved the
-  water use efficiency of several AIRs more than three fold. Overall, these results show that the automated
-  fountain water supply management can increase the water use efficiency of AIRs and reduce their maintenance
-  without compromising on their meltwater production.
+  sprayed was lost. In this study, we examine whether fountain scheduling strategies can reduce this water loss
+  by building two AIRs under identical weather conditions but with different fountain scheduling construction
+  strategies. Fountain scheduling was realized through an automation system computing recommended discharge
+  rates using real-time weather input and location metadata. Fountain operation using scheduling strategies
+  produced similar ice volumes while consuming one-tenth of the water the unscheduled fountain used. Simulations
+  converting unscheduled fountains to scheduled fountains improved the water use efficiency of several AIRs more
+  than three fold. Overall, these results show that the automated fountain water supply management can increase
+  the water use efficiency of AIRs and reduce their maintenance without compromising on their meltwater
+  production.
 
 \end{abstract}
 
@@ -397,7 +398,7 @@ The pressure losses can be determined using the Bernoulli equation as follows:
 
 where $P_{source}$ is the source pressure , $P_{nozzle}$ is the pressure loss due to the fountain nozzle and
 $P_{alt}$ is pressure loss due to the altitudinal difference between the pipeline input and fountain output. All
-these pressure variable share the units of bars.  The velocity $v$ can be determined from discharge rate
+these pressure variables are measured in bars.  The velocity $v$ can be determined from discharge rate
 observations using Eqn. \ref{eqn:dis}. 
 
 The frictional loss of the pipeline used in the experiment can be determined from the well known
@@ -408,14 +409,15 @@ Hagen–Poiseuille equation \cite{poiseuilleExperimentalInvestigationsFlow1847}:
   P_{friction} = \frac{3.2 \cdot \mu \cdot v \cdot L}{\rho \cdot g \cdot dia^2}
 \end{equation}
 
-where $P_{friction}$ is in bars, $L$ is the total length of the pipeline in $m$ and $v$ is the water velocity in
-$m/s$. Note that the above equation only applies for laminar flow which is the situation in our case.
+where $P_{friction}$ is in bars, $L$ is the total length of the pipeline measured in meters and $v$ is the water velocity in
+$m/s$. Note that the above equation only applies for laminar flow which was the situation in our case.
 
 
 \subsection{Model updates}
 
-In this article, we refrain from a more general model description and focus only on the
-description of the integration of fountain scheduling processes. For details on the model internals, and the
+In this article, we refrain from a more general model description and focus only on the description of the
+integration of fountain scheduling processes with the AIR model
+\citep{balasubramanianInfluenceMeteorologicalConditions2022}. For details on the model internals and the
 calculation of surface processes we refer to the respective literature references. 
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, the fountain
@@ -423,7 +425,7 @@ water temperature ($T_F$) was estimated as a constant parameter. However, in rea
 approximation as it is not accounting for two processes, namely, (a) temperature fluctuations during transit
 from the source to the fountain nozzle; (b) temperature fluctuations during the flight time of the water
 droplets after leaving the fountain nozzle. Therefore, we instead use measured hourly ground temperature
-measurements to approximate process (a) and assume water temperature cools down to 0 $\degree\,C$ during subzero
+values to approximate process (a) and assume water temperature cools down to 0 $\degree\,C$ during subzero
 air temperature conditions to approximate process (b).
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
@@ -445,13 +447,16 @@ $kg\,m^{-3}$) and $\rho_{snow}$ is the density of wet snow (300 $kg\,m^{-3}$) ta
 \cite{cuffeyPhysicsGlaciers2010} .
 
 Rain events were not considered in the previous version of the model but they occurred in our experiment. The
-influence of rain events on the albedo and the energy balance was assumed to be similar to discharge
-events. However, the water temperature of a rain event was assumed to be equal to the air temperature.
-Accordingly, the heat flux generated due to a rain event was equal to:
+influence of rain events on the albedo and the energy balance was assumed to be similar to discharge events.
+However, the water temperature of a rain event was assumed to be equal to the air temperature. Accordingly, the
+rain water heat flux ($q_{R}$) generated due to a rain event was equal to:
 
 \begin{equation}
   q_{R} = \frac{\Delta M_{ppt} \cdot c_{water} \cdot T_{a}}{\Delta t \cdot A_{cone}}
 \end{equation}
+
+where $M_{ppt}$ is the hourly precipitation in meters, $c_{water}$ is the specific heat of water, and $A_{cone}$
+is the surface area.
 
 \subsection{Calibration}
 
@@ -463,7 +468,7 @@ temperature fluctuations to assume unphysical values above 40 $\degree\,C$.
 We performed the validation of the model on the traditional and automated AIRs by evaluating the root mean
 squared error (RMSE) between volume estimates and measurements. 
 
-The performance of the IVOM and WEOM versions of the physical model was assessed by comparing correlation of its
+The performance of the IVOM and WEOM versions of the physical model were assessed by comparing correlation of its
 discharge rate estimates with the validated freezing rate of the traditional AIR.
 
 \section{Results}
@@ -540,7 +545,7 @@ scheduled and unscheduled fountain construction strategies.} \label{fig:validati
 
 \subsection{Comparison of AIR construction strategies}
 
-Table \ref{tab:mb} shows how the different fountain scheduling strategies influence the mass and energy balance
+Table \ref{tab:mb} shows how the two different fountain scheduling strategies influence the mass and energy balance
 of the respective AIR.  The overall impact of the radiation fluxes (long-wave and short-wave) and the
 turbulent fluxes (sensible and latent) on the freezing and melting energies is determined from their 
 energy turnover. The energy turnover is calculated as the sum of energy fluxes in absolute values (see Table
@@ -556,7 +561,7 @@ the fountain water droplets. The temporal variation of the magnitude of these pr
 There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
 (a). Even though the unscheduled fountain was active for a much longer duration, the frequent snowfall events
 counteracted the albedo feedback of its fountain discharge. In contrast, the albedo of the automated AIR was
-reduced by late fountain spray events particularly in the month of March and April as shown in Fig.
+reduced by late fountain spray events particularly in the months of March and April as shown in Fig.
 \ref{fig:dis_processes}. These poorly timed fountain spray events occurred because the global solar radiation
 diurnal variation of the automation system is calibrated based on values for the month of February. Therefore,
 poor calibration of the automation system resulted in an increased impact of shortwave radiation on the
@@ -583,13 +588,13 @@ the automated AIR due to process (a) counteracted the higher melt of the traditi
 \end{tabular}
 \end{table}
 
-The pressure consumption across the fountain pipeline provide insight into how the fountain pipeline
+The pressure consumption across the fountain pipeline provide insights into how the fountain pipeline
 configuration can be better optimised. The pipeline configuration of the automated icestupa fountain is listed
 in Table \ref{tab:pipe}. Maximum frictional loss occurs during maximum discharge which was measured to be 11
 $l/min$. Substituting the corresponding values in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3
 $bar$. The velocity $v$ can be determined from our discharge rate observation from Eqn. \ref{eqn:radf}.
-Therefore, from Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$. Therefore, fountain nozzle
-consumed more than 75 \% of the source pressure to generate the water droplets. 
+Therefore, from Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$ which is more than 75 \% of the
+source water pressure.
 
 \subsection{Influence of wind driven redistribution on fountain spray radius}
 
