@@ -477,12 +477,12 @@ discharge rate estimates with the validated freezing rate of the traditional AIR
 
 The water-sensitive and weather-sensitive fountains scheduled by the WEOM and IVOM model versions estimated the
 freezing rate of the unscheduled fountain with a correlation of 0.4 and a RMSE less than 0.8 $l/min$ and 1.8
-$l/min$, respectively. The weather-sensitive fountain overestimated the freezing rate 93 \% of the fountain spray
-duration whereas the water-sensitive fountain overestimated the freezing rate 70 \% of the unscheduled fountain
-spray duration as illustrated by Fig. \ref{fig:simvsreal}. Therefore, the IVOM model forcing was successful in
-prioritizing the maximum ice volume but the WEOM model forcing could not optimize for water use efficiency.
-However, this large overestimation could be due to the depression of the unscheduled fountain's freezing rate
-caused by its excess discharge rate. 
+$l/min$, respectively. The discharge rate values of the weather-sensitive fountain overestimated the freezing
+rate 93 \% of the fountain spray duration whereas those of the water-sensitive fountain overestimated the
+freezing rate 70 \% of the unscheduled fountain spray duration as illustrated by Fig. \ref{fig:simvsreal}.
+Therefore, the IVOM model version was successful in prioritizing the maximum ice volume by overestimating the
+discharge rates but the WEOM model version could not underestimate its discharge rate values sufficiently to
+optimize for water use efficiency.
 
 \begin{figure*}[t]
 \includegraphics[width=8cm]{Figures/simvsreal.jpg}
@@ -495,10 +495,9 @@ scheduled fountains. }
 
 \subsection{Model validation}
 
-The volume estimation for the automated and traditional AIR had an RMSE of 8 $m^3$ and 6 $m^3$ with the drone
-volume observations, respectively. This RMSE error is within 13 \% and 11 \% of the maximum volume of the
-automated and the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig.
-\ref{fig:validation}.  
+The volume estimation for the automated and traditional AIR had a RMSE of 8 $m^3$ and 6 $m^3$ with the drone
+volume observations, respectively. These are within 13 \% and 11 \% of the maximum volume of the automated and
+the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig. \ref{fig:validation}.  
 
 \begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} \caption{Volume validation of the
 scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
@@ -554,8 +553,8 @@ energy turnover. The energy turnover is calculated as the sum of energy fluxes i
 Fountain scheduling reduced the fountain discharge input and fountain wastewater output by an order of
 magnitude. However, this is not resulting in an appreciable difference in the volume evolution of the automated
 and traditional AIRs as shown in Fig. \ref{fig:simvsreal}. This is due to two counteracting surface processes
-during fountain spray: (a) dampening of albedo to ice albedo and (b) absorption of the heat energy of
-the fountain water droplets. The temporal variation of the magnitude of these processes are shown in Fig.
+during fountain spray: (a) dampening of albedo to ice albedo and (b) absorption of the heat energy of the
+fountain water droplets. The temporal variation of the magnitude of these processes are shown in Fig.
 \ref{fig:dis_processes}.
 
 There is a considerable difference in the contribution of the shortwave radiation due to the effect of process
@@ -575,7 +574,7 @@ the automated AIR due to process (a) counteracted the higher melt of the traditi
 
 \begin{table}[]
 \centering
-\caption{The pipeline configuration of the automated icestupa.}
+\caption{Pipeline configuration of the automated icestupa.}
 \label{tab:pipe}
 \begin{tabular}{@{}llll@{}}
 \toprule
