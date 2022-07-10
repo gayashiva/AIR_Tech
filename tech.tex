@@ -595,13 +595,13 @@ source water pressure.
 
 \subsection{Influence of wind driven redistribution on fountain spray radius}
 
-The estimated volume changes over the month of January of the Swiss AIRs built this winter (CH22) is less than
-half that of AIRs from the previous winter (CH21). One would expect this difference is due to warmer
+The estimated volume changes over the month of January of the Swiss AIRs built in the winter of 2021-22 is less
+than half that of AIRs from the previous winter (CH21). One would expect this difference is due to warmer
 temperatures during the CH22 winter. However, the median January temperature of CH22 winter was colder than the
-CH21 winter (see Fig. \ref{fig:CH_diffs} (a)). Moreover, the volume growth of CH20 AIR is 6 fold that of CH22
-AIR despite CH20 winter being 3 $\degree C$ warmer.
+CH21 winter (see Fig. \ref{fig:CH_diffs} (a)). Moreover, the volume growth of CH20 AIR is 6 folds of CH22 AIR,
+despite CH20 winter being 3 $\degree C$ warmer.
 
-We suspect the primary driver of volume difference across different winters is instead the spray radius (see
+We suspect the primary driver of volume difference across different winters to be the spray radius (see
 Fig. \ref{fig:CH_diffs} (b)). However, this observation contradicts our expectation that AIRs using the same
 water source and fountain designs have similar spray radius. Moreover, manual measurements of the fountain spray
 radius were observed to be lesser than the drone observations of the ice radius. These two observations imply
@@ -610,13 +610,13 @@ that wind drift of water droplets could play a major role in temporal fluctuatio
 \begin{figure*}[t]
 \includegraphics[width=\textwidth]{Figures/CH_diffs.jpg}
 
-\caption{(a) Estimated volume change and median temperature and (b) Observed spray radius and median wind speed
+\caption{(a) Estimated volume change and median temperature (b) Observed spray radius and median wind speed
 during January for AIRs built across three winters. } 
 
 \label{fig:CH_diffs} 
 \end{figure*}
 
-To validate this hypothesis, we model the projectile motion of scheduled fountain water droplets with wind speed
+To validate this hypothesis, we modelled the projectile motion of scheduled fountain water droplets with wind speed
 values taken from CH22 and CH21 experiments, respectively. Fig. \ref{fig:wind} shows the modelled spray radius
 produced using these two wind datasets and compares them with the measured spray radius values. As illustrated,
 wind speed drives the temporal variation in the spray radius. Moreover, the spray radius of the scheduled
@@ -653,22 +653,22 @@ the unscheduled and scheduled fountain's discharge rates at the IN21 location.}
 \end{figure*}
 
 The water-use efficiency of all the unscheduled fountains are below 20 \%. In general, the water-use efficiency
-increases more than three fold when the weather-sensitive or water-sensitive fountain is used in both
+increases more than three folds when the weather-sensitive or water-sensitive fountains are used in both
 locations.  
 
 For the Indian location, the three kinds of fountains yield significantly different results.  The discharge
 duration and the max discharge rate of the three IN21 fountains were responsible for these different results
 (see Fig. \ref{fig:wue} (b)). The max discharge rate of the unscheduled fountain was more than twice that of
-scheduled fountains resulting in a high water loss. Freezing events in the fountain pipeline caused frequent
+scheduled fountains resulting in a higher water loss. Freezing events in the fountain pipeline caused frequent
 interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). In contrast, the mean freezing
-rates of the other two fountains during these events were above their median values. This was because too cold
-temperatures freezes water inside rather than outside the fountain system instigating these freezing events in
+rates of the other two fountains during these events were above their median values. This is because, very cold
+temperatures freeze the water inside rather than outside the fountain system instigating these freezing events in
 the fountain pipeline. Therefore, both the discharge duration and the mean freezing rate of the unscheduled
 fountain was much lower resulting in lower ice volumes. The water-sensitive fountain underestimated the freezing
 rate during the construction period and therefore produced much lower ice volumes compared to the
 weather-sensitive fountain. 
 
-For the Swiss locations, scheduled fountains yield better water-use efficiency but do not alter the maximum
+For the Swiss locations, scheduled fountains yielded better water-use efficiency but did not alter the maximum
 volume obtained significantly. 
 
 
@@ -676,7 +676,7 @@ volume obtained significantly.
 
 In practice, parts of the water volumes exiting the fountains do not reach the ground due to both thermodynamic
 (evaporation and sublimation) and mechanical (wind-driven redistribution) effects. While these water losses can
-be significant \citep{hanzerSimulationSnowManagement2020}, simulating them using physical formulations is
+be significant \citep{hanzerSimulationSnowManagement2020}, simulating them using physical formulation is
 challenging since it is sensitive to the diameter of water droplets produced by the fountain.
 
 
@@ -694,18 +694,19 @@ showed no significant variations.
 
 Two different model forcings sensitive to the construction location's limited weather windows or water supply
 were used to recommend two types of scheduled discharge rates favouring higher volumes and better water use
-efficiencies, respectively. Nevertheless, these models were able to capture more than 44 \% of the freezing rate
-variations of the traditional AIR. Simulations converting several unscheduled fountains to scheduled ones show
+efficiencies, respectively. The models were able to capture more than 44 \% of the freezing rate
+variations of the traditional AIR. Simulations converting several unscheduled fountains to scheduled ones showed
 that at least a three fold increase in water use efficiency is possible without compromising on meltwater
 production.
 
-Higher wind speeds drove the volume differences of AIRs constructed in the Swiss location across three
-consecutive winters. The influence of wind-driven redistribution on the spray radius managed to generate AIRs
-six times bigger in spite of temperatures being 3 $\degree C$ warmer. In contrast, higher wind speeds can also
-cause water losses if water droplets are distributed beyond the spray radius. Therefore, a critical wind speed
-needs to be determined in order to force wind-driven redistribution to increase the spray radius rather than the
-water losses. Future selection of construction locations and design of automation algorithms need to capitalise
-on wind-driven redistribution effects to further increase their water use efficiency.
+The influence of wind-driven redistribution on the spray radius managed to generate AIRs six times bigger in
+spite of temperatures being 3 $\degree C$ warmer. This implies that higher wind speeds drove the volume
+differences of AIRs constructed in the Swiss location across three consecutive winters.  However, higher wind
+speeds can also cause water losses if water droplets are distributed beyond the spray radius. Therefore, a
+critical wind speed needs to be determined in order to force wind-driven redistribution to increase the spray
+radius rather than the water losses. Future selection of construction locations and design of automation
+algorithms need to capitalise on wind-driven redistribution effects to further increase their water use
+efficiency.
 
 Fountain nozzles play an important role in the construction process. First, they consume most of the input water
 pressure to form water droplets. Second, their engineering design determines the droplet size distribution and
