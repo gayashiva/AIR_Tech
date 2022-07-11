@@ -300,12 +300,12 @@ be referred to as water-sensitive fountain and weather-sensitive fountain hencef
 \begin{table}[htb]
 \centering
 \caption{Assumptions for the parametrisation introduced to simplify the ice volume optimised model (IVOM) and
-water-use efficiency optimised model (WEOM).}
+water-use efficiency optimised model (WEOM). $\alpha_{snow/ice}$ represents albedo of snow or ice respectively.}
 \label{tab:assumptions}
 \begin{tabular}{@{}lllll@{}}
 \toprule
 \textbf{Estimation of} & \textbf{Symbol} & \textbf{IVOM} & \textbf{WEOM} & \\ \midrule
-\multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 1 $ & $0$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Slope}        & $s_{cone}$ & $ 45 \degree $ & $0 \degree$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Albedo} & $\alpha$ & $\alpha_{snow}$ & $\alpha_{ice}$ & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Cloudiness}  & $cld$ & $0$ & $1$ & \multicolumn{1}{l|}{} \\ \bottomrule
 \end{tabular}
@@ -325,8 +325,8 @@ represents the mass change rate due to freezing of the fountain water and meltin
 net short-wave radiation; $q_{LW}$ is the net long-wave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water heat flux;
 $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux and $A_{cone}$ is the area of the AIR
-surface. The derivation of these individual terms for the IVOM and WEOM model versions are discussed in 
-Appendix \ref{sec:SEB}.
+surface. $L_F$ and $L_{V}$ represent latent heat of fusion and vaporization respectively. The derivation of
+these individual terms for the IVOM and WEOM model versions are discussed in Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation software. The user interface of the software enables
 input of the spray radius, altitude, latitude and longitude of the construction location. The automation
@@ -459,7 +459,7 @@ is the surface area.
 
 \subsection{Calibration}
 
-The model parameters were calibrated to the median values of the ranges presented in Appendix Table
+The model parameters were calibrated to the mean values of the ranges presented in Appendix Table
 \ref{tab:parameters}. However, the surface layer thickness parameter was calibrated to a value of 0.09 $m$ for the
 automated AIR instead of the default value of 0.05 $m$. This calibration was necessary to prevent hourly surface
 temperature fluctuations to assume unphysical values above 40 $\degree\,C$.
