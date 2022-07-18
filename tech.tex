@@ -193,7 +193,7 @@ respectively.
 
 \subsection{Fountain observations}
 
-The scheduled and unscheduled fountains have four attributes, namely: discharge rate ($Q$), height ($h$), water
+The scheduled and unscheduled fountains have three attributes, namely: discharge rate ($Q$), height ($h$), water
 temperature ($T_F$), nozzle pressure loss ($P_{nozzle}$), and the spray radius ($r$). Discharge rate represents
 the discharge rate of the water in the fountain pipeline. Height denotes the height of the fountain pipeline
 installed. Fountain water temperature is the temperature of water droplets produced by the fountain. The nozzle
@@ -479,10 +479,10 @@ The volume estimation for the automated and traditional AIR had a RMSE of 8 $m^3
 volume observations, respectively. These are within 13 \% and 11 \% of the maximum volume of the automated and
 the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig. \ref{fig:validation}.  
 
-\begin{figure*}[t] \includegraphics[width=12cm] {Figures/validation.png} 
+\begin{figure*}[htb] \includegraphics[width=12cm] {Figures/validation.png} 
   \caption{Volume validation of the scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
 
-\begin{figure*}[t]
+\begin{figure*}[htb]
 \includegraphics[width=12cm]{Figures/dis_processes.png}
 \caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
   AIRS due to the differences in their discharge rates.}
@@ -532,7 +532,7 @@ energy turnover. The energy turnover is calculated as the sum of energy fluxes i
 
 Fountain scheduling reduced the fountain discharge input and fountain wastewater output by an order of
 magnitude. However, this is not resulting in an appreciable difference in the volume evolution of the automated
-and traditional AIRs as shown in Fig. \ref{fig:simvsreal}. This is due to two counteracting surface processes
+and traditional AIRs as shown in Fig. \ref{fig:validation}. This is due to two counteracting surface processes
 during fountain spray: (a) dampening of albedo to ice albedo and (b) absorption of the heat energy of the
 fountain water droplets. The temporal variation of the magnitude of these processes are shown in Fig.
 \ref{fig:dis_processes}.
