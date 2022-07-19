@@ -180,11 +180,11 @@ precipitation. These two datasets were obtained from ERA5 reanalysis dataset
 \citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS located 184 m away (Station ID: 0-0756-0-GTT)
 respectively.
 
-\begin{figure*}[htb]
+\begin{figure}[htb]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
 \caption{Temperature and discharge measurements of the two fountains at the Guttannen construction site.}
 \label{fig:aws} 
-\end{figure*}
+\end{figure}
 
 \subsection{Fountain observations}
 
@@ -474,15 +474,10 @@ The volume estimation for the automated and traditional AIR had a RMSE of 8 $m^3
 volume observations, respectively. These are within 13 \% and 11 \% of the maximum volume of the automated and
 the traditional AIR respectively. The estimated and measured AIR volumes are shown in Fig. \ref{fig:validation}.  
 
-\begin{figure*}[htb] \includegraphics[width=12cm] {Figures/validation.png} 
-  \caption{Volume validation of the scheduled and unscheduled fountain construction strategies.} \label{fig:validation} \end{figure*}
+\begin{figure}[htb] \includegraphics[width=12cm] {Figures/validation.png} 
+  \caption{Volume validation of the scheduled and unscheduled fountain construction strategies.} 
+  \label{fig:validation} \end{figure}
 
-\begin{figure*}[htb]
-\includegraphics[width=12cm]{Figures/dis_processes.png}
-\caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
-  AIRS due to the differences in their discharge rates.}
-\label{fig:dis_processes}
-\end{figure*}
 
 \begin{table}
 	\centering
@@ -525,6 +520,13 @@ turbulent fluxes (sensible and latent) on the freezing and melting energies is d
 energy turnover. The energy turnover is calculated as the sum of energy fluxes in absolute values (see Table
 \ref{tab:mb}). 
 
+\begin{figure}[htb]
+\includegraphics[width=12cm]{Figures/dis_processes.png}
+\caption{(a) Surface albedo  and (b) fountain discharge heat flux showed significant variations between the two
+  AIRS due to the differences in their discharge rates.}
+\label{fig:dis_processes}
+\end{figure}
+
 Fountain scheduling reduced the fountain discharge input and fountain wastewater output by an order of
 magnitude. However, this is not resulting in an appreciable difference in the volume evolution of the automated
 and traditional AIRs as shown in Fig. \ref{fig:validation}. This is due to two counteracting surface processes
@@ -536,7 +538,7 @@ There is a considerable difference in the contribution of the shortwave radiatio
 (a). Even though the unscheduled fountain was active for a much longer duration, the frequent snowfall events
 counteracted the albedo feedback of its fountain discharge. In contrast, the albedo of the automated AIR was
 reduced by late fountain spray events particularly in the months of March and April as shown in Fig.
-\ref{fig:dis_processes}. These poorly timed fountain spray events occurred because of the global solar radiation
+\ref{fig:dis_processes}. These poorly timed fountain spray events occurred because of the global solar radiation's
 diurnal variation since they were calibrated based on values for the month of February in the automation system.
 Therefore, poor calibration of the automation system resulted in an increased impact of shortwave radiation on
 the automated AIR. Similarly, the fountain discharge heat flux for the traditional AIR was enhanced due to
@@ -547,7 +549,7 @@ melt of the automated AIR due to process (a) counteracted the higher melt of the
 
 \subsection{Benefits of scheduling fountains}
 
-The difference in water-use efficiency and maximum ice volume between unscheduled and scheduled fountains in the two
+The difference in water-use efficiency and maximum ice volume between unscheduled and scheduled fountains in the Indian and Swiss
 locations across two winters are presented in Fig. \ref{fig:wue} (a). Four experimental values (highlighted by
 circles) are shown together with five simulated values (highlighted by squares).  The experimental values were
 taken from the IN21 and CH21 AIRs studied in \citet{balasubramanianInfluenceMeteorologicalConditions2022} and
@@ -575,10 +577,9 @@ scheduled fountains resulting in a higher water loss. Freezing events in the fou
 interruptions in the unscheduled discharge rate (see Fig. \ref{fig:wue} (b)). In contrast, the mean freezing
 rates of the other two fountains during these events were above their median values. This is because, very cold
 temperatures freeze the water inside rather than outside the fountain system instigating these freezing events in
-the fountain pipeline. Therefore, both the discharge duration and the mean freezing rate of the unscheduled
-fountain was much lower resulting in lower ice volumes. The water-sensitive fountain underestimated the freezing
-rate during the construction period and therefore produced much lower ice volumes compared to the
-weather-sensitive fountain. 
+the fountain pipeline. Therefore, the discharge duration of the unscheduled fountain was much lower resulting in
+lower ice volumes. The water-sensitive fountain underestimated the freezing rate during the construction period
+and therefore produced much lower ice volumes compared to the weather-sensitive fountain. 
 
 For the Swiss locations, scheduled fountains yielded better water-use efficiency but did not alter the maximum
 volume obtained significantly. 
@@ -631,7 +632,7 @@ in Table \ref{tab:pipe}. Maximum frictional loss occurs during maximum discharge
 $l/min$. Substituting the corresponding values in Eqn. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3
 $bar$. The velocity $v$ can be determined from our discharge rate observation from Eqn. \ref{eqn:radf}.
 Therefore, from Eqn. \ref{eqn:pressure}, we get $P_{nozzle}$ to be 4.6 $bar$ which is more than 75 \% of the
-source water pressure.
+source water pressure. Most of the input pressure was used by the fountain nozzle to generate water droplets.
 
 \subsection{Influence of wind driven redistribution on fountain spray radius}
 
@@ -693,7 +694,7 @@ exists to rank the several fountain nozzles used for construction. An ideal pipe
 this technology cheaper and maintenance free. However, optimization of the pipeline material and diameters are
 yet to be carried out despite the loss of human hours on pipeline freezing events and the potential cost
 reduction possible through use of cheaper pipeline materials and sizes. Therefore, we strongly encourage the
-engineering community to get involved and push the limits of the size and survival duration of artificial ice
+engineering community to get involved and push the limits of the cost-effectiveness, size, and survival duration of artificial ice
 reservoirs. 
 
 \subsection{Additional water losses}
