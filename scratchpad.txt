@@ -1,4 +1,22 @@
 
+% Over the past decade, several ice stupas have been built to supplement the irrigation water supply of mountain
+% villages in India \citep{wangchukIceStupaCompetition2020, palmerStoringFrozenWater2022,
+% aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialGlacier2020}, and Chile
+% \citep{reutersConservationistsChileAim2021}. These AIRs are traditionally constructed by diverting springs or
+% glacial streams into fountain spray systems via embankments and pipelines. 
+
+% Cryosphere-fed irrigation networks in arid mountain regions are completely dependent on timely availability of
+% meltwater from snow, glaciers, and permafrost \citep{immerzeelImportanceVulnerabilityWorld2020,
+% farhanHydrologicalRegimesConjunction2015, tveitenGlacierGrowingLocal2007}. With the accelerated decline of
+% glaciers due to climate change, these regions are experiencing seasonal water scarcity
+% \citep{hoelzleStatusRoleAlpine2019, xenariosAralSeaBasin2019, barandunStateFutureCryosphere2020}, which limits
+% the output and duration of agricultural activities.
+
+% In Ladakh, a cold arid desert in northern India, a typical shortage of water occurs at the onset
+% of the agricultural season (April and May) until a sufficient and reliable supply of meltwater from glaciers
+% becomes available \citep{norphelSnowWaterHarvesting2015, nusserLocalKnowledgeGlobal2016,
+% vincentEnergyClimateChange2009}. 
+
 % Locations constrained by their available water supply require water-sensitive fountain scheduling strategies and
 % those constrained by the duration of favourable weather windows require weather-sensitive fountain scheduling
 % strategies. These two kinds of scheduled fountains will be referred to as water-sensitive fountain and
