@@ -13,6 +13,7 @@
 *.synctex(busy)
 .python*
 .tasks
-archive/*
+*/archive/*
 misc/*
+
 
