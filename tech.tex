@@ -107,39 +107,40 @@ spray?,” “how much?,” and “for how long?.” Starting a fountain spray t
 running a fountain spray for too long might lead to overwatering; at the very least, this practice wastes water.
 Similarly, starting the fountain spray too late, spraying too little water, or not running the system for long
 enough might lead to underwatering and can cause reduced ice volume or freeze the water supply pipelines.
+Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that manual construction
+systems suffer from overwatering. To avoid this issue, the energy balance model developed in
+\cite{balasubramanianInfluenceMeteorologicalConditions2022} can be used to regulate fountain water supply
+through its surface freezing rate estimations. However, the model needs to be initialised with an accurate
+estimation of fountain spray radius to produce these freezing rates. In theory, this can be estimated by
+modelling the projectile motion of water droplets using fountain characteristics such as aperture diameter and
+discharge rate. In practice, this estimation depends also on the relative importance of wind-driven
+redistribution effects. Therefore, estimating fountain spray radius requires a better understanding of the
+relative contribution of these two processes. 
 
-Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has shown that manual
-construction systems suffer from overwatering. To avoid this issue, the energy balance model developed in
-\cite{balasubramanianInfluenceMeteorologicalConditions2022} can be used to produce surface freezing rates or
-recommended discharge rates. However, the model needs to be initialised with an accurate estimation of fountain
-spray radius to produce these freezing rates. In theory, this can be estimated by modelling the projectile
-motion of water droplets using fountain characteristics such as aperture diameter and discharge rate. In
-practice, this estimation depends also on the relative importance of wind-driven redistribution effects.
-Therefore, estimating fountain spray radius requires a better understanding of the relative contribution of
-these two processes. Other practical issues need to be addressed before dealing with fountain scheduling
-processes: for example, in Indian AIRs, the fountain discharge rate could theoretically be halved since this is
-always twice as high as the modelled freezing rate \citep{balasubramanianInfluenceMeteorologicalConditions2022}.
-However, in practice, a reduction of the discharge rate could increase the maintenance cost due to a higher risk
-of freezing events in the fountain pipeline.
-
-An optimum construction strategy, therefore, should first prevent the occurrence of freezing events in the
-fountain pipeline. These events can be prevented by setting a minimum threshold for the recommended discharge
-rate. Additionally, discharge rates recommended need to be sensitive to constraints on water supply or weather
+Other practical issues need to be addressed before dealing with fountain scheduling processes: for example, in
+Indian AIRs, the fountain discharge rate could theoretically be halved since this is always twice as high as the
+modelled freezing rate \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, a
+reduction of the discharge rate could increase the maintenance cost due to a higher risk of freezing events in
+the fountain pipeline. Therefore, one should first prevent the occurrence of freezing events in the fountain
+pipeline. These events can be prevented by setting a minimum threshold for the recommended discharge rate.
+Additionally, discharge rates recommended need to be sensitive to constraints on water supply or weather
 conditions at the construction site; for example, locations limited by their water supply such as Ladakh, India
 would prioritize water-use efficiency, whereas those limited by the duration of their favorable weather windows
 such as Guttannen, Switzerland would prioritize maximum ice volume. Accordingly, two types of model parameter
 optimization are used that prevent underwatering and overwatering to attain higher ice volume and higher
-water-use efficiency, respectively.
+water-use efficiency, respectively. 
 
-Adjusting fountain discharge rates manually is not practical since this would involve constant adjustments of
-discharge rates in response to significant diurnal and seasonal variations of freezing rates. Therefore, the
-operation of scheduled fountains via automation systems is preferred to reduce long-term maintenance costs.
+Adjusting fountain discharge rates in response to significant diurnal and seasonal variations of freezing rates
+necessicates the use of automation systems. Therefore, this paper describes such an automated construction strategy
+that can reduce water losses and maintenance requirements compared to manual construction strategies. First, two
+AIRs were built in the same location with and without automated fountain scheduling strategies; both were
+measured and compared. In a second step, differences in construction strategies between Indian and Swiss AIRs
+studied in previous winters were quantified using model simulations. 
 
-The present study aims to compare water-use efficiency, maximum ice volume, and maintenance effort between
-manual and automated construction strategies. First, two AIRs were built in the same location with and
-without automated fountain scheduling strategies; both were measured and compared. In a second step, differences
-in construction strategies between Indian and Swiss AIRs studied in previous winters were quantified using model
-simulations. 
+% Adjusting fountain discharge rates manually is not practical since this would involve constant adjustments of
+% discharge rates in response to significant diurnal and seasonal variations of freezing rates. Therefore, the
+% operation of scheduled fountains via automation systems is preferred to reduce long-term maintenance costs. 
+
 
 \section{Site locations and data collection}
 
@@ -182,12 +183,12 @@ unscheduled fountain and the fountain used in the automated AIR is referred as s
 To calculate the surface energy balance of an AIR, the following variables are required: air temperature,
 relative humidity, wind speed, pressure, precipitation, incoming longwave radiation, shortwave radiation, and
 cloudiness index. The primary weather data source is an automatic weather station (AWS) located within 20 $m$
-from the AIRs. Hourly ground temperature measurements were also recorded by the AWS to obtain approximate values
-of the fountain water temperature. Less than 0.4 \% of data was missing, and data gaps were filled by linear
-interpolation. However, two additional datasets were used to obtain all the necessary input variables, namely
-cloudiness index and precipitation. These two datasets were obtained from ERA5 reanalysis dataset
-\citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS located 184 $m$ from the AIRs (Station ID:
-0-0756-0-GTT).
+from the AIRs. Hourly ground temperature measurements ata depth of 30 $cm$ were also recorded by the AWS to
+obtain approximate values of the fountain water temperature. Less than 0.4 \% of data was missing, and data gaps
+were filled by linear interpolation. However, two additional datasets were used to obtain all the necessary
+input variables, namely cloudiness index and precipitation. These two datasets were obtained from ERA5
+reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS located 184 $m$ from the AIRs
+(Station ID: 0-0756-0-GTT).
 
 \begin{figure}[htb]
 \includegraphics[width=12cm]{Figures/disvstemp.png}
@@ -225,8 +226,6 @@ conservatively assume the discharge rate of the unscheduled fountain to be equal
 of the scheduled fountain, which was observed to be 13 $l/min$ and 11 $l/min$ at a fountain height of 3 $m$ and 4
 $m$, respectively.
 
-Water temperature of both fountains was estimated from the AWS ground temperature dataset obtained with a thermistor located 0.3 $m$ below the base of the scheduled fountain.
-
 \subsection{Drone surveys}
 
 Several photogrammetric surveys were conducted on the manual and the automated AIRs. The digital elevation
@@ -235,7 +234,7 @@ volume of the ice structures. Ice radius measurements from drone flights showed 
 AIR circumference or volume and were averaged to determine the fountain spray radius. The number of drone surveys
 conducted for the manual and the automated AIRs was 8 and 6, respectively (Table \ref{tab:uav}). We
 attach a high uncertainty of $\pm 10 \%$ for all AIR observations to accommodate for the uncertainties in
-the drone processing methodology described in the supplementary materials of \citet{balasubramanianInfluenceMeteorologicalConditions2022}.
+the geodetic processing methodology described in the supplementary materials of \citet{balasubramanianInfluenceMeteorologicalConditions2022}.
 
 \begin{table}
 	\centering
@@ -328,10 +327,10 @@ Upward and downward fluxes relative to the ice surface are positive and negative
 represents the mass change rate due to freezing of the fountain water and melting of the ice. $q_{SW}$ is the
 net shortwave radiation; $q_{LW}$ is the net longwave radiation; $q_{L}$ and $q_{S}$ are the turbulent latent
 and sensible heat fluxes, respectively; $q_{F}$ is the fountain discharge heat flux; $q_{R}$ is the rain water
-heat flux; $q_{G}$ is the ground heat flux; $q_{T}$ is the temperature heat flux, and $A_{cone}$ is the area of
-the AIR surface. $L_F$ and $L_{V}$ represent latent heat of fusion and vaporization, respectively. The
-derivation of these individual terms for the IVOM and WEOM model versions are discussed in Appendix
-\ref{sec:SEB}.
+heat flux; $q_{G}$ is the bulk heat flux between the AIR surface and its interior; $q_{T}$ is the temperature
+heat flux, and $A_{cone}$ is the area of the AIR surface. $L_F$ and $L_{V}$ represent latent heat of fusion and
+vaporization, respectively. The derivation of these individual terms for the IVOM and WEOM model versions are
+discussed in Appendix \ref{sec:SEB}.
 
 Equation \ref{eqn:auto} is implemented in the automation software. The user interface of the software enables
 input of the spray radius, altitude, latitude, and longitude of the construction location. The automation
@@ -426,7 +425,7 @@ water temperature ($T_F$) was estimated as a constant parameter. However, in rea
 approximation because it does not account for two processes, namely temperature fluctuations during transit from
 the source to the fountain nozzle or temperature fluctuations during the flight time of water droplets after
 leaving the fountain nozzle. Therefore, the first process is approximated with hourly ground temperature values
-measured 25 $cm$ below the ground. To approximate the second process, the water temperature is assumed to cool
+measured 30 $cm$ below the ground. To approximate the second process, the water temperature is assumed to cool
 down to 0 $\degree\,C$ during subzero air temperature conditions.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
@@ -678,56 +677,13 @@ indicated as dots.}
 
 \section{Discussion}
 
-\subsection{New ways to upscale irrigation water supply}
+\subsection{Additional water losses}
 
-In this section, two hypothetical ice stupa construction scenarios namely, historical and futuristic are
-described. The historical scenario is a depiction of current construction efforts based on oral interviews and
-field experience. The futuristic scenario is a depiction of how the automation system developed can transform
-current construction efforts. The objective of both the scenarios is to maximize the meltwater available for
-irrigation. Both these scenarios are motivated by the construction campaigns conducted in the Gangles valley of
-Ladakh during the winter of 2019/20. This is the same valley where the IN21 study site was located enabling us
-to extrapolate some of the freezing rates and ice volume estimations from
-\citet{balasubramanianInfluenceMeteorologicalConditions2022}. We conservatively assume that the valley had a
-total water supply of around $120\,l/min$, a winter duration of 4 months and the fountain was operational for
-only 8 hours per day for both the scenarios. 
-
-\subsubsection{Historical scenario}
-
-In the historical scenario, only two fountains could be operated simultaneously using the available water
-supply. This limited the construction period of each ice stupa to just two months. Moreover, pipelines froze
-inside with ice blocks every few nights (Fig. \ref{fig:gangles_data}). This resulted in two farmers investing
-more than two months removing ice blocks and repairing the fountain pipeline system to make 4 ice stupas.
-Assuming each ice stupa had a maximum ice volume similar to IN21, we expect the total ice volumes frozen in this
-valley to be around 3 million litres.   
-
-\begin{figure}[htb]
-	\includegraphics[width=\textwidth]{Figures/gangles_data}
-
-  \caption{(a) The IN21 ice stupa is a good example of the typical construction scenario (Photo: Norboo
-  Thinles). (b) Its observed fountain discharge rate (red line) was interrupted several times due to pipeline
-freezing events. The discharge quantities used were also much higher than the estimated freezing rate (green
-line). }
-
-	\label{fig:gangles_data}
-\end{figure}
-
-\subsubsection{Futuristic scenario}
-
-In the futuristic scenario, the automation system reduces the water consumption of each ice stupa from
-$60\,l/min$ to $30\,l/min$. This enabled two farmers to build 8 ice stupas spending less than a week of effort
-since there were no pipeline freezing events to deal with. The total ice volumes frozen, however, resulted in
-more than 2 times higher irrigation water supply from mid-April to mid-June.
-
-\begin{figure}[htb]
-	\includegraphics[width=\textwidth]{Figures/icestupa_valley}
-
-  \caption{More than a month of effort from a dozen farmers were required to build five ice stupas across the
-  Gangles valley in the winter of 2019/20. This research provides tools that two farmers can leverage to
-  guarantee two times more winter water storage and reduce maintenance requirements to just a few days.}
-
-	\label{fig:icestupa_valley}
-\end{figure}
-
+A portion of the water volume exiting the fountains does not reach the ground due to both
+thermodynamic---evaporation and sublimation---and mechanical---wind-driven redistribution---effects. Although
+these water losses can be significant \citep{hanzerSimulationSnowManagement2020}, their simulation with physical
+formulation is challenging because this is sensitive to the diameter of the water droplets produced by the
+fountain.
 
 \subsection{Recommendations and challenges to improve AIR hardware tools}
 
@@ -767,39 +723,59 @@ design of the insulated pipeline system.
 
 \subsubsection{Cost reduction of automation system}
 
-Our strategy is not yet suitable for direct application in current AIR construction sites due to the cost of the
+Our strategy is not yet suitable for application in current AIR construction sites due to the cost of the
 automation system (around 10,000 $USD$). However, we believe upto 10 fold cost reduction is possible through
 simpler automation systems which control only the duration of fountain spray and not their quantity. 
 
-% \subsection{Additional water losses}
-%
-% A portion of the water volume exiting the fountains does not reach the ground due to both
-% thermodynamic---evaporation and sublimation---and mechanical---wind-driven redistribution---effects. Although
-% these water losses can be significant \citep{hanzerSimulationSnowManagement2020}, their simulation with physical
-% formulation is challenging because this is sensitive to the diameter of the water droplets produced by the
-% fountain.
+\subsection{New ways to upscale irrigation water supply}
 
-% \subsection{The state of AIR technology}
-%
-% The present study shows one strategy that can improve the water-use efficiency of AIRs. This strategy was chosen
-% because it enables the use the AIR model in a simple and effective manner. Ice stupa construction can
-% significantly be improved with sufficient engineering expertise. The fountain nozzle design is crucial for
-% increasing the ice volume obtained. However, no methodology currently exists to rank the several fountain
-% nozzles used for construction. An ideal pipeline configuration could make this technology cheaper and
-% maintenance free. However, optimization of the pipeline material and diameters is yet to be performed---despite
-% the time lost on pipeline freezing events and the potential cost reduction with cheaper pipeline materials and
-% sizes. Therefore, we encourage the engineering community to get involved and push the limits of the
-% cost-effectiveness, size, and survival duration of artificial ice reservoirs. 
+In this section, two hypothetical ice stupa construction scenarios namely, historical and futuristic are
+described. The historical scenario is a depiction of current construction efforts based on oral interviews and
+field experience. The futuristic scenario is a depiction of how the automation system developed can transform
+current construction efforts. The objective of both the scenarios is to maximize the meltwater available for
+irrigation. Both these scenarios are motivated by the construction campaigns conducted in the Gangles valley of
+Ladakh during the winter of 2019/20. This is the same valley where the IN21 study site was located enabling us
+to extrapolate some of the freezing rates and ice volume estimations from
+\citet{balasubramanianInfluenceMeteorologicalConditions2022}. We conservatively assume that the valley had a
+total water supply of around $120\,l/min$, a winter duration of 4 months and the fountain was operational for
+only 8 hours per day for both the scenarios. 
 
-% \subsection{Implementation of automated construction strategy}
-%
-% Our strategy is not yet suitable for direct application in current AIR construction sites due to the cost of the
-% automation system. However, we believe sufficient cost reduction is possible through simpler automation systems
-% which control only the duration of fountain spray and not their quantity.
-%
-% Despite the cost, implementation can be reasonable if multiple stupas are constructed simultaneously. In the
-% Guttannen site, for example, eight identical ice stupas could have been constructed using the water supply of
-% just one manual ice stupa, thereby increasing eight times the melt water supply.
+\subsubsection{Historical scenario}
+
+In the historical scenario, only two fountains could be operated simultaneously using the available water
+supply. This limited the construction period of each ice stupa to just two months. Moreover, pipelines froze
+inside with ice blocks every few nights (Fig. \ref{fig:gangles_data}). This resulted in two farmers investing
+more than two months removing ice blocks and repairing the fountain pipeline system to make 4 ice stupas.
+Assuming each ice stupa had a maximum ice volume similar to IN21, we expect the total ice volumes frozen in this
+valley to be around 3 million litres.   
+
+\begin{figure}[htb]
+	\includegraphics[width=\textwidth]{Figures/gangles_data}
+
+  \caption{(a) The IN21 ice stupa is a good example of the typical construction scenario (Photo: Norboo
+  Thinles). (b) Its observed fountain discharge rate (red line) was interrupted several times due to pipeline
+freezing events. The discharge quantities used were also much higher than the estimated freezing rate (green
+line). }
+
+	\label{fig:gangles_data}
+\end{figure}
+
+\subsubsection{Futuristic scenario}
+
+In the futuristic scenario, the automation system reduces the water consumption of each ice stupa from
+$60\,l/min$ to $30\,l/min$. This enabled two farmers to build 8 ice stupas spending less than a week of effort
+since there were no pipeline freezing events to deal with. The total ice volumes frozen, however, resulted in
+more than 2 times higher irrigation water supply from mid-April to mid-June (Fig. \ref{fig:icestupa_valley}).
+
+\begin{figure}[htb]
+	\includegraphics[width=\textwidth]{Figures/icestupa_valley}
+
+  \caption{More than a month of effort from a dozen farmers were required to build five ice stupas across the
+  Gangles valley in the winter of 2019/20. This research provides tools that two farmers can leverage to
+  guarantee two times more winter water storage and reduce maintenance requirements to just a few days.}
+
+	\label{fig:icestupa_valley}
+\end{figure}
 
 \conclusions
 
