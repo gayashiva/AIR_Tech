@@ -400,8 +400,9 @@ Pressure losses can be determined using the Bernoulli equation as follows:
 \end{equation}
 
 where $P_{source}$ is the source pressure, $P_{nozzle}$ is the pressure loss due to the fountain nozzle, and
-$P_{alt}$ is the pressure loss due to the altitudinal difference between the pipeline input and fountain output. These pressure variables are measured in bars.  The speed $v$ can be determined from discharge rate
-observations using Eq. \ref{eqn:dis}. 
+$P_{alt}$ is the pressure loss due to the altitudinal difference between the pipeline input and fountain output.
+These pressure variables are measured in bars.  The speed $v$ can be determined from discharge rate observations
+using Eq. \ref{eqn:dis}. 
 
 The frictional loss of the pipeline used in the experiment can be determined using the 
 Hagen–Poiseuille equation \citep{batchelor2000introduction}:  
@@ -413,6 +414,7 @@ Hagen–Poiseuille equation \citep{batchelor2000introduction}:
 
 where $P_{friction}$ is in bars, $L$ is the total length of the pipeline measured in meters, and $v$ is the water speed in
 $m/s$. Note that the above equation only applies for laminar flow, the one investigated in the present work.
+
 
 \subsection{Model updates}
 
@@ -611,7 +613,6 @@ However, for the Indian location, significant magnitude differences can be obser
 fountains. The modelled weather- and water-sensitive discharge rate values were a factor of two and three smaller, respectively,
 than the measured unscheduled discharge rate (Fig. \ref{fig:wue}b).
 
-
 \subsection{Pressure losses}
 
 \begin{table}[htb]
@@ -629,13 +630,15 @@ than the measured unscheduled discharge rate (Fig. \ref{fig:wue}b).
 \end{tabular}
 \end{table}
 
-Pressure consumption across the fountain pipeline provides insights into how the fountain pipeline configuration
-can be better optimized. The pipeline configuration of the automated ice stupa fountain is presented in Table
-\ref{tab:pipe}. Maximum frictional loss occurs during maximum discharge, which was measured to be 11 $l/min$. By
-substituting the corresponding values in Eq. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3 $bar$. The
-speed $v$ can be determined from the discharge rate observation using Eq. \ref{eqn:radf}. Therefore, from Eq.
-\ref{eqn:pressure}, $P_{nozzle}$ was estimated to be 4.6 $bar$, which represents more than 75 \% of the source water
-pressure. Most of the input pressure was used by the fountain nozzle to generate water droplets.
+Pressure consumption across the fountain pipeline provides insights into how it can be better optimized. The
+pipeline configuration of the automated ice stupa fountain is presented in Table \ref{tab:pipe}. Pressure drops
+due to frictional losses across the length of the pipeline and due to the design of the fountain nozzle. Maximum
+frictional loss occurs during maximum discharge, which was measured to be 11 $l/min$. By substituting the
+corresponding values in Eq. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3 $bar$. The speed $v$ can be
+determined from the discharge rate observation using Eq. \ref{eqn:radf}. Therefore, from Eq. \ref{eqn:pressure},
+$P_{nozzle}$ was estimated to be 4.6 $bar$, which represents more than 75 \% of the source water pressure. Most
+of the input pressure was used by the fountain nozzle to generate water droplets.
+
 
 \subsection{Influence of wind-driven redistribution on fountain spray radius}
 
@@ -677,20 +680,20 @@ indicated as dots.}
 
 \section{Discussion}
 
-\subsection{Additional water losses}
-
-A portion of the water volume exiting the fountains does not reach the ground due to both
-thermodynamic---evaporation and sublimation---and mechanical---wind-driven redistribution---effects. Although
-these water losses can be significant \citep{hanzerSimulationSnowManagement2020}, their simulation with physical
-formulation is challenging because this is sensitive to the diameter of the water droplets produced by the
-fountain.
-
 \subsection{Recommendations and challenges to improve AIR hardware tools}
 
 The present study shows shows one strategy that can improve the water-use efficiency of AIRs. We chose this
 strategy because it enables the use of the AIR model in a simple and effective manner. However, all these
 construction strategies are limited by the tools they use, namely the fountain, the pipeline and the automation
 system. Below we discuss why this was the case and provide some recommended methodologies to improve them:
+
+% \subsubsection{Additional water losses}
+%
+% A portion of the water volume exiting the fountains does not reach the ground due to both
+% thermodynamic---evaporation and sublimation---and mechanical---wind-driven redistribution---effects. Although
+% these water losses can be significant \citep{hanzerSimulationSnowManagement2020}, their simulation with physical
+% formulation is challenging because this is sensitive to the diameter of the water droplets produced by the
+% fountain.
 
 \subsubsection{Fountain optimisation}
 
@@ -699,10 +702,14 @@ height, fountain aperture diameter (both ignored in this analysis), discharge ra
 radius were related through the trajectories of the water droplets.
 
 The fountain nozzle design is crucial for increasing the ice volume obtained. It determines the diameter of the
-water droplets and the angle of launch for their projectile motion. Variation in these two parameters could have
-important consequences for triggering the nuclueation process in these water droplets. For example, during the IN21
-experiment, snow formation was observed, indicating that the fountain water droplets have the potential to
-freeze before deposition on the AIR surface. 
+water droplets and the angle of launch for their projectile motion. The choice of these two parameters
+determines the rate of nuclueation process, pressure losses and discharge rate ranges. For example, during the
+IN21 experiment, snow formation was observed, indicating that the fountain water droplets have the potential to
+freeze before deposition on the AIR surface. In the CH22 experiment, the higher aperture diameter of the
+unscheduled fountain nozzle (Fig. \ref{fig:2AIR}) produced bigger droplets and, therefore, had a lower fountain
+pressure loss when compared to the scheduled fountain. However, fountains with high aperture diameter do not
+form water droplets at low discharge rates. Therefore, the scheduled fountain nozzle design was used since it
+was able to produce water droplets with discharge rates as low as 2 $l/min$.
 
 However, no methodology currently exists to rank the several fountain nozzles used for construction. Quantifying
 processes influenced by the fountain nozzle is challenging as it would require modelling the conduction,
@@ -950,6 +957,7 @@ may not favor the corresponding objectives for certain sites.
     & &    &  & \citet{oerlemansYearRecordGlobal1998}      \\\midrule
 	\end{tabular}
 \end{table}
+
 \clearpage
 
 
