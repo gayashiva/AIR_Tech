@@ -196,35 +196,52 @@ reanalysis dataset \citep{hersbachERA5GlobalReanalysis2020} and a MeteoSwiss AWS
 \label{fig:aws} 
 \end{figure}
 
-\subsection{Fountain observations}
+\subsection{Fountain pipeline observations}
 
-The scheduled and unscheduled fountains present the following attributes: discharge rate ($Q$), height ($h$), water
-temperature ($T_F$), nozzle pressure loss ($P_{nozzle}$), and the spray radius ($r$). Discharge rate represents
-the discharge rate of water in the fountain pipeline. Height denotes the height of the fountain pipeline
-installed. Fountain water temperature is the temperature of water droplets produced by the fountain. The nozzle
-pressure loss denotes the pressure consumed during the formation of water droplets. Spray radius denotes the
-observed ice radius formed from the fountain water droplets.
+Fig. \ref{fig:auto_schematic} presents all the attributes of the scheduled fountain pipeline system. Discharge
+rate ($Q$) represents the discharge rate of water measured by the flowmeter. Fountain height ($h_F$) denotes the
+height of the fountain. Pipeline water temperature ($T_P$) is the temperature of water measured in the pipeline.
+Source water pressure ($P_{source}$) is the pressure of water measured at the pipeline input. Pipeline length
+and diameter ($L_P$, $dia_P$) denotes the dimensions of the pipeline used. $P_{alt}$ is the pressure loss due to
+the altitudinal difference between the pipeline input and fountain output. The frictional pressure losses of the
+pipeline are denoted by $P_{friction}$. The nozzle pressure loss ($P_{F}$) denotes the pressure consumed during
+the formation of water droplets. The nozzle diameter ($dia_{F}$) denotes the size of the aperture through which
+water droplets are ejected. Spray radius ($r_{F}$) denotes the radius formed by the fountain water droplets.
 
-Height was increased in steps of 1 $m$ for both fountains. For the scheduled fountain, the
-initial height was 3 $m$ and was increased to 4 $m$ on December 23. For the unscheduled
-fountain, the initial height was 3.7 $m$ and was increased twice---December
-23 and February 12.
+Height was increased in steps of 1 $m$ for both fountains. For the scheduled fountain, the initial height was 3
+$m$ and was increased to 4 $m$ on December 23. For the unscheduled fountain, the initial height was 3.7 $m$ and
+was increased twice---December 23 and February 12.
 
 Figure \ref{fig:aws} shows the temporal variation in temperature and discharge rate for both the scheduled and
 unscheduled fountains. The unscheduled fountain showed variations in discharge rate whenever the fountain height
-was increased. The discharge rate variations of the scheduled fountain were caused by the control valve of the
-automation system. The control ball valve position between 0 and 100 \% (or 0 to 90 $\degree$) was regulated
-based on real-time meteorological conditions. Throughout the study period, the control valve was opened
-completely (100 \%) only once, corresponding to the moment in time when temperature attained its minimum of $-$13
-$\degree \, C$ on December 20. The control valve was never opened beyond 34 \% thereafter.  
+was increased. The discharge rate variations of the scheduled fountain were caused by the ball valve of the
+automation system (Fig. \ref{fig:auto_schematic}). The ball valve position between 0 and 100 \% (or 0 to 90
+$\degree$) was regulated by the control box using real-time meteorological conditions measured by the automatic
+weather station (AWS). Throughout the study period, the ball valve was opened completely (100 \%) only once,
+corresponding to the moment in time when temperature attained its minimum of $-$13 $\degree \, C$ on December
+20. The control valve was never opened beyond 34 \% thereafter.  
 
 The unscheduled fountain was manually operated to spray all the available discharge until a fountain freezing
-event interrupted the discharge on February 17. Unfortunately, no discharge rate measurements were recorded
-for the unscheduled fountain. However, the unscheduled fountain presented a higher discharge rate
-compared with the scheduled fountain due to its higher aperture area (Fig. \ref{fig:2AIR}). Therefore, we
-conservatively assume the discharge rate of the unscheduled fountain to be equal to the maximum discharge rate
-of the scheduled fountain, which was observed to be 13 $l/min$ and 11 $l/min$ at a fountain height of 3 $m$ and 4
-$m$, respectively.
+event interrupted the discharge on February 17. Unfortunately, no discharge rate measurements were recorded for
+the unscheduled fountain. However, the unscheduled fountain presented a higher discharge rate compared with the
+scheduled fountain due to its higher aperture diameter (Fig. \ref{fig:2AIR}). Therefore, we conservatively assume
+the discharge rate of the unscheduled fountain to be equal to the maximum discharge rate of the scheduled
+fountain, which was observed to be 13 $l/min$ and 11 $l/min$ at a fountain height of 3 $m$ and 4 $m$,
+respectively.
+
+\begin{figure}[htb]
+\includegraphics[width=\linewidth]{Figures/Automation_schematic.png}
+\caption{Schematic illustrating the measurement and control of the fountain pipeline system through the
+  automation system. $Q$ represents the discharge rate of water measured by the flowmeter. $h_F$ denotes the
+  height of the fountain. $T_P$ is the temperature of water measured in the pipeline. $P_{source}$ is the
+  pressure of water measured at the pipeline input. $L_P$, $dia_P$ denotes the length and diameter of the
+  pipeline used. The altitudinal and frictional pressure losses of the pipeline are denoted by $P_{alt}$ and
+  $P_{friction}$ respectively. $P_{F}$ denotes the pressure consumed during the formation of water droplets.
+  $dia_{F}$ denotes the diameter of the aperture through which water droplets are ejected. $r_{F}$ denotes the spray
+  radius formed by the fountain water droplets. Two-way arrows indicate information exchange between different
+  components whereas one-way arrows indicate information transmission.}
+\label{fig:auto_schematic} 
+\end{figure}
 
 \subsection{Drone surveys}
 
@@ -372,12 +389,12 @@ v = \frac{4 \cdot Q}{60 \cdot 1000 \cdot \pi \cdot dia^2}
 
 where $v$ is the droplet speed in $m/s$ and $Q$ is the discharge rate of the fountain in $l/min$.
 
-To obtain the spray radius ($r$), the optimum launch angle $\theta = 45 \degree$ is used in the projectile motion
+To obtain the spray radius ($r_F$), the optimum launch angle $\theta = 45 \degree$ is used in the projectile motion
 equation to get:
 
 \begin{equation}
   \label{eqn:radf}
-  r = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
+  r_F = \frac{v \cdot(v + \sqrt{v^2 + 4hg)}}{2g}
 \end{equation}
 
 The influence of wind-driven redistribution can be included in the spray radius by multiplying wind speed
@@ -387,34 +404,30 @@ by time of flight of water droplets.
 
 The fountain pipeline system delivering water to the ice stupa suffers several pressure losses, which limit the
 maximum height that the fountain can achieve. These lossses can be (a) altitudinal ($P_{alt}$), (b) frictional
-($P_{friction}$), and (c) nozzle ($P_{nozzle}$) losses. The altitudinal losses depend on the altitude difference
-between the source and the fountain. The frictional losses are proportional to the length of the pipeline and
-inversely proportional to their diameter. The nozzle losses depend on the engineering design of the fountain
-nozzle.
+($P_{friction}$), and (c) nozzle ($P_{F}$) losses as illustrated in Fig. \ref{fig:auto_schematic}. The
+altitudinal losses depend on the altitude difference between the source and the fountain. The frictional losses
+are proportional to the length of the pipeline and inversely proportional to their diameter. The nozzle losses
+depend on the engineering design of the fountain nozzle. All the pressure variables are measured in bars.
 
 Pressure losses can be determined using the Bernoulli equation as follows:
 
 \begin{equation}
   \label{eqn:pressure}
-  P_{source} = P_{alt} + P_{friction} + P_{nozzle} + \frac{\rho \cdot v^2}{2} \cdot 10 ^{-5}
+  P_{source} = P_{alt} + P_{friction} + P_{F} + \frac{\rho \cdot v^2}{2} \cdot 10 ^{-5}
 \end{equation}
 
-where $P_{source}$ is the source pressure, $P_{nozzle}$ is the pressure loss due to the fountain nozzle, and
-$P_{alt}$ is the pressure loss due to the altitudinal difference between the pipeline input and fountain output.
-These pressure variables are measured in bars.  The speed $v$ can be determined from discharge rate observations
-using Eq. \ref{eqn:dis}. 
+The water speed $v$ can be determined from discharge rate observations using Eq. \ref{eqn:dis}. 
 
-The frictional loss of the pipeline used in the experiment can be determined using the 
-Hagen–Poiseuille equation \citep{batchelor2000introduction}:  
+The frictional loss of the pipeline used in the experiment can be determined using the Hagen–Poiseuille equation
+\citep{batchelor2000introduction}:  
 
 \begin{equation}
   \label{eqn:friction}
-  P_{friction} = \frac{3.2 \cdot \mu \cdot v \cdot L}{\rho \cdot g \cdot dia^2}
+  P_{friction} = \frac{3.2 \cdot \mu \cdot v \cdot L_P}{\rho \cdot g \cdot dia_P^2}
 \end{equation}
 
-where $P_{friction}$ is in bars, $L$ is the total length of the pipeline measured in meters, and $v$ is the water speed in
-$m/s$. Note that the above equation only applies for laminar flow, the one investigated in the present work.
-
+where $L_P$ is measured in meters. Note that the above equation only applies for laminar flow, the one
+investigated in the present work.
 
 \subsection{Model updates}
 
@@ -423,12 +436,13 @@ The present study focuses on the integration of fountain scheduling processes wi
 surface processes, please refer to the respective literature references. 
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
-water temperature ($T_F$) was estimated as a constant parameter. However, in reality, this is a poor
-approximation because it does not account for two processes, namely temperature fluctuations during transit from
-the source to the fountain nozzle or temperature fluctuations during the flight time of water droplets after
-leaving the fountain nozzle. Therefore, the first process is approximated with hourly ground temperature values
-measured 30 $cm$ below the ground. To approximate the second process, the water temperature is assumed to cool
-down to 0 $\degree\,C$ during subzero air temperature conditions.
+water droplet temperature ($T_F$) was estimated as a constant parameter equal to the pipeline water temperature
+($T_P$) . However, in reality, this is a poor approximation because it does not account for two processes,
+namely temperature fluctuations during transit from the source to the fountain nozzle or temperature
+fluctuations during the flight time of water droplets after leaving the fountain nozzle. Therefore, the first
+process is approximated with hourly ground temperature values measured 30 $cm$ below the ground. To approximate
+the second process, the water temperature is assumed to cool down to 0 $\degree\,C$ during subzero air
+temperature conditions.
 
 In the previous version of the model \citep{balasubramanianInfluenceMeteorologicalConditions2022}, fountain
 discharge events were reset from surface albedo to ice albedo. However, this assumption limits the accuracy of
@@ -622,8 +636,8 @@ than the measured unscheduled discharge rate (Fig. \ref{fig:wue}b).
 \begin{tabular}{@{}llll@{}}
 \toprule
 \textbf{Name} & \textbf{Symbol} & \textbf{Value} & \\ \midrule
-\multicolumn{1}{|l}{Pipeline diameter}      & $dia$ & 16 $mm$ & \multicolumn{1}{l|}{} \\ \midrule
-\multicolumn{1}{|l}{Pipeline length}        & $L$ & 66 $m$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Pipeline diameter}      & $dia_P$ & 16 $mm$ & \multicolumn{1}{l|}{} \\ \midrule
+\multicolumn{1}{|l}{Pipeline length}        & $L_P$ & 66 $m$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Source water pressure} & $P_{source}$ & 6 $bar$  & \multicolumn{1}{l|}{} \\\midrule 
 \multicolumn{1}{|l}{Altitudinal pressure head}  & $P_{alt}$ & 1.1 $bar$ & \multicolumn{1}{l|}{} \\ \midrule
 \multicolumn{1}{|l}{Water viscosity}  & $\mu$ & 0.00152 $Pa\,s$ & \multicolumn{1}{l|}{} \\ \bottomrule
@@ -636,7 +650,7 @@ due to frictional losses across the length of the pipeline and due to the design
 frictional loss occurs during maximum discharge, which was measured to be 11 $l/min$. By substituting the
 corresponding values in Eq. \ref{eqn:friction}, we get $P_{friction}$ to be 0.3 $bar$. The speed $v$ can be
 determined from the discharge rate observation using Eq. \ref{eqn:radf}. Therefore, from Eq. \ref{eqn:pressure},
-$P_{nozzle}$ was estimated to be 4.6 $bar$, which represents more than 75 \% of the source water pressure. Most
+$P_{F}$ was estimated to be 4.6 $bar$, which represents more than 75 \% of the source water pressure. Most
 of the input pressure was used by the fountain nozzle to generate water droplets.
 
 
@@ -802,7 +816,7 @@ were able to capture more than 44 \% of the freezing rate variations of the manu
 converting several unscheduled fountains to scheduled ones showed that at least a threefold increase in
 water-use efficiency is possible without compromising meltwater production.
 
-The influence of wind-driven redistribution on the spray radius resulted in AIRs 6 times bigger despite 3
+The influence of wind-driven redistribution on the spray radius resulted in AIRs six times bigger despite 3
 $\degree C$ warmer temperatures. This implies that higher wind speed caused the volume differences in the AIRs
 constructed at the Swiss location through three consecutive winters.  However, higher wind speed can also cause
 water losses if water droplets are distributed beyond the spray radius. Therefore, a critical wind speed needs
