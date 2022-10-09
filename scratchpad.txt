@@ -1,4 +1,17 @@
 
+% Additionally, discharge rates recommended need to be sensitive to constraints on water supply or weather
+% conditions at the construction site; for example, locations limited by their water supply such as Ladakh, India
+% would prioritize water-use efficiency, whereas those limited by the duration of their favorable weather windows
+% such as Guttannen, Switzerland would prioritize maximum ice volume. Accordingly, two types of model parameter
+% optimization are used that prevent underwatering and overwatering to attain higher ice volume and higher
+% water-use efficiency, respectively. 
+
+% However, the model needs to be initialised with an accurate estimation of fountain spray radius to produce
+% these freezing rates. In theory, this can be estimated by modelling the projectile motion of water droplets
+% using fountain characteristics such as aperture diameter and discharge rate. In practice, this estimation
+% depends also on the relative importance of wind-driven redistribution effects. Therefore, estimating fountain
+% spray radius requires a better understanding of the relative contribution of these two processes. 
+
 % Over the past decade, several ice stupas have been built to supplement the irrigation water supply of mountain
 % villages in India \citep{wangchukIceStupaCompetition2020, palmerStoringFrozenWater2022,
 % aggarwalAdaptationClimateChange2021}, Kyrgyzstan \citep{bbcnewsBrightArtificialGlacier2020}, and Chile

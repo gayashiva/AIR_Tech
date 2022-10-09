@@ -110,36 +110,23 @@ Previous work \citep{balasubramanianInfluenceMeteorologicalConditions2022} has s
 systems suffer from overwatering. To avoid this issue, the energy balance model developed in
 \cite{balasubramanianInfluenceMeteorologicalConditions2022} can be used to regulate fountain water supply
 through its surface freezing rate estimations. Recommended discharge rates can be produced from such estimations
-if uncertainties of the fountain, meteorological and surface characteristics are resolved. However, some of these
-properties like fountain spray radius, cloudiness, albedo and AIR slope cannot be predicted beforehand.
+if uncertainties of the fountain, meteorological and surface characteristics are resolved. However, some of
+these properties like fountain spray radius, cloudiness, albedo and AIR slope cannot be predicted beforehand.
 Additionally, discharge rates recommended need to be sensitive to constraints on water supply or weather
 conditions at the construction site; for example, locations limited by their water supply such as Ladakh, India
 would prioritize water-use efficiency, whereas those limited by the duration of their favorable weather windows
 such as Guttannen, Switzerland would prioritize maximum ice volume. Therefore, the upper and lower bound of each
-uncertain variable/parameter can be associated with a different model depending on whether these increase the
-freezing rate or not. The model type that overestimates freezing rates can be used to regulate fountains in locations
+uncertain variable/parameter can be associated with two model types depending on their influence on the freezing
+rate estimation. The model type that overestimates freezing rates can be used to regulate fountains in locations
 that want higher ice volumes and the other model type can be used to regulate fountains in locations that want
 higher water-use efficiency.
     
-% However, the model needs to be initialised with an accurate estimation of fountain spray radius to produce these
-% freezing rates. In theory, this can be estimated by modelling the projectile motion of water droplets using
-% fountain characteristics such as aperture diameter and discharge rate. In practice, this estimation depends also
-% on the relative importance of wind-driven redistribution effects. Therefore, estimating fountain spray radius
-% requires a better understanding of the relative contribution of these two processes. 
-
 Other practical issues need to be addressed along with fountain scheduling processes: for example, in Indian
 AIRs, the fountain discharge rate could theoretically be halved since this is always twice as high as the
 modelled freezing rate \citep{balasubramanianInfluenceMeteorologicalConditions2022}. However, in practice, a
 reduction of the discharge rate could increase the maintenance cost due to a higher risk of freezing events in
 the fountain pipeline. Therefore, an optimum fountain operation strategy should prevent the occurrence of any
 freezing events by setting a minimum threshold for the recommended discharge rate.
-
-% Additionally, discharge rates recommended need to be sensitive to constraints on water supply or weather
-% conditions at the construction site; for example, locations limited by their water supply such as Ladakh, India
-% would prioritize water-use efficiency, whereas those limited by the duration of their favorable weather windows
-% such as Guttannen, Switzerland would prioritize maximum ice volume. Accordingly, two types of model parameter
-% optimization are used that prevent underwatering and overwatering to attain higher ice volume and higher
-% water-use efficiency, respectively. 
 
 Adjusting fountain discharge rates in response to significant diurnal and seasonal variations of freezing rates
 requires the use of automation systems. Therefore, this paper describes such an automated construction strategy
@@ -614,8 +601,11 @@ fountain was much lower, resulting in lower ice volume. The water-sensitive foun
 rate during the construction period and therefore produced much lower ice volume compared with the
 weather-sensitive fountain. 
 
-For the Swiss locations, scheduled fountains yielded better water-use efficiency but did not significantly alter the maximum
-volume obtained. 
+For the Swiss locations, scheduled fountains yielded better water-use efficiency but did not significantly alter
+the maximum volume obtained. The maximum volume and the water-use efficiency of the scheduled fountain used in
+the CH22 experiment was similar but not equal to the simulated values produced from the IVOM model (Fig.
+\ref{fig:wue}a). This was because the IVOM model was approximated with linear and gaussian equations due to the
+limitations of the fountain scheduling software implemented in the automation system.
 
 \subsection{Performance of weather- and water-sensitive fountains}
 
